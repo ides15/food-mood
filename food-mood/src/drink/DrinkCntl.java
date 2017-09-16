@@ -3,17 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package foodmodel;
+package drink;
+
+import models.Drink;
 
 /**
  *
  * @author John
  */
-public class Entry {
-    /**
-     * Default constructor for Entry class.
-     */
-    public Entry() {
-        
+public class DrinkCntl {
+    public DrinkCntl(Drink drink, DrinkView drinkView) {
+        System.out.println("Drink Controller constructor");
     }
 }

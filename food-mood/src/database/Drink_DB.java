@@ -1,6 +1,6 @@
 package database;
 
-import foodmodel.Entry;
+import models.Entry;
 import java.util.ArrayList;
 
 /**

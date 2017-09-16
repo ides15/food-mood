@@ -3,17 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package foodmodel;
+package mood;
+
+import models.Mood;
 
 /**
  *
  * @author John
  */
-public class Mood extends Entry {
-    /**
-     * Default constructor for Mood class.
-     */
-    public Mood() {
-        
+public class MoodCntl {
+    public MoodCntl(Mood mood, MoodView moodView) {
+        System.out.println("Mood Controller constructor");
     }
 }

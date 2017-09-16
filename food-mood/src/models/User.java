@@ -1,4 +1,4 @@
-package foodmodel;
+package models;
 
 /**
  *

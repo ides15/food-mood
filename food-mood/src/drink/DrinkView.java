@@ -3,17 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package foodmodel;
+package drink;
+
+import models.Drink;
 
 /**
  *
  * @author John
  */
-public class Drink extends Entry {
-    /**
-     * Default constructor for Drink class.
-     */
-    public Drink() {
-        
+public class DrinkView {
+    public DrinkView(Drink drink) {
+        System.out.println("Drink View constructor");
     }
 }

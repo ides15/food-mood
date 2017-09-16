@@ -1,4 +1,4 @@
-package foodmoodv1;
+package app;
 
 /**
  *
@@ -7,7 +7,8 @@ package foodmoodv1;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello world");
-        System.out.println("IntelliJ working...");
-        System.out.println("NetBeans working...");
+        
+        MainView mainView = new MainView();
+        MainCntl mainCntl = new MainCntl(mainView);
     }
 }
