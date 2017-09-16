@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package food;
+package stats;
 
 /**
  *
  * @author kjrya
  */
-public class foodModel {
+public class StatsModel {
     
 }

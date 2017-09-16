@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mood;
+package drink;
 
 /**
  *
  * @author kjrya
  */
-public class moodModel {
+public class DrinkModel {
     
 }
