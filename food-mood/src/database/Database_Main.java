@@ -7,14 +7,14 @@ import java.util.ArrayList;
  *
  * @author john
  */
-public class Database_Main {
+abstract public class Database_Main {
     private static final String URL = "";
     private String db_name = "";
     
     /**
      * Default constructor for the database class.
      */
-    public Database_Main() {
+    public Database_Main(String TABLE) {
         
     }
     
