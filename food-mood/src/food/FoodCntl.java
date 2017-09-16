@@ -12,6 +12,11 @@ import models.Food;
  * @author John
  */
 public class FoodCntl {
+    /**
+     * Default constructor for FoodCntl.
+     * @param food Food model for MVC architecture.
+     * @param foodView FoodView for MVC architecture.
+     */
     public FoodCntl(Food food, FoodView foodView) {
         System.out.println("Food Controller constructor");
     }

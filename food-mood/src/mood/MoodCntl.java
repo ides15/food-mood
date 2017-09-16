@@ -12,6 +12,11 @@ import models.Mood;
  * @author John
  */
 public class MoodCntl {
+    /**
+     * Default constructor for MoodCntl.
+     * @param mood Mood model for MVC architecture.
+     * @param moodView MoodView for MVC architecture.
+     */
     public MoodCntl(Mood mood, MoodView moodView) {
         System.out.println("Mood Controller constructor");
     }

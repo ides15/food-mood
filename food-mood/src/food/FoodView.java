@@ -12,6 +12,10 @@ import models.Food;
  * @author John
  */
 public class FoodView {
+    /**
+     * Default constructor for FoodView.
+     * @param food FoodView for MVC architecture.
+     */
     public FoodView(Food food) {
         System.out.println("Food View constructor");
     }

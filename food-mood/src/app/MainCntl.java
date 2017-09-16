@@ -34,6 +34,10 @@ public class MainCntl {
     private MoodView moodView;
     private MoodCntl moodCntl;
     
+    /**
+     * Default constructor for MainCntl.
+     * @param mainView View class for MVC architecture.
+     */
     public MainCntl(MainView mainView) {
         System.out.println("Main Controller constructor");
         

@@ -10,6 +10,9 @@ package app;
  * @author John
  */
 public class MainView {
+    /**
+     * Default constructor for MainView.
+     */
     public MainView() {
         System.out.println("Main View constructor");
     }
