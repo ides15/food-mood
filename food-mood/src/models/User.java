@@ -11,7 +11,16 @@ public class User {
      * Default constructor for the User class
      */
     public User() {
-        
+        super();
+        System.out.println("Drink constructor");
+    }
+    
+    /**
+     * Constructor for the User class with all parameters
+     */
+    public User(String username, String password) {
+        super();
+        System.out.println("Drink constructor");
     }
     
     /**

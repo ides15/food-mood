@@ -13,36 +13,60 @@ public class Drink extends Entry {
     /**
      * Default constructor for Drink class.
      */
-    public Drink() {
+    public Drink(){
         super();
         System.out.println("Drink constructor");
     }
 
+    /**
+     * Function to set amount of drink
+     * @param amount Amount of drink, accepts amount of ounces as integer
+     */
     @Override
     public void setAmount(int amount) {
         super.setAmount(amount);
     }
 
+    /**
+     * Function to return amount of drink
+     * @return Amount of drinks as integer
+     */
     @Override
     public int getAmount() {
         return super.getAmount();
     }
 
+    /**
+     * Function to set type of drink
+     * @param unit Type of drink, accepts type as string
+     */
     @Override
     public void setUnit(String unit) {
         super.setUnit(unit);
     }
 
+    /**
+     * Function to get type of drink
+     * @return Type of drink as string
+     */
     @Override
     public String getUnit() {
         return super.getUnit();
     }
 
+    /**
+     * Function to set name of drink
+     * @param name Name of drink set as String
+     */
     @Override
     public void setName(String name) {
         super.setName(name);
     }
 
+    /**
+     * Function to get name of drink
+     * @return Name of drink as String
+     */
     @Override
     public String getName() {
         return super.getName();
