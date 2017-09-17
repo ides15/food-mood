@@ -12,11 +12,29 @@ import models.Drink;
  * @author John
  */
 public class DrinkView {
+    private Drink drink;
+    
     /**
      * Default constructor for DrinkView.
      * @param drink Drink model for MVC architecture.
      */
     public DrinkView(Drink drink) {
         System.out.println("Drink View constructor");
+        
+        this.drink = drink;
+    }
+
+    /**
+     * @return the drink
+     */
+    public Drink getDrink() {
+        return drink;
+    }
+
+    /**
+     * @param drink the drink to set
+     */
+    public void setDrink(Drink drink) {
+        this.drink = drink;
     }
 }

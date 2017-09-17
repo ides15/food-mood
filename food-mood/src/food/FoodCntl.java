@@ -12,6 +12,9 @@ import models.Food;
  * @author John
  */
 public class FoodCntl {
+    private Food food;
+    private FoodView foodView;
+    
     /**
      * Default constructor for FoodCntl.
      * @param food Food model for MVC architecture.
@@ -19,5 +22,36 @@ public class FoodCntl {
      */
     public FoodCntl(Food food, FoodView foodView) {
         System.out.println("Food Controller constructor");
+        
+        this.food = food;
+        this.foodView = foodView;
+    }
+
+    /**
+     * @return the food
+     */
+    public Food getFood() {
+        return food;
+    }
+
+    /**
+     * @param food the food to set
+     */
+    public void setFood(Food food) {
+        this.food = food;
+    }
+
+    /**
+     * @return the foodView
+     */
+    public FoodView getFoodView() {
+        return foodView;
+    }
+
+    /**
+     * @param foodView the foodView to set
+     */
+    public void setFoodView(FoodView foodView) {
+        this.foodView = foodView;
     }
 }

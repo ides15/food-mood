@@ -47,6 +47,4 @@ public class Drink extends Entry {
     public String getName() {
         return super.getName();
     }
-    
-    
 }

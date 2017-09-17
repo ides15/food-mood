@@ -12,6 +12,9 @@ import models.Drink;
  * @author John
  */
 public class DrinkCntl {
+    private Drink drink;
+    private DrinkView drinkView;
+    
     /**
      * Default constructor for DrinkCntl.
      * @param drink Drink model for MVC architecture.
@@ -19,5 +22,36 @@ public class DrinkCntl {
      */
     public DrinkCntl(Drink drink, DrinkView drinkView) {
         System.out.println("Drink Controller constructor");
+        
+        this.drink = drink;
+        this.drinkView = drinkView;
+    }
+
+    /**
+     * @return the drink
+     */
+    public Drink getDrink() {
+        return drink;
+    }
+
+    /**
+     * @param drink the drink to set
+     */
+    public void setDrink(Drink drink) {
+        this.drink = drink;
+    }
+
+    /**
+     * @return the drinkView
+     */
+    public DrinkView getDrinkView() {
+        return drinkView;
+    }
+
+    /**
+     * @param drinkView the drinkView to set
+     */
+    public void setDrinkView(DrinkView drinkView) {
+        this.drinkView = drinkView;
     }
 }

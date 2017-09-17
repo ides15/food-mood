@@ -47,6 +47,4 @@ public class Mood extends Entry {
     public String getName() {
         return super.getName();
     }
-    
-    
 }

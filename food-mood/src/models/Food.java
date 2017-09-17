@@ -47,6 +47,4 @@ public class Food extends Entry {
     public String getName() {
         return super.getName();
     }
-    
-    
 }
