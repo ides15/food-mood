@@ -10,6 +10,7 @@ package app;
  * @author John
  */
 public class MainView {
+
     /**
      * Default constructor for MainView.
      */

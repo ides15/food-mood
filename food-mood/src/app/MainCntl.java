@@ -14,43 +14,54 @@ import models.Food;
 import models.Mood;
 import mood.MoodCntl;
 import mood.MoodView;
+import stats.*;
+import recommendations.*;
 
 /**
  *
  * @author John
  */
 public class MainCntl {
+
     private MainView mainView;
-    
+
     private Drink drink;
     private DrinkView drinkView;
     private DrinkCntl drinkCntl;
-    
+
     private Food food;
     private FoodView foodView;
     private FoodCntl foodCntl;
-    
+
     private Mood mood;
     private MoodView moodView;
     private MoodCntl moodCntl;
+
+    private RecModel rec;
+    private RecView recView;
+    private RecCntl recCntl;
     
+    private StatsModel stats;
+    private StatsView statsView;
+    private StatsCntl statsCntl;
     /**
      * Default constructor for MainCntl.
+     *
      * @param mainView View class for MVC architecture.
      */
     public MainCntl(MainView mainView) {
         System.out.println("Main Controller constructor");
-        
+
         this.mainView = mainView;
-        
+
         drink = new Drink();
         drinkView = new DrinkView(getDrink());
         drinkCntl = new DrinkCntl(getDrink(), getDrinkView());
-        
+
         food = new Food();
         foodView = new FoodView(getFood());
         foodCntl = new FoodCntl(getFood(), getFoodView());
-        
+
         mood = new Mood();
         moodView = new MoodView(getMood());
         moodCntl = new MoodCntl(getMood(), getMoodView());
@@ -124,5 +135,47 @@ public class MainCntl {
      */
     public MoodCntl getMoodCntl() {
         return moodCntl;
+    }
+    
+        /**
+     * @return the stats
+     */
+    public StatsModel getStats() {
+        return stats;
+    }
+
+    /**
+     * @return the statsView
+     */
+    public StatsView getStatsView() {
+        return statsView;
+    }
+
+    /**
+     * @return the statsCntl
+     */
+    public StatsCntl getStatsCntl() {
+        return statsCntl;
+    }
+    
+        /**
+     * @return the rec
+     */
+    public RecModel getRec() {
+        return rec;
+    }
+
+    /**
+     * @return the recView
+     */
+    public RecView getRecView() {
+        return recView;
+    }
+
+    /**
+     * @return the recCntl
+     */
+    public RecCntl getRecCntl() {
+        return recCntl;
     }
 }
