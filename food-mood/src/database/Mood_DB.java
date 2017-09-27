@@ -13,7 +13,7 @@ public class Mood_DB extends Database {
      * @param TABLE the table to query from.
      */
     public Mood_DB(String TABLE) {
-        
+        System.out.println("Mood_DB constructor called.");
     }
 
     /**
@@ -23,6 +23,7 @@ public class Mood_DB extends Database {
      */
     @Override
     public String getEntry(String entry) {
+        System.out.println("getEntry called in Mood_DB.");
         return "Mood";
     }
 
@@ -32,6 +33,7 @@ public class Mood_DB extends Database {
      */
     @Override
     public ArrayList<Entry> getAllEntries() {
+        System.out.println("getAllEntries called in Mood_DB.");
         return new ArrayList<Entry>();
     }
 }

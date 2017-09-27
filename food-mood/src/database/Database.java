@@ -17,6 +17,7 @@ abstract public class Database {
      * @return returns the connection to the database.
      */
     protected Connection connect() {
+        System.out.println("connect called.");
         Connection conn = null;
         
         return conn;

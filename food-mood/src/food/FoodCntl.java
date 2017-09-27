@@ -21,7 +21,7 @@ public class FoodCntl {
      * @param foodView FoodView for MVC architecture.
      */
     public FoodCntl(Food food, FoodView foodView) {
-        System.out.println("Food Controller constructor");
+        System.out.println("FoodCntl constructor called.");
         
         this.food = food;
         this.foodView = foodView;
@@ -31,6 +31,7 @@ public class FoodCntl {
      * @return the food
      */
     public Food getFood() {
+        System.out.println("getFood called.");
         return food;
     }
 
@@ -38,6 +39,7 @@ public class FoodCntl {
      * @param food the food to set
      */
     public void setFood(Food food) {
+        System.out.println("setFood called.");
         this.food = food;
     }
 
@@ -45,6 +47,7 @@ public class FoodCntl {
      * @return the foodView
      */
     public FoodView getFoodView() {
+        System.out.println("getFoodView called.");
         return foodView;
     }
 
@@ -52,6 +55,7 @@ public class FoodCntl {
      * @param foodView the foodView to set
      */
     public void setFoodView(FoodView foodView) {
+        System.out.println("setFoodView called.");
         this.foodView = foodView;
     }
 }

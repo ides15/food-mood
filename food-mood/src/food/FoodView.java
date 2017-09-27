@@ -19,7 +19,7 @@ public class FoodView {
      * @param food FoodView for MVC architecture.
      */
     public FoodView(Food food) {
-        System.out.println("Food View constructor");
+        System.out.println("FoodView constructor called.");
         
         this.food = food;
     }
@@ -28,6 +28,7 @@ public class FoodView {
      * @return the food
      */
     public Food getFood() {
+        System.out.println("getFood called.");
         return food;
     }
 
@@ -35,6 +36,7 @@ public class FoodView {
      * @param food the food to set
      */
     public void setFood(Food food) {
+        System.out.println("setFood called.");
         this.food = food;
     }
 }

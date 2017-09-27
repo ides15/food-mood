@@ -13,7 +13,7 @@ public class Food_DB extends Database {
      * @param TABLE the table to query from.
      */
     public Food_DB(String TABLE) {
-        
+        System.out.println("Food_DB constructor called.");
     }
 
     /**
@@ -23,6 +23,7 @@ public class Food_DB extends Database {
      */
     @Override
     public String getEntry(String entry) {
+        System.out.println("getEntry called in Food_DB.");
         return "Drink";
     }
 
@@ -32,6 +33,7 @@ public class Food_DB extends Database {
      */
     @Override
     public ArrayList<Entry> getAllEntries() {
+        System.out.println("getAllEntries called in Food_DB.");
         return new ArrayList<Entry>();
     }
 }

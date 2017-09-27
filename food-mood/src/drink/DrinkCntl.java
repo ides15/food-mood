@@ -21,7 +21,7 @@ public class DrinkCntl {
      * @param drinkView DrinkView for MVC architecture.
      */
     public DrinkCntl(Drink drink, DrinkView drinkView) {
-        System.out.println("Drink Controller constructor");
+        System.out.println("DrinkCntl constructor called.");
         
         this.drink = drink;
         this.drinkView = drinkView;
@@ -31,6 +31,7 @@ public class DrinkCntl {
      * @return the drink
      */
     public Drink getDrink() {
+        System.out.println("getDrink called.");
         return drink;
     }
 
@@ -38,6 +39,7 @@ public class DrinkCntl {
      * @param drink the drink to set
      */
     public void setDrink(Drink drink) {
+        System.out.println("setDrink called.");
         this.drink = drink;
     }
 
@@ -45,6 +47,7 @@ public class DrinkCntl {
      * @return the drinkView
      */
     public DrinkView getDrinkView() {
+        System.out.println("getDrinkView called.");
         return drinkView;
     }
 
@@ -52,6 +55,7 @@ public class DrinkCntl {
      * @param drinkView the drinkView to set
      */
     public void setDrinkView(DrinkView drinkView) {
+        System.out.println("setDrinkView called.");
         this.drinkView = drinkView;
     }
 }

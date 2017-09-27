@@ -1,5 +1,7 @@
 package app;
 
+import models.Entry;
+
 /**
  *
  * @author john
@@ -7,9 +9,9 @@ package app;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello world");
-
-        MainView mainView = new MainView();
-        MainCntl mainCntl = new MainCntl(mainView);
+//        MainView mainView = new MainView();
+//        MainCntl mainCntl = new MainCntl(mainView);
+        Entry e = new Entry();
+        
     }
 }

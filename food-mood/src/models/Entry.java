@@ -18,13 +18,14 @@ public class Entry {
      * Default constructor for Entry class.
      */
     public Entry() {
-        System.out.println("Entry constructor");
+        System.out.println("Entry constructor called.");
     }
 
     /**
      * @return the name
      */
     public String getName() {
+        System.out.println("getName called in " + this.getClass());
         return name;
     }
 

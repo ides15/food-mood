@@ -15,7 +15,7 @@ public class Drink extends Entry {
      */
     public Drink(){
         super();
-        System.out.println("Drink constructor");
+        System.out.println("Drink constructor called.");
     }
 
     /**
@@ -61,14 +61,5 @@ public class Drink extends Entry {
     @Override
     public void setName(String name) {
         super.setName(name);
-    }
-
-    /**
-     * Function to get name of drink
-     * @return Name of drink as String
-     */
-    @Override
-    public String getName() {
-        return super.getName();
     }
 }
