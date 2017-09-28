@@ -11,7 +11,7 @@ public class StatsView {
      * @param stat accepts Stat model as parameter
      */
     public StatsView(StatsModel stat) {
-        System.out.println("Mood View constructor");
+        System.out.println("statsView constructor called.");
         this.stat = stat;
     }
 
@@ -19,7 +19,15 @@ public class StatsView {
      * @return the stats
      */
     public StatsModel getStats() {
+        System.out.println("getStats called.");
         return stat;
     }
 
+    /**
+     * @param stat the stat to set
+     */
+    public void setStat(StatsModel stat) {
+        System.out.println("setStat called.");
+        this.stat = stat;
+    }
 }

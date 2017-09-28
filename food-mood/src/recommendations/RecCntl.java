@@ -15,7 +15,7 @@ public class RecCntl {
      * @param recView MoodView for MVC architecture.
      */
     public RecCntl(RecModel rec, RecView recView) {
-        System.out.println("Rec Controller constructor");
+        System.out.println("RecCntl constructor called.");
 
         this.rec = rec;
         this.recView = recView;
@@ -25,6 +25,7 @@ public class RecCntl {
      * @return the rec
      */
     public RecModel getRec() {
+        System.out.println("getRec called.");
         return rec;
     }
 
@@ -32,6 +33,7 @@ public class RecCntl {
      * @param rec the rec to set
      */
     public void setRec(RecModel rec) {
+        System.out.println("setRec called.");
         this.rec = rec;
     }
 
@@ -39,13 +41,15 @@ public class RecCntl {
      * @return the recView
      */
     public RecView getRecView() {
+        System.out.println("getRecView called.");
         return recView;
     }
 
     /**
      * @param recView the recView to set
      */
-    public void setMoodView(RecView recView) {
+    public void setRecView(RecView recView) {
+        System.out.println("setRecView called.");
         this.recView = recView;
     }
 }

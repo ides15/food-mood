@@ -12,7 +12,7 @@ public class StatsCntl {
      * @param statsView MoodView for MVC architecture.
      */
     public StatsCntl(StatsModel stats, StatsView statsView) {
-        System.out.println("Mood Controller constructor");
+        System.out.println("StatsCntl constructor called.");
         
         this.stats = stats;
         this.statsView = statsView;
@@ -22,6 +22,7 @@ public class StatsCntl {
      * @return the stats
      */
     public StatsModel getStats() {
+        System.out.println("getStats called.");
         return stats;
     }
 
@@ -29,6 +30,7 @@ public class StatsCntl {
      * @param stats the stats to set
      */
     public void setStats(StatsModel stats) {
+        System.out.println("setStats called.");
         this.stats = stats;
     }
 
@@ -36,6 +38,7 @@ public class StatsCntl {
      * @return the statsView
      */
     public StatsView getStatsView() {
+        System.out.println("getStatsView called.");
         return statsView;
     }
 
@@ -43,6 +46,7 @@ public class StatsCntl {
      * @param statsView the statsView to set
      */
     public void setMoodView(StatsView statsView) {
+        System.out.println("setMoodView called.");
         this.statsView = statsView;
     }
 }

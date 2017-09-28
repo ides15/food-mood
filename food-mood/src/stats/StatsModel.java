@@ -26,7 +26,8 @@ public class StatsModel {
      * @param foods accepts array list of type entry for foods
      * @param moods accepts array list of type entry for moods
      */
-    public StatsModel(Drink_DB drinks, Food_DB foods, Mood_DB moods){
+    public StatsModel(Drink_DB drinks, Food_DB foods, Mood_DB moods) {
+        System.out.println("StatsModel constructor called.");
         drinkTable=drinks.getAllEntries();
         foodTable=foods.getAllEntries();
         moodTable=moods.getAllEntries();
@@ -37,6 +38,7 @@ public class StatsModel {
      * @return ArrayList of entries
      */
     public ArrayList<Entry> getDrinkTable() {
+        System.out.println("getDrinkTable called.");
         return drinkTable;
     }
     /**
@@ -44,6 +46,7 @@ public class StatsModel {
      * @return ArrayList of entries
      */
     public ArrayList<Entry> getFoodTable() {
+        System.out.println("getFoodTable called.");
         return foodTable;
     }
     /**
@@ -51,6 +54,31 @@ public class StatsModel {
      * @return ArrayList of entries
      */
     public ArrayList<Entry> getMoodTable() {
+        System.out.println("getMoodTable called.");
         return moodTable;
+    }
+
+    /**
+     * @param drinkTable the drinkTable to set
+     */
+    public void setDrinkTable(ArrayList<Entry> drinkTable) {
+        System.out.println("setDrinkTable called.");
+        this.drinkTable = drinkTable;
+    }
+
+    /**
+     * @param foodTable the foodTable to set
+     */
+    public void setFoodTable(ArrayList<Entry> foodTable) {
+        System.out.println("setFoodTable called.");
+        this.foodTable = foodTable;
+    }
+
+    /**
+     * @param moodTable the moodTable to set
+     */
+    public void setMoodTable(ArrayList<Entry> moodTable) {
+        System.out.println("setMoodTable called.");
+        this.moodTable = moodTable;
     }
 }

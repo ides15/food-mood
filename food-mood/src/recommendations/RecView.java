@@ -9,8 +9,8 @@ public class RecView {
      * Default constructor for rec view
      * @param rec accepts Rec model as parameter
      */
-    public RecView(RecModel Rec) {
-        System.out.println("Rec View constructor");
+    public RecView(RecModel rec) {
+        System.out.println("RecView constructor called.");
         this.rec = rec;
     }
 
@@ -18,6 +18,15 @@ public class RecView {
      * @return the rec
      */
     public RecModel getRec() {
+        System.out.println("getRec called.");
         return rec;
+    }
+
+    /**
+     * @param rec the rec to set
+     */
+    public void setRec(RecModel rec) {
+        System.out.println("setRec called.");
+        this.rec = rec;
     }
 }

@@ -19,7 +19,7 @@ public class MoodView {
      * @param mood Mood model for MVC architecture.
      */
     public MoodView(Mood mood) {
-        System.out.println("Mood View constructor");
+        System.out.println("MoodView constructor called.");
         
         this.mood = mood;
     }
@@ -28,6 +28,7 @@ public class MoodView {
      * @return the mood
      */
     public Mood getMood() {
+        System.out.println("getMood called.");
         return mood;
     }
 
@@ -35,6 +36,7 @@ public class MoodView {
      * @param mood the mood to set
      */
     public void setMood(Mood mood) {
+        System.out.println("setMood called.");
         this.mood = mood;
     }
 }

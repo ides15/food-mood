@@ -33,6 +33,7 @@ public class Entry {
      * @param name the name to set
      */
     public void setName(String name) {
+        System.out.println("setName called in " + this.getClass().getName());
         this.name = name;
     }
 
