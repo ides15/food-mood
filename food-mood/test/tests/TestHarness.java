@@ -1,10 +1,13 @@
 package tests;
 
 import app.*;
-import models.*;
+import database.*;
+import drink.*;
 import food.*;
-import drink.*; 
+import models.*;
 import mood.*;
+import recommendations.*;
+import stats.*;
 
 /**
  *
@@ -17,6 +20,7 @@ public class TestHarness {
         testFood();      
         testDrink();        
         testMood();
+        testRecommendations();
     }
     
     public static void testApp() {
@@ -92,5 +96,33 @@ public class TestHarness {
         if (moodCntl.getMood().getName().equals("TestHappy") && moodCntl.getMoodView().getMood().getName().equals("TestHappy")) {
             System.out.println("MoodCntl is working");
         }
+    }
+    
+    public static void testRecommendations() { 
+        String drinkURL = "https://database/drinks.json";
+        String foodURL = "https://database/food.json";
+        String moodURL = "https://database/mood.json";
+        
+        Drink_DB drinkDB = new Drink_DB(drinkURL);
+        Food_DB foodDB = new Food_DB(foodURL);
+        Mood_DB moodDB = new Mood_DB(moodURL);
+        
+        StatsModel statsModel = new StatsModel(drinkDB, foodDB, moodDB);
+        StatsView statsView = new StatsView(statsModel);
+        StatsCntl statsCntl = new StatsCntl(statsModel, statsView);
+        
+        statsCntl.setStats(statsModel);
+        statsCntl.getStats();
+        statsCntl.getStatsView();
+        statsCntl.setMoodView(statsView);
+        
+        RecModel recModel = new RecModel(statsModel, new Mood());
+        RecView recView = new RecView(recModel);        
+        RecCntl recCntl = new RecCntl(recModel, recView);
+        
+        recCntl.setRec(recModel);
+        recCntl.getRec();
+        recCntl.setRecView(recView);
+        recCntl.getRecView();  
     }
 }
