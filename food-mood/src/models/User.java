@@ -30,6 +30,8 @@ public class User {
      * @return returns whether the user is authenticated or not; true is authenticated
      */
     public boolean authenticate(String username, String password) {
+        System.out.println("authenticate called in " + this.getClass().getName());
+        System.out.println("User Authenticated");
         return true;
     }
 }

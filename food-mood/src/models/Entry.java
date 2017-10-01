@@ -41,6 +41,7 @@ public class Entry {
      * @return the unit
      */
     public String getUnit() {
+        System.out.println("getUnit called in " + this.getClass().getName());
         return unit;
     }
 
@@ -48,6 +49,7 @@ public class Entry {
      * @param unit the unit to set
      */
     public void setUnit(String unit) {
+        System.out.println("setUnit called in " + this.getClass().getName());
         this.unit = unit;
     }
 
@@ -55,6 +57,7 @@ public class Entry {
      * @return the amount
      */
     public int getAmount() {
+        System.out.println("getAmount called in " + this.getClass().getName());
         return amount;
     }
 
@@ -62,6 +65,7 @@ public class Entry {
      * @param amount the amount to set
      */
     public void setAmount(int amount) {
+        System.out.println("setAmount called in " + this.getClass().getName());
         this.amount = amount;
     }
 }
