@@ -1,12 +1,10 @@
 package tests;
 
-import app.MainCntl;
-import app.MainView;
-import models.Drink;
-import models.Food;
-import models.Mood;
-import food.FoodCntl;
-import food.FoodView; 
+import app.*;
+import models.*;
+import food.*;
+import drink.*; 
+import mood.*;
 
 /**
  *
@@ -16,41 +14,9 @@ public class TestHarness {
     public static void main(String[] args) {
         System.out.println("Testing started.");
         testApp();
-        //MainView mainView = new MainView();
-        //System.out.println("MainView instantiated.");
-        //MainCntl mainCntl = new MainCntl(mainView);
-        
-        testFood(); 
-        
-        /*Food testFood = new Food();
-        testFood.setName("TestTaco");
-        testFood.setUnit("TestSavory");
-        testFood.setAmount(2);
-        if(testFood.getName()=="TestTaco" && testFood.getAmount()==2 && testFood.getUnit()=="TestSavory"){
-            System.out.println("Food is working");
-        } */
-        
-        testDrink();
-        
-        /*
-        Drink testDrink = new Drink();
-        testDrink.setName("TestCola");
-        testDrink.setUnit("TestSweet");
-        testDrink.setAmount(24);
-        if(testDrink.getName()=="TestCola" && testDrink.getAmount()==24 && testDrink.getUnit()=="TestSweet"){
-            System.out.println("Drink is working");
-        }*/
-        
+        testFood();      
+        testDrink();        
         testMood();
-        
-        /*
-        Mood testMood = new Mood();
-        testMood.setName("TestHappy");
-        testMood.setUnit("TestVery");
-        testMood.setAmount(8);
-        if(testMood.getName()=="TestHappy" && testMood.getAmount()==8 && testMood.getUnit()=="TestVery"){
-            System.out.println("Mood is working");
-        }*/
     }
     
     public static void testApp() {
@@ -64,19 +30,22 @@ public class TestHarness {
         test.setName("TestTaco");
         test.setUnit("TestSavory");
         test.setAmount(2);
-        if(test.getName()=="TestTaco" && test.getAmount()==2 && test.getUnit()=="TestSavory"){
+        if(test.getName().equals("TestTaco") && test.getAmount()==2 && test.getUnit().equals("TestSavory")){
             System.out.println("Food is working");
         }
         
         FoodView foodView = new FoodView(test);      
         foodView.setFood(test);
-        foodView.getFood(); 
+        if (foodView.getFood().getName().equals("TestTaco")) {
+            System.out.println("FoodView is working");
+        } 
         
         FoodCntl foodCntl = new FoodCntl(test, foodView);
         foodCntl.setFood(test);
-        foodCntl.getFood(); 
         foodCntl.setFoodView(foodView); 
-        foodCntl.getFoodView();
+        if (foodCntl.getFood().getName().equals("TestTaco") && foodCntl.getFoodView().getFood().getName().equals("TestTaco")) {
+            System.out.println("FoodCntl is working");
+        } 
     }
     
     public static void testDrink () {
@@ -84,8 +53,21 @@ public class TestHarness {
         test.setName("TestCola");
         test.setUnit("TestSweet");
         test.setAmount(24);
-        if(test.getName()=="TestCola" && test.getAmount()==24 && test.getUnit()=="TestSweet"){
+        if(test.getName().equals("TestCola") && test.getAmount()==24 && test.getUnit().equals("TestSweet")){
             System.out.println("Drink is working");
+        }
+        
+        DrinkView drinkView = new DrinkView(test); 
+        drinkView.setDrink(test);
+        if (drinkView.getDrink().getName().equals("TestCola")) {
+            System.out.println("DrinkView is working");
+        }
+        
+        DrinkCntl drinkCntl = new DrinkCntl(test, drinkView);
+        drinkCntl.setDrink(test);
+        drinkCntl.setDrinkView(drinkView);
+        if (drinkCntl.getDrink().getName().equals("TestCola") && drinkCntl.getDrinkView().getDrink().getName().equals("TestCola")) {
+            System.out.println("DrinkCntl is working");
         }
     }
     
@@ -94,8 +76,21 @@ public class TestHarness {
         test.setName("TestHappy");
         test.setUnit("TestVery");
         test.setAmount(8);
-        if(test.getName()=="TestHappy" && test.getAmount()==8 && test.getUnit()=="TestVery"){
+        if(test.getName().equals("TestHappy") && test.getAmount()==8 && test.getUnit().equals("TestVery")){
             System.out.println("Mood is working");
+        }
+        
+        MoodView moodView = new MoodView(test);
+        moodView.setMood(test);
+        if (moodView.getMood().getName().equals("TestHappy")) {
+            System.out.println("MoodView is working");
+        }
+        
+        MoodCntl moodCntl = new MoodCntl(test, moodView);
+        moodCntl.setMood(test);
+        moodCntl.setMoodView(moodView);
+        if (moodCntl.getMood().getName().equals("TestHappy") && moodCntl.getMoodView().getMood().getName().equals("TestHappy")) {
+            System.out.println("MoodCntl is working");
         }
     }
 }
