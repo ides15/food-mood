@@ -32,7 +32,7 @@ public class User_Table extends Database {
             while(rs.next()) {
                 if(rs.getString("password").equals(password)) {
                     setLoginID(rs.getInt("account_id"));
-                    System.out.println("account id in database: " + getLoginID());
+                    System.out.println("account id: " + getLoginID());
                 }
             }
         } catch (SQLException ex) {
