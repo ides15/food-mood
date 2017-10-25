@@ -3,27 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package application;
+package login;
 
-import javax.swing.JTextField;
+import database.Login_Table;
 
 /**
  *
- * @author John Ide - JCI5048
+ * @author John
  */
 public class UserLoginPanel extends javax.swing.JPanel {
-    private Database db;
-//    private MainView mView;
+    private Login_Table db;
+    
     private String username;
     private String password;
-    
+
     /**
-     * Creates new form UserLoginPanel_revised
+     * Creates new form UserLoginPanel
      */
-    public UserLoginPanel() 
-    {
+    public UserLoginPanel() {
         initComponents();
-        
     }
 
     /**
@@ -35,128 +33,199 @@ public class UserLoginPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        newUserButton = new javax.swing.JButton();
-        userSubmitButton = new javax.swing.JButton();
-        usernameTextField = new javax.swing.JTextField();
         usernameLabel = new javax.swing.JLabel();
         passwordLabel = new javax.swing.JLabel();
-        passwordTextField = new javax.swing.JPasswordField();
-        failedLoginLabel = new javax.swing.JLabel();
-
-        newUserButton.setText("New User");
-        newUserButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newUserButtonActionPerformed(evt);
-            }
-        });
-
-        userSubmitButton.setText("Login");
-        userSubmitButton.setMaximumSize(new java.awt.Dimension(100, 77));
-        userSubmitButton.setMinimumSize(new java.awt.Dimension(100, 77));
-        userSubmitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userSubmitButtonActionPerformed(evt);
-            }
-        });
+        usernameTextField = new javax.swing.JTextField();
+        passwordTextField = new javax.swing.JTextField();
+        newUserButton = new javax.swing.JButton();
+        loginButton = new javax.swing.JButton();
 
         usernameLabel.setText("Username:");
 
         passwordLabel.setText("Password:");
 
-        failedLoginLabel.setFont(new java.awt.Font("Dialog", 2, 11)); // NOI18N
-        failedLoginLabel.setForeground(java.awt.Color.red);
-        failedLoginLabel.setText("Username or Password incorrect");
+        usernameTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usernameTextFieldActionPerformed(evt);
+            }
+        });
+
+        passwordTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordTextFieldActionPerformed(evt);
+            }
+        });
+
+        newUserButton.setText("New User");
+
+        loginButton.setText("Login");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(76, 76, 76)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(newUserButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                        .addComponent(loginButton))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(usernameLabel)
                             .addComponent(passwordLabel))
-                        .addGap(50, 50, 50)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(usernameTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(passwordTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(50, 50, 50))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(failedLoginLabel)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(newUserButton)
-                                .addGap(50, 50, 50)
-                                .addComponent(userSubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(100, 100, 100))))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(usernameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                            .addComponent(passwordTextField))))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(75, 75, 75)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(80, 80, 80)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(usernameLabel))
-                .addGap(36, 36, 36)
+                    .addComponent(usernameLabel)
+                    .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordLabel)
                     .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(userSubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newUserButton))
-                .addGap(43, 43, 43)
-                .addComponent(failedLoginLabel)
-                .addContainerGap(75, Short.MAX_VALUE))
+                    .addComponent(newUserButton)
+                    .addComponent(loginButton))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void userSubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userSubmitButtonActionPerformed
+    private void usernameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usernameTextFieldActionPerformed
 
-    }//GEN-LAST:event_userSubmitButtonActionPerformed
+    private void passwordTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordTextFieldActionPerformed
 
-    private void newUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newUserButtonActionPerformed
-
-    }//GEN-LAST:event_newUserButtonActionPerformed
-
-    public javax.swing.JButton getNewUserButton() {
-        
-        return newUserButton;
-        
-    }
-    
-    public javax.swing.JButton getUserSubmitButton() {
-        
-        return userSubmitButton;
-        
-    }
-    
-    public javax.swing.JTextField getUsernameTextField() {
-        
-        return usernameTextField;
-        
-    }
-    
-    public javax.swing.JTextField getPasswordTextField() {
-        
-        return (JTextField) passwordTextField;
-        
-    }
-    public javax.swing.JLabel getFailedLoginLabel()
-    {
-        return failedLoginLabel;
-    }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel failedLoginLabel;
-    public javax.swing.JButton newUserButton;
+    private javax.swing.JButton loginButton;
+    private javax.swing.JButton newUserButton;
     private javax.swing.JLabel passwordLabel;
-    public javax.swing.JPasswordField passwordTextField;
-    public javax.swing.JButton userSubmitButton;
+    private javax.swing.JTextField passwordTextField;
     private javax.swing.JLabel usernameLabel;
-    public javax.swing.JTextField usernameTextField;
+    private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * @return the username
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username the username to set
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    /**
+     * @return the password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * @param password the password to set
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
+     * @return the loginButton
+     */
+    public javax.swing.JButton getLoginButton() {
+        return loginButton;
+    }
+
+    /**
+     * @param loginButton the loginButton to set
+     */
+    public void setLoginButton(javax.swing.JButton loginButton) {
+        this.loginButton = loginButton;
+    }
+
+    /**
+     * @return the newUserButton
+     */
+    public javax.swing.JButton getNewUserButton() {
+        return newUserButton;
+    }
+
+    /**
+     * @param newUserButton the newUserButton to set
+     */
+    public void setNewUserButton(javax.swing.JButton newUserButton) {
+        this.newUserButton = newUserButton;
+    }
+
+    /**
+     * @return the passwordLabel
+     */
+    public javax.swing.JLabel getPasswordLabel() {
+        return passwordLabel;
+    }
+
+    /**
+     * @param passwordLabel the passwordLabel to set
+     */
+    public void setPasswordLabel(javax.swing.JLabel passwordLabel) {
+        this.passwordLabel = passwordLabel;
+    }
+
+    /**
+     * @return the passwordTextField
+     */
+    public javax.swing.JTextField getPasswordTextField() {
+        return passwordTextField;
+    }
+
+    /**
+     * @param passwordTextField the passwordTextField to set
+     */
+    public void setPasswordTextField(javax.swing.JTextField passwordTextField) {
+        this.passwordTextField = passwordTextField;
+    }
+
+    /**
+     * @return the usernameLabel
+     */
+    public javax.swing.JLabel getUsernameLabel() {
+        return usernameLabel;
+    }
+
+    /**
+     * @param usernameLabel the usernameLabel to set
+     */
+    public void setUsernameLabel(javax.swing.JLabel usernameLabel) {
+        this.usernameLabel = usernameLabel;
+    }
+
+    /**
+     * @return the usernameTextField
+     */
+    public javax.swing.JTextField getUsernameTextField() {
+        return usernameTextField;
+    }
+
+    /**
+     * @param usernameTextField the usernameTextField to set
+     */
+    public void setUsernameTextField(javax.swing.JTextField usernameTextField) {
+        this.usernameTextField = usernameTextField;
+    }
 }

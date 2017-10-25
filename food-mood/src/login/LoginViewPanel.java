@@ -1,46 +1,38 @@
 /*
-
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-package application;
+package login;
 
 import javax.swing.JPanel;
 
-public class LoginViewPanel extends JPanel
-{
+/**
+ *
+ * @author John
+ */
+public class LoginViewPanel extends JPanel {
     private UserLoginPanel userLoginPanel;
-    public NewUserLoginPanel newUserLoginPanel;
     
-    LoginViewPanel()
-    {
+    public LoginViewPanel() {
         super();
-
+        
         userLoginPanel = new UserLoginPanel();
-        newUserLoginPanel = new NewUserLoginPanel();
         
         add(userLoginPanel);
     }
-    
-    public void removePanel(JPanel panel) {
-        if(panel != null) remove(panel);
-    }
-    
-    public void addPanel(JPanel panel) {
-        if (panel == this.getUserLoginPanel()) panel = this.getUserLoginPanel();
-        if (panel == this.newUserLoginPanel) panel = this.newUserLoginPanel;
-        
-        add(panel);
-        revalidate();
-        repaint();
-    }
-    
-    public UserLoginPanel getUserLoginPanel()
-    {
+
+    /**
+     * @return the userLoginPanel
+     */
+    public UserLoginPanel getUserLoginPanel() {
         return userLoginPanel;
     }
-    
-    public NewUserLoginPanel getNewUserLoginPanel()
-    {
-        return newUserLoginPanel;
+
+    /**
+     * @param userLoginPanel the userLoginPanel to set
+     */
+    public void setUserLoginPanel(UserLoginPanel userLoginPanel) {
+        this.userLoginPanel = userLoginPanel;
     }
-  
 }

@@ -7,12 +7,12 @@ import java.util.ArrayList;
  *
  * @author john
  */
-public class Drink_DB extends Database {
+public class Drink_Table extends Database {
     /**
      * Default constructor for drink database class.
      * @param TABLE the table to query from.
      */
-    public Drink_DB(String TABLE) {
+    public Drink_Table(String TABLE) {
         System.out.println("Drink_DB constructor called.");
     }
 

@@ -1,62 +1,33 @@
-package application;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package login;
 
-import java.awt.event.ActionListener;
+import database.Login_Table;
 import javax.swing.JFrame;
 
-/*
-
+/**
+ *
+ * @author John
  */
-public class LoginView extends JFrame
-{
-    private Database loginModel;
+public class LoginView extends JFrame {
+    private Login_Table db;
     private LoginViewPanel loginViewPanel;
     
-    LoginView(Database loginModel) 
-    {
-        super("Manager");
-        this.loginModel = loginModel;
+    public LoginView(Login_Table db) {
+        super("Login");
+        this.db = db;
         
-        setSize(400,400);
+        setSize(400, 400);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
- 
+        
         loginViewPanel = new LoginViewPanel();
-        add(loginViewPanel); 
+        add(loginViewPanel);
     }
     
-    //Meathods to switch panels
-    public void switchToUserLogin(UserLoginPanel userLoginPanel)
-    {
-        getLoginViewPanel().removePanel(getLoginViewPanel().newUserLoginPanel);
-        getLoginViewPanel().addPanel(getLoginViewPanel().getUserLoginPanel());
-    }
-    
-    public void switchToNewUser(NewUserLoginPanel newUserLoginPanel)
-    {
-        getLoginViewPanel().removePanel(getLoginViewPanel().getUserLoginPanel());
-        getLoginViewPanel().addPanel(getLoginViewPanel().newUserLoginPanel);
-    }
-    
-    //ActionListener Meathods
-    public void addUserSubmitButtonListener(ActionListener al)
-    {
-        getLoginViewPanel().getUserLoginPanel().getUserSubmitButton().addActionListener(al);
-    }
-    
-    public void addNewUserButtonListener(ActionListener al)
-    {
-        getLoginViewPanel().getUserLoginPanel().getNewUserButton().addActionListener(al);
-    }
-    public void addBackButtonListener(ActionListener al)
-    {
-        getLoginViewPanel().getNewUserLoginPanel().getBackButton().addActionListener(al);
-    }
-
-    /**
-     * @return the loginViewPanel
-     */
     public LoginViewPanel getLoginViewPanel() {
         return loginViewPanel;
     }
-    
-    
 }

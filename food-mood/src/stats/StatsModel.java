@@ -5,9 +5,9 @@
  */
 package stats;
 
-import database.Drink_DB;
-import database.Food_DB;
-import database.Mood_DB;
+import database.Drink_Table;
+import database.Food_Table;
+import database.Mood_Table;
 import java.util.ArrayList;
 import models.Entry;
 
@@ -26,7 +26,7 @@ public class StatsModel {
      * @param foods accepts array list of type entry for foods
      * @param moods accepts array list of type entry for moods
      */
-    public StatsModel(Drink_DB drinks, Food_DB foods, Mood_DB moods) {
+    public StatsModel(Drink_Table drinks, Food_Table foods, Mood_Table moods) {
         System.out.println("StatsModel constructor called.");
         drinkTable=drinks.getAllEntries();
         foodTable=foods.getAllEntries();

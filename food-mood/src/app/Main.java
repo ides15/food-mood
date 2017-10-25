@@ -1,7 +1,8 @@
 package app;
 
-import models.Drink;
-import models.Entry;
+import database.Login_Table;
+import login.LoginCntl;
+import login.LoginView;
 
 /**
  *
@@ -10,11 +11,8 @@ import models.Entry;
 public class Main {
 
     public static void main(String[] args) {
-//        MainView mainView = new MainView();
-//        MainCntl mainCntl = new MainCntl(mainView);
-        Entry e = new Entry();
-        e.getName();
-        Drink d = new Drink();
-        d.getName();
+        Login_Table db = new Login_Table("foodmood_login.db");
+        LoginView loginView = new LoginView(db);
+        LoginCntl loginCntl = new LoginCntl(db, loginView);
     }
 }

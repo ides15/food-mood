@@ -103,9 +103,9 @@ public class TestHarness {
         String foodURL = "https://database/food.json";
         String moodURL = "https://database/mood.json";
         
-        Drink_DB drinkDB = new Drink_DB(drinkURL);
-        Food_DB foodDB = new Food_DB(foodURL);
-        Mood_DB moodDB = new Mood_DB(moodURL);
+        Drink_Table drinkDB = new Drink_Table(drinkURL);
+        Food_Table foodDB = new Food_Table(foodURL);
+        Mood_Table moodDB = new Mood_Table(moodURL);
         
         StatsModel statsModel = new StatsModel(drinkDB, foodDB, moodDB);
         StatsView statsView = new StatsView(statsModel);

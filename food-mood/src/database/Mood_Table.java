@@ -7,12 +7,12 @@ import java.util.ArrayList;
  *
  * @author john
  */
-public class Mood_DB extends Database {
+public class Mood_Table extends Database {
     /**
      * Default constructor for mood database class.
      * @param TABLE the table to query from.
      */
-    public Mood_DB(String TABLE) {
+    public Mood_Table(String TABLE) {
         System.out.println("Mood_DB constructor called.");
     }
 
