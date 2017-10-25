@@ -6,6 +6,8 @@
 package login;
 
 import database.Login_Table;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -29,5 +31,26 @@ public class LoginCntl {
         loginView.setVisible(true);
         
         userLoginPanel = new UserLoginPanel();
+        
+        loginView.addLoginButtonListener(new LoginButtonListener());
+        loginView.addNewUserButtonListener(new NewUserButtonListener());
+    }
+    
+    class LoginButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            username = loginView.getLoginViewPanel().getUserLoginPanel().getUsernameTextField().getText();
+            password = loginView.getLoginViewPanel().getUserLoginPanel().getPasswordTextField().getText();
+            
+            System.out.println("username: " + username);
+            System.out.println("password: " + password);
+        }
+    }
+    
+    class NewUserButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // TODO switch to new user page
+        }
     }
 }

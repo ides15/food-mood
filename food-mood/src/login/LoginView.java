@@ -6,6 +6,7 @@
 package login;
 
 import database.Login_Table;
+import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
 /**
@@ -25,6 +26,14 @@ public class LoginView extends JFrame {
         
         loginViewPanel = new LoginViewPanel();
         add(loginViewPanel);
+    }
+    
+    public void addLoginButtonListener(ActionListener al) {
+        getLoginViewPanel().getUserLoginPanel().getLoginButton().addActionListener(al);
+    }
+    
+    public void addNewUserButtonListener(ActionListener al) {
+        getLoginViewPanel().getUserLoginPanel().getNewUserButton().addActionListener(al);
     }
     
     public LoginViewPanel getLoginViewPanel() {
