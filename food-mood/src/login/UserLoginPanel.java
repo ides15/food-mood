@@ -5,14 +5,14 @@
  */
 package login;
 
-import database.Login_Table;
+import database.User_Table;
 
 /**
  *
  * @author John
  */
 public class UserLoginPanel extends javax.swing.JPanel {
-    private Login_Table db;
+    private User_Table db;
     
     private String username;
     private String password;

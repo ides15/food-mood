@@ -13,7 +13,7 @@ public class Mood_Table extends Database {
      * @param TABLE the table to query from.
      */
     public Mood_Table(String TABLE) {
-        System.out.println("Mood_DB constructor called.");
+        super();
     }
 
     /**

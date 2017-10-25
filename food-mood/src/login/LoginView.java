@@ -5,7 +5,7 @@
  */
 package login;
 
-import database.Login_Table;
+import database.User_Table;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
@@ -14,10 +14,10 @@ import javax.swing.JFrame;
  * @author John
  */
 public class LoginView extends JFrame {
-    private Login_Table db;
+    private User_Table db;
     private LoginViewPanel loginViewPanel;
     
-    public LoginView(Login_Table db) {
+    public LoginView(User_Table db) {
         super("Login");
         this.db = db;
         

@@ -6,16 +6,16 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-// TODO change names of child DBs to table, we won't be making a new database
-// for each entry, change to Drink_Table or something similar
-
 /**
  *
  * @author john
  */
 abstract public class Database {
-    private static final String URL = "";
-    private final String DB_NAME = "";
+    private static String URL = "jdbc:sqlite:foodmood.db";
+    
+    public Database() {
+        
+    }
     
     /**
      * Connects to the database.
@@ -27,7 +27,6 @@ abstract public class Database {
         
         try {
             conn = DriverManager.getConnection(URL);
-            System.out.println("Connection to db " + DB_NAME);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         } finally {
@@ -49,6 +48,7 @@ abstract public class Database {
         try {
             conn = DriverManager.getConnection(URL);
         } catch (SQLException ex) {
+            System.out.println("4");
             System.out.println(ex.getMessage());
         }
         

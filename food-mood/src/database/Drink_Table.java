@@ -13,7 +13,7 @@ public class Drink_Table extends Database {
      * @param TABLE the table to query from.
      */
     public Drink_Table(String TABLE) {
-        System.out.println("Drink_DB constructor called.");
+        super();
     }
 
     /**

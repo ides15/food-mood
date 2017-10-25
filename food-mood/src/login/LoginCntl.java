@@ -5,7 +5,7 @@
  */
 package login;
 
-import database.Login_Table;
+import database.User_Table;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,17 +14,17 @@ import java.awt.event.ActionListener;
  * @author John
  */
 public class LoginCntl {
-    private Login_Table db;
-    private LoginView loginView;
+    private final User_Table db;
+    private final LoginView loginView;
     
     private LoginViewPanel loginViewPanel;
     
-    private UserLoginPanel userLoginPanel;
+    private final UserLoginPanel userLoginPanel;
     
     private String username;
     private String password;
     
-    public LoginCntl(Login_Table db, LoginView loginView) {
+    public LoginCntl(User_Table db, LoginView loginView) {
         this.db = db;
         this.loginView = loginView;
         
@@ -42,8 +42,11 @@ public class LoginCntl {
             username = loginView.getLoginViewPanel().getUserLoginPanel().getUsernameTextField().getText();
             password = loginView.getLoginViewPanel().getUserLoginPanel().getPasswordTextField().getText();
             
-            System.out.println("username: " + username);
-            System.out.println("password: " + password);
+            int loginID = db.authenticate(username, password);
+            
+            if(loginID != -1) {
+                System.out.println("user authenticated");
+            }
         }
     }
     
