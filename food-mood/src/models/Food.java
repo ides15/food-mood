@@ -5,6 +5,9 @@
  */
 package models;
 
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  *
  * @author John
@@ -13,8 +16,13 @@ public class Food extends Entry {
     /**
      * Default constructor for Food class.
      */
-    public Food() {
+    private String food;
+    private Date date;
+    public Food(String food, Date date) {
         super();
+        
+        this.food = food;
+        this.date = date;
         System.out.println("Food constructor");
     }
 

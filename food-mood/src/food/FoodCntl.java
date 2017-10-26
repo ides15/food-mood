@@ -6,6 +6,9 @@
 package food;
 
 import models.Food;
+import database.Food_Table;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -13,18 +16,27 @@ import models.Food;
  */
 public class FoodCntl {
     private Food food;
-    private FoodView foodView;
+    private final Food_Table db;
+    private final FoodView foodView;
+    
+    private FoodViewPanel foodViewPanel;
+    
+    private final FoodPanel foodPanel;
     
     /**
      * Default constructor for FoodCntl.
      * @param food Food model for MVC architecture.
      * @param foodView FoodView for MVC architecture.
      */
-    public FoodCntl(Food food, FoodView foodView) {
+    public FoodCntl(Food_Table db, FoodView foodView) {
         System.out.println("FoodCntl constructor called.");
         
+        this.db = db;
         this.food = food;
         this.foodView = foodView;
+        
+        foodPanel = new FoodPanel();
+        
     }
 
     /**
@@ -54,8 +66,4 @@ public class FoodCntl {
     /**
      * @param foodView the foodView to set
      */
-    public void setFoodView(FoodView foodView) {
-        System.out.println("setFoodView called.");
-        this.foodView = foodView;
-    }
 }

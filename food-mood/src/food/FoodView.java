@@ -6,37 +6,41 @@
 package food;
 
 import models.Food;
-
+import database.Food_Table;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
 /**
  *
  * @author John
  */
-public class FoodView {
+public class FoodView extends JFrame{
     private Food food;
+    private Food_Table db;
+    private FoodViewPanel foodViewPanel;
     
     /**
      * Default constructor for FoodView.
      * @param food FoodView for MVC architecture.
      */
     public FoodView(Food food) {
-        System.out.println("FoodView constructor called.");
+        super("Food");
+        this.db = db;
         
-        this.food = food;
+        setSize(400, 400);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        
+        foodViewPanel = new FoodViewPanel();
+        add(foodViewPanel);
     }
 
     /**
      * @return the food
      */
-    public Food getFood() {
-        System.out.println("getFood called.");
-        return food;
+    public FoodViewPanel getFoodViewPanel(){
+        return this.foodViewPanel;
     }
-
-    /**
-     * @param food the food to set
-     */
-    public void setFood(Food food) {
-        System.out.println("setFood called.");
-        this.food = food;
+    
+    public void setFoodViewPanel(FoodViewPanel foodViewPanel){
+        this.foodViewPanel = foodViewPanel;
     }
 }
