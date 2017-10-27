@@ -5,7 +5,6 @@
  */
 package models;
 
-import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -20,12 +19,12 @@ public class Food extends Entry {
     private String amount;
     private Date date;
     
-    public Food(String food, String amount, Date date) {
+    public Food(String food, String amount) {
         super();
         
         this.food = food;
         this.amount = amount;
-        this.date = date;
+        this.date = new Date();
     }
 
     /**

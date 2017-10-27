@@ -71,9 +71,10 @@ public class NavCntl {
         navView.addViewProfileListener(new ViewProfileListener());
         navView.addLogoutListener(new LogoutButtonListener());
         
-        navView.addNewFoodListener(new NewFoodListener());
-        navView.addNewDrinkListener(new NewDrinkListener());
-        navView.addNewMoodListener(new NewMoodListener());
+        navView.addNewFoodListener(new NewEntryListener());
+        navView.addNewDrinkListener(new NewEntryListener());
+        navView.addNewMoodListener(new NewEntryListener());
+        
         navView.addBackListener(new BackListener());
     }
 
@@ -122,33 +123,6 @@ public class NavCntl {
             loginCntl.getLoginView().setVisible(true);
         }
     }
-    
-    public class NewFoodListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            food_db = new Food_Table("foodmood.db");
-            foodView = new FoodView(food_db);
-            foodCntl = new FoodCntl(food_db, foodView);
-        }
-    }
-    
-    public class NewDrinkListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            drink_db = new Drink_Table("foodmood.db");
-            drinkView = new DrinkView(drink_db);
-            drinkCntl = new DrinkCntl(drink_db, drinkView);
-        }
-    }
-    
-    public class NewMoodListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            mood_db = new Mood_Table("foodmood.db");
-            moodView = new MoodView(mood_db);
-            moodCntl = new MoodCntl(mood_db, moodView);
-        }
-    }
 
     public class BackListener implements ActionListener {
         @Override
@@ -156,6 +130,14 @@ public class NavCntl {
             navView.add(navView.getNavViewPanel());
             navView.getNewEntriesViewPanel().setVisible(false);
             navView.getNavViewPanel().setVisible(true);
+        }
+    }
+    
+    public class NewEntryListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            EntryFactory factory = new EntryFactory();
+            factory.getEntry(e.getActionCommand().toLowerCase().substring(4));
         }
     }
 
