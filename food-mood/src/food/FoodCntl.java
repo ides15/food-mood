@@ -27,7 +27,7 @@ public class FoodCntl {
     
     /**
      * Default constructor for FoodCntl.
-     * @param food Food model for MVC architecture.
+     * @param db Food model for MVC architecture.
      * @param foodView FoodView for MVC architecture.
      */
     public FoodCntl(Food_Table db, FoodView foodView) {        
@@ -39,7 +39,6 @@ public class FoodCntl {
         foodPanel = new FoodPanel();
         addFoodPanel = new AddFoodPanel();
         editFoodPanel = new EditFoodPanel();
-        
     }
     
     class AddButtonListener implements ActionListener {
@@ -88,8 +87,4 @@ public class FoodCntl {
     public FoodView getFoodView() {
         return foodView;
     }
-
-    /**
-     * @param foodView the foodView to set
-     */
 }

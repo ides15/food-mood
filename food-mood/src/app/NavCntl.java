@@ -5,6 +5,9 @@
  */
 package app;
 
+import database.Drink_Table;
+import database.Food_Table;
+import database.Mood_Table;
 import database.User_Table;
 import drink.DrinkCntl;
 import drink.DrinkView;
@@ -33,15 +36,15 @@ public class NavCntl {
     
     private NavView navView;
 
-    private Drink drink;
-    private DrinkView drinkView;
-    private DrinkCntl drinkCntl;
-
-    private Food food;
+    private Food_Table food_db;
     private FoodView foodView;
     private FoodCntl foodCntl;
 
-    private Mood mood;
+    private Drink_Table drink_db;
+    private DrinkView drinkView;
+    private DrinkCntl drinkCntl;
+
+    private Mood_Table mood_db;
     private MoodView moodView;
     private MoodCntl moodCntl;
 
@@ -59,21 +62,6 @@ public class NavCntl {
      */
     public NavCntl(NavView navView) {
         this.navView = navView;
-
-//        drink = new Drink();
-//        drinkView = new DrinkView(getDrink());
-//        drinkCntl = new DrinkCntl(getDrink(), getDrinkView());
-
-//        food = new Food();
-//        System.out.println("New Food instantiated.");
-//        foodView = new FoodView(getFood());
-//        System.out.println("New FoodView instantiated.");
-//        foodCntl = new FoodCntl(getFood(), getFoodView());
-//        System.out.println("New FoodCntl instantiated.");
-
-//        mood = new Mood();
-//        moodView = new MoodView(getMood());
-//        moodCntl = new MoodCntl(getMood(), getMoodView());
         
         navView.addAddEntriesListener(new AddEntriesListener());
         navView.addViewRecsListener(new ViewRecsListener());
@@ -130,21 +118,27 @@ public class NavCntl {
     public class NewFoodListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("new food button");
+            food_db = new Food_Table("foodmood.db");
+            foodView = new FoodView(food_db);
+            foodCntl = new FoodCntl(food_db, foodView);
         }
     }
     
     public class NewDrinkListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("new drink button");
+            drink_db = new Drink_Table("foodmood.db");
+            drinkView = new DrinkView(drink_db);
+            drinkCntl = new DrinkCntl(drink_db, drinkView);
         }
     }
     
     public class NewMoodListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("new mood button");
+            mood_db = new Mood_Table("foodmood.db");
+            moodView = new MoodView(mood_db);
+            moodCntl = new MoodCntl(mood_db, moodView);
         }
     }
 
@@ -153,13 +147,6 @@ public class NavCntl {
      */
     public NavView getNavView() {
         return navView;
-    }
-
-    /**
-     * @return the drink
-     */
-    public Drink getDrink() {
-        return drink;
     }
 
     /**
@@ -177,13 +164,6 @@ public class NavCntl {
     }
 
     /**
-     * @return the food
-     */
-    public Food getFood() {
-        return food;
-    }
-
-    /**
      * @return the foodView
      */
     public FoodView getFoodView() {
@@ -195,13 +175,6 @@ public class NavCntl {
      */
     public FoodCntl getFoodCntl() {
         return foodCntl;
-    }
-
-    /**
-     * @return the mood
-     */
-    public Mood getMood() {
-        return mood;
     }
 
     /**

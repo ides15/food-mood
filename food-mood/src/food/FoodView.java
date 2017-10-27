@@ -5,9 +5,9 @@
  */
 package food;
 
-import models.Food;
 import database.Food_Table;
 import javax.swing.JFrame;
+import models.Food;
 
 /**
  *
@@ -15,18 +15,19 @@ import javax.swing.JFrame;
  */
 public class FoodView extends JFrame {
     private Food food;
-    private Food_Table db;
-    private FoodViewPanel foodViewPanel;
+    private final Food_Table db;
+    private final FoodViewPanel foodViewPanel;
     
     /**
      * Default constructor for FoodView.
-     * @param food FoodView for MVC architecture.
+     * @param db FoodView for MVC architecture.
      */
-    public FoodView(Food food) {
+    public FoodView(Food_Table db) {
         super("Food");
+        this.db = db;
         
         setSize(400, 400);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
         foodViewPanel = new FoodViewPanel();
         add(foodViewPanel);
@@ -36,10 +37,6 @@ public class FoodView extends JFrame {
      * @return the food
      */
     public FoodViewPanel getFoodViewPanel(){
-        return this.foodViewPanel;
-    }
-    
-    public void setFoodViewPanel(FoodViewPanel foodViewPanel){
-        this.foodViewPanel = foodViewPanel;
+        return foodViewPanel;
     }
 }
