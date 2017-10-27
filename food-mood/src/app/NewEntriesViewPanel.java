@@ -25,6 +25,7 @@ public class NewEntriesViewPanel extends javax.swing.JPanel {
         newMoodButton = new javax.swing.JButton();
         pickANewEntryLabel = new javax.swing.JLabel();
         newDrinkButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
 
         setName(""); // NOI18N
         setPreferredSize(new java.awt.Dimension(600, 600));
@@ -44,12 +45,16 @@ public class NewEntriesViewPanel extends javax.swing.JPanel {
         newDrinkButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         newDrinkButton.setText("New Drink");
 
+        backButton.setText("< Back");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(106, Short.MAX_VALUE)
+                .addComponent(backButton)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(newDrinkButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pickANewEntryLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -61,7 +66,9 @@ public class NewEntriesViewPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(pickANewEntryLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pickANewEntryLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backButton))
                 .addGap(31, 31, 31)
                 .addComponent(newFoodButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -74,6 +81,7 @@ public class NewEntriesViewPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backButton;
     private javax.swing.JButton newDrinkButton;
     private javax.swing.JButton newFoodButton;
     private javax.swing.JButton newMoodButton;
@@ -99,5 +107,12 @@ public class NewEntriesViewPanel extends javax.swing.JPanel {
      */
     public javax.swing.JButton getNewMoodButton() {
         return newMoodButton;
+    }
+    
+    /**
+     * @return the backButton
+     */
+    public javax.swing.JButton getBackButton() {
+        return backButton;
     }
 }

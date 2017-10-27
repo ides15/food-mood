@@ -17,9 +17,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import login.LoginCntl;
 import login.LoginView;
-import models.Drink;
-import models.Food;
-import models.Mood;
 import mood.MoodCntl;
 import mood.MoodView;
 import stats.*;
@@ -34,7 +31,7 @@ public class NavCntl {
     private LoginView loginView;
     private LoginCntl loginCntl;
     
-    private NavView navView;
+    private final NavView navView;
 
     private Food_Table food_db;
     private FoodView foodView;
@@ -72,8 +69,9 @@ public class NavCntl {
         navView.addNewFoodListener(new NewFoodListener());
         navView.addNewDrinkListener(new NewDrinkListener());
         navView.addNewMoodListener(new NewMoodListener());
+        navView.addBackListener(new BackListener());
     }
-    
+    ///////////////////////////////////////////////////////////
     public class AddEntriesListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -139,6 +137,14 @@ public class NavCntl {
             mood_db = new Mood_Table("foodmood.db");
             moodView = new MoodView(mood_db);
             moodCntl = new MoodCntl(mood_db, moodView);
+        }
+    }
+    /////////////////////////////////////////////////////
+    public class BackListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            navView.add(navView.getNavViewPanel());
+            navView.getNewEntriesViewPanel().setVisible(false);
         }
     }
 

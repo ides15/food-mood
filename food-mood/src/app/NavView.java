@@ -62,6 +62,10 @@ public class NavView extends JFrame {
     public void addNewMoodListener(ActionListener al) {
         getNewEntriesViewPanel().getNewMoodButton().addActionListener(al);
     }
+    
+    public void addBackListener(ActionListener al) {
+        getNewEntriesViewPanel().getBackButton().addActionListener(al);
+    }
 
     /**
      * @return the navViewPanel
