@@ -48,6 +48,14 @@ public class Food extends Entry {
         System.out.println("getAmount called in " + this.getClass().getName());
         return super.getAmount();
     }
+    
+    public void setDate(Date date){
+        this.date = date;
+    }
+    
+    public Date getDate(){
+        return this.date;
+    }
 
     /**
      * Function to set units of food consumed
