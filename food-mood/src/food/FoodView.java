@@ -7,13 +7,13 @@ package food;
 
 import models.Food;
 import database.Food_Table;
-import java.awt.event.ActionListener;
 import javax.swing.JFrame;
+
 /**
  *
  * @author John
  */
-public class FoodView extends JFrame{
+public class FoodView extends JFrame {
     private Food food;
     private Food_Table db;
     private FoodViewPanel foodViewPanel;
@@ -24,7 +24,6 @@ public class FoodView extends JFrame{
      */
     public FoodView(Food food) {
         super("Food");
-        this.db = db;
         
         setSize(400, 400);
         setDefaultCloseOperation(EXIT_ON_CLOSE);

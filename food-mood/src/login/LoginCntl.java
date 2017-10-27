@@ -5,9 +5,13 @@
  */
 package login;
 
+import app.NavCntl;
+import app.NavView;
 import database.User_Table;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
  *
@@ -17,9 +21,8 @@ public class LoginCntl {
     private final User_Table db;
     private final LoginView loginView;
     
-    private LoginViewPanel loginViewPanel;
-    
-    private final UserLoginPanel userLoginPanel;
+    private final NavCntl navCntl;
+    private final NavView navView;
     
     private String username;
     private String password;
@@ -30,30 +33,83 @@ public class LoginCntl {
         
         loginView.setVisible(true);
         
-        userLoginPanel = new UserLoginPanel();
+        navView = new NavView();
+        navCntl = new NavCntl(getNavView());
         
         loginView.addLoginButtonListener(new LoginButtonListener());
+        loginView.addLoginButtonKeyListener(new LoginButtonKeyListener());
         loginView.addNewUserButtonListener(new NewUserButtonListener());
     }
     
-    class LoginButtonListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            username = loginView.getLoginViewPanel().getUserLoginPanel().getUsernameTextField().getText();
-            password = loginView.getLoginViewPanel().getUserLoginPanel().getPasswordTextField().getText();
-            
-            int loginID = db.authenticate(username, password);
-            
-            if(loginID != -1) {
-                System.out.println("user authenticated");
-            }
+    public void authenticationProcess() {
+        username = getLoginView().getLoginViewPanel().getUsernameTextField().getText();
+        password = getLoginView().getLoginViewPanel().getPasswordTextField().getText();
+
+        int loginID = db.authenticate(username, password);
+
+        if(loginID != -1) {
+            getLoginView().setVisible(false);
+            getNavCntl().getNavView().setVisible(true);
+        } else {
+            getLoginView().getLoginViewPanel().getTryAgainBooBooLabel().setVisible(true);
         }
     }
     
-    class NewUserButtonListener implements ActionListener {
+    public class LoginButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            authenticationProcess();
+        }
+    }
+    
+    public class LoginButtonKeyListener implements KeyListener {
+        // constructor to add a key listener
+        public LoginButtonKeyListener() {
+            loginView.getLoginViewPanel().addKeyListener(this);
+        }
+        
+        @Override
+        public void keyTyped(KeyEvent e) {
+            
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if(e.getKeyCode() == 10) authenticationProcess();
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            
+        }
+    }
+    
+    public class NewUserButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("new user button pressed");
             // TODO switch to new user page
         }
+    }
+
+    /**
+     * @return the loginView
+     */
+    public LoginView getLoginView() {
+        return loginView;
+    }
+
+    /**
+     * @return the navCntl
+     */
+    public NavCntl getNavCntl() {
+        return navCntl;
+    }
+
+    /**
+     * @return the navView
+     */
+    public NavView getNavView() {
+        return navView;
     }
 }

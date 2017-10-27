@@ -20,9 +20,7 @@ public class MoodCntl {
      * @param mood Mood model for MVC architecture.
      * @param moodView MoodView for MVC architecture.
      */
-    public MoodCntl(Mood mood, MoodView moodView) {
-        System.out.println("MoodCntl constructor called.");
-        
+    public MoodCntl(Mood mood, MoodView moodView) {        
         this.mood = mood;
         this.moodView = moodView;
     }
@@ -31,7 +29,6 @@ public class MoodCntl {
      * @return the mood
      */
     public Mood getMood() {
-        System.out.println("getMood called.");
         return mood;
     }
 
@@ -39,7 +36,6 @@ public class MoodCntl {
      * @param mood the mood to set
      */
     public void setMood(Mood mood) {
-        System.out.println("setMood called.");
         this.mood = mood;
     }
 
@@ -47,7 +43,6 @@ public class MoodCntl {
      * @return the moodView
      */
     public MoodView getMoodView() {
-        System.out.println("getMoodView called.");
         return moodView;
     }
 
@@ -55,7 +50,6 @@ public class MoodCntl {
      * @param moodView the moodView to set
      */
     public void setMoodView(MoodView moodView) {
-        System.out.println("setMoodView called.");
         this.moodView = moodView;
     }
 }

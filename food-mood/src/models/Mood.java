@@ -15,7 +15,6 @@ public class Mood extends Entry {
      */
     public Mood() {
         super();
-        System.out.println("Mood constructor");
     }
 
     /**
@@ -24,17 +23,14 @@ public class Mood extends Entry {
      */
     @Override
     public void setAmount(int amount) {
-        System.out.println("setAmount called in " + this.getClass().getName());
         super.setAmount(amount);
     }
 
     /**
      * Function to return scaled amount of emotions after consumption
-     * @param amount returns amount as integer
      */
     @Override
     public int getAmount() {
-        System.out.println("getAmount called in " + this.getClass().getName());
         return super.getAmount();
     }
 
@@ -44,17 +40,14 @@ public class Mood extends Entry {
      */
     @Override
     public void setUnit(String unit) {
-        System.out.println("setUnit called in " + this.getClass().getName());
         super.setUnit(unit);
     }
 
     /**
      * Function to return quality of emotions after consumption
-     * @param unit return quality as String
      */    
     @Override
     public String getUnit() {
-        System.out.println("getUnit called in " + this.getClass().getName());
         return super.getUnit();
     }
 
@@ -64,17 +57,14 @@ public class Mood extends Entry {
      */
     @Override
     public void setName(String name) {
-        System.out.println("setName called in " + this.getClass().getName());
         super.setName(name);
     }
 
     /**
      * Function to return name of emotions after consumption
-     * @param name returns name as String
      */
     @Override
     public String getName() {
-        System.out.println("getName called in " + this.getClass().getName());
         return super.getName();
     }
 }
