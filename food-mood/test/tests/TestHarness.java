@@ -24,9 +24,9 @@ public class TestHarness {
     }
     
     public static void testApp() {
-        MainView mainView = new MainView();
+        NavView mainView = new NavView();
         System.out.println("MainView instantiated.");
-        MainCntl mainCntl = new MainCntl(mainView);
+        NavCntl mainCntl = new NavCntl(mainView);
     }
     
     public static void testFood() {

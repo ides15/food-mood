@@ -18,14 +18,13 @@ public class Entry {
      * Default constructor for Entry class.
      */
     public Entry() {
-        System.out.println("Entry constructor called.");
+
     }
 
     /**
      * @return the name
      */
     public String getName() {
-        System.out.println("getName called in " + this.getClass());
         return name;
     }
 
@@ -33,7 +32,6 @@ public class Entry {
      * @param name the name to set
      */
     public void setName(String name) {
-        System.out.println("setName called in " + this.getClass().getName());
         this.name = name;
     }
 
@@ -41,7 +39,6 @@ public class Entry {
      * @return the unit
      */
     public String getUnit() {
-        System.out.println("getUnit called in " + this.getClass().getName());
         return unit;
     }
 
@@ -49,7 +46,6 @@ public class Entry {
      * @param unit the unit to set
      */
     public void setUnit(String unit) {
-        System.out.println("setUnit called in " + this.getClass().getName());
         this.unit = unit;
     }
 
@@ -57,7 +53,6 @@ public class Entry {
      * @return the amount
      */
     public int getAmount() {
-        System.out.println("getAmount called in " + this.getClass().getName());
         return amount;
     }
 
@@ -65,7 +60,6 @@ public class Entry {
      * @param amount the amount to set
      */
     public void setAmount(int amount) {
-        System.out.println("setAmount called in " + this.getClass().getName());
         this.amount = amount;
     }
 }

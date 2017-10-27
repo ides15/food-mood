@@ -15,7 +15,6 @@ public class Drink extends Entry {
      */
     public Drink(){
         super();
-        System.out.println("Drink constructor called.");
     }
 
     /**
@@ -24,7 +23,6 @@ public class Drink extends Entry {
      */
     @Override
     public void setAmount(int amount) {
-        System.out.println("setAmount called in " + this.getClass().getName());
         super.setAmount(amount);
     }
 
@@ -34,7 +32,6 @@ public class Drink extends Entry {
      */
     @Override
     public int getAmount() {
-        System.out.println("getAmount called in " + this.getClass().getName());
         return super.getAmount();
     }
 
@@ -44,7 +41,6 @@ public class Drink extends Entry {
      */
     @Override
     public void setUnit(String unit) {
-        System.out.println("setUnit called in " + this.getClass().getName());
         super.setUnit(unit);
     }
 
@@ -54,7 +50,6 @@ public class Drink extends Entry {
      */
     @Override
     public String getUnit() {
-        System.out.println("getUnit called in " + this.getClass().getName());
         return super.getUnit();
     }
 
@@ -64,7 +59,6 @@ public class Drink extends Entry {
      */
     @Override
     public void setName(String name) {
-        System.out.println("setName called in " + this.getClass().getName());
         super.setName(name);
     }
 }

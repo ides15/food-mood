@@ -18,9 +18,7 @@ public class DrinkView {
      * Default constructor for DrinkView.
      * @param drink Drink model for MVC architecture.
      */
-    public DrinkView(Drink drink) {
-        System.out.println("DrinkView constructor called.");
-        
+    public DrinkView(Drink drink) {       
         this.drink = drink;
     }
 
@@ -28,7 +26,6 @@ public class DrinkView {
      * @return the drink
      */
     public Drink getDrink() {
-        System.out.println("getDrink called.");
         return drink;
     }
 
@@ -36,7 +33,6 @@ public class DrinkView {
      * @param drink the drink to set
      */
     public void setDrink(Drink drink) {
-        System.out.println("setDrink called.");
         this.drink = drink;
     }
 }

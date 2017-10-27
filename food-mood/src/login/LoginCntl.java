@@ -5,6 +5,8 @@
  */
 package login;
 
+import app.NavCntl;
+import app.NavView;
 import database.User_Table;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,6 +23,9 @@ public class LoginCntl {
     
     private final UserLoginPanel userLoginPanel;
     
+    private final NavCntl navCntl;
+    private final NavView navView;
+    
     private String username;
     private String password;
     
@@ -31,6 +36,9 @@ public class LoginCntl {
         loginView.setVisible(true);
         
         userLoginPanel = new UserLoginPanel();
+        
+        navView = new NavView();
+        navCntl = new NavCntl(navView);
         
         loginView.addLoginButtonListener(new LoginButtonListener());
         loginView.addNewUserButtonListener(new NewUserButtonListener());
@@ -45,7 +53,10 @@ public class LoginCntl {
             int loginID = db.authenticate(username, password);
             
             if(loginID != -1) {
-                System.out.println("user authenticated");
+                loginView.setVisible(false);
+                navView.setVisible(true);
+            } else {
+                System.out.println("authentication failed");
             }
         }
     }
@@ -53,6 +64,7 @@ public class LoginCntl {
     class NewUserButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            System.out.println("new user button pressed");
             // TODO switch to new user page
         }
     }

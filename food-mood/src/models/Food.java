@@ -26,7 +26,6 @@ public class Food extends Entry {
         this.food = food;
         this.amount = amount;
         this.date = date;
-        System.out.println("Food constructor");
     }
 
     /**
@@ -35,7 +34,6 @@ public class Food extends Entry {
      */
     @Override
     public void setAmount(int amount) {
-        System.out.println("setAmount called in " + this.getClass().getName());
         super.setAmount(amount);
     }
 
@@ -45,7 +43,6 @@ public class Food extends Entry {
      */
     @Override
     public int getAmount() {
-        System.out.println("getAmount called in " + this.getClass().getName());
         return super.getAmount();
     }
 
@@ -55,7 +52,6 @@ public class Food extends Entry {
      */
     @Override
     public void setUnit(String unit) {
-        System.out.println("setUnit called in " + this.getClass().getName());
         super.setUnit(unit);
     }
 
@@ -65,7 +61,6 @@ public class Food extends Entry {
      */
     @Override
     public String getUnit() {
-        System.out.println("getUnit called in " + this.getClass().getName());
         return super.getUnit();
     }
 
@@ -75,7 +70,6 @@ public class Food extends Entry {
      */
     @Override
     public void setName(String name) {
-        System.out.println("setName called in " + this.getClass().getName());
         super.setName(name);
     }
     
@@ -85,7 +79,6 @@ public class Food extends Entry {
      */
     @Override
     public String getName() {
-        System.out.println("getName called in " + this.getClass().getName());
         return super.getName();
     }
 }
