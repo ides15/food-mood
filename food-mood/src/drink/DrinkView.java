@@ -5,34 +5,38 @@
  */
 package drink;
 
+import database.Drink_Table;
+import javax.swing.JFrame;
 import models.Drink;
 
 /**
  *
  * @author John
  */
-public class DrinkView {
+public class DrinkView extends JFrame {
     private Drink drink;
+    private final Drink_Table db;
+    private final DrinkViewPanel drinkViewPanel;
     
     /**
      * Default constructor for DrinkView.
-     * @param drink Drink model for MVC architecture.
+     * @param db Drink model for MVC architecture.
      */
-    public DrinkView(Drink drink) {       
-        this.drink = drink;
+    public DrinkView(Drink_Table db) {    
+        super("Drink");
+        this.db = db;
+        
+        setSize(400, 400);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        
+        drinkViewPanel = new DrinkViewPanel();
+        add(drinkViewPanel);
     }
 
     /**
-     * @return the drink
+     * @return the drinkViewPanel
      */
-    public Drink getDrink() {
-        return drink;
-    }
-
-    /**
-     * @param drink the drink to set
-     */
-    public void setDrink(Drink drink) {
-        this.drink = drink;
+    public DrinkViewPanel getDrinkViewPanel() {
+        return drinkViewPanel;
     }
 }

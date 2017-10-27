@@ -5,6 +5,7 @@
  */
 package mood;
 
+import database.Mood_Table;
 import models.Mood;
 
 /**
@@ -13,30 +14,19 @@ import models.Mood;
  */
 public class MoodCntl {
     private Mood mood;
-    private MoodView moodView;
+    private final Mood_Table db;
+    private final MoodView moodView;
     
     /**
      * Default constructor for MoodCntl.
-     * @param mood Mood model for MVC architecture.
+     * @param db Mood model for MVC architecture.
      * @param moodView MoodView for MVC architecture.
      */
-    public MoodCntl(Mood mood, MoodView moodView) {        
-        this.mood = mood;
+    public MoodCntl(Mood_Table db, MoodView moodView) {        
+        this.db = db;
         this.moodView = moodView;
-    }
-
-    /**
-     * @return the mood
-     */
-    public Mood getMood() {
-        return mood;
-    }
-
-    /**
-     * @param mood the mood to set
-     */
-    public void setMood(Mood mood) {
-        this.mood = mood;
+        
+        moodView.setVisible(true);
     }
 
     /**
@@ -44,12 +34,5 @@ public class MoodCntl {
      */
     public MoodView getMoodView() {
         return moodView;
-    }
-
-    /**
-     * @param moodView the moodView to set
-     */
-    public void setMoodView(MoodView moodView) {
-        this.moodView = moodView;
     }
 }

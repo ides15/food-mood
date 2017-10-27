@@ -5,34 +5,38 @@
  */
 package mood;
 
+import database.Mood_Table;
+import javax.swing.JFrame;
 import models.Mood;
 
 /**
  *
  * @author John
  */
-public class MoodView {
+public class MoodView extends JFrame {
     private Mood mood;
+    private final Mood_Table db;
+    private final MoodViewPanel moodViewPanel;
     
     /**
      * Default constructor for MoodView.
-     * @param mood Mood model for MVC architecture.
+     * @param db Mood model for MVC architecture.
      */
-    public MoodView(Mood mood) {        
-        this.mood = mood;
+    public MoodView(Mood_Table db) {
+        super("Mood");
+        this.db = db;
+        
+        setSize(400, 400);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        
+        moodViewPanel = new MoodViewPanel();
+        add(moodViewPanel);
     }
 
     /**
-     * @return the mood
+     * @return the moodViewPanel
      */
-    public Mood getMood() {
-        return mood;
-    }
-
-    /**
-     * @param mood the mood to set
-     */
-    public void setMood(Mood mood) {
-        this.mood = mood;
+    public MoodViewPanel getMoodViewPanel() {
+        return moodViewPanel;
     }
 }

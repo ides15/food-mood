@@ -5,6 +5,9 @@
  */
 package app;
 
+import database.Drink_Table;
+import database.Food_Table;
+import database.Mood_Table;
 import database.User_Table;
 import drink.DrinkCntl;
 import drink.DrinkView;
@@ -14,9 +17,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import login.LoginCntl;
 import login.LoginView;
-import models.Drink;
-import models.Food;
-import models.Mood;
 import mood.MoodCntl;
 import mood.MoodView;
 import stats.*;
@@ -31,17 +31,17 @@ public class NavCntl {
     private LoginView loginView;
     private LoginCntl loginCntl;
     
-    private NavView navView;
+    private final NavView navView;
 
-    private Drink drink;
-    private DrinkView drinkView;
-    private DrinkCntl drinkCntl;
-
-    private Food food;
+    private Food_Table food_db;
     private FoodView foodView;
     private FoodCntl foodCntl;
 
-    private Mood mood;
+    private Drink_Table drink_db;
+    private DrinkView drinkView;
+    private DrinkCntl drinkCntl;
+
+    private Mood_Table mood_db;
     private MoodView moodView;
     private MoodCntl moodCntl;
 
@@ -59,33 +59,24 @@ public class NavCntl {
      */
     public NavCntl(NavView navView) {
         this.navView = navView;
-
-        drink = new Drink();
-        drinkView = new DrinkView(getDrink());
-        drinkCntl = new DrinkCntl(getDrink(), getDrinkView());
-
-//        food = new Food();
-//        System.out.println("New Food instantiated.");
-//        foodView = new FoodView(getFood());
-//        System.out.println("New FoodView instantiated.");
-//        foodCntl = new FoodCntl(getFood(), getFoodView());
-//        System.out.println("New FoodCntl instantiated.");
-
-        mood = new Mood();
-        moodView = new MoodView(getMood());
-        moodCntl = new MoodCntl(getMood(), getMoodView());
         
         navView.addAddEntriesListener(new AddEntriesListener());
         navView.addViewRecsListener(new ViewRecsListener());
         navView.addViewEntriesListener(new ViewEntriesListener());
         navView.addViewProfileListener(new ViewProfileListener());
         navView.addLogoutListener(new LogoutButtonListener());
+        
+        navView.addNewFoodListener(new NewFoodListener());
+        navView.addNewDrinkListener(new NewDrinkListener());
+        navView.addNewMoodListener(new NewMoodListener());
+        navView.addBackListener(new BackListener());
     }
-    
+    ///////////////////////////////////////////////////////////
     public class AddEntriesListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("add entries clicked");
+            navView.getNavViewPanel().setVisible(false);
+            navView.add(navView.getNewEntriesViewPanel());
         }
     }
     
@@ -121,19 +112,47 @@ public class NavCntl {
             loginCntl.getLoginView().setVisible(true);
         }
     }
+    
+    public class NewFoodListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            food_db = new Food_Table("foodmood.db");
+            foodView = new FoodView(food_db);
+            foodCntl = new FoodCntl(food_db, foodView);
+        }
+    }
+    
+    public class NewDrinkListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            drink_db = new Drink_Table("foodmood.db");
+            drinkView = new DrinkView(drink_db);
+            drinkCntl = new DrinkCntl(drink_db, drinkView);
+        }
+    }
+    
+    public class NewMoodListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            mood_db = new Mood_Table("foodmood.db");
+            moodView = new MoodView(mood_db);
+            moodCntl = new MoodCntl(mood_db, moodView);
+        }
+    }
+    /////////////////////////////////////////////////////
+    public class BackListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            navView.add(navView.getNavViewPanel());
+            navView.getNewEntriesViewPanel().setVisible(false);
+        }
+    }
 
     /**
      * @return the mainView
      */
     public NavView getNavView() {
         return navView;
-    }
-
-    /**
-     * @return the drink
-     */
-    public Drink getDrink() {
-        return drink;
     }
 
     /**
@@ -151,13 +170,6 @@ public class NavCntl {
     }
 
     /**
-     * @return the food
-     */
-    public Food getFood() {
-        return food;
-    }
-
-    /**
      * @return the foodView
      */
     public FoodView getFoodView() {
@@ -169,13 +181,6 @@ public class NavCntl {
      */
     public FoodCntl getFoodCntl() {
         return foodCntl;
-    }
-
-    /**
-     * @return the mood
-     */
-    public Mood getMood() {
-        return mood;
     }
 
     /**

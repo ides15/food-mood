@@ -5,10 +5,10 @@
  */
 package food;
 
-import models.Food;
 import database.Food_Table;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
+import models.Food;
 
 /**
  *
@@ -16,20 +16,26 @@ import javax.swing.JFrame;
  */
 public class FoodView extends JFrame {
     private Food food;
+<<<<<<< HEAD
     private Food_Table db;
     private FoodPanel foodPanel;
     private AddFoodPanel addFoodPanel;
     private EditFoodPanel editFoodPanel;
+=======
+    private final Food_Table db;
+    private final FoodViewPanel foodViewPanel;
+>>>>>>> origin/master
     
     /**
      * Default constructor for FoodView.
-     * @param food FoodView for MVC architecture.
+     * @param db FoodView for MVC architecture.
      */
-    public FoodView(Food food) {
+    public FoodView(Food_Table db) {
         super("Food");
+        this.db = db;
         
         setSize(400, 400);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
         foodPanel = new FoodPanel();
         addFoodPanel = new AddFoodPanel();
@@ -40,6 +46,7 @@ public class FoodView extends JFrame {
     /**
      * @return the food
      */
+<<<<<<< HEAD
     public FoodPanel getFoodPanel(){
         return this.foodPanel;
     }
@@ -82,5 +89,9 @@ public class FoodView extends JFrame {
     
     public void addUpdateButtonListener(ActionListener al){
         getEditFoodPanel().getEditButton().addActionListener(al);
+=======
+    public FoodViewPanel getFoodViewPanel(){
+        return foodViewPanel;
+>>>>>>> origin/master
     }
 }
