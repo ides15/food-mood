@@ -1,6 +1,11 @@
 package database;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import models.Entry;
+import models.Food;
 import java.util.ArrayList;
 
 /**
@@ -8,6 +13,9 @@ import java.util.ArrayList;
  * @author john
  */
 public class Food_Table extends Database {
+    
+    private ArrayList<Food> foodList;
+    
     /**
      * Default constructor for food database class.
      * @param TABLE the table to query from.
@@ -15,7 +23,7 @@ public class Food_Table extends Database {
     public Food_Table(String TABLE) {
         super();
     }
-
+    
     /**
      * Returns a single food entry based on the query string 'entry'.
      * @param entry Query string for returning a food entry.
@@ -26,6 +34,26 @@ public class Food_Table extends Database {
         System.out.println("getEntry called in Food_DB.");
         return "Drink";
     }
+    
+    /**
+     * Updates a food object to a new one in the sqlite database
+     * @param food 
+     */
+    public void setEntry(Food oldFood, Food newFood){
+        //update food entry in sql database
+        String sql = "SELECT  name, portion, date FROM Food WHERE name= \""+oldFood.getName()+"\" AND portion=\""+oldFood.getAmount()+"\" AND date=\""+oldFood.getDate()+"\";";
+    
+        try (Connection conn = this.connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+            
+            while(rs.next()) {
+                //Update old food object with new one
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }   
 
     /**
      * Returns a list of food entries.
@@ -33,7 +61,22 @@ public class Food_Table extends Database {
      */
     @Override
     public ArrayList<Entry> getAllEntries() {
-        System.out.println("getAllEntries called in Food_DB.");
-        return new ArrayList<Entry>();
+        return null;
+    }
+    
+    public ArrayList<Food> getFoodList(){
+        String sql = "SELECT * FROM Food";
+        
+        try (Connection conn = this.connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+            
+            while(rs.next()) {
+                //foodList = sql data;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return foodList;
     }
 }
