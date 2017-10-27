@@ -37,10 +37,10 @@ public class LoginViewPanel extends javax.swing.JPanel {
         usernameLabel = new javax.swing.JLabel();
         passwordLabel = new javax.swing.JLabel();
         usernameTextField = new javax.swing.JTextField();
-        passwordTextField = new javax.swing.JTextField();
         newUserButton = new javax.swing.JButton();
         loginButton = new javax.swing.JButton();
         tryAgainBooBooLabel = new javax.swing.JLabel();
+        passwordTextField = new javax.swing.JPasswordField();
 
         usernameLabel.setText("Username:");
 
@@ -58,7 +58,7 @@ public class LoginViewPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
+                .addGap(70, 70, 70)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(tryAgainBooBooLabel)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -74,7 +74,7 @@ public class LoginViewPanel extends javax.swing.JPanel {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(usernameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
                                 .addComponent(passwordTextField)))))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,7 +93,7 @@ public class LoginViewPanel extends javax.swing.JPanel {
                     .addComponent(loginButton))
                 .addGap(18, 18, 18)
                 .addComponent(tryAgainBooBooLabel)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -101,7 +101,7 @@ public class LoginViewPanel extends javax.swing.JPanel {
     private javax.swing.JButton loginButton;
     private javax.swing.JButton newUserButton;
     private javax.swing.JLabel passwordLabel;
-    private javax.swing.JTextField passwordTextField;
+    private javax.swing.JPasswordField passwordTextField;
     private javax.swing.JLabel tryAgainBooBooLabel;
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JTextField usernameTextField;
@@ -131,7 +131,7 @@ public class LoginViewPanel extends javax.swing.JPanel {
     /**
      * @param passwordTextField the passwordTextField to set
      */
-    public void setPasswordTextField(javax.swing.JTextField passwordTextField) {
+    public void setPasswordTextField(javax.swing.JPasswordField passwordTextField) {
         this.passwordTextField = passwordTextField;
     }
 

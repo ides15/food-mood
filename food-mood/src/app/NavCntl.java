@@ -19,6 +19,8 @@ import login.LoginCntl;
 import login.LoginView;
 import mood.MoodCntl;
 import mood.MoodView;
+import profile.ProfileCntl;
+import profile.ProfileView;
 import stats.*;
 import recommendations.*;
 
@@ -48,6 +50,9 @@ public class NavCntl {
     private RecModel rec;
     private RecView recView;
     private RecCntl recCntl;
+    
+    private ProfileView profileView;
+    private ProfileCntl profileCntl;
     
     private StatsModel stats;
     private StatsView statsView;
@@ -82,6 +87,7 @@ public class NavCntl {
         }
     }
     
+    // TODO
     public class ViewRecsListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -89,6 +95,7 @@ public class NavCntl {
         }
     }
     
+    // TODO
     public class ViewEntriesListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -99,7 +106,8 @@ public class NavCntl {
     public class ViewProfileListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("view profile clicked");
+            profileView = new ProfileView(db);
+            profileCntl = new ProfileCntl(db, profileView);
         }
     }
     
