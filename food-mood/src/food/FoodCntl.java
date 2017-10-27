@@ -122,11 +122,9 @@ public class FoodCntl {
     public FoodView getFoodView() {
         return foodView;
     }
-<<<<<<< HEAD
     
     public NavView getNavView() {
         return navView;
     }
-=======
->>>>>>> origin/master
+
 }

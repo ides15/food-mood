@@ -17,6 +17,7 @@ import models.Food;
 public class FoodView extends JFrame {
     private Food food;
 <<<<<<< HEAD
+<<<<<<< HEAD
     private Food_Table db;
     private FoodPanel foodPanel;
     private AddFoodPanel addFoodPanel;
@@ -25,6 +26,10 @@ public class FoodView extends JFrame {
     private final Food_Table db;
     private final FoodViewPanel foodViewPanel;
 >>>>>>> origin/master
+=======
+    private final Food_Table db;
+    private final FoodViewPanel foodViewPanel;
+>>>>>>> b2b88c9299fa502d153dad45897ce5e89606ae3a
     
     /**
      * Default constructor for FoodView.
@@ -46,6 +51,7 @@ public class FoodView extends JFrame {
     /**
      * @return the food
      */
+<<<<<<< HEAD
 <<<<<<< HEAD
     public FoodPanel getFoodPanel(){
         return this.foodPanel;
@@ -88,10 +94,6 @@ public class FoodView extends JFrame {
     }
     
     public void addUpdateButtonListener(ActionListener al){
-        getEditFoodPanel().getEditButton().addActionListener(al);
-=======
-    public FoodViewPanel getFoodViewPanel(){
-        return foodViewPanel;
->>>>>>> origin/master
+        getEditFoodPanel().getUpdateButton().addActionListener(al);
     }
 }
