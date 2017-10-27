@@ -22,32 +22,105 @@ public class NavViewPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        foodMoodHomeLabel = new javax.swing.JLabel();
+        viewRecsButton = new javax.swing.JButton();
+        addEntriesButton = new javax.swing.JButton();
+        viewProfileButton = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
+
+        jButton3.setText("jButton1");
+
+        jButton5.setText("jButton1");
 
         setPreferredSize(new java.awt.Dimension(600, 600));
 
-        jLabel1.setText("navViewPanel");
+        foodMoodHomeLabel.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        foodMoodHomeLabel.setText("Food Mood Home");
+        foodMoodHomeLabel.setToolTipText("");
+        foodMoodHomeLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        foodMoodHomeLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        viewRecsButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        viewRecsButton.setText("View Recommendations");
+
+        addEntriesButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        addEntriesButton.setText("Add Entries");
+
+        viewProfileButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        viewProfileButton.setText("View Profile");
+
+        logoutButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        logoutButton.setText("Logout");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(186, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(179, 179, 179))
+                .addContainerGap(197, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(viewRecsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(foodMoodHomeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addEntriesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(viewProfileButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(logoutButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(197, 197, 197))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addComponent(jLabel1)
-                .addContainerGap(213, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(foodMoodHomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(addEntriesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(viewRecsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(viewProfileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(264, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton addEntriesButton;
+    private javax.swing.JLabel foodMoodHomeLabel;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton logoutButton;
+    private javax.swing.JButton viewProfileButton;
+    private javax.swing.JButton viewRecsButton;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the addEntriesButton
+     */
+    public javax.swing.JButton getAddEntriesButton() {
+        return addEntriesButton;
+    }
+
+    /**
+     * @return the logoutButton
+     */
+    public javax.swing.JButton getLogoutButton() {
+        return logoutButton;
+    }
+
+    /**
+     * @return the viewProfileButton
+     */
+    public javax.swing.JButton getViewProfileButton() {
+        return viewProfileButton;
+    }
+
+    /**
+     * @return the viewRecsButton
+     */
+    public javax.swing.JButton getViewRecsButton() {
+        return viewRecsButton;
+    }
 }

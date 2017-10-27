@@ -14,8 +14,8 @@ import javax.swing.JFrame;
  * @author John
  */
 public class LoginView extends JFrame {
-    private User_Table db;
-    private LoginViewPanel loginViewPanel;
+    private final User_Table db;
+    private final LoginViewPanel loginViewPanel;
     
     public LoginView(User_Table db) {
         super("Login");
@@ -25,6 +25,7 @@ public class LoginView extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
         loginViewPanel = new LoginViewPanel();
+        loginViewPanel.getUserLoginPanel().getTryAgainBooBooLabel().setVisible(false);
         add(loginViewPanel);
     }
     

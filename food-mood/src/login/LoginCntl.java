@@ -19,10 +19,6 @@ public class LoginCntl {
     private final User_Table db;
     private final LoginView loginView;
     
-    private LoginViewPanel loginViewPanel;
-    
-    private final UserLoginPanel userLoginPanel;
-    
     private final NavCntl navCntl;
     private final NavView navView;
     
@@ -34,8 +30,6 @@ public class LoginCntl {
         this.loginView = loginView;
         
         loginView.setVisible(true);
-        
-        userLoginPanel = new UserLoginPanel();
         
         navView = new NavView();
         navCntl = new NavCntl(navView);
@@ -56,7 +50,7 @@ public class LoginCntl {
                 loginView.setVisible(false);
                 navView.setVisible(true);
             } else {
-                System.out.println("authentication failed");
+                loginView.getLoginViewPanel().getUserLoginPanel().getTryAgainBooBooLabel().setVisible(true);
             }
         }
     }

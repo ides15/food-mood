@@ -26,4 +26,11 @@ public class NavView extends JFrame {
         navViewPanel = new NavViewPanel();
         add(navViewPanel);
     }
+
+    /**
+     * @return the navViewPanel
+     */
+    public NavViewPanel getNavViewPanel() {
+        return navViewPanel;
+    }
 }
