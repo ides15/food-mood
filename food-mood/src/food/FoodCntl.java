@@ -7,6 +7,8 @@ package food;
 
 import models.Food;
 import database.Food_Table;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -61,9 +63,8 @@ public class FoodCntl {
     class DeleteButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            
-            //Delete selected entry
-            
+
+            // delete selected entry
         }
     }
 
