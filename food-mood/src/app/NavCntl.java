@@ -71,12 +71,14 @@ public class NavCntl {
         navView.addNewMoodListener(new NewMoodListener());
         navView.addBackListener(new BackListener());
     }
-    ///////////////////////////////////////////////////////////
+
     public class AddEntriesListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             navView.getNavViewPanel().setVisible(false);
             navView.add(navView.getNewEntriesViewPanel());
+            navView.getNewEntriesViewPanel().setVisible(true);
+            navView.remove(navView.getNavViewPanel());
         }
     }
     
@@ -139,12 +141,13 @@ public class NavCntl {
             moodCntl = new MoodCntl(mood_db, moodView);
         }
     }
-    /////////////////////////////////////////////////////
+
     public class BackListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             navView.add(navView.getNavViewPanel());
             navView.getNewEntriesViewPanel().setVisible(false);
+            navView.getNavViewPanel().setVisible(true);
         }
     }
 
