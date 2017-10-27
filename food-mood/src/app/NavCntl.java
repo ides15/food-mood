@@ -5,10 +5,15 @@
  */
 package app;
 
+import database.User_Table;
 import drink.DrinkCntl;
 import drink.DrinkView;
 import food.FoodCntl;
 import food.FoodView;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import login.LoginCntl;
+import login.LoginView;
 import models.Drink;
 import models.Food;
 import models.Mood;
@@ -22,8 +27,11 @@ import recommendations.*;
  * @author John
  */
 public class NavCntl {
-
-    private NavView mainView;
+    private User_Table db;
+    private LoginView loginView;
+    private LoginCntl loginCntl;
+    
+    private NavView navView;
 
     private Drink drink;
     private DrinkView drinkView;
@@ -47,10 +55,10 @@ public class NavCntl {
     /**
      * Default constructor for MainCntl.
      *
-     * @param mainView View class for MVC architecture.
+     * @param navView view class for MVC architecture.
      */
-    public NavCntl(NavView mainView) {
-        this.mainView = mainView;
+    public NavCntl(NavView navView) {
+        this.navView = navView;
 
         drink = new Drink();
         drinkView = new DrinkView(getDrink());
@@ -66,13 +74,51 @@ public class NavCntl {
         mood = new Mood();
         moodView = new MoodView(getMood());
         moodCntl = new MoodCntl(getMood(), getMoodView());
+        
+        navView.getNavViewPanel().getAddEntriesButton().addActionListener(new AddEntriesListener());
+        navView.getNavViewPanel().getViewRecsButton().addActionListener(new ViewRecsListener());
+        navView.getNavViewPanel().getViewProfileButton().addActionListener(new ViewProfileListener());
+        navView.getNavViewPanel().getLogoutButton().addActionListener(new LogoutButtonListener());
+    }
+    
+    public class AddEntriesListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("add entries clicked");
+        }
+    }
+    
+    public class ViewRecsListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("view recs clicked");
+        }
+    }
+    
+    public class ViewProfileListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("view profile clicked");
+        }
+    }
+    
+    public class LogoutButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            db = new User_Table("foodmood.db");
+            loginView = new LoginView(db);
+            loginCntl = new LoginCntl(db, loginView);
+            
+            navView.setVisible(false);
+            loginCntl.getLoginView().setVisible(true);
+        }
     }
 
     /**
      * @return the mainView
      */
-    public NavView getMainView() {
-        return mainView;
+    public NavView getNavView() {
+        return navView;
     }
 
     /**

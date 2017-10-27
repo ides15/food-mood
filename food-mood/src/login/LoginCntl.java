@@ -32,7 +32,7 @@ public class LoginCntl {
         loginView.setVisible(true);
         
         navView = new NavView();
-        navCntl = new NavCntl(navView);
+        navCntl = new NavCntl(getNavView());
         
         loginView.addLoginButtonListener(new LoginButtonListener());
         loginView.addNewUserButtonListener(new NewUserButtonListener());
@@ -41,16 +41,16 @@ public class LoginCntl {
     class LoginButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            username = loginView.getLoginViewPanel().getUserLoginPanel().getUsernameTextField().getText();
-            password = loginView.getLoginViewPanel().getUserLoginPanel().getPasswordTextField().getText();
+            username = getLoginView().getLoginViewPanel().getUsernameTextField().getText();
+            password = getLoginView().getLoginViewPanel().getPasswordTextField().getText();
             
             int loginID = db.authenticate(username, password);
             
             if(loginID != -1) {
-                loginView.setVisible(false);
-                navView.setVisible(true);
+                getLoginView().setVisible(false);
+                getNavCntl().getNavView().setVisible(true);
             } else {
-                loginView.getLoginViewPanel().getUserLoginPanel().getTryAgainBooBooLabel().setVisible(true);
+                getLoginView().getLoginViewPanel().getTryAgainBooBooLabel().setVisible(true);
             }
         }
     }
@@ -61,5 +61,26 @@ public class LoginCntl {
             System.out.println("new user button pressed");
             // TODO switch to new user page
         }
+    }
+
+    /**
+     * @return the loginView
+     */
+    public LoginView getLoginView() {
+        return loginView;
+    }
+
+    /**
+     * @return the navCntl
+     */
+    public NavCntl getNavCntl() {
+        return navCntl;
+    }
+
+    /**
+     * @return the navView
+     */
+    public NavView getNavView() {
+        return navView;
     }
 }

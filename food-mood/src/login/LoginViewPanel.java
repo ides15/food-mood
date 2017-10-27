@@ -11,7 +11,7 @@ import database.User_Table;
  *
  * @author John
  */
-public class UserLoginPanel extends javax.swing.JPanel {
+public class LoginViewPanel extends javax.swing.JPanel {
     private User_Table db;
     
     private String username;
@@ -20,7 +20,7 @@ public class UserLoginPanel extends javax.swing.JPanel {
     /**
      * Creates new form UserLoginPanel
      */
-    public UserLoginPanel() {
+    public LoginViewPanel() {
         initComponents();
     }
 

@@ -25,16 +25,16 @@ public class LoginView extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
         loginViewPanel = new LoginViewPanel();
-        loginViewPanel.getUserLoginPanel().getTryAgainBooBooLabel().setVisible(false);
+        loginViewPanel.getTryAgainBooBooLabel().setVisible(false);
         add(loginViewPanel);
     }
     
     public void addLoginButtonListener(ActionListener al) {
-        getLoginViewPanel().getUserLoginPanel().getLoginButton().addActionListener(al);
+        getLoginViewPanel().getLoginButton().addActionListener(al);
     }
     
     public void addNewUserButtonListener(ActionListener al) {
-        getLoginViewPanel().getUserLoginPanel().getNewUserButton().addActionListener(al);
+        getLoginViewPanel().getNewUserButton().addActionListener(al);
     }
     
     public LoginViewPanel getLoginViewPanel() {
