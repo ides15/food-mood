@@ -17,11 +17,14 @@ public class Food extends Entry {
      * Default constructor for Food class.
      */
     private String food;
+    private String amount;
     private Date date;
-    public Food(String food, Date date) {
+    
+    public Food(String food, String amount, Date date) {
         super();
         
         this.food = food;
+        this.amount = amount;
         this.date = date;
         System.out.println("Food constructor");
     }
