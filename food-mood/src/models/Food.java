@@ -12,19 +12,22 @@ import java.util.Date;
  * @author John
  */
 public class Food extends Entry {
+    private final String food;
+    private final String amount;
+    private final Date date;
+    
     /**
      * Default constructor for Food class.
+     * @param food name of the food
+     * @param amount amount of food in ?units
      */
-    private String food;
-    private String amount;
-    private Date date;
-    
     public Food(String food, String amount) {
         super();
         
         this.food = food;
         this.amount = amount;
         this.date = new Date();
+        System.out.println(date.toString());
     }
 
     /**
@@ -38,15 +41,11 @@ public class Food extends Entry {
 
     /**
      * Function to return amount of food consumed
-     * @param amount return amount as integer
+     * @return amount of the food in ?units
      */
     @Override
     public int getAmount() {
         return super.getAmount();
-    }
-    
-    public void setDate(Date date){
-        this.date = date;
     }
     
     public Date getDate(){
@@ -64,25 +63,16 @@ public class Food extends Entry {
 
     /**
      * Function to return units of food consumed
-     * @param unit returns amount as integer
+     * @return units of the food
      */
     @Override
     public String getUnit() {
         return super.getUnit();
     }
-
-    /**
-     * Function to accept name of food consumed
-     * @param name accepts name as String
-     */
-    @Override
-    public void setName(String name) {
-        super.setName(name);
-    }
     
     /**
      * Function to return name of food consumed
-     * @param name returns name as String
+     * @return name of the food
      */
     @Override
     public String getName() {

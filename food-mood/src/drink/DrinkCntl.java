@@ -26,6 +26,8 @@ public class DrinkCntl {
         this.db = db;
         this.drinkView = drinkView;
         
+        drink = new Drink();
+        
         drinkView.setVisible(true);
     }
 

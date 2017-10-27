@@ -26,6 +26,8 @@ public class MoodCntl {
         this.db = db;
         this.moodView = moodView;
         
+        mood = new Mood();
+        
         moodView.setVisible(true);
     }
 

@@ -5,16 +5,22 @@
  */
 package models;
 
+import java.util.Date;
+
 /**
  *
  * @author John
  */
-public class Drink extends Entry {    
+public class Drink extends Entry {
+    private Date date;
+    
     /**
      * Default constructor for Drink class.
      */
     public Drink(){
         super();
+        this.date = new Date();
+        System.out.println(date.toString());
     }
 
     /**
@@ -60,5 +66,12 @@ public class Drink extends Entry {
     @Override
     public void setName(String name) {
         super.setName(name);
+    }
+
+    /**
+     * @return the date
+     */
+    public Date getDate() {
+        return date;
     }
 }

@@ -5,16 +5,22 @@
  */
 package models;
 
+import java.util.Date;
+
 /**
  *
  * @author John
  */
 public class Mood extends Entry {
+    private Date date;
+    
     /**
      * Default constructor for Mood class.
      */
     public Mood() {
         super();
+        this.date = new Date();
+        System.out.println(date.toString());
     }
 
     /**
@@ -66,5 +72,12 @@ public class Mood extends Entry {
     @Override
     public String getName() {
         return super.getName();
+    }
+
+    /**
+     * @return the date
+     */
+    public Date getDate() {
+        return date;
     }
 }

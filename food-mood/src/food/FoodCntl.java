@@ -37,6 +37,8 @@ public class FoodCntl {
         this.db = db;
         this.foodView = foodView;
         
+        food = new Food("food", "amount");
+        
         navView = new NavView();
         navCntl = new NavCntl(getNavView());
         

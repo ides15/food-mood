@@ -31,6 +31,9 @@ public class EntryFactory {
                 FoodView foodView = new FoodView(food_db);
                 FoodCntl foodCntl = new FoodCntl(food_db, foodView);
                 return new Food("food", "amount");
+                
+                // The problem with multiple foods being created is that it is making a new food here and a new food in FoonCntl, needs to be fixed
+                
             } case "drink": {
                 Drink_Table drink_db = new Drink_Table("foodmood.db");
                 DrinkView drinkView = new DrinkView(drink_db);
