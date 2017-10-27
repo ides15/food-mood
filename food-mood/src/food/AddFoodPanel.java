@@ -136,4 +136,12 @@ public class AddFoodPanel extends javax.swing.JPanel {
     public void setMediumRadio(javax.swing.JRadioButton mediumRadio){
         this.mediumRadio = mediumRadio;
     }
+    
+    public javax.swing.JButton getSubmitButton(){
+        return this.submitButton;
+    }
+    
+    public void setSubmitButton(javax.swing.JButton submitButton){
+        this.submitButton = submitButton;
+    }
 }

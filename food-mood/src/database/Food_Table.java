@@ -41,19 +41,24 @@ public class Food_Table extends Database {
      */
     public void setEntry(Food oldFood, Food newFood){
         //update food entry in sql database
-        String sql = "SELECT  name, portion, date FROM Food WHERE name= \""+oldFood.getName()+"\" AND portion=\""+oldFood.getAmount()+"\" AND date=\""+oldFood.getDate()+"\";";
-    
+        String sql = "UPDATE Food SET name = \""+newFood+"\", portion = \""+newFood.getAmount()+"\", date = \""+newFood.getDate()+"\" WHERE name= \""+oldFood.getName()+"\" AND portion=\""+oldFood.getAmount()+"\" AND date=\""+oldFood.getDate()+"\";";
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
-            
-            while(rs.next()) {
-                //Update old food object with new one
-            }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-    }   
+    }
+    
+    public void addEntry(Food food){
+        String sql = "INSERT INTO Food (name, portion, date) VALUES (\""+food.getName()+"\", \""+food.getAmount()+"\", \""+ food.getDate()+"\");";
+        try (Connection conn = this.connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 
     /**
      * Returns a list of food entries.
@@ -78,5 +83,17 @@ public class Food_Table extends Database {
             System.out.println(ex.getMessage());
         }
         return foodList;
+    }
+    
+    public void deleteEntry(Food food){
+        //update food entry in sql database
+        String sql = "DELETE FROM Food WHERE name= \""+food.getName()+"\" AND portion=\""+food.getAmount()+"\" AND date=\""+food.getDate()+"\";";
+    
+        try (Connection conn = this.connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 }

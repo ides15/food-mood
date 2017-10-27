@@ -7,6 +7,7 @@ package food;
 
 import models.Food;
 import database.Food_Table;
+import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
 /**
@@ -16,7 +17,9 @@ import javax.swing.JFrame;
 public class FoodView extends JFrame {
     private Food food;
     private Food_Table db;
-    private FoodViewPanel foodViewPanel;
+    private FoodPanel foodPanel;
+    private AddFoodPanel addFoodPanel;
+    private EditFoodPanel editFoodPanel;
     
     /**
      * Default constructor for FoodView.
@@ -28,18 +31,56 @@ public class FoodView extends JFrame {
         setSize(400, 400);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
-        foodViewPanel = new FoodViewPanel();
-        add(foodViewPanel);
+        foodPanel = new FoodPanel();
+        addFoodPanel = new AddFoodPanel();
+        editFoodPanel = new EditFoodPanel();
+        add(foodPanel);
     }
 
     /**
      * @return the food
      */
-    public FoodViewPanel getFoodViewPanel(){
-        return this.foodViewPanel;
+    public FoodPanel getFoodPanel(){
+        return this.foodPanel;
     }
     
-    public void setFoodViewPanel(FoodViewPanel foodViewPanel){
-        this.foodViewPanel = foodViewPanel;
+    public void setFoodPanel(FoodPanel foodPanel){
+        this.foodPanel = foodPanel;
+    }
+    
+    public AddFoodPanel getAddFoodPanel(){
+        return this.addFoodPanel;
+    }
+    
+    public void setFoodPanel(AddFoodPanel addFoodPanel){
+        this.addFoodPanel = addFoodPanel;
+    }
+    
+    public EditFoodPanel getEditFoodPanel(){
+        return this.editFoodPanel;
+    }
+    
+    public void setEditFoodPanel(AddFoodPanel EditFoodPanel){
+        this.editFoodPanel = editFoodPanel;
+    }
+    
+    public void addAddButtonListener(ActionListener al) {
+        getFoodPanel().getAddButton().addActionListener(al);
+    }
+    
+    public void addEditButtonListener(ActionListener al) {
+        getFoodPanel().getEditButton().addActionListener(al);
+    }
+    
+    public void addDeleteButtonListener(ActionListener al) {
+        getFoodPanel().getDeleteButton().addActionListener(al);
+    }
+    
+    public void addSubmitButtonListener(ActionListener al){
+        getAddFoodPanel().getSubmitButton().addActionListener(al);
+    }
+    
+    public void addUpdateButtonListener(ActionListener al){
+        getEditFoodPanel().getEditButton().addActionListener(al);
     }
 }
