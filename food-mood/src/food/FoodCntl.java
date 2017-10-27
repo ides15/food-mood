@@ -22,6 +22,8 @@ public class FoodCntl {
     private FoodViewPanel foodViewPanel;
     
     private final FoodPanel foodPanel;
+    private final AddFoodPanel addFoodPanel;
+    private final EditFoodPanel editFoodPanel;
     
     /**
      * Default constructor for FoodCntl.
@@ -32,11 +34,41 @@ public class FoodCntl {
         System.out.println("FoodCntl constructor called.");
         
         this.db = db;
-        this.food = food;
         this.foodView = foodView;
         
-        foodPanel = new FoodPanel();
+        foodView.setVisible(true);
         
+        foodPanel = new FoodPanel();
+        addFoodPanel = new AddFoodPanel();
+        editFoodPanel = new EditFoodPanel();
+        
+    }
+    
+    class AddButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            
+            //Switch to add panel
+            
+        }
+    }
+    
+    class EditButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            
+            //Switch to edit panel
+            
+        }
+    }
+    
+    class DeleteButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            
+            //Delete selected entry
+            
+        }
     }
 
     /**
