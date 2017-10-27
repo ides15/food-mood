@@ -60,9 +60,9 @@ public class NavCntl {
     public NavCntl(NavView navView) {
         this.navView = navView;
 
-        drink = new Drink();
-        drinkView = new DrinkView(getDrink());
-        drinkCntl = new DrinkCntl(getDrink(), getDrinkView());
+//        drink = new Drink();
+//        drinkView = new DrinkView(getDrink());
+//        drinkCntl = new DrinkCntl(getDrink(), getDrinkView());
 
 //        food = new Food();
 //        System.out.println("New Food instantiated.");
@@ -71,21 +71,26 @@ public class NavCntl {
 //        foodCntl = new FoodCntl(getFood(), getFoodView());
 //        System.out.println("New FoodCntl instantiated.");
 
-        mood = new Mood();
-        moodView = new MoodView(getMood());
-        moodCntl = new MoodCntl(getMood(), getMoodView());
+//        mood = new Mood();
+//        moodView = new MoodView(getMood());
+//        moodCntl = new MoodCntl(getMood(), getMoodView());
         
         navView.addAddEntriesListener(new AddEntriesListener());
         navView.addViewRecsListener(new ViewRecsListener());
         navView.addViewEntriesListener(new ViewEntriesListener());
         navView.addViewProfileListener(new ViewProfileListener());
         navView.addLogoutListener(new LogoutButtonListener());
+        
+        navView.addNewFoodListener(new NewFoodListener());
+        navView.addNewDrinkListener(new NewDrinkListener());
+        navView.addNewMoodListener(new NewMoodListener());
     }
     
     public class AddEntriesListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("add entries clicked");
+            navView.getNavViewPanel().setVisible(false);
+            navView.add(navView.getNewEntriesViewPanel());
         }
     }
     
@@ -119,6 +124,27 @@ public class NavCntl {
             
             navView.setVisible(false);
             loginCntl.getLoginView().setVisible(true);
+        }
+    }
+    
+    public class NewFoodListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("new food button");
+        }
+    }
+    
+    public class NewDrinkListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("new drink button");
+        }
+    }
+    
+    public class NewMoodListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("new mood button");
         }
     }
 

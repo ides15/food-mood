@@ -13,7 +13,8 @@ import javax.swing.JFrame;
  * @author John
  */
 public class NavView extends JFrame {
-    private NavViewPanel navViewPanel;
+    private final NavViewPanel navViewPanel;
+    private final NewEntriesViewPanel newEntriesViewPanel;
     
     /**
      * Default constructor for MainView.
@@ -24,7 +25,9 @@ public class NavView extends JFrame {
         setSize(600, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
+        newEntriesViewPanel = new NewEntriesViewPanel();
         navViewPanel = new NavViewPanel();
+        
         add(navViewPanel);
     }
     
@@ -47,11 +50,30 @@ public class NavView extends JFrame {
     public void addLogoutListener(ActionListener al) {
         getNavViewPanel().getLogoutButton().addActionListener(al);
     }
+    
+    public void addNewFoodListener(ActionListener al) {
+        getNewEntriesViewPanel().getNewFoodButton().addActionListener(al);
+    }
+    
+    public void addNewDrinkListener(ActionListener al) {
+        getNewEntriesViewPanel().getNewDrinkButton().addActionListener(al);
+    }
+    
+    public void addNewMoodListener(ActionListener al) {
+        getNewEntriesViewPanel().getNewMoodButton().addActionListener(al);
+    }
 
     /**
      * @return the navViewPanel
      */
     public NavViewPanel getNavViewPanel() {
         return navViewPanel;
+    }
+
+    /**
+     * @return the newEntriesViewPanel
+     */
+    public NewEntriesViewPanel getNewEntriesViewPanel() {
+        return newEntriesViewPanel;
     }
 }
