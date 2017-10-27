@@ -75,10 +75,11 @@ public class NavCntl {
         moodView = new MoodView(getMood());
         moodCntl = new MoodCntl(getMood(), getMoodView());
         
-        navView.getNavViewPanel().getAddEntriesButton().addActionListener(new AddEntriesListener());
-        navView.getNavViewPanel().getViewRecsButton().addActionListener(new ViewRecsListener());
-        navView.getNavViewPanel().getViewProfileButton().addActionListener(new ViewProfileListener());
-        navView.getNavViewPanel().getLogoutButton().addActionListener(new LogoutButtonListener());
+        navView.addAddEntriesListener(new AddEntriesListener());
+        navView.addViewRecsListener(new ViewRecsListener());
+        navView.addViewEntriesListener(new ViewEntriesListener());
+        navView.addViewProfileListener(new ViewProfileListener());
+        navView.addLogoutListener(new LogoutButtonListener());
     }
     
     public class AddEntriesListener implements ActionListener {
@@ -92,6 +93,13 @@ public class NavCntl {
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("view recs clicked");
+        }
+    }
+    
+    public class ViewEntriesListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("view etnries clicked");
         }
     }
     

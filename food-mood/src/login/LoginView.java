@@ -7,6 +7,7 @@ package login;
 
 import database.User_Table;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 
 /**
@@ -31,6 +32,11 @@ public class LoginView extends JFrame {
     
     public void addLoginButtonListener(ActionListener al) {
         getLoginViewPanel().getLoginButton().addActionListener(al);
+    }
+    
+    public void addLoginButtonKeyListener(KeyListener kl) {
+        getLoginViewPanel().getPasswordTextField().addKeyListener(kl);
+        getLoginViewPanel().getUsernameTextField().addKeyListener(kl);
     }
     
     public void addNewUserButtonListener(ActionListener al) {

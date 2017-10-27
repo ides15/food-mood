@@ -10,6 +10,8 @@ import app.NavView;
 import database.User_Table;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
  *
@@ -35,27 +37,54 @@ public class LoginCntl {
         navCntl = new NavCntl(getNavView());
         
         loginView.addLoginButtonListener(new LoginButtonListener());
+        loginView.addLoginButtonKeyListener(new LoginButtonKeyListener());
         loginView.addNewUserButtonListener(new NewUserButtonListener());
     }
     
-    class LoginButtonListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            username = getLoginView().getLoginViewPanel().getUsernameTextField().getText();
-            password = getLoginView().getLoginViewPanel().getPasswordTextField().getText();
-            
-            int loginID = db.authenticate(username, password);
-            
-            if(loginID != -1) {
-                getLoginView().setVisible(false);
-                getNavCntl().getNavView().setVisible(true);
-            } else {
-                getLoginView().getLoginViewPanel().getTryAgainBooBooLabel().setVisible(true);
-            }
+    public void authenticationProcess() {
+        username = getLoginView().getLoginViewPanel().getUsernameTextField().getText();
+        password = getLoginView().getLoginViewPanel().getPasswordTextField().getText();
+
+        int loginID = db.authenticate(username, password);
+
+        if(loginID != -1) {
+            getLoginView().setVisible(false);
+            getNavCntl().getNavView().setVisible(true);
+        } else {
+            getLoginView().getLoginViewPanel().getTryAgainBooBooLabel().setVisible(true);
         }
     }
     
-    class NewUserButtonListener implements ActionListener {
+    public class LoginButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            authenticationProcess();
+        }
+    }
+    
+    public class LoginButtonKeyListener implements KeyListener {
+        // constructor to add a key listener
+        public LoginButtonKeyListener() {
+            loginView.getLoginViewPanel().addKeyListener(this);
+        }
+        
+        @Override
+        public void keyTyped(KeyEvent e) {
+            
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if(e.getKeyCode() == 10) authenticationProcess();
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            
+        }
+    }
+    
+    public class NewUserButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("new user button pressed");

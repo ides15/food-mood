@@ -5,6 +5,7 @@
  */
 package app;
 
+import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
 /**
@@ -25,6 +26,26 @@ public class NavView extends JFrame {
         
         navViewPanel = new NavViewPanel();
         add(navViewPanel);
+    }
+    
+    public void addAddEntriesListener(ActionListener al) {
+        getNavViewPanel().getAddEntriesButton().addActionListener(al);
+    }
+    
+    public void addViewRecsListener(ActionListener al) {
+        getNavViewPanel().getViewRecsButton().addActionListener(al);
+    }
+    
+    public void addViewEntriesListener(ActionListener al) {
+        getNavViewPanel().getViewEntriesButton().addActionListener(al);
+    }
+    
+    public void addViewProfileListener(ActionListener al) {
+        getNavViewPanel().getViewProfileButton().addActionListener(al);
+    }
+    
+    public void addLogoutListener(ActionListener al) {
+        getNavViewPanel().getLogoutButton().addActionListener(al);
     }
 
     /**
