@@ -8,6 +8,7 @@ package drink;
 import database.Drink_Table;
 import javax.swing.JFrame;
 import models.Drink;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -16,7 +17,9 @@ import models.Drink;
 public class DrinkView extends JFrame {
     private Drink drink;
     private final Drink_Table db;
-    private final DrinkViewPanel drinkViewPanel;
+    private DrinkViewPanel drinkViewPanel;
+    private AddDrinkPanel addDrinkPanel;
+    private EditDrinkPanel editDrinkPanel;
     
     /**
      * Default constructor for DrinkView.
@@ -30,6 +33,8 @@ public class DrinkView extends JFrame {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
         drinkViewPanel = new DrinkViewPanel();
+        addDrinkPanel = new AddDrinkPanel();
+        editDrinkPanel = new EditDrinkPanel();
         add(drinkViewPanel);
     }
 
@@ -37,6 +42,50 @@ public class DrinkView extends JFrame {
      * @return the drinkViewPanel
      */
     public DrinkViewPanel getDrinkViewPanel() {
-        return drinkViewPanel;
+        return this.drinkViewPanel;
+    }
+    
+    public void setDrinkViewPanel(DrinkViewPanel drinkViewPanel) {
+        this.drinkViewPanel = drinkViewPanel;
+    }
+    
+    public AddDrinkPanel getAddDrinkPanel() {
+        return this.addDrinkPanel; 
+    }
+    
+    public void setAddDrinkPanel(AddDrinkPanel addDrinkPanel) {
+        this.addDrinkPanel = addDrinkPanel;
+    }
+    
+    public EditDrinkPanel getEditDrinkPanel() {
+        return this.editDrinkPanel;
+    }
+    
+    public void setEditDrinkPanel(EditDrinkPanel editDrinkPanel) {
+        this.editDrinkPanel = editDrinkPanel;
+    }
+    
+    public void setEditDrinkPanel(AddDrinkPanel EditDrinkPanel){
+        this.editDrinkPanel = editDrinkPanel;
+    }
+    
+    public void addAddButtonListener(ActionListener al) {
+        getDrinkViewPanel().getAddButton().addActionListener(al);
+    }
+    
+    public void addEditButtonListener(ActionListener al) {
+        getDrinkViewPanel().getEditButton().addActionListener(al);
+    }
+    
+    public void addDeleteButtonListener(ActionListener al) {
+        getDrinkViewPanel().getDeleteButton().addActionListener(al);
+    }
+    
+    public void addSubmitButtonListener(ActionListener al){
+        getAddDrinkPanel().getSubmitButton().addActionListener(al);
+    }
+    
+    public void addUpdateButtonListener(ActionListener al){
+        getEditDrinkPanel().getUpdateButton().addActionListener(al);
     }
 }
