@@ -5,6 +5,7 @@
  */
 package food;
 
+import app.EntryCntl;
 import app.NavCntl;
 import app.NavView;
 import models.Food;
@@ -16,7 +17,7 @@ import java.awt.event.ActionListener;
  *
  * @author John
  */
-public class FoodCntl {
+public class FoodCntl extends EntryCntl {
     private Food food;
     private final Food_Table db;
     private final FoodView foodView;

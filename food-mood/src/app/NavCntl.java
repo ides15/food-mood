@@ -71,9 +71,9 @@ public class NavCntl {
         navView.addViewProfileListener(new ViewProfileListener());
         navView.addLogoutListener(new LogoutButtonListener());
         
-        navView.addNewFoodListener(new NewEntryListener());
-        navView.addNewDrinkListener(new NewEntryListener());
-        navView.addNewMoodListener(new NewEntryListener());
+        navView.addNewFoodListener(new NewEntryCntlListener());
+        navView.addNewDrinkListener(new NewEntryCntlListener());
+        navView.addNewMoodListener(new NewEntryCntlListener());
         
         navView.addBackListener(new BackListener());
     }
@@ -133,10 +133,10 @@ public class NavCntl {
         }
     }
     
-    public class NewEntryListener implements ActionListener {
+    public class NewEntryCntlListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            EntryFactory factory = new EntryFactory();
+            EntryCntlFactory factory = new EntryCntlFactory();
             factory.getEntry(e.getActionCommand().toLowerCase().substring(4));
         }
     }

@@ -5,6 +5,7 @@
  */
 package mood;
 
+import app.EntryCntl;
 import database.Mood_Table;
 import models.Mood;
 
@@ -12,7 +13,7 @@ import models.Mood;
  *
  * @author John
  */
-public class MoodCntl {
+public class MoodCntl extends EntryCntl {
     private Mood mood;
     private final Mood_Table db;
     private final MoodView moodView;

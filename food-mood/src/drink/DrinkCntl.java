@@ -5,6 +5,7 @@
  */
 package drink;
 
+import app.EntryCntl;
 import database.Drink_Table;
 import models.Drink;
 
@@ -12,7 +13,7 @@ import models.Drink;
  *
  * @author John
  */
-public class DrinkCntl {
+public class DrinkCntl extends EntryCntl {
     private Drink drink;
     private final Drink_Table db;
     private final DrinkView drinkView;
