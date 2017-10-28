@@ -5,15 +5,16 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import parents.Entry;
 import java.util.ArrayList;
+import models.User;
+import parents.Entry;
 
 /**
  *
  * @author john
  */
 public class User_Table extends Database {
-    private int loginID = -1;
+    private int accountID = -1;
     
     /**
      * Default constructor for login database class.
@@ -24,55 +25,72 @@ public class User_Table extends Database {
     }
     
     public int authenticate(String username, String password) {
-        String sql = "SELECT password, account_id FROM Users WHERE username = \"" + username + "\"";
-        
+        String sql = "SELECT password, accountID FROM Users WHERE username = \"" + username + "\"";
+
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
-            
+
             while(rs.next()) {
                 if(rs.getString("password").equals(password)) {
-                    setLoginID(rs.getInt("account_id"));
-                    System.out.println("account id: " + getLoginID());
+                    setAccountID(rs.getInt("accountID"));
+                    System.out.println("account id: " + getAccountID());
                 }
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         
-        return getLoginID();
+        return getAccountID();
     }
-
-    /**
-     * Returns a single login entry based on the query string 'entry'.
-     * @param entry Query string for returning a login entry.
-     * @return Returns the login entry.
-     */
-    @Override
-    public String getEntry(String entry) {
-        return "Food";
-    }
-
-    /**
-     * Returns a list of login entries.
-     * @return Returns an Entry ArrayList of login entries.
-     */
-    @Override
-    public ArrayList<Entry> getAllEntries() {
-        return new ArrayList<Entry>();
+    
+    public User getUserInfo(int accountID) {
+        String firstName = null,
+                lastName = null,
+                email = null,
+                username = null,
+                password = null;
+        
+        String sql = "SELECT firstName, lastName, email, username, password FROM Users WHERE accountID = \"" + accountID + "\"";
+        
+        try (Connection conn = this.connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+            while(rs.next()) {
+                firstName = rs.getString("firstName");
+                lastName = rs.getString("lastName");
+                email = rs.getString("email");
+                username = rs.getString("username");
+                password = rs.getString("password");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return new User(accountID, firstName, lastName, email, username, password);
     }
 
     /**
      * @return the loginID
      */
-    public int getLoginID() {
-        return loginID;
+    public int getAccountID() {
+        return accountID;
     }
 
     /**
-     * @param loginID the loginID to set
+     * @param accountID the loginID to set
      */
-    public void setLoginID(int loginID) {
-        this.loginID = loginID;
+    public void setAccountID(int accountID) {
+        this.accountID = accountID;
+    }
+
+    @Override
+    public String getEntry(String entry) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ArrayList<Entry> getAllEntries() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

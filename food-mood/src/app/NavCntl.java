@@ -17,6 +17,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import login.LoginCntl;
 import login.LoginView;
+import models.User;
 import mood.MoodCntl;
 import mood.MoodView;
 import profile.ProfileCntl;
@@ -32,6 +33,8 @@ public class NavCntl {
     private User_Table db;
     private LoginView loginView;
     private LoginCntl loginCntl;
+    private User user;
+    private int accountID;
     
     private final NavView navView;
 
@@ -65,6 +68,8 @@ public class NavCntl {
     public NavCntl(NavView navView) {
         this.navView = navView;
         
+        this.user = null;
+        
         navView.addAddEntriesListener(new AddEntriesListener());
         navView.addViewRecsListener(new ViewRecsListener());
         navView.addViewEntriesListener(new ViewEntriesListener());
@@ -74,7 +79,6 @@ public class NavCntl {
         navView.addNewFoodListener(new NewEntryCntlListener());
         navView.addNewDrinkListener(new NewEntryCntlListener());
         navView.addNewMoodListener(new NewEntryCntlListener());
-        
         navView.addBackListener(new BackListener());
     }
 
@@ -140,7 +144,7 @@ public class NavCntl {
             factory.getEntry(e.getActionCommand().toLowerCase().substring(4));
         }
     }
-
+    
     /**
      * @return the mainView
      */
@@ -230,5 +234,33 @@ public class NavCntl {
      */
     public RecCntl getRecCntl() {
         return recCntl;
+    }
+
+    /**
+     * @return the user
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * @param user the user to set
+     */
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    /**
+     * @return the accountID
+     */
+    public int getAccountID() {
+        return accountID;
+    }
+
+    /**
+     * @param accountID the accountID to set
+     */
+    public void setAccountID(int accountID) {
+        this.accountID = accountID;
     }
 }

@@ -21,8 +21,8 @@ public class LoginCntl {
     private final User_Table db;
     private final LoginView loginView;
     
-    private final NavCntl navCntl;
-    private final NavView navView;
+    private NavCntl navCntl;
+    private NavView navView;
     
     private String username;
     private String password;
@@ -33,8 +33,8 @@ public class LoginCntl {
         
         loginView.setVisible(true);
         
-        navView = new NavView();
-        navCntl = new NavCntl(getNavView());
+//        navView = new NavView();
+//        navCntl = new NavCntl(getNavView());
         
         loginView.addLoginButtonListener(new LoginButtonListener());
         loginView.addLoginButtonKeyListener(new LoginButtonKeyListener());
@@ -45,9 +45,13 @@ public class LoginCntl {
         username = getLoginView().getLoginViewPanel().getUsernameTextField().getText();
         password = getLoginView().getLoginViewPanel().getPasswordTextField().getText();
 
-        int loginID = db.authenticate(username, password);
+        int accountID = db.authenticate(username, password);
 
-        if(loginID != -1) {
+        if(accountID != -1) {
+            navView = new NavView();
+            navCntl = new NavCntl(getNavView());
+            getNavCntl().setAccountID(accountID);
+            getNavCntl().setUser(db.getUserInfo(accountID));
             getLoginView().setVisible(false);
             getNavCntl().getNavView().setVisible(true);
         } else {
@@ -69,9 +73,7 @@ public class LoginCntl {
         }
         
         @Override
-        public void keyTyped(KeyEvent e) {
-            
-        }
+        public void keyTyped(KeyEvent e) {}
 
         @Override
         public void keyPressed(KeyEvent e) {
@@ -79,9 +81,7 @@ public class LoginCntl {
         }
 
         @Override
-        public void keyReleased(KeyEvent e) {
-            
-        }
+        public void keyReleased(KeyEvent e) {}
     }
     
     public class NewUserButtonListener implements ActionListener {

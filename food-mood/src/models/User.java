@@ -5,6 +5,9 @@ package models;
  * @author john
  */
 public class User {
+    private int userID;
+    private String firstName, lastName;
+    private String email;
     private String username, password;
     
     /**
@@ -15,23 +18,97 @@ public class User {
         System.out.println("Drink constructor");
     }
     
-    /**
-     * Constructor for the User class with all parameters
-     */
-    public User(String username, String password) {
+    public User(int userID, String firstName, String lastName, String email, String username, String password) {
         super();
-        System.out.println("Drink constructor");
+        this.userID = userID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.username = username;
+        this.password = password;
     }
-    
+
     /**
-     * Authenticates user
-     * @param username username to authenticate
-     * @param password password to authenticate
-     * @return returns whether the user is authenticated or not; true is authenticated
+     * @return the firstName
      */
-    public boolean authenticate(String username, String password) {
-        System.out.println("authenticate called in " + this.getClass().getName());
-        System.out.println("User Authenticated");
-        return true;
+    public String getFirstName() {
+        return firstName;
+    }
+
+    /**
+     * @param firstName the firstName to set
+     */
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    /**
+     * @return the lastName
+     */
+    public String getLastName() {
+        return lastName;
+    }
+
+    /**
+     * @param lastName the lastName to set
+     */
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    /**
+     * @return the username
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @param username the username to set
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    /**
+     * @return the password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * @param password the password to set
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
+     * @return the userID
+     */
+    public int getUserID() {
+        return userID;
+    }
+
+    /**
+     * @param userID the userID to set
+     */
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
