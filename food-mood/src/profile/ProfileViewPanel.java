@@ -36,6 +36,7 @@ public class ProfileViewPanel extends javax.swing.JPanel {
         changeableUsernameLabel = new javax.swing.JLabel();
         saveButton = new javax.swing.JButton();
         changeablePasswordTextField = new javax.swing.JPasswordField();
+        passwordSavedLabel = new javax.swing.JLabel();
 
         usersProfileLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         usersProfileLabel.setText("User's Profile");
@@ -58,6 +59,9 @@ public class ProfileViewPanel extends javax.swing.JPanel {
         saveButton.setText("Save");
 
         changeablePasswordTextField.setText("existingpass");
+
+        passwordSavedLabel.setForeground(new java.awt.Color(0, 175, 0));
+        passwordSavedLabel.setText("Password saved.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -83,7 +87,8 @@ public class ProfileViewPanel extends javax.swing.JPanel {
                             .addComponent(changeableUsernameLabel)
                             .addComponent(changeablePasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
+                        .addComponent(passwordSavedLabel)
+                        .addGap(18, 18, 18)
                         .addComponent(saveButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -109,7 +114,9 @@ public class ProfileViewPanel extends javax.swing.JPanel {
                     .addComponent(passwordLabel)
                     .addComponent(changeablePasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(saveButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(saveButton)
+                    .addComponent(passwordSavedLabel))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -123,6 +130,7 @@ public class ProfileViewPanel extends javax.swing.JPanel {
     private javax.swing.JLabel emailLabel;
     private javax.swing.JLabel nameLabel;
     private javax.swing.JLabel passwordLabel;
+    private javax.swing.JLabel passwordSavedLabel;
     private javax.swing.JButton saveButton;
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JLabel usersProfileLabel;
@@ -161,5 +169,12 @@ public class ProfileViewPanel extends javax.swing.JPanel {
      */
     public javax.swing.JButton getSaveButton() {
         return saveButton;
+    }
+
+    /**
+     * @return the passwordSavedLabel
+     */
+    public javax.swing.JLabel getPasswordSavedLabel() {
+        return passwordSavedLabel;
     }
 }

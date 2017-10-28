@@ -40,7 +40,8 @@
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                      <Component id="passwordSavedLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="saveButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -74,7 +75,10 @@
                   <Component id="changeablePasswordTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-              <Component id="saveButton" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="saveButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="passwordSavedLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -133,6 +137,14 @@
     <Component class="javax.swing.JPasswordField" name="changeablePasswordTextField">
       <Properties>
         <Property name="text" type="java.lang.String" value="existingpass"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="passwordSavedLabel">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="af" red="0" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Password saved."/>
       </Properties>
     </Component>
   </SubComponents>

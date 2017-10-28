@@ -114,6 +114,7 @@ public class NavCntl {
         @Override
         public void actionPerformed(ActionEvent e) {
             setProfileView(new ProfileView(getDb()));
+            getProfileView().getProfileViewPanel().getPasswordSavedLabel().setVisible(false);
             setProfileCntl(new ProfileCntl(getDb(), getProfileView()));
             setProfileView(profileView);
             setProfileCntl(profileCntl);
@@ -168,6 +169,7 @@ public class NavCntl {
             }
             
             getDb().setUserPassword(getAccountID(), newPassword);
+            getProfileView().getProfileViewPanel().getPasswordSavedLabel().setVisible(true);
         }
     }
     
