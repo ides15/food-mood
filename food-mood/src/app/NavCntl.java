@@ -70,6 +70,8 @@ public class NavCntl {
         
         this.user = null;
         
+        db = new User_Table("foodmood.db");
+        
         navView.addAddEntriesListener(new AddEntriesListener());
         navView.addViewRecsListener(new ViewRecsListener());
         navView.addViewEntriesListener(new ViewEntriesListener());
@@ -111,22 +113,25 @@ public class NavCntl {
     public class ViewProfileListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            profileView = new ProfileView(db);
-            profileCntl = new ProfileCntl(db, profileView);
-            profileCntl.setUser(getUser());
-            profileCntl.getProfileView().getProfileViewPanel().getChangeableUsernameLabel().setText(user.getUsername());
-            profileCntl.getProfileView().getProfileViewPanel().getChangeablePasswordTextField().setText(user.getPassword());
-            profileCntl.getProfileView().getProfileViewPanel().getChangeableEmailLabel().setText(user.getEmail());
-            profileCntl.getProfileView().getProfileViewPanel().getChangeableNameLabel().setText(user.getFirstName() + " " + user.getLastName());
+            setProfileView(new ProfileView(getDb()));
+            setProfileCntl(new ProfileCntl(getDb(), getProfileView()));
+            setProfileView(profileView);
+            setProfileCntl(profileCntl);
+            getProfileCntl().getProfileView().addSaveButtonActionListener(new SaveButtonListener());
+            getProfileCntl().setUser(getUser());
+            getProfileCntl().getProfileView().getProfileViewPanel().getChangeableUsernameLabel().setText(user.getUsername());
+            getProfileCntl().getProfileView().getProfileViewPanel().getChangeablePasswordTextField().setText(user.getPassword());
+            getProfileCntl().getProfileView().getProfileViewPanel().getChangeableEmailLabel().setText(user.getEmail());
+            getProfileCntl().getProfileView().getProfileViewPanel().getChangeableNameLabel().setText(user.getFirstName() + " " + user.getLastName());
         }
     }
     
     public class LogoutButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            db = new User_Table("foodmood.db");
-            loginView = new LoginView(db);
-            loginCntl = new LoginCntl(db, loginView);
+            setDb(new User_Table("foodmood.db"));
+            loginView = new LoginView(getDb());
+            loginCntl = new LoginCntl(getDb(), loginView);
             
             navView.setVisible(false);
             loginCntl.getLoginView().setVisible(true);
@@ -147,6 +152,22 @@ public class NavCntl {
         public void actionPerformed(ActionEvent e) {
             EntryCntlFactory factory = new EntryCntlFactory();
             factory.getEntry(e.getActionCommand().toLowerCase().substring(4));
+        }
+    }
+    
+    // This has to be here because a profile change or save must be implemented at a higher level than just the profile controller
+    public class SaveButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String newPassword = "";
+            char[] charPassword = getProfileCntl().getProfileView().getProfileViewPanel().getChangeablePasswordTextField().getPassword();
+            
+            // password label text is stored in a char array, all I'm doing here is putting those chars into a string
+            for(char c : charPassword) {
+                newPassword+=c;
+            }
+            
+            getDb().setUserPassword(getAccountID(), newPassword);
         }
     }
     
@@ -267,5 +288,47 @@ public class NavCntl {
      */
     public void setAccountID(int accountID) {
         this.accountID = accountID;
+    }
+
+    /**
+     * @return the profileView
+     */
+    public ProfileView getProfileView() {
+        return profileView;
+    }
+
+    /**
+     * @return the profileCntl
+     */
+    public ProfileCntl getProfileCntl() {
+        return profileCntl;
+    }
+
+    /**
+     * @param profileView the profileView to set
+     */
+    public void setProfileView(ProfileView profileView) {
+        this.profileView = profileView;
+    }
+
+    /**
+     * @param profileCntl the profileCntl to set
+     */
+    public void setProfileCntl(ProfileCntl profileCntl) {
+        this.profileCntl = profileCntl;
+    }
+
+    /**
+     * @return the db
+     */
+    public User_Table getDb() {
+        return db;
+    }
+
+    /**
+     * @param db the db to set
+     */
+    public void setDb(User_Table db) {
+        this.db = db;
     }
 }

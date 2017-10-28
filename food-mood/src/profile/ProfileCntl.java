@@ -24,15 +24,6 @@ public class ProfileCntl {
         this.profileView = profileView;
         
         profileView.setVisible(true);
-        
-        profileView.addSaveButtonActionListener(new SaveButtonListener());
-    }
-    
-    public class SaveButtonListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            System.out.println("save");
-        }
     }
 
     /**

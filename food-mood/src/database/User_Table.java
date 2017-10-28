@@ -34,7 +34,6 @@ public class User_Table extends Database {
             while(rs.next()) {
                 if(rs.getString("password").equals(password)) {
                     setAccountID(rs.getInt("accountID"));
-                    System.out.println("account id: " + getAccountID());
                 }
             }
         } catch (SQLException ex) {
@@ -68,6 +67,17 @@ public class User_Table extends Database {
         }
         
         return new User(accountID, firstName, lastName, email, username, password);
+    }
+    
+    public void setUserPassword(int accountID, String newPassword) {
+        String sql = "UPDATE Users SET password = \"" + newPassword + "\" WHERE accountID = \"" + accountID + "\"";
+
+        try (Connection conn = this.connect();
+                Statement stmt = conn.createStatement()) {
+            stmt.executeUpdate(sql);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     /**
