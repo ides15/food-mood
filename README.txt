@@ -37,5 +37,11 @@ DESIGN PATTERNS
 	- The factory class is located in the app package, under the name 'EntryCntlFactory.java'.
 	- Examples of the user input feedback pattern can be found either on the main login screen (entering an
 	incorrect password), or on the 'View Profile' screen (saving a new password).
+- Kyle Ryan implimented a sudo-builder oo pattern along with input prompts.
+	- The sudo-builder pattern exists in the foodCntrl class. All of the important objects such as JPanels, navCntrl,
+	and Food_Table. With this implimentation we are allowed to have full access to all of our food related objects
+	and methods through one interface.
+	- On the addFoodPanel JPanel is where I implimented the input prompt. The filler text for the text box gives the
+	user an idea of how to format their data to ensure consistency.
 
 IMPLEMENTATION
