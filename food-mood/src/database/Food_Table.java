@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class Food_Table extends Database {
     
     private ArrayList<String> foodList;
+    private Food food;
     
     /**
      * Default constructor for food database class.
@@ -40,9 +41,9 @@ public class Food_Table extends Database {
      * Updates a food object to a new one in the sqlite database
      * @param food 
      */
-    public void updateEntry(Food oldFood, Food newFood){
+    public void updateEntry(Food oldFood, Food newFood, int accountID){
         //update food entry in sql database
-        String sql = "UPDATE Foods SET name = \""+newFood+"\", portion = \""+newFood.getAmount()+"\", date = \""+newFood.getDate()+"\" WHERE name= \""+oldFood.getName()+"\" AND portion=\""+oldFood.getAmount()+"\" AND date=\""+oldFood.getDate()+"\";";
+        String sql = "UPDATE Foods SET name = \""+newFood+"\", portion = \""+newFood.getAmount()+"\", date = \""+newFood.getDate()+"\" WHERE accountID= \""+accountID+"\" AND name= \""+oldFood.getName()+"\" AND portion=\""+oldFood.getAmount()+"\" AND date=\""+oldFood.getDate()+"\";";
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
@@ -51,8 +52,8 @@ public class Food_Table extends Database {
         }
     }
     
-    public void addEntry(Food food){
-        String sql = "INSERT INTO Foods (name, portion, date) VALUES (\""+food.getName()+"\", \""+food.getAmount()+"\", \""+ food.getDate()+"\");";
+    public void addEntry(Food food, int accountID){
+        String sql = "INSERT INTO Foods (name, portion, date, accountID) VALUES (\""+food.getName()+"\", \""+food.getAmount()+"\", \""+ food.getDate()+"\", \""+accountID+"\");";
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
@@ -70,8 +71,29 @@ public class Food_Table extends Database {
         return null;
     }
     
-    public ArrayList<String> getFood(Food food){
-        String sql = "SELECT * FROM Foods WHERE name= \""+food.getName()+"\" AND portion=\""+food.getAmount()+"\" AND date=\""+food.getDate()+"\";";
+    public Food getFood(Food f, int accountID){
+        String sql = "SELECT * FROM Foods WHERE accountID= \""+accountID+"\" AND name= \""+f.getName()+"\" AND portion=\""+f.getAmount()+"\" AND date=\""+f.getDate()+"\";";
+        String name = "name";
+        String portion = "portion";
+        String date = "date";
+        
+        try (Connection conn = this.connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+            
+            while(rs.next()) {
+                name = rs.getString(name);
+                portion = rs.getString(portion);
+                date = rs.getString(date);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return f;
+    }
+    
+    public ArrayList<String> getFoodList(int accountID){
+        String sql = "SELECT * FROM Foods WHERE accountID = \""+accountID+"\";";
         String col = "name";
         
         try (Connection conn = this.connect();
@@ -87,26 +109,9 @@ public class Food_Table extends Database {
         return foodList;
     }
     
-    public ArrayList<String> getFoodList(){
-        String sql = "SELECT * FROM Foods";
-        String col = "name";
-        
-        try (Connection conn = this.connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            
-            while(rs.next()) {
-                foodList.add(rs.getString(col));
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return foodList;
-    }
-    
-    public void deleteEntry(Food food){
+    public void deleteEntry(Food food, int accountID){
         //update food entry in sql database
-        String sql = "DELETE FROM Foods WHERE name= \""+food.getName()+"\" AND portion=\""+food.getAmount()+"\" AND date=\""+food.getDate()+"\";";
+        String sql = "DELETE FROM Foods WHERE accountID= \""+accountID+"\" AND name= \""+food.getName()+"\" AND portion=\""+food.getAmount()+"\" AND date=\""+food.getDate()+"\";";
     
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement();

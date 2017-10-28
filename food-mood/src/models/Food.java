@@ -79,4 +79,9 @@ public class Food extends Entry {
     public String getName() {
         return super.getName();
     }
+    
+    public String foodToString(Food f){
+       String s = ""+f.getName()+", "+f.getAmount()+", "+f.getDate();
+       return s;
+    }
 }

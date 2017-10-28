@@ -25,10 +25,6 @@ public class FoodCntl extends EntryCntl {
     private final NavCntl navCntl;
     private final NavView navView;
     
-    private final FoodPanel foodPanel;
-    private final AddFoodPanel addFoodPanel;
-    private final EditFoodPanel editFoodPanel;
-    
     /**
      * Default constructor for FoodCntl.
      * @param db Food model for MVC architecture.
@@ -45,9 +41,11 @@ public class FoodCntl extends EntryCntl {
         
         foodView.setVisible(true);
         
-        foodPanel = new FoodPanel();
-        addFoodPanel = new AddFoodPanel();
-        editFoodPanel = new EditFoodPanel();
+        foodView.addAddButtonListener(new AddButtonListener());
+        foodView.addDeleteButtonListener(new DeleteButtonListener());
+        foodView.addEditButtonListener(new EditButtonListener());
+        foodView.addSubmitButtonListener(new SubmitButtonListener());
+        foodView.addUpdateButtonListener(new UpdateButtonListener());
     }
     
     class AddButtonListener implements ActionListener {
@@ -62,10 +60,11 @@ public class FoodCntl extends EntryCntl {
     
     class EditButtonListener implements ActionListener {
         @Override
-        public void actionPerformed(ActionEvent e) {
+        public  void actionPerformed(ActionEvent e) {
             
             System.out.println("Food edited");
-            //Switch edit panel
+            //switch to edit panel with old info on left side and new food form 
+            //on right with update on bottom
             
         }
     }
@@ -77,10 +76,10 @@ public class FoodCntl extends EntryCntl {
             String selection;
             System.out.println("Food deleted");
             //Get food object from list on FoodPanel
-            selection = foodPanel.getFoodListView().getSelectedValue().toString();
+            selection = foodView.getFoodPanel().getFoodListView().getSelectedValue().toString();
             food.setName(selection);
             //Need to construct rest of food object in order to delete it
-            db.deleteEntry(food);
+            db.deleteEntry(food, navCntl.getAccountID());
             
         }
     }
@@ -100,7 +99,7 @@ public class FoodCntl extends EntryCntl {
         public void actionPerformed(ActionEvent e) {
             
             System.out.println("Food updated");
-            //db.setEntry(oldFood, newFood);
+            //db.updateEntry(oldFood, newFood, navCntl.getAccountID());
             
         }
     }
