@@ -38,10 +38,6 @@ public class ProfileView extends JFrame {
     public void addSaveButtonActionListener(ActionListener al) {
         profileViewPanel.getSaveButton().addActionListener(al);
     }
-    
-    public void addBackButtonActionListener(ActionListener al) {
-        profileViewPanel.getBackButton().addActionListener(al);
-    }
 
     /**
      * @return the profileViewPanel

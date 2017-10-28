@@ -26,7 +26,6 @@ public class ProfileCntl {
         profileView.setVisible(true);
         
         profileView.addSaveButtonActionListener(new SaveButtonListener());
-        profileView.addBackButtonActionListener(new BackButtonListener());
     }
     
     public class SaveButtonListener implements ActionListener {
@@ -35,18 +34,25 @@ public class ProfileCntl {
             System.out.println("save");
         }
     }
-    
-    public class BackButtonListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            System.out.println("back");
-        }
-    }
 
     /**
      * @return the profileView
      */
     public ProfileView getProfileView() {
         return profileView;
+    }
+
+    /**
+     * @return the user
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * @param user the user to set
+     */
+    public void setUser(User user) {
+        this.user = user;
     }
 }

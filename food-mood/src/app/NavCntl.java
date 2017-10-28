@@ -113,6 +113,11 @@ public class NavCntl {
         public void actionPerformed(ActionEvent e) {
             profileView = new ProfileView(db);
             profileCntl = new ProfileCntl(db, profileView);
+            profileCntl.setUser(getUser());
+            profileCntl.getProfileView().getProfileViewPanel().getChangeableUsernameLabel().setText(user.getUsername());
+            profileCntl.getProfileView().getProfileViewPanel().getChangeablePasswordTextField().setText(user.getPassword());
+            profileCntl.getProfileView().getProfileViewPanel().getChangeableEmailLabel().setText(user.getEmail());
+            profileCntl.getProfileView().getProfileViewPanel().getChangeableNameLabel().setText(user.getFirstName() + " " + user.getLastName());
         }
     }
     
