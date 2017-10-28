@@ -9,7 +9,7 @@ import database.Drink_Table;
 import database.Food_Table;
 import database.Mood_Table;
 import java.util.ArrayList;
-import models.Entry;
+import parents.Entry;
 
 /**
  *

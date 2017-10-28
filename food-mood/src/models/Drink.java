@@ -5,6 +5,7 @@
  */
 package models;
 
+import parents.Entry;
 import java.util.Date;
 
 /**

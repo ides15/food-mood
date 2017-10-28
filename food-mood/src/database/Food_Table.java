@@ -1,10 +1,11 @@
 package database;
 
+import parents.Database;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import models.Entry;
+import parents.Entry;
 import models.Food;
 import java.util.ArrayList;
 

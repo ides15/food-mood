@@ -1,6 +1,7 @@
 package database;
 
-import models.Entry;
+import parents.Database;
+import parents.Entry;
 import java.util.ArrayList;
 
 /**
