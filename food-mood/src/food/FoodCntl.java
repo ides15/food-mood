@@ -54,7 +54,9 @@ public class FoodCntl extends EntryCntl {
             
             System.out.println("Food added");
             //Switch to add panel
-            
+            AddFoodPanel afp = new AddFoodPanel();
+            navView.add(afp); 
+            afp.setVisible(true); 
         }
     }
     
@@ -65,7 +67,7 @@ public class FoodCntl extends EntryCntl {
             System.out.println("Food edited");
             //switch to edit panel with old info on left side and new food form 
             //on right with update on bottom
-            
+            EditFoodPanel efp = new EditFoodPanel();
         }
     }
     
