@@ -6,8 +6,13 @@
 package mood;
 
 import app.EntryCntl;
+import app.NavCntl;
 import database.Mood_Table;
+import database.User_Table;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import models.Mood;
+import models.User;
 
 /**
  *
@@ -30,6 +35,11 @@ public class MoodCntl extends EntryCntl {
         mood = new Mood();
         
         moodView.setVisible(true);
+        
+        moodView.addBtnListener(new MoodCntl.addBtnListener());
+        moodView.editBtnListener(new MoodCntl.editBtnListener());
+        moodView.deleteBtnListener(new MoodCntl.deleteBtnListener());
+        moodView.backBtnListener(new MoodCntl.backBtnListener());
     }
 
     /**
@@ -37,5 +47,60 @@ public class MoodCntl extends EntryCntl {
      */
     public MoodView getMoodView() {
         return moodView;
+    }
+
+    private MoodCntl moodCntl;
+
+        
+    
+
+    public class addBtnListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+//            navView.getNavViewPanel().setVisible(false);
+//            navView.add(navView.getNewEntriesViewPanel());
+//            navView.getNewEntriesViewPanel().setVisible(true);
+//            navView.remove(navView.getNavViewPanel());
+        }
+    }
+    
+    // TODO
+    public class editBtnListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            
+        }
+    }
+    
+    // TODO
+    public class deleteBtnListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            
+        }
+    }
+    
+
+    public class backBtnListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+//            navView.add(navView.getNavViewPanel());
+//            navView.getNewEntriesViewPanel().setVisible(false);
+//            navView.getNavViewPanel().setVisible(true);
+        }
+    }
+
+    /**
+     * @return the moodCntl
+     */
+    public MoodCntl getMoodCntl() {
+        return moodCntl;
+    }
+
+    /**
+     * @return the db
+     */
+    public Mood_Table getDb() {
+        return db;
     }
 }
