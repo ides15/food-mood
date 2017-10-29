@@ -6,8 +6,6 @@
 package profile;
 
 import database.User_Table;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import models.User;
 
 /**

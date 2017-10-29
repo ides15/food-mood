@@ -81,6 +81,17 @@ public class User_Table extends Database {
         }
     }
     
+    public void setUserEmail(int accountID, String newEmail) {
+        String sql = "UPDATE Users SET email = \"" + newEmail + "\" WHERE accountID = \"" + accountID + "\"";
+        
+        try (Connection conn = this.connect();
+                Statement stmt = conn.createStatement()) {
+            stmt.executeUpdate(sql);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
     public void addNewUser(User newUser) {
         String sql = "INSERT INTO Users (firstName, lastName, email, username, password) "
                 + "VALUES (?, ?, ?, ?, ?)";

@@ -27,12 +27,7 @@ public class ProfileView extends JFrame {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
         profileViewPanel = new ProfileViewPanel();
-        populateUserInfo();
         add(profileViewPanel);
-    }
-    
-    public void populateUserInfo() {
-        // TODO        
     }
     
     public void addSaveButtonActionListener(ActionListener al) {

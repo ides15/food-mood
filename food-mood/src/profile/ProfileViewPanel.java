@@ -32,11 +32,11 @@ public class ProfileViewPanel extends javax.swing.JPanel {
         usernameLabel = new javax.swing.JLabel();
         passwordLabel = new javax.swing.JLabel();
         changeableNameLabel = new javax.swing.JLabel();
-        changeableEmailLabel = new javax.swing.JLabel();
         changeableUsernameLabel = new javax.swing.JLabel();
         saveButton = new javax.swing.JButton();
         changeablePasswordTextField = new javax.swing.JPasswordField();
         passwordSavedLabel = new javax.swing.JLabel();
+        changeableEmailTextField = new javax.swing.JTextField();
 
         usersProfileLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         usersProfileLabel.setText("User's Profile");
@@ -52,8 +52,6 @@ public class ProfileViewPanel extends javax.swing.JPanel {
 
         changeableNameLabel.setText("FirstnameLastname");
 
-        changeableEmailLabel.setText("email@email.com");
-
         changeableUsernameLabel.setText("UserName");
 
         saveButton.setText("Save");
@@ -61,7 +59,9 @@ public class ProfileViewPanel extends javax.swing.JPanel {
         changeablePasswordTextField.setText("existingpass");
 
         passwordSavedLabel.setForeground(new java.awt.Color(0, 175, 0));
-        passwordSavedLabel.setText("Password saved.");
+        passwordSavedLabel.setText("Password and/or email saved.");
+
+        changeableEmailTextField.setText("email@email.com");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -81,11 +81,11 @@ public class ProfileViewPanel extends javax.swing.JPanel {
                             .addComponent(emailLabel)
                             .addComponent(usernameLabel))
                         .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(changeableNameLabel)
-                            .addComponent(changeableEmailLabel)
                             .addComponent(changeableUsernameLabel)
-                            .addComponent(changeablePasswordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(changeablePasswordTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                            .addComponent(changeableEmailTextField)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(passwordSavedLabel)
                         .addGap(18, 18, 18)
@@ -104,7 +104,7 @@ public class ProfileViewPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(emailLabel)
-                    .addComponent(changeableEmailLabel))
+                    .addComponent(changeableEmailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernameLabel)
@@ -123,7 +123,7 @@ public class ProfileViewPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel changeableEmailLabel;
+    private javax.swing.JTextField changeableEmailTextField;
     private javax.swing.JLabel changeableNameLabel;
     private javax.swing.JPasswordField changeablePasswordTextField;
     private javax.swing.JLabel changeableUsernameLabel;
@@ -135,13 +135,6 @@ public class ProfileViewPanel extends javax.swing.JPanel {
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JLabel usersProfileLabel;
     // End of variables declaration//GEN-END:variables
-
-    /**
-     * @return the changeableEmailLabel
-     */
-    public javax.swing.JLabel getChangeableEmailLabel() {
-        return changeableEmailLabel;
-    }
 
     /**
      * @return the changeableNameLabel
@@ -176,5 +169,12 @@ public class ProfileViewPanel extends javax.swing.JPanel {
      */
     public javax.swing.JLabel getPasswordSavedLabel() {
         return passwordSavedLabel;
+    }
+
+    /**
+     * @return the emailTextField
+     */
+    public javax.swing.JTextField getChangeableEmailTextField() {
+        return changeableEmailTextField;
     }
 }

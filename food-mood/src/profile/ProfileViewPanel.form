@@ -32,11 +32,11 @@
                           <Component id="usernameLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="changeableNameLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="changeableEmailLabel" min="-2" max="-2" attributes="0"/>
                           <Component id="changeableUsernameLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="changeablePasswordTextField" min="-2" pref="152" max="-2" attributes="0"/>
+                          <Component id="changeablePasswordTextField" pref="152" max="32767" attributes="0"/>
+                          <Component id="changeableEmailTextField" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -62,7 +62,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="emailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="changeableEmailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="changeableEmailTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -119,11 +119,6 @@
         <Property name="text" type="java.lang.String" value="FirstnameLastname"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="changeableEmailLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="email@email.com"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="changeableUsernameLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="UserName"/>
@@ -144,7 +139,12 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="af" red="0" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Password saved."/>
+        <Property name="text" type="java.lang.String" value="Password and/or email saved."/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="changeableEmailTextField">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="email@email.com"/>
       </Properties>
     </Component>
   </SubComponents>

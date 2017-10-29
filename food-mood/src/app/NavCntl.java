@@ -122,7 +122,7 @@ public class NavCntl {
             getProfileCntl().setUser(getUser());
             getProfileCntl().getProfileView().getProfileViewPanel().getChangeableUsernameLabel().setText(user.getUsername());
             getProfileCntl().getProfileView().getProfileViewPanel().getChangeablePasswordTextField().setText(user.getPassword());
-            getProfileCntl().getProfileView().getProfileViewPanel().getChangeableEmailLabel().setText(user.getEmail());
+            getProfileCntl().getProfileView().getProfileViewPanel().getChangeableEmailTextField().setText(user.getEmail());
             getProfileCntl().getProfileView().getProfileViewPanel().getChangeableNameLabel().setText(user.getFirstName() + " " + user.getLastName());
         }
     }
@@ -168,8 +168,17 @@ public class NavCntl {
                 newPassword+=c;
             }
             
+            String newEmail = getProfileCntl().getProfileView().getProfileViewPanel().getChangeableEmailTextField().getText();
+            getDb().setUserEmail(getAccountID(), newEmail);
+            
             getDb().setUserPassword(getAccountID(), newPassword);
             getProfileView().getProfileViewPanel().getPasswordSavedLabel().setVisible(true);
+            
+            getUser().setEmail(newEmail);
+            getUser().setPassword(newPassword);
+            
+            getProfileView().getProfileViewPanel().getChangeableEmailTextField().setText(user.getEmail());
+            getProfileView().getProfileViewPanel().getChangeablePasswordTextField().setText(user.getPassword());
         }
     }
     
