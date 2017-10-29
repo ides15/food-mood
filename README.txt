@@ -45,3 +45,8 @@ DESIGN PATTERNS
 	user an idea of how to format their data to ensure consistency.
 
 IMPLEMENTATION
+- Authentication : John Ide
+- New user addition : John Ide
+- Main app navigation : John Ide
+- User Profile CRUD : John Ide
+- New entries page : John Ide
