@@ -19,23 +19,25 @@ import models.User;
  * @author John
  */
 public class MoodCntl extends EntryCntl {
+
     private Mood mood;
     private final Mood_Table db;
     private final MoodView moodView;
-    
+
     /**
      * Default constructor for MoodCntl.
+     *
      * @param db Mood model for MVC architecture.
      * @param moodView MoodView for MVC architecture.
      */
-    public MoodCntl(Mood_Table db, MoodView moodView) {        
+    public MoodCntl(Mood_Table db, MoodView moodView) {
         this.db = db;
         this.moodView = moodView;
-        
+
         mood = new Mood();
-        
+
         moodView.setVisible(true);
-        
+
         moodView.addBtnListener(new MoodCntl.addBtnListener());
         moodView.editBtnListener(new MoodCntl.editBtnListener());
         moodView.deleteBtnListener(new MoodCntl.deleteBtnListener());
@@ -51,37 +53,36 @@ public class MoodCntl extends EntryCntl {
 
     private MoodCntl moodCntl;
 
-        
-    
-
     public class addBtnListener implements ActionListener {
+
         @Override
         public void actionPerformed(ActionEvent e) {
-//            navView.getNavViewPanel().setVisible(false);
-//            navView.add(navView.getNewEntriesViewPanel());
-//            navView.getNewEntriesViewPanel().setVisible(true);
-//            navView.remove(navView.getNavViewPanel());
+            moodView.getMoodViewPanel().setVisible(false);
+            moodView.add(moodView.getAddMoodPanel());
+            moodView.getAddMoodPanel().setVisible(true);
+            moodView.remove(moodView.getMoodViewPanel());
         }
     }
-    
-    // TODO
+
     public class editBtnListener implements ActionListener {
+
         @Override
         public void actionPerformed(ActionEvent e) {
-            
+
         }
     }
-    
+
     // TODO
     public class deleteBtnListener implements ActionListener {
+
         @Override
         public void actionPerformed(ActionEvent e) {
-            
+
         }
     }
-    
 
     public class backBtnListener implements ActionListener {
+
         @Override
         public void actionPerformed(ActionEvent e) {
 //            navView.add(navView.getNavViewPanel());
