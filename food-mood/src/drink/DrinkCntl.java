@@ -97,7 +97,10 @@ public class DrinkCntl extends EntryCntl {
             
             System.out.println("Food added");
             //db.addEntry(food);
-            
+            drinkView.getAddDrinkPanel().setVisible(false);
+            drinkView.add(drinkView.getDrinkViewPanel());
+            drinkView.getDrinkViewPanel().setVisible(true);
+            drinkView.remove(drinkView.getAddDrinkPanel());
         }
     }
     
@@ -107,7 +110,10 @@ public class DrinkCntl extends EntryCntl {
             
             System.out.println("Food updated");
             //db.updateEntry(oldFood, newFood, navCntl.getAccountID());
-            
+            drinkView.getEditDrinkPanel().setVisible(false);
+            drinkView.add(drinkView.getDrinkViewPanel());
+            drinkView.getDrinkViewPanel().setVisible(true);
+            drinkView.remove(drinkView.getEditDrinkPanel());
         }
     }
     

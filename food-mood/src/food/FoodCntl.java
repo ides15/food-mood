@@ -96,7 +96,10 @@ public class FoodCntl extends EntryCntl {
             
             System.out.println("Food added");
             //db.addEntry(food);
-            
+            foodView.getAddFoodPanel().setVisible(false);
+            foodView.add(foodView.getFoodPanel());
+            foodView.getFoodPanel().setVisible(true);
+            foodView.remove(foodView.getAddFoodPanel());
         }
     }
     
@@ -106,7 +109,10 @@ public class FoodCntl extends EntryCntl {
             
             System.out.println("Food updated");
             //db.updateEntry(oldFood, newFood, navCntl.getAccountID());
-            
+            foodView.getEditFoodPanel().setVisible(false);
+            foodView.add(foodView.getFoodPanel());
+            foodView.getFoodPanel().setVisible(true);
+            foodView.remove(foodView.getEditFoodPanel());
         }
     }
 
