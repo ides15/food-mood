@@ -24,6 +24,9 @@ public class LoginCntl {
     private NavCntl navCntl;
     private NavView navView;
     
+    private NewUserCntl newUserCntl;
+    private NewUserView newUserView;
+    
     private String username;
     private String password;
     
@@ -32,9 +35,6 @@ public class LoginCntl {
         this.loginView = loginView;
         
         loginView.setVisible(true);
-        
-//        navView = new NavView();
-//        navCntl = new NavCntl(getNavView());
         
         loginView.addLoginButtonListener(new LoginButtonListener());
         loginView.addLoginButtonKeyListener(new LoginButtonKeyListener());
@@ -53,7 +53,7 @@ public class LoginCntl {
             getNavCntl().setAccountID(accountID);
             getNavCntl().setUser(db.getUserInfo(accountID));
             getLoginView().setVisible(false);
-            getNavCntl().getNavView().setVisible(true);
+            getNavView().setVisible(true);
         } else {
             getLoginView().getLoginViewPanel().getTryAgainBooBooLabel().setVisible(true);
         }
@@ -87,8 +87,9 @@ public class LoginCntl {
     public class NewUserButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("new user button pressed");
-            // TODO switch to new user page
+            newUserView = new NewUserView(db);
+            newUserCntl = new NewUserCntl(db, getNewUserView());
+            getNewUserView().setVisible(true);
         }
     }
 
@@ -111,5 +112,19 @@ public class LoginCntl {
      */
     public NavView getNavView() {
         return navView;
+    }
+
+    /**
+     * @return the newUserCntl
+     */
+    public NewUserCntl getNewUserCntl() {
+        return newUserCntl;
+    }
+
+    /**
+     * @return the newUserView
+     */
+    public NewUserView getNewUserView() {
+        return newUserView;
     }
 }

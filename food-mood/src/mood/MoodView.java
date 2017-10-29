@@ -63,6 +63,6 @@ public class MoodView extends JFrame {
     }
     
     void backBtnListener(MoodCntl.backBtnListener backBtnListener) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 }
