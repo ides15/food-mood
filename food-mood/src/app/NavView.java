@@ -5,6 +5,8 @@
  */
 package app;
 
+import DesignSelection.FoodMoodEntryForm;
+import DesignSelection.FoodMoodEntryFormCntl;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 
@@ -14,7 +16,7 @@ import javax.swing.JFrame;
  */
 public class NavView extends JFrame {
     private final NavViewPanel navViewPanel;
-    private final NewEntriesViewPanel newEntriesViewPanel;
+    private final FoodMoodEntryForm foodMoodEntryForm;
     
     /**
      * Default constructor for MainView.
@@ -25,7 +27,7 @@ public class NavView extends JFrame {
         setSize(600, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
-        newEntriesViewPanel = new NewEntriesViewPanel();
+        foodMoodEntryForm = new FoodMoodEntryForm();
         navViewPanel = new NavViewPanel();
         
         add(navViewPanel);
@@ -50,22 +52,6 @@ public class NavView extends JFrame {
     public void addLogoutListener(ActionListener al) {
         getNavViewPanel().getLogoutButton().addActionListener(al);
     }
-    
-    public void addNewFoodListener(ActionListener al) {
-        getNewEntriesViewPanel().getNewFoodButton().addActionListener(al);
-    }
-    
-    public void addNewDrinkListener(ActionListener al) {
-        getNewEntriesViewPanel().getNewDrinkButton().addActionListener(al);
-    }
-    
-    public void addNewMoodListener(ActionListener al) {
-        getNewEntriesViewPanel().getNewMoodButton().addActionListener(al);
-    }
-    
-    public void addBackListener(ActionListener al) {
-        getNewEntriesViewPanel().getBackButton().addActionListener(al);
-    }
 
     /**
      * @return the navViewPanel
@@ -77,7 +63,7 @@ public class NavView extends JFrame {
     /**
      * @return the newEntriesViewPanel
      */
-    public NewEntriesViewPanel getNewEntriesViewPanel() {
-        return newEntriesViewPanel;
+    public FoodMoodEntryForm getNewEntriesViewPanel() {
+        return foodMoodEntryForm;
     }
 }

@@ -1,12 +1,7 @@
 package database;
 
 import parents.Database;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import parents.Entry;
-import models.Drink;
 import java.util.ArrayList;
 
 /**
@@ -41,17 +36,5 @@ public class Drink_Table extends Database {
     public ArrayList<Entry> getAllEntries() {
         System.out.println("getAllEntries called in Drink_DB.");
         return new ArrayList<Entry>();
-    }
-    
-    public void deleteEntry(Drink drink, int accountID){
-        //update food entry in sql database
-        String sql = "DELETE FROM Foods WHERE accountID= \""+accountID+"\" AND name= \""+drink.getName()+"\" AND portion=\""+drink.getAmount()+"\" AND date=\""+drink.getDate()+"\";";
-    
-        try (Connection conn = this.connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
     }
 }
