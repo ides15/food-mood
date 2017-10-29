@@ -7,6 +7,10 @@ import java.util.ArrayList;
  * @author john
  */
 public class DrinkViewPanel extends javax.swing.JPanel {
+    
+    
+    private String drink;
+    private ArrayList<String> list;
 
     /**
      * Creates new form DrinkViewPanel
@@ -25,18 +29,18 @@ public class DrinkViewPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        foodListView = new javax.swing.JList<>();
+        drinkListView = new javax.swing.JList<>();
         entryLabel = new javax.swing.JLabel();
         editButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
         addButton = new javax.swing.JButton();
 
-        foodListView.setModel(new javax.swing.AbstractListModel<String>() {
+        drinkListView.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(foodListView);
+        jScrollPane1.setViewportView(drinkListView);
 
         entryLabel.setText("Entries");
 
@@ -113,9 +117,9 @@ public class DrinkViewPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.JButton deleteButton;
+    private javax.swing.JList<String> drinkListView;
     private javax.swing.JButton editButton;
     private javax.swing.JLabel entryLabel;
-    private javax.swing.JList<String> foodListView;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
@@ -141,6 +145,22 @@ public class DrinkViewPanel extends javax.swing.JPanel {
     
     public void setEditButton(javax.swing.JButton editButton){
         this.editButton = editButton;
+    }
+    
+    public javax.swing.JLabel getEntryLabel(){
+        return this.entryLabel;
+    }
+    
+    public void  setEntryLabel(javax.swing.JLabel entryLabel){
+        this.entryLabel = entryLabel;
+    }
+    
+    public javax.swing.JList getDrinkListView(){
+        return this.drinkListView;
+    }
+    
+    public void setDrinkListView(javax.swing.JList foodListView){
+        this.drinkListView = foodListView;
     }
 
 }
