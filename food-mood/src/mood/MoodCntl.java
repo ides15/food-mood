@@ -68,11 +68,13 @@ public class MoodCntl extends EntryCntl {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            moodView.getMoodViewPanel().setVisible(false);
+            moodView.add(moodView.getEditMoodPanel());
+            moodView.getEditMoodPanel().setVisible(true);
+            moodView.remove(moodView.getMoodViewPanel());
         }
     }
 
-    // TODO
     public class deleteBtnListener implements ActionListener {
 
         @Override
@@ -85,9 +87,7 @@ public class MoodCntl extends EntryCntl {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-//            navView.add(navView.getNavViewPanel());
-//            navView.getNewEntriesViewPanel().setVisible(false);
-//            navView.getNavViewPanel().setVisible(true);
+            moodView.dispose();
         }
     }
 
