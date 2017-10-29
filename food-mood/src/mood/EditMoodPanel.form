@@ -20,25 +20,25 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="aMoodCnlBtn" min="-2" pref="180" max="-2" attributes="0"/>
+                      <Component id="eMoodCnlBtn" min="-2" pref="180" max="-2" attributes="0"/>
                       <EmptySpace pref="45" max="32767" attributes="0"/>
-                      <Component id="aMoodUpdBtn" min="-2" pref="180" max="-2" attributes="0"/>
+                      <Component id="eMoodUpdBtn" min="-2" pref="180" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="aMSliderMinLabel" min="-2" pref="80" max="-2" attributes="0"/>
+                      <Component id="eMSliderMinLabel" min="-2" pref="80" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="aMLabel" min="-2" pref="120" max="-2" attributes="0"/>
+                              <Component id="eMLabel" min="-2" pref="120" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="aMField" max="32767" attributes="0"/>
-                                  <Component id="aMSlider" max="32767" attributes="0"/>
+                                  <Component id="eMField" max="32767" attributes="0"/>
+                                  <Component id="eMSlider" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="aMSliderMaxLabel" min="-2" pref="80" max="-2" attributes="0"/>
+                              <Component id="eMSliderMaxLabel" min="-2" pref="80" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -51,19 +51,19 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
-              <Component id="aMLabel" min="-2" pref="30" max="-2" attributes="0"/>
+              <Component id="eMLabel" min="-2" pref="30" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="aMField" min="-2" max="-2" attributes="0"/>
+              <Component id="eMField" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="21" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="aMSliderMinLabel" pref="30" max="32767" attributes="0"/>
-                  <Component id="aMSliderMaxLabel" pref="30" max="32767" attributes="0"/>
-                  <Component id="aMSlider" alignment="0" max="32767" attributes="0"/>
+                  <Component id="eMSliderMinLabel" pref="30" max="32767" attributes="0"/>
+                  <Component id="eMSliderMaxLabel" pref="30" max="32767" attributes="0"/>
+                  <Component id="eMSlider" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="aMoodCnlBtn" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-                  <Component id="aMoodUpdBtn" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="eMoodCnlBtn" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="eMoodUpdBtn" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -71,49 +71,49 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JTextField" name="aMField">
+    <Component class="javax.swing.JTextField" name="eMField">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ex. Satisfied"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="aMLabel">
+    <Component class="javax.swing.JLabel" name="eMLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="18" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Add Mood"/>
+        <Property name="text" type="java.lang.String" value="Edit Mood"/>
         <Property name="horizontalTextPosition" type="int" value="2"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="aMoodCnlBtn">
+    <Component class="javax.swing.JButton" name="eMoodCnlBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancel"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="aMoodCnlBtnActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eMoodCnlBtnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="aMSliderMinLabel">
+    <Component class="javax.swing.JLabel" name="eMSliderMinLabel">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="text" type="java.lang.String" value="0"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="aMSliderMaxLabel">
+    <Component class="javax.swing.JLabel" name="eMSliderMaxLabel">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="2"/>
         <Property name="text" type="java.lang.String" value="10"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="aMoodUpdBtn">
+    <Component class="javax.swing.JButton" name="eMoodUpdBtn">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Submit"/>
+        <Property name="text" type="java.lang.String" value="Update"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="aMoodUpdBtnActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eMoodUpdBtnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JSlider" name="aMSlider">
+    <Component class="javax.swing.JSlider" name="eMSlider">
     </Component>
   </SubComponents>
 </Form>

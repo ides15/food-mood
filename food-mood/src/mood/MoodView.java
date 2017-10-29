@@ -16,31 +16,24 @@ import models.Mood;
  * @author John
  */
 public class MoodView extends JFrame {
+
     private Mood mood;
     private final Mood_Table db;
-    private final MoodViewPanel moodViewPanel;
-    private final AddMoodPanel addMoodPanel;
-    private final EditMoodPanel editMoodPanel;
-    
-    /**
-     * Default constructor for MoodView.
-     * @param db Mood model for MVC architecture.
-     */
+    private MoodViewPanel moodViewPanel;
+    private AddMoodPanel addMoodPanel;
+    private EditMoodPanel editMoodPanel;
+
     public MoodView(Mood_Table db) {
         super("Mood");
         this.db = db;
-        
+
         setSize(400, 400);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        
+
         moodViewPanel = new MoodViewPanel();
-        add(moodViewPanel);
-        
-        addMoodPanel = new AddMoodPanel();
-        add(addMoodPanel);
-        
         editMoodPanel = new EditMoodPanel();
-        add(editMoodPanel);
+        addMoodPanel = new AddMoodPanel();
+        add(moodViewPanel);
     }
 
     /**
@@ -49,20 +42,56 @@ public class MoodView extends JFrame {
     public MoodViewPanel getMoodViewPanel() {
         return moodViewPanel;
     }
-    
+
+    public void setMoodViewPanel(MoodViewPanel moodViewPanel) {
+        this.moodViewPanel = moodViewPanel;
+    }
+
+    public AddMoodPanel getAddMoodPanel() {
+        return this.addMoodPanel;
+    }
+
+    public void setAddMoodPanel(AddMoodPanel addMoodPanel) {
+        this.addMoodPanel = addMoodPanel;
+    }
+
+    public EditMoodPanel getEditMoodPanel() {
+        return this.editMoodPanel;
+    }
+
+    public void setEditFoodPanel(EditMoodPanel editMoodPanel) {
+        this.editMoodPanel = editMoodPanel;
+    }
+
     public void addBtnListener(ActionListener al) {
         getMoodViewPanel().getAddButton().addActionListener(al);
     }
-    
+
     public void editBtnListener(ActionListener al) {
         getMoodViewPanel().getEditButton().addActionListener(al);
     }
-    
+
     public void deleteBtnListener(ActionListener al) {
         getMoodViewPanel().getDeleteButton().addActionListener(al);
     }
     
-    void backBtnListener(MoodCntl.backBtnListener backBtnListener) {
+    public void backBtnListener(ActionListener al){
+        getMoodViewPanel().getBackButton().addActionListener(al);
+    }
 
+    //Add
+    public void addSubmitButtonListener(ActionListener al) {
+        getAddMoodPanel().getaMoodUpdBtn().addActionListener(al);
+    }
+
+    //Edit
+    public void addUpdateButtonListener(ActionListener al) {
+        getEditMoodPanel().geteMoodUpdBtn().addActionListener(al);
+    }
+
+    //Back
+    public void addCancelButtonListener(ActionListener al) {
+        getAddMoodPanel().getaMoodCnlBtn().addActionListener(al);
+        getEditMoodPanel().geteMoodCnlBtn().addActionListener(al);
     }
 }

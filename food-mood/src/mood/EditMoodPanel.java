@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
+import models.Mood;
 
 /**
  *
@@ -33,37 +34,37 @@ public class EditMoodPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        aMField = new javax.swing.JTextField();
-        aMLabel = new javax.swing.JLabel();
-        aMoodCnlBtn = new javax.swing.JButton();
-        aMSliderMinLabel = new javax.swing.JLabel();
-        aMSliderMaxLabel = new javax.swing.JLabel();
-        aMoodUpdBtn = new javax.swing.JButton();
-        aMSlider = new javax.swing.JSlider();
+        eMField = new javax.swing.JTextField();
+        eMLabel = new javax.swing.JLabel();
+        eMoodCnlBtn = new javax.swing.JButton();
+        eMSliderMinLabel = new javax.swing.JLabel();
+        eMSliderMaxLabel = new javax.swing.JLabel();
+        eMoodUpdBtn = new javax.swing.JButton();
+        eMSlider = new javax.swing.JSlider();
 
-        aMField.setText("Ex. Satisfied");
+        eMField.setText("Ex. Satisfied");
 
-        aMLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        aMLabel.setText("Add Mood");
-        aMLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        eMLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        eMLabel.setText("Edit Mood");
+        eMLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
-        aMoodCnlBtn.setText("Cancel");
-        aMoodCnlBtn.addActionListener(new java.awt.event.ActionListener() {
+        eMoodCnlBtn.setText("Cancel");
+        eMoodCnlBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aMoodCnlBtnActionPerformed(evt);
+                eMoodCnlBtnActionPerformed(evt);
             }
         });
 
-        aMSliderMinLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        aMSliderMinLabel.setText("0");
+        eMSliderMinLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        eMSliderMinLabel.setText("0");
 
-        aMSliderMaxLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        aMSliderMaxLabel.setText("10");
+        eMSliderMaxLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        eMSliderMaxLabel.setText("10");
 
-        aMoodUpdBtn.setText("Submit");
-        aMoodUpdBtn.addActionListener(new java.awt.event.ActionListener() {
+        eMoodUpdBtn.setText("Update");
+        eMoodUpdBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aMoodUpdBtnActionPerformed(evt);
+                eMoodUpdBtnActionPerformed(evt);
             }
         });
 
@@ -75,79 +76,98 @@ public class EditMoodPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(aMoodCnlBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(eMoodCnlBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                        .addComponent(aMoodUpdBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(eMoodUpdBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(aMSliderMinLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(eMSliderMinLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(aMLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(eMLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(aMField)
-                                    .addComponent(aMSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(eMField)
+                                    .addComponent(eMSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(aMSliderMaxLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(eMSliderMaxLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(84, 84, 84)
-                .addComponent(aMLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(eMLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(aMField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(eMField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(aMSliderMinLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(aMSliderMaxLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(aMSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(eMSliderMinLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(eMSliderMaxLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(eMSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(75, 75, 75)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(aMoodCnlBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(aMoodUpdBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(eMoodCnlBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(eMoodUpdBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void aMoodCnlBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aMoodCnlBtnActionPerformed
+    private void eMoodCnlBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eMoodCnlBtnActionPerformed
         //Return
-    }//GEN-LAST:event_aMoodCnlBtnActionPerformed
+    }//GEN-LAST:event_eMoodCnlBtnActionPerformed
 
-    private void aMoodUpdBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aMoodUpdBtnActionPerformed
-        //Update
-    }//GEN-LAST:event_aMoodUpdBtnActionPerformed
+    private void eMoodUpdBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eMoodUpdBtnActionPerformed
+        //Create
+        Mood newMood = new Mood();
+        newMood.setName(eMField.toString());
+        newMood.setAmount(eMSlider.getValue());
+    }//GEN-LAST:event_eMoodUpdBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField aMField;
-    private javax.swing.JLabel aMLabel;
-    private javax.swing.JSlider aMSlider;
-    private javax.swing.JLabel aMSliderMaxLabel;
-    private javax.swing.JLabel aMSliderMinLabel;
-    private javax.swing.JButton aMoodCnlBtn;
-    private javax.swing.JButton aMoodUpdBtn;
+    private javax.swing.JTextField eMField;
+    private javax.swing.JLabel eMLabel;
+    private javax.swing.JSlider eMSlider;
+    private javax.swing.JLabel eMSliderMaxLabel;
+    private javax.swing.JLabel eMSliderMinLabel;
+    private javax.swing.JButton eMoodCnlBtn;
+    private javax.swing.JButton eMoodUpdBtn;
     // End of variables declaration//GEN-END:variables
     
     
     
     public javax.swing.JTextField getMField(){
-        return this.aMField;
+        return this.eMField;
     }
     
     public void setMField(javax.swing.JTextField eMField){
-        this.aMField = eMField;
+        this.eMField = eMField;
     }
     
     public javax.swing.JSlider getMSlider(){
-        return this.aMSlider;
+        return this.eMSlider;
     }
     
     public void setMSlider(javax.swing.JSlider eMSlider){
-        this.aMSlider = eMSlider;
+        this.eMSlider = eMSlider;
+    }
+
+    public JButton geteMoodCnlBtn() {
+        return eMoodCnlBtn;
+    }
+
+    public void seteMoodCnlBtn(JButton eMoodCnlBtn) {
+        this.eMoodCnlBtn = eMoodCnlBtn;
+    }
+
+    public JButton geteMoodUpdBtn() {
+        return eMoodUpdBtn;
+    }
+
+    public void seteMoodUpdBtn(JButton eMoodUpdBtn) {
+        this.eMoodUpdBtn = eMoodUpdBtn;
     }
     
 }
