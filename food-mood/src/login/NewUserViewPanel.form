@@ -24,18 +24,20 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="fillOutFieldsLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="newSubmitButton" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="newUsernameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="newPasswordLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="newUsernameTextField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="newPasswordTextField" alignment="0" min="-2" pref="168" max="-2" attributes="0"/>
-                          </Group>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="newUsernameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="newPasswordLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="newUsernameTextField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="newPasswordTextField" alignment="0" min="-2" pref="168" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -85,7 +87,10 @@
                   <Component id="newPasswordTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="newSubmitButton" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="newSubmitButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="fillOutFieldsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace pref="19" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -131,6 +136,14 @@
     <Component class="javax.swing.JTextField" name="newLastNameTextField">
     </Component>
     <Component class="javax.swing.JTextField" name="newEmailTextField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="fillOutFieldsLabel">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="You must fill out all fields."/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

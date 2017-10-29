@@ -12,6 +12,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import javax.swing.JPanel;
+import models.User;
 
 /**
  *
@@ -89,7 +91,28 @@ public class LoginCntl {
         public void actionPerformed(ActionEvent e) {
             newUserView = new NewUserView(db);
             newUserCntl = new NewUserCntl(db, getNewUserView());
+            getNewUserView().addNewSubmitButton(new NewSubmitButtonListener());
             getNewUserView().setVisible(true);
+        }
+    }
+    
+    public class NewSubmitButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String newFirstName = getNewUserView().getNewUserViewPanel().getNewFirstNameTextField().getText();
+            String newLastName = getNewUserView().getNewUserViewPanel().getNewLastNameTextField().getText();
+            String newEmail = getNewUserView().getNewUserViewPanel().getNewEmailTextField().getText();
+            String newUsername = getNewUserView().getNewUserViewPanel().getNewUsernameTextField().getText();
+            String newPassword = getNewUserView().getNewUserViewPanel().getNewPasswordTextField().getText();
+            
+            // if all the text fields are empty, set the label on newUserViewPanel visible; else add the new user to the users table
+            if(newFirstName.isEmpty() || newLastName.isEmpty() || newEmail.isEmpty() || newUsername.isEmpty() || newPassword.isEmpty()) {
+                getNewUserView().getNewUserViewPanel().getFillOutFieldsLabel().setVisible(true);
+            } else {
+                User newUser = new User(-1, newFirstName, newLastName, newEmail, newUsername, newPassword);
+                db.addNewUser(newUser);
+                getNewUserView().setVisible(false);
+            }
         }
     }
 

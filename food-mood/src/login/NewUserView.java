@@ -20,6 +20,7 @@ public class NewUserView extends JFrame {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
         newUserViewPanel = new NewUserViewPanel();
+        getNewUserViewPanel().getFillOutFieldsLabel().setVisible(false);
         add(newUserViewPanel);
     }
     

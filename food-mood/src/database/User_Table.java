@@ -2,6 +2,7 @@ package database;
 
 import parents.Database;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -75,6 +76,24 @@ public class User_Table extends Database {
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement()) {
             stmt.executeUpdate(sql);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public void addNewUser(User newUser) {
+        String sql = "INSERT INTO Users (firstName, lastName, email, username, password) "
+                + "VALUES (?, ?, ?, ?, ?)";
+        
+        try (Connection conn = this.connect();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setString(1, newUser.getFirstName());
+            pstmt.setString(2, newUser.getLastName());
+            pstmt.setString(3, newUser.getEmail());
+            pstmt.setString(4, newUser.getUsername());
+            pstmt.setString(5, newUser.getPassword());
+            pstmt.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }

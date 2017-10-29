@@ -1,8 +1,6 @@
 package login;
 
 import database.User_Table;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  *
@@ -17,14 +15,5 @@ public class NewUserCntl {
         this.newUserView = newUserView;
         
         newUserView.setVisible(true);
-        
-        newUserView.addNewSubmitButton(new NewSubmitButtonListener());
-    }
-    
-    public class NewSubmitButtonListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            System.out.println("submitted");
-        }
     }
 }
