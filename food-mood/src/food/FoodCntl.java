@@ -12,7 +12,8 @@ import models.Food;
 import database.Food_Table;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -27,6 +28,9 @@ public class FoodCntl extends EntryCntl {
     private final NavCntl navCntl;
     private final NavView navView;
     
+    String name;
+    String amount;
+    String date;
     
     
     /**
@@ -37,8 +41,6 @@ public class FoodCntl extends EntryCntl {
     public FoodCntl(Food_Table db, FoodView foodView) {        
         this.db = db;
         this.foodView = foodView;
-        
-        food = new Food("food", "amount");
         
         navView = new NavView();
         navCntl = new NavCntl(getNavView());
@@ -99,9 +101,13 @@ public class FoodCntl extends EntryCntl {
         public void actionPerformed(ActionEvent e) {
             
             System.out.println("Food added");
-            String name = foodView.getAddFoodPanel().getFoodField().getText();
-            String amount;
-            Date date = new Date();
+            name = foodView.getAddFoodPanel().getFoodField().getText();
+            amount = (String)foodView.getAddFoodPanel().getComboBox().getSelectedItem();
+            date = now();
+            
+            //Need actual accountID
+            db.addEntry(new Food(name,amount,date),1);
+            
             //db.addEntry(food);
             foodView.getAddFoodPanel().setVisible(false);
             foodView.add(foodView.getFoodPanel());
@@ -121,6 +127,11 @@ public class FoodCntl extends EntryCntl {
             foodView.getFoodPanel().setVisible(true);
             foodView.remove(foodView.getEditFoodPanel());
         }
+    }
+    public static String now() {
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        return sdf.format(cal.getTime());
     }
 
     /**
