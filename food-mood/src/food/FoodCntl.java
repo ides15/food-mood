@@ -12,6 +12,7 @@ import models.Food;
 import database.Food_Table;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
 /**
  *
@@ -19,11 +20,14 @@ import java.awt.event.ActionListener;
  */
 public class FoodCntl extends EntryCntl {
     private Food food;
+    
     private final Food_Table db;
     private final FoodView foodView;
     
     private final NavCntl navCntl;
     private final NavView navView;
+    
+    
     
     /**
      * Default constructor for FoodCntl.
@@ -95,6 +99,9 @@ public class FoodCntl extends EntryCntl {
         public void actionPerformed(ActionEvent e) {
             
             System.out.println("Food added");
+            String name = foodView.getAddFoodPanel().getFoodField().getText();
+            String amount;
+            Date date = new Date();
             //db.addEntry(food);
             foodView.getAddFoodPanel().setVisible(false);
             foodView.add(foodView.getFoodPanel());
