@@ -37,12 +37,11 @@ public class EditMoodView extends JFrame {
     public void setEditMoodPanel(MoodViewPanel moodViewPanel) {
         this.editMoodPanel = editMoodPanel;
     }
-
+    
     public MoodViewPanel getMoodViewPanel() {
         return moodViewPanel;
     }
 //Check
-
     public void setMoodViewPanel(MoodViewPanel moodViewPanel) {
         this.moodViewPanel = moodViewPanel;
     }
@@ -51,7 +50,8 @@ public class EditMoodView extends JFrame {
         getEditMoodPanel().getUpdateButton().addActionListener(al);
     }
 
-    public void cancelButtonListener(ActionListener al) {
+    
+    public void cancelButtonListener(ActionListener al){
         getEditMoodPanel().getCancelButton().addActionListener(al);
     }
 }

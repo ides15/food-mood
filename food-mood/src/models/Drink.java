@@ -21,6 +21,10 @@ public class Drink extends Entry {
         System.out.println(date.toString());
     }
 
+    public Drink(String name) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     /**
      * Function to set amount of drink
      * @param amount Amount of drink, accepts amount of ounces as integer
