@@ -25,15 +25,15 @@ public class AddMoodCntl extends EntryCntl {
 
         addMoodView.setVisible(true);
 
-        addMoodView.submitBtnListener(new AddMoodCntl.submitBtnListener());
-        addMoodView.backBtnListener(new AddMoodCntl.backBtnListener());
+        addMoodView.submitButtonListener(new AddMoodCntl.submitButtonListener());
+        addMoodView.cancelButtonListener(new AddMoodCntl.cancelButtonListener());
     }
 
     public AddMoodView getMoodView() {
         return addMoodView;
     }
 
-    public class submitBtnListener implements ActionListener {
+    public class submitButtonListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -52,7 +52,7 @@ public class AddMoodCntl extends EntryCntl {
         }
     }
 
-    public class backBtnListener implements ActionListener {
+    public class cancelButtonListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {

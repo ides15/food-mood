@@ -22,8 +22,8 @@ public class EditMoodCntl {
 
         editMoodView.setVisible(true);
 
-        editMoodView.submitBtnListener(new EditMoodCntl.submitBtnListener());
-        editMoodView.backBtnListener(new EditMoodCntl.backBtnListener());
+        editMoodView.updateButtonListener(new EditMoodCntl.updateButtonListener());
+        editMoodView.cancelButtonListener(new EditMoodCntl.cancelButtonListener());
     }
 
     /**
@@ -33,16 +33,16 @@ public class EditMoodCntl {
         return editMoodView;
     }
 
-    public class submitBtnListener implements ActionListener {
+    public class updateButtonListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Mood Submitted");
+            System.out.println("Mood Updated");
             editMoodView.dispose();
         }
     }
 
-    public class backBtnListener implements ActionListener {
+    public class cancelButtonListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {

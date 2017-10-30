@@ -81,17 +81,17 @@ public class MoodView extends JFrame {
 
     //Add
     public void addSubmitButtonListener(ActionListener al) {
-        getAddMoodPanel().getaMoodUpdBtn().addActionListener(al);
+        getAddMoodPanel().getSubmitButton().addActionListener(al);
     }
 
     //Edit
     public void addUpdateButtonListener(ActionListener al) {
-        getEditMoodPanel().geteMoodUpdBtn().addActionListener(al);
+        getEditMoodPanel().getUpdateButton().addActionListener(al);
     }
 
     //Back
     public void addCancelButtonListener(ActionListener al) {
-        getAddMoodPanel().getaMoodCnlBtn().addActionListener(al);
-        getEditMoodPanel().geteMoodCnlBtn().addActionListener(al);
+        getAddMoodPanel().getCancelButton().addActionListener(al);
+        getEditMoodPanel().getCancelButton().addActionListener(al);
     }
 }

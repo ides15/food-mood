@@ -20,9 +20,9 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="aMoodCnlBtn" min="-2" pref="180" max="-2" attributes="0"/>
+                      <Component id="cancelButton" min="-2" pref="180" max="-2" attributes="0"/>
                       <EmptySpace pref="45" max="32767" attributes="0"/>
-                      <Component id="aMoodUpdBtn" min="-2" pref="180" max="-2" attributes="0"/>
+                      <Component id="submitButton" min="-2" pref="180" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="aMSliderMinLabel" min="-2" pref="80" max="-2" attributes="0"/>
@@ -62,8 +62,8 @@
               </Group>
               <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="aMoodCnlBtn" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-                  <Component id="aMoodUpdBtn" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="cancelButton" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="submitButton" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -85,12 +85,12 @@
         <Property name="horizontalTextPosition" type="int" value="2"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="aMoodCnlBtn">
+    <Component class="javax.swing.JButton" name="cancelButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancel"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="aMoodCnlBtnActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="aMSliderMinLabel">
@@ -105,12 +105,12 @@
         <Property name="text" type="java.lang.String" value="10"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="aMoodUpdBtn">
+    <Component class="javax.swing.JButton" name="submitButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Submit"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="aMoodUpdBtnActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="submitButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JSlider" name="aMSlider">
