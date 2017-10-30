@@ -4,16 +4,15 @@
  * and open the template in the editor.
  */
 package mood;
-
 import app.EntryCntl;
 import app.NavCntl;
+import app.NavView;
 import database.Mood_Table;
 import database.User_Table;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import models.Mood;
 import models.User;
-
 /**
  *
  * @author John
@@ -23,6 +22,9 @@ public class MoodCntl extends EntryCntl {
     private Mood mood;
     private final Mood_Table db;
     private final MoodView moodView;
+    
+    private final NavCntl navCntl;
+    private final NavView navView;
 
     /**
      * Default constructor for MoodCntl.
@@ -35,6 +37,9 @@ public class MoodCntl extends EntryCntl {
         this.moodView = moodView;
 
         mood = new Mood();
+        
+        navView = new NavView();
+        navCntl = new NavCntl(getNavView());
 
         moodView.setVisible(true);
 
@@ -42,6 +47,9 @@ public class MoodCntl extends EntryCntl {
         moodView.editBtnListener(new MoodCntl.editBtnListener());
         moodView.deleteBtnListener(new MoodCntl.deleteBtnListener());
         moodView.backBtnListener(new MoodCntl.backBtnListener());
+        moodView.addSubmitButtonListener(new MoodCntl.submitButtonListener());
+        moodView.addUpdateButtonListener(new MoodCntl.updateButtonListener());
+        moodView.addCancelButtonListener(new MoodCntl.cancelButtonListener());
     }
 
     /**
@@ -85,7 +93,48 @@ public class MoodCntl extends EntryCntl {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            String selection;
+            System.out.println("Food deleted");
+            
+            selection = moodView.getMoodViewPanel().getMoodListView().getSelectedValue().toString();
+            mood.setName(selection);
+            
+            db.deleteEntry(mood, navCntl.getAccountID());
+        }
+    }
+    
+     public class cancelButtonListener implements ActionListener {
 
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            moodView.getAddMoodPanel().setVisible(false);
+            moodView.getEditMoodPanel().setVisible(false);
+            moodView.add(moodView.getMoodViewPanel());
+            moodView.getMoodViewPanel().setVisible(true);
+            moodView.remove(moodView.getAddMoodPanel());
+            moodView.remove(moodView.getEditMoodPanel());
+        }
+    }
+    
+    public class submitButtonListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            moodView.getAddMoodPanel().setVisible(false);
+            moodView.add(moodView.getMoodViewPanel());
+            moodView.getMoodViewPanel().setVisible(true);
+            moodView.remove(moodView.getAddMoodPanel());
+        }
+    }
+    
+    public class updateButtonListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            moodView.getEditMoodPanel().setVisible(false);
+            moodView.add(moodView.getMoodViewPanel());
+            moodView.getMoodViewPanel().setVisible(true);
+            moodView.remove(moodView.getEditMoodPanel());
         }
     }
 
@@ -103,5 +152,17 @@ public class MoodCntl extends EntryCntl {
 
     public Mood_Table getDb() {
         return db;
+    }
+    
+    public NavView getNavView() {
+        return navView;
+    }
+    
+    public Mood getMood() {
+        return mood;
+    }
+    
+    public void setMood(Mood mood) {
+        this.mood = mood; 
     }
 }

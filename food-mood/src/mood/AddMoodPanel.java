@@ -35,10 +35,10 @@ public class AddMoodPanel extends javax.swing.JPanel {
 
         aMField = new javax.swing.JTextField();
         aMLabel = new javax.swing.JLabel();
-        aMoodCnlBtn = new javax.swing.JButton();
+        cancelButton = new javax.swing.JButton();
         aMSliderMinLabel = new javax.swing.JLabel();
         aMSliderMaxLabel = new javax.swing.JLabel();
-        aMoodUpdBtn = new javax.swing.JButton();
+        submitButton = new javax.swing.JButton();
         aMSlider = new javax.swing.JSlider();
 
         aMField.setText("Ex. Satisfied");
@@ -47,10 +47,10 @@ public class AddMoodPanel extends javax.swing.JPanel {
         aMLabel.setText("Add Mood");
         aMLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
-        aMoodCnlBtn.setText("Cancel");
-        aMoodCnlBtn.addActionListener(new java.awt.event.ActionListener() {
+        cancelButton.setText("Cancel");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aMoodCnlBtnActionPerformed(evt);
+                cancelButtonActionPerformed(evt);
             }
         });
 
@@ -60,10 +60,10 @@ public class AddMoodPanel extends javax.swing.JPanel {
         aMSliderMaxLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         aMSliderMaxLabel.setText("10");
 
-        aMoodUpdBtn.setText("Submit");
-        aMoodUpdBtn.addActionListener(new java.awt.event.ActionListener() {
+        submitButton.setText("Submit");
+        submitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aMoodUpdBtnActionPerformed(evt);
+                submitButtonActionPerformed(evt);
             }
         });
 
@@ -75,9 +75,9 @@ public class AddMoodPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(aMoodCnlBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                        .addComponent(aMoodUpdBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(aMSliderMinLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -107,19 +107,19 @@ public class AddMoodPanel extends javax.swing.JPanel {
                     .addComponent(aMSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(75, 75, 75)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(aMoodCnlBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(aMoodUpdBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void aMoodCnlBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aMoodCnlBtnActionPerformed
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         //Return
-    }//GEN-LAST:event_aMoodCnlBtnActionPerformed
+    }//GEN-LAST:event_cancelButtonActionPerformed
 
-    private void aMoodUpdBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aMoodUpdBtnActionPerformed
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         //Update
-    }//GEN-LAST:event_aMoodUpdBtnActionPerformed
+    }//GEN-LAST:event_submitButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -128,8 +128,8 @@ public class AddMoodPanel extends javax.swing.JPanel {
     private javax.swing.JSlider aMSlider;
     private javax.swing.JLabel aMSliderMaxLabel;
     private javax.swing.JLabel aMSliderMinLabel;
-    private javax.swing.JButton aMoodCnlBtn;
-    private javax.swing.JButton aMoodUpdBtn;
+    private javax.swing.JButton cancelButton;
+    private javax.swing.JButton submitButton;
     // End of variables declaration//GEN-END:variables
     
     
@@ -150,20 +150,20 @@ public class AddMoodPanel extends javax.swing.JPanel {
         this.aMSlider = eMSlider;
     }
 
-    public JButton getaMoodCnlBtn() {
-        return aMoodCnlBtn;
+   public JButton getCancelButton() {
+        return cancelButton;
     }
 
-    public void setaMoodCnlBtn(JButton aMoodCnlBtn) {
-        this.aMoodCnlBtn = aMoodCnlBtn;
+    public void setCancel(JButton cancelButton) {
+        this.cancelButton = cancelButton;
     }
 
-    public JButton getaMoodUpdBtn() {
-        return aMoodUpdBtn;
+    public JButton getSubmitButton() {
+        return submitButton;
     }
 
-    public void setaMoodUpdBtn(JButton aMoodUpdBtn) {
-        this.aMoodUpdBtn = aMoodUpdBtn;
+    public void setSubmitButton(JButton submitButton) {
+        this.submitButton = submitButton;
     }
     
 }

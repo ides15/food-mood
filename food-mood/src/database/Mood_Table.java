@@ -1,8 +1,13 @@
 package database;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import parents.Database;
 import parents.Entry;
 import java.util.ArrayList;
+import models.Mood;
 
 /**
  *
@@ -36,5 +41,17 @@ public class Mood_Table extends Database {
     public ArrayList<Entry> getAllEntries() {
         System.out.println("getAllEntries called in Mood_DB.");
         return new ArrayList<Entry>();
+    }
+    
+    public void deleteEntry(Mood mood, int accountID){
+        //update food entry in sql database
+        String sql = "DELETE FROM Foods WHERE accountID= \""+accountID+"\" AND name= \""+mood.getName()+"\" AND portion=\""+mood.getAmount()+"\" AND date=\""+mood.getDate()+"\";";
+    
+        try (Connection conn = this.connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 }
