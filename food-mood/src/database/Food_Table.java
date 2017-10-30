@@ -55,8 +55,9 @@ public class Food_Table extends Database {
     public void addEntry(Food food, int accountID){
         String sql = "INSERT INTO Foods (name, portion, date, accountID) VALUES (\""+food.getName()+"\", \""+food.getAmount()+"\", \""+ food.getDate()+"\", \""+accountID+"\");";
         try (Connection conn = this.connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
+                Statement stmt = conn.createStatement()) {
+            
+            stmt.executeUpdate(sql);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -111,11 +112,11 @@ public class Food_Table extends Database {
     
     public void deleteEntry(Food food, int accountID){
         //update food entry in sql database
-        String sql = "DELETE FROM Foods WHERE accountID= \""+accountID+"\" AND name= \""+food.getName()+"\" AND portion=\""+food.getAmount()+"\" AND date=\""+food.getDate()+"\";";
+        String sql = "DELETE FROM Foods WHERE accountID = \"" + accountID + "\" AND name = \"" + food.getName() + "\" AND portion=\"" + food.getAmount() + "\" AND date=\"" + food.getDate() + "\";";
     
         try (Connection conn = this.connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
+                Statement stmt = conn.createStatement()) {
+            stmt.executeUpdate(sql);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }

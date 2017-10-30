@@ -30,10 +30,8 @@ public class AddFoodPanel extends javax.swing.JPanel {
         foodField = new javax.swing.JTextField();
         foodLabel = new javax.swing.JLabel();
         portionLabel = new javax.swing.JLabel();
-        smallRadio = new javax.swing.JRadioButton();
-        mediumRadio = new javax.swing.JRadioButton();
-        largeRadio = new javax.swing.JRadioButton();
         submitButton = new javax.swing.JButton();
+        comboBox = new javax.swing.JComboBox<>();
 
         foodField.setText("Ex. Tomato Soup");
 
@@ -41,13 +39,14 @@ public class AddFoodPanel extends javax.swing.JPanel {
 
         portionLabel.setText("Portion");
 
-        smallRadio.setText("Small");
-
-        mediumRadio.setText("Medium");
-
-        largeRadio.setText("Large");
-
         submitButton.setText("Submit");
+
+        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Small", "Medium", "Large"}));
+        comboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -58,12 +57,10 @@ public class AddFoodPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(143, 143, 143)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(largeRadio)
-                            .addComponent(mediumRadio)
-                            .addComponent(smallRadio)
-                            .addComponent(portionLabel)
                             .addComponent(foodLabel)
-                            .addComponent(foodField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(foodField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(portionLabel)
+                            .addComponent(comboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(162, 162, 162)
                         .addComponent(submitButton)))
@@ -76,28 +73,26 @@ public class AddFoodPanel extends javax.swing.JPanel {
                 .addComponent(foodLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(foodField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(44, 44, 44)
                 .addComponent(portionLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(smallRadio)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(mediumRadio)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(largeRadio)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
                 .addComponent(submitButton)
                 .addContainerGap(60, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void comboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> comboBox;
     private javax.swing.JTextField foodField;
     private javax.swing.JLabel foodLabel;
-    private javax.swing.JRadioButton largeRadio;
-    private javax.swing.JRadioButton mediumRadio;
     private javax.swing.JLabel portionLabel;
-    private javax.swing.JRadioButton smallRadio;
     private javax.swing.JButton submitButton;
     // End of variables declaration//GEN-END:variables
     
@@ -113,28 +108,8 @@ public class AddFoodPanel extends javax.swing.JPanel {
         return this.foodLabel;
     }
     
-    public javax.swing.JRadioButton getLargeRadio(){
-        return this.largeRadio;
-    }
-    
-    public void setLargeRadio(javax.swing.JRadioButton largeRadio){
-        this.largeRadio = largeRadio;
-    }
-    
-    public javax.swing.JRadioButton getSmallRadio(){
-        return this.smallRadio;
-    }
-    
-    public void setSmallRadio(javax.swing.JRadioButton smallRadio){
-        this.smallRadio = smallRadio;
-    }
-    
-    public javax.swing.JRadioButton getMediumRadio(){
-        return this.mediumRadio;
-    }
-    
-    public void setMediumRadio(javax.swing.JRadioButton mediumRadio){
-        this.mediumRadio = mediumRadio;
+    public javax.swing.JComboBox getComboBox(){
+        return this.comboBox;
     }
     
     public javax.swing.JButton getSubmitButton(){

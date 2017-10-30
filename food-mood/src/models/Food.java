@@ -6,7 +6,6 @@
 package models;
 
 import parents.Entry;
-import java.util.Date;
 
 /**
  *
@@ -15,20 +14,19 @@ import java.util.Date;
 public class Food extends Entry {
     private final String food;
     private final String amount;
-    private final Date date;
+    private final String date;
     
     /**
      * Default constructor for Food class.
      * @param food name of the food
      * @param amount amount of food in ?units
      */
-    public Food(String food, String amount) {
+    public Food(String food, String amount, String date) {
         super();
         
         this.food = food;
         this.amount = amount;
-        this.date = new Date();
-        System.out.println(date.toString());
+        this.date = date;
     }
 
     /**
@@ -49,7 +47,7 @@ public class Food extends Entry {
         return super.getAmount();
     }
     
-    public Date getDate(){
+    public String getDate(){
         return this.date;
     }
 

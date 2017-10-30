@@ -12,6 +12,8 @@ import models.Food;
 import database.Food_Table;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -19,11 +21,18 @@ import java.awt.event.ActionListener;
  */
 public class FoodCntl extends EntryCntl {
     private Food food;
+    
     private final Food_Table db;
     private final FoodView foodView;
     
     private final NavCntl navCntl;
     private final NavView navView;
+    
+    private String name;
+    private String amount;
+    private String date;
+    private int accountID;
+    
     
     /**
      * Default constructor for FoodCntl.
@@ -33,8 +42,6 @@ public class FoodCntl extends EntryCntl {
     public FoodCntl(Food_Table db, FoodView foodView) {        
         this.db = db;
         this.foodView = foodView;
-        
-        food = new Food("food", "amount");
         
         navView = new NavView();
         navCntl = new NavCntl(getNavView());
@@ -95,6 +102,15 @@ public class FoodCntl extends EntryCntl {
         public void actionPerformed(ActionEvent e) {
             
             System.out.println("Food added");
+            name = foodView.getAddFoodPanel().getFoodField().getText();
+            amount = (String)foodView.getAddFoodPanel().getComboBox().getSelectedItem();
+            date = now();
+            
+            food = new Food(name, amount, date);
+            
+            //Need actual accountID
+            db.addEntry(food ,navCntl.getAccountID());
+            
             //db.addEntry(food);
             foodView.getAddFoodPanel().setVisible(false);
             foodView.add(foodView.getFoodPanel());
@@ -114,6 +130,11 @@ public class FoodCntl extends EntryCntl {
             foodView.getFoodPanel().setVisible(true);
             foodView.remove(foodView.getEditFoodPanel());
         }
+    }
+    public static String now() {
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        return sdf.format(cal.getTime());
     }
 
     /**
