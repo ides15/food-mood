@@ -113,9 +113,9 @@ public class Food_Table extends Database {
         return foodList;
     }
     
-    public void deleteEntry(Food food, int accountID){
+    public void deleteEntry(String name, int accountID){
         //update food entry in sql database
-        String sql = "DELETE FROM Foods WHERE accountID = \"" + accountID + "\" AND name = \"" + food.getName() + "\" AND portion=\"" + food.getAmount() + "\" AND date=\"" + food.getDate() + "\";";
+        String sql = "DELETE FROM Foods WHERE accountID = \"" + accountID + "\" AND name = \"" + name + "\"";
     
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement()) {

@@ -66,12 +66,10 @@ public class FoodCntl extends EntryCntl {
     class DeleteButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("delete button listener");
-            if(!foodView.getFoodViewPanel().getFoodListView().isSelectionEmpty())
-                System.out.println(foodView.getFoodViewPanel().getFoodListView().getSelectedValue().toString() + " needs to be deleted");
-            
-//            db.deleteEntry(food, navCntl.getAccountID());
-            
+            if(!foodView.getFoodViewPanel().getFoodListView().isSelectionEmpty()) {
+                db.deleteEntry(foodView.getFoodViewPanel().getFoodListView().getSelectedValue().toString(), getAccountID());
+                foodView.getFoodViewPanel().initFoodsData();
+            }
         }
     }
     

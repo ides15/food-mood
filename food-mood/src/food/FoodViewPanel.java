@@ -28,7 +28,6 @@ public class FoodViewPanel extends javax.swing.JPanel {
         db = new Food_Table("foodmood.db");
         
         initFoodsData();
-        getFoodListView().setListData(foodsData);
     }
     
     public void initFoodsData() {
@@ -39,6 +38,8 @@ public class FoodViewPanel extends javax.swing.JPanel {
         for(int i = 0; i < size; i++) {
             foodsData[i] = data.get(i);
         }
+        
+        getFoodListView().setListData(foodsData);
     }
 
     /**
