@@ -39,10 +39,10 @@ public class FoodCntl extends EntryCntl {
      * @param db Food model for MVC architecture.
      * @param foodView FoodView for MVC architecture.
      */
-    public FoodCntl(Food_Table db, FoodView foodView) {        
+    public FoodCntl(Food_Table db, FoodView foodView, int accountID) {        
         this.db = db;
         this.foodView = foodView;
-        
+        this.accountID = accountID;
         navView = new NavView();
         navCntl = new NavCntl(getNavView());
         
@@ -110,7 +110,7 @@ public class FoodCntl extends EntryCntl {
             food = new Food(name, amount, date);
             
             //Need actual accountID
-            db.addEntry(food , navCntl.getProfileCntl().getUser().getUserID());
+            db.addEntry(food , accountID);
             
             //db.addEntry(food);
             foodView.getAddFoodPanel().setVisible(false);
