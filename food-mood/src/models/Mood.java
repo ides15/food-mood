@@ -13,8 +13,6 @@ public class Mood extends Entry {
 
     private Date date;
     private String name;
-    private int accountID;
-    private int quantity;
 
     /**
      * Default constructor for Mood class.
@@ -25,12 +23,10 @@ public class Mood extends Entry {
         System.out.println(date.toString());
     }
 
-    public Mood(String name, int quantity, int accountID) {
+    public Mood(String name) {
         super();
         this.date = new Date();
         this.name = name;
-        this.quantity = quantity;
-        this.accountID = accountID;
         System.out.println(date.toString());
     }
     /**

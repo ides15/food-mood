@@ -27,46 +27,37 @@ public class Mood_Table extends Database {
     public Mood getUserMood(int accountID) {
         String name = null,
                 date = null;
-        int quantity = 0;
+        int amount = 0;
 
-        String sql = "SELECT name, quantity, date FROM Users WHERE accountID = \"" + accountID + "\"";
+        String sql = "SELECT name, amount, date FROM Users WHERE accountID = \"" + accountID + "\"";
 
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 name = rs.getString("name");
-                quantity = rs.getInt("quantity");
+                amount = rs.getInt("amount");
                 date = rs.getString("date");
+                accountID = rs.getInt("accountID");
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
 
-        return new Mood(name, quantity, accountID);
-    }
-
-    public void setUserPassword(int accountID, String newPassword) {
-        String sql = "UPDATE Users SET password = \"" + newPassword + "\" WHERE accountID = \"" + accountID + "\"";
-
-        try (Connection conn = this.connect();
-                Statement stmt = conn.createStatement()) {
-            stmt.executeUpdate(sql);
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
+        return new Mood(name);
     }
 
     public void addNewMood(Mood newMood) {
-        String sql = "INSERT INTO Moods (name,quantity,date) "
-                + "VALUES (?, ?, ?)";
+        String sql = "INSERT INTO Moods (name,amount, date, accountID) "
+                + "VALUES (?, ?,?, ?)";
 
         try (Connection conn = this.connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, newMood.getName());
             pstmt.setInt(2, newMood.getAmount());
-            pstmt.setString(4, "March 3rd, 2013");
+            pstmt.setString(3, "March 3rd, 2013");
+            pstmt.setInt(4, 103);
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -74,19 +65,20 @@ public class Mood_Table extends Database {
     }
 
     @Override
-    public String getEntry(String entry) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public ArrayList<Entry> getAllEntries() {
+        return null;
     }
 
     @Override
-    public ArrayList<Entry> getAllEntries() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getEntry(String entry) {
+        System.out.println("getEntry called in Food_DB.");
+        return "Mood";
     }
-    
-    public void deleteEntry(Mood mood, int accountID){
+
+    public void deleteEntry(Mood mood, int accountID) {
         //update food entry in sql database
-        String sql = "DELETE FROM Foods WHERE accountID= \""+accountID+"\" AND name= \""+mood.getName()+"\" AND portion=\""+mood.getAmount()+"\" AND date=\""+mood.getDate()+"\";";
-    
+        String sql = "DELETE FROM Foods WHERE accountID= \"" + accountID + "\" AND name= \"" + mood.getName() + "\" AND portion=\"" + mood.getAmount() + "\" AND date=\"" + mood.getDate() + "\";";
+
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
