@@ -27,16 +27,16 @@ public class Mood_Table extends Database {
     public Mood getUserMood(int accountID) {
         String name = null,
                 date = null;
-        int quantity = 0;
+        int amount = 0;
 
-        String sql = "SELECT name, quantity, date FROM Users WHERE accountID = \"" + accountID + "\"";
+        String sql = "SELECT name, amount, date FROM Users WHERE accountID = \"" + accountID + "\"";
 
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 name = rs.getString("name");
-                quantity = rs.getInt("quantity");
+                amount = rs.getInt("amount");
                 date = rs.getString("date");
                 accountID = rs.getInt("accountID");
             }
@@ -48,7 +48,7 @@ public class Mood_Table extends Database {
     }
 
     public void addNewMood(Mood newMood) {
-        String sql = "INSERT INTO Moods (name,quantity, accountID, date) "
+        String sql = "INSERT INTO Moods (name,amount, date, accountID) "
                 + "VALUES (?, ?,?, ?)";
 
         try (Connection conn = this.connect();
@@ -56,8 +56,8 @@ public class Mood_Table extends Database {
 
             pstmt.setString(1, newMood.getName());
             pstmt.setInt(2, newMood.getAmount());
-            pstmt.setInt(3, 103);
-            pstmt.setString(4, "March 3rd, 2013");
+            pstmt.setString(3, "March 3rd, 2013");
+            pstmt.setInt(4, 103);
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -72,7 +72,7 @@ public class Mood_Table extends Database {
     @Override
     public String getEntry(String entry) {
         System.out.println("getEntry called in Food_DB.");
-        return "Drink";
+        return "Mood";
     }
 
     public void deleteEntry(Mood mood, int accountID) {
