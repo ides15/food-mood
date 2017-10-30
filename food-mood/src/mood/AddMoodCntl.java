@@ -14,6 +14,8 @@ public class AddMoodCntl extends EntryCntl {
     private Mood mood;
     private final Mood_Table db;
     private final AddMoodView addMoodView;
+    public  String moodInput;
+    public int moodSlider;
 
     public AddMoodCntl(Mood_Table db, AddMoodView addMoodView) {
         this.db = db;
@@ -27,9 +29,6 @@ public class AddMoodCntl extends EntryCntl {
         addMoodView.backBtnListener(new AddMoodCntl.backBtnListener());
     }
 
-    /**
-     * @return the moodView
-     */
     public AddMoodView getMoodView() {
         return addMoodView;
     }
@@ -39,6 +38,11 @@ public class AddMoodCntl extends EntryCntl {
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("Mood Submitted");
+            moodInput = addMoodView.getAddMoodPanel().getMField().getText();
+            System.out.println("Mood: " + moodInput);
+            moodSlider = addMoodView.getAddMoodPanel().getMSlider().getValue();
+            moodSlider/=10;
+            System.out.println("Mood Scale: " + moodSlider);
             addMoodView.dispose();
         }
     }
