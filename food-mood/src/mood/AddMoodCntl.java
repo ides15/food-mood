@@ -43,6 +43,11 @@ public class AddMoodCntl extends EntryCntl {
             moodSlider = addMoodView.getAddMoodPanel().getMSlider().getValue();
             moodSlider/=10;
             System.out.println("Mood Scale: " + moodSlider);
+            
+            Mood mood = new Mood();
+            mood.setName(moodInput);
+            mood.setAmount(moodSlider);
+            
             addMoodView.dispose();
         }
     }
