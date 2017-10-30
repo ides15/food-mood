@@ -20,6 +20,8 @@ public class FoodView extends JFrame {
     private FoodViewPanel foodViewPanel;
     private int accountID;
     
+    private final AddFoodView addFoodView;
+    
     /**
      * Default constructor for FoodView.
      * @param db FoodView for MVC architecture.
@@ -32,6 +34,8 @@ public class FoodView extends JFrame {
         
         setSize(450, 400);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        
+        addFoodView = new AddFoodView(accountID);
         
         foodViewPanel = new FoodViewPanel(accountID);
         add(foodViewPanel);
@@ -75,5 +79,12 @@ public class FoodView extends JFrame {
      */
     public void setAccountID(int accountID) {
         this.accountID = accountID;
+    }
+
+    /**
+     * @return the addFoodView
+     */
+    public AddFoodView getAddFoodView() {
+        return addFoodView;
     }
 }

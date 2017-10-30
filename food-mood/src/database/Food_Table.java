@@ -54,7 +54,8 @@ public class Food_Table extends Database {
     }
     
     public void addEntry(Food food, int accountID){
-        String sql = "INSERT INTO Foods (name, portion, date, accountID) VALUES (\"" + food.getName() + "\", \"" + food.getAmount() + "\", \"" + food.getDate() + "\", \"" + accountID + "\");";
+        String sql = "INSERT INTO Foods (accountID, name, portion, date) VALUES (\"" + accountID + "\", \"" + food.getName() + "\", \"" + food.getAmount()+ "\", \"" + food.getDate() + "\");";
+        
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement()) {
             

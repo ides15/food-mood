@@ -1,8 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+// John Ide - page for adding a new food
+
 package food;
 
 /**
@@ -10,12 +7,15 @@ package food;
  * @author Kyle
  */
 public class AddFoodPanel extends javax.swing.JPanel {
-
+    private int accountID;
+    
     /**
      * Creates new form FoodCreatePanel
+     * @param accountID
      */
-    public AddFoodPanel() {
+    public AddFoodPanel(int accountID) {
         initComponents();
+        this.accountID = accountID;
     }
 
     /**
@@ -42,11 +42,6 @@ public class AddFoodPanel extends javax.swing.JPanel {
         submitButton.setText("Submit");
 
         comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Small", "Medium", "Large"}));
-        comboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboBoxActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -83,10 +78,6 @@ public class AddFoodPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void comboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboBoxActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> comboBox;
@@ -118,5 +109,19 @@ public class AddFoodPanel extends javax.swing.JPanel {
     
     public void setSubmitButton(javax.swing.JButton submitButton){
         this.submitButton = submitButton;
+    }
+
+    /**
+     * @return the accountID
+     */
+    public int getAccountID() {
+        return accountID;
+    }
+
+    /**
+     * @param accountID the accountID to set
+     */
+    public void setAccountID(int accountID) {
+        this.accountID = accountID;
     }
 }

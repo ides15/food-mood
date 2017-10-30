@@ -1,8 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+// John Ide - food controller (I did the delete and add functions)
+
 package food;
 
 import app.EntryCntl;
@@ -10,6 +7,8 @@ import models.Food;
 import database.Food_Table;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
+import javax.swing.ListModel;
 
 /**
  *
@@ -55,11 +54,10 @@ public class FoodCntl extends EntryCntl {
     class AddButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            foodView.getFoodViewPanel().setVisible(false);
-            addFoodPanel = new AddFoodPanel();
-            foodView.add(addFoodPanel);
-            addFoodPanel.setVisible(true);
-            foodView.remove(foodView.getFoodViewPanel());
+            getFoodView().add(getFoodView().getAddFoodView().getAddFoodPanel());
+            getFoodView().getFoodViewPanel().setVisible(false);
+            getFoodView().getAddFoodView().getAddFoodPanel().setVisible(true);
+            getFoodView().getAddFoodView().addSubmitButtonListener(new SubmitButtonListener());
         }
     }
     
@@ -76,8 +74,7 @@ public class FoodCntl extends EntryCntl {
     class EditButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            
-            System.out.println("Food added");
+            System.out.println("edit");
 //            name = foodView.getAddFoodPanel().getFoodField().getText().toString();
 //            amount = foodView.getAddFoodPanel().getComboBox().getSelectedItem().toString();
             
@@ -90,28 +87,25 @@ public class FoodCntl extends EntryCntl {
         }
     }
     
-//    class SubmitButtonListener implements ActionListener {
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            System.out.println("submit button listener");
-//            
-////            System.out.println("Food added");
-////            name = foodView.getAddFoodPanel().getFoodField().getText();
-////            amount = (String)foodView.getAddFoodPanel().getComboBox().getSelectedItem();
-////            date = now();
-////            
-////            food = new Food(name, amount, date);
-////            
-////            //Need actual accountID
-////            db.addEntry(food ,navCntl.getAccountID());
-////            
-////            //db.addEntry(food);
-////            foodView.getAddFoodPanel().setVisible(false);
-////            foodView.add(foodView.getFoodPanel());
-////            foodView.getFoodPanel().setVisible(true);
-////            foodView.remove(foodView.getAddFoodPanel());
-//        }
-//    }
+    class SubmitButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String name = getFoodView().getAddFoodView().getAddFoodPanel().getFoodField().getText();
+            ListModel amountModel = getFoodView().getAddFoodView().getAddFoodPanel().getComboBox().getModel();
+            String amount = amountModel.getElementAt(getFoodView().getAddFoodView().getAddFoodPanel().getComboBox().getSelectedIndex()).toString();
+            
+            System.out.println("name: " + name);
+            System.out.println("amount: " + amount);
+            
+            Food newFood = new Food(name, amount, new Date().toString());
+            
+            db.addEntry(newFood, accountID);
+//            foodView.getAddFoodPanel().setVisible(false);
+//            foodView.add(foodView.getFoodPanel());
+//            foodView.getFoodPanel().setVisible(true);
+//            foodView.remove(foodView.getAddFoodPanel());
+        }
+    }
     
 //    class UpdateButtonListener implements ActionListener {
 //        @Override
