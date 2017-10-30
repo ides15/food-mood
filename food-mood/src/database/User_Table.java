@@ -1,3 +1,5 @@
+// John Ide - class for accessing the Users table of the database
+
 package database;
 
 import parents.Database;

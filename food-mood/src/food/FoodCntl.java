@@ -27,15 +27,9 @@ public class FoodCntl extends EntryCntl {
      * @param db Food model for MVC architecture.
      * @param foodView FoodView for MVC architecture.
      */
-    public FoodCntl(Food_Table db, FoodView foodView, int accountID) {        
+    public FoodCntl(Food_Table db, FoodView foodView) {        
         this.db = db;
         this.foodView = foodView;
-<<<<<<< HEAD
-=======
-        this.accountID = accountID;
-        navView = new NavView();
-        navCntl = new NavCntl(getNavView());
->>>>>>> c9421da1f7394b0dff8e553d06a9b6880a232dc3
         
         foodView.setVisible(true);
         
@@ -69,31 +63,18 @@ public class FoodCntl extends EntryCntl {
     
     class EditButtonListener implements ActionListener {
         @Override
-<<<<<<< HEAD
-        public  void actionPerformed(ActionEvent e) {
-            System.out.println("edit button listener");
-=======
         public void actionPerformed(ActionEvent e) {
             
             System.out.println("Food added");
-            name = foodView.getAddFoodPanel().getFoodField().getText().toString();
-            amount = foodView.getAddFoodPanel().getComboBox().getSelectedItem().toString();
+//            name = foodView.getAddFoodPanel().getFoodField().getText().toString();
+//            amount = foodView.getAddFoodPanel().getComboBox().getSelectedItem().toString();
             
-            date = now();
+//            date = now();
             
-            food = new Food(name, amount, date);
+//            food = new Food(name, amount, date);
             
             //Need actual accountID
-            db.addEntry(food , accountID);
->>>>>>> c9421da1f7394b0dff8e553d06a9b6880a232dc3
-            
-//            System.out.println("Food edited");
-//            //switch to edit panel with old info on left side and new food form 
-//            //on right with update on bottom
-//            foodView.getFoodPanel().setVisible(false);
-//            foodView.add(foodView.getEditFoodPanel());
-//            foodView.getEditFoodPanel().setVisible(true);
-//            foodView.remove(foodView.getFoodPanel());
+//            db.addEntry(food , accountID);
         }
     }
     

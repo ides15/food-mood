@@ -1,3 +1,5 @@
+// John Ide - new user main frame
+
 package login;
 
 import database.User_Table;
