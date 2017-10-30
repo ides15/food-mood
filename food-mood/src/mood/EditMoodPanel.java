@@ -36,10 +36,10 @@ public class EditMoodPanel extends javax.swing.JPanel {
 
         eMField = new javax.swing.JTextField();
         eMLabel = new javax.swing.JLabel();
-        eMoodCnlBtn = new javax.swing.JButton();
+        cancelButton = new javax.swing.JButton();
         eMSliderMinLabel = new javax.swing.JLabel();
         eMSliderMaxLabel = new javax.swing.JLabel();
-        eMoodUpdBtn = new javax.swing.JButton();
+        updateButton = new javax.swing.JButton();
         eMSlider = new javax.swing.JSlider();
 
         eMField.setText("Ex. Satisfied");
@@ -48,10 +48,10 @@ public class EditMoodPanel extends javax.swing.JPanel {
         eMLabel.setText("Edit Mood");
         eMLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
-        eMoodCnlBtn.setText("Cancel");
-        eMoodCnlBtn.addActionListener(new java.awt.event.ActionListener() {
+        cancelButton.setText("Cancel");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eMoodCnlBtnActionPerformed(evt);
+                cancelButtonActionPerformed(evt);
             }
         });
 
@@ -61,10 +61,10 @@ public class EditMoodPanel extends javax.swing.JPanel {
         eMSliderMaxLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         eMSliderMaxLabel.setText("10");
 
-        eMoodUpdBtn.setText("Update");
-        eMoodUpdBtn.addActionListener(new java.awt.event.ActionListener() {
+        updateButton.setText("Update");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eMoodUpdBtnActionPerformed(evt);
+                updateButtonActionPerformed(evt);
             }
         });
 
@@ -76,9 +76,9 @@ public class EditMoodPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(eMoodCnlBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                        .addComponent(eMoodUpdBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(eMSliderMinLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -108,32 +108,32 @@ public class EditMoodPanel extends javax.swing.JPanel {
                     .addComponent(eMSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(75, 75, 75)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(eMoodCnlBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eMoodUpdBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void eMoodCnlBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eMoodCnlBtnActionPerformed
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         //Return
-    }//GEN-LAST:event_eMoodCnlBtnActionPerformed
+    }//GEN-LAST:event_cancelButtonActionPerformed
 
-    private void eMoodUpdBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eMoodUpdBtnActionPerformed
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         //Create
         Mood newMood = new Mood();
         newMood.setName(eMField.toString());
         newMood.setAmount(eMSlider.getValue());
-    }//GEN-LAST:event_eMoodUpdBtnActionPerformed
+    }//GEN-LAST:event_updateButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelButton;
     private javax.swing.JTextField eMField;
     private javax.swing.JLabel eMLabel;
     private javax.swing.JSlider eMSlider;
     private javax.swing.JLabel eMSliderMaxLabel;
     private javax.swing.JLabel eMSliderMinLabel;
-    private javax.swing.JButton eMoodCnlBtn;
-    private javax.swing.JButton eMoodUpdBtn;
+    private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
     
     
@@ -154,20 +154,20 @@ public class EditMoodPanel extends javax.swing.JPanel {
         this.eMSlider = eMSlider;
     }
 
-    public JButton geteMoodCnlBtn() {
-        return eMoodCnlBtn;
+    public JButton getCancelButton() {
+        return cancelButton;
     }
 
-    public void seteMoodCnlBtn(JButton eMoodCnlBtn) {
-        this.eMoodCnlBtn = eMoodCnlBtn;
+    public void setCancel(JButton cancelButton) {
+        this.cancelButton = cancelButton;
     }
 
-    public JButton geteMoodUpdBtn() {
-        return eMoodUpdBtn;
+    public JButton getUpdateButton() {
+        return updateButton;
     }
 
-    public void seteMoodUpdBtn(JButton eMoodUpdBtn) {
-        this.eMoodUpdBtn = eMoodUpdBtn;
+    public void setUpdateBUtton(JButton updateButton) {
+        this.updateButton = updateButton;
     }
     
 }

@@ -48,12 +48,12 @@ public class AddMoodView extends JFrame {
         this.moodViewPanel = moodViewPanel;
     }
 
-    public void submitBtnListener(ActionListener al) {
-        getAddMoodPanel().getaMoodUpdBtn().addActionListener(al);
+    public void submitButtonListener(ActionListener al) {
+        getAddMoodPanel().getSubmitButton().addActionListener(al);
     }
 
     
-    public void backBtnListener(ActionListener al){
-        getAddMoodPanel().getaMoodCnlBtn().addActionListener(al);
+    public void cancelButtonListener(ActionListener al){
+        getAddMoodPanel().getCancelButton().addActionListener(al);
     }
 }

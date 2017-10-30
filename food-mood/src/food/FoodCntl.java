@@ -39,10 +39,10 @@ public class FoodCntl extends EntryCntl {
      * @param db Food model for MVC architecture.
      * @param foodView FoodView for MVC architecture.
      */
-    public FoodCntl(Food_Table db, FoodView foodView) {        
+    public FoodCntl(Food_Table db, FoodView foodView, int accountID) {        
         this.db = db;
         this.foodView = foodView;
-        
+        this.accountID = accountID;
         navView = new NavView();
         navCntl = new NavCntl(getNavView());
         
@@ -102,14 +102,15 @@ public class FoodCntl extends EntryCntl {
         public void actionPerformed(ActionEvent e) {
             
             System.out.println("Food added");
-            name = foodView.getAddFoodPanel().getFoodField().getText();
-            amount = (String)foodView.getAddFoodPanel().getComboBox().getSelectedItem();
+            name = foodView.getAddFoodPanel().getFoodField().getText().toString();
+            amount = foodView.getAddFoodPanel().getComboBox().getSelectedItem().toString();
+            
             date = now();
             
             food = new Food(name, amount, date);
             
             //Need actual accountID
-            db.addEntry(food ,navCntl.getAccountID());
+            db.addEntry(food , accountID);
             
             //db.addEntry(food);
             foodView.getAddFoodPanel().setVisible(false);

@@ -1,5 +1,9 @@
 package database;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import parents.Database;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +12,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import models.Mood;
-import models.User;
 import parents.Entry;
 
 /**
@@ -78,5 +81,17 @@ public class Mood_Table extends Database {
     @Override
     public ArrayList<Entry> getAllEntries() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public void deleteEntry(Mood mood, int accountID){
+        //update food entry in sql database
+        String sql = "DELETE FROM Foods WHERE accountID= \""+accountID+"\" AND name= \""+mood.getName()+"\" AND portion=\""+mood.getAmount()+"\" AND date=\""+mood.getDate()+"\";";
+    
+        try (Connection conn = this.connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 }
