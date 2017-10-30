@@ -102,14 +102,15 @@ public class FoodCntl extends EntryCntl {
         public void actionPerformed(ActionEvent e) {
             
             System.out.println("Food added");
-            name = foodView.getAddFoodPanel().getFoodField().getText();
-            amount = (String)foodView.getAddFoodPanel().getComboBox().getSelectedItem();
+            name = foodView.getAddFoodPanel().getFoodField().getText().toString();
+            amount = foodView.getAddFoodPanel().getComboBox().getSelectedItem().toString();
+            
             date = now();
             
             food = new Food(name, amount, date);
             
             //Need actual accountID
-            db.addEntry(food ,navCntl.getAccountID());
+            db.addEntry(food , navCntl.getProfileCntl().getUser().getUserID());
             
             //db.addEntry(food);
             foodView.getAddFoodPanel().setVisible(false);
