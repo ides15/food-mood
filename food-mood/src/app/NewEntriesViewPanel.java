@@ -1,3 +1,5 @@
+// John Ide - entries page
+
 package app;
 
 /**

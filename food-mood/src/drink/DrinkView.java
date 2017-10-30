@@ -29,7 +29,7 @@ public class DrinkView extends JFrame {
         super("Drink");
         this.db = db;
         
-        setSize(400, 400);
+        setSize(450, 400);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
         drinkViewPanel = new DrinkViewPanel();
@@ -65,8 +65,8 @@ public class DrinkView extends JFrame {
         this.editDrinkPanel = editDrinkPanel;
     }
     
-    public void setEditDrinkPanel(AddDrinkPanel EditDrinkPanel){
-        this.editDrinkPanel = editDrinkPanel;
+    public void setEditDrinkPanel(AddDrinkPanel addDrinkPanel){
+        this.addDrinkPanel = addDrinkPanel;
     }
     
     public void addAddButtonListener(ActionListener al) {

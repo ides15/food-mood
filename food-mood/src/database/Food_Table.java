@@ -116,6 +116,7 @@ public class Food_Table extends Database {
     
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement()) {
+            
             stmt.executeUpdate(sql);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
