@@ -25,7 +25,7 @@ public class EntryCntlFactory {
             case "food": {
                 Food_Table food_db = new Food_Table("foodmood.db");
                 FoodView foodView = new FoodView(food_db);
-                FoodCntl foodCntl = new FoodCntl(food_db, foodView);
+                FoodCntl foodCntl = new FoodCntl(food_db, foodView, 0);
                 return foodCntl;
             } case "drink": {
                 Drink_Table drink_db = new Drink_Table("foodmood.db");
