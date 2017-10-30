@@ -2,6 +2,7 @@ package mood;
 
 import app.EntryCntl;
 import database.Mood_Table;
+import database.User_Table;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import models.Mood;
@@ -47,6 +48,8 @@ public class AddMoodCntl extends EntryCntl {
             Mood mood = new Mood();
             mood.setName(moodInput);
             mood.setAmount(moodSlider);
+            
+            db.addNewMood(mood);
             
             addMoodView.dispose();
         }
