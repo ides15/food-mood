@@ -6,7 +6,6 @@
 package food;
 
 import database.Food_Table;
-import javax.swing.event.ListSelectionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import models.Food;
@@ -18,10 +17,7 @@ import models.Food;
 public class FoodView extends JFrame {
     private Food food;
     private final Food_Table db;
-    private FoodPanel foodPanel;
-    private AddFoodPanel addFoodPanel;
-    private EditFoodPanel editFoodPanel;
-//    private final FoodViewPanel foodViewPanel;
+    private FoodViewPanel foodViewPanel;
     
     /**
      * Default constructor for FoodView.
@@ -31,59 +27,36 @@ public class FoodView extends JFrame {
         super("Food");
         this.db = db;
         
-        setSize(400, 400);
+        setSize(450, 400);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
-        foodPanel = new FoodPanel();
-        addFoodPanel = new AddFoodPanel();
-        editFoodPanel = new EditFoodPanel();
-        add(foodPanel);
-    }
-
-    /**
-     * @return the food
-     */
-    public FoodPanel getFoodPanel(){
-        return this.foodPanel;
-    }
-    
-    public void setFoodPanel(FoodPanel foodPanel){
-        this.foodPanel = foodPanel;
-    }
-    
-    public AddFoodPanel getAddFoodPanel(){
-        return this.addFoodPanel;
-    }
-    
-    public void setFoodPanel(AddFoodPanel addFoodPanel){
-        this.addFoodPanel = addFoodPanel;
-    }
-    
-    public EditFoodPanel getEditFoodPanel(){
-        return this.editFoodPanel;
-    }
-    
-    public void setEditFoodPanel(AddFoodPanel EditFoodPanel){
-        this.editFoodPanel = editFoodPanel;
+        foodViewPanel = new FoodViewPanel();
+        add(foodViewPanel);
     }
     
     public void addAddButtonListener(ActionListener al) {
-        getFoodPanel().getAddButton().addActionListener(al);
-    }
-    
-    public void addEditButtonListener(ActionListener al) {
-        getFoodPanel().getEditButton().addActionListener(al);
+        getFoodViewPanel().getAddButton().addActionListener(al);
     }
     
     public void addDeleteButtonListener(ActionListener al) {
-        getFoodPanel().getDeleteButton().addActionListener(al);
+        getFoodViewPanel().getDeleteButton().addActionListener(al);
     }
     
-    public void addSubmitButtonListener(ActionListener al){
-        getAddFoodPanel().getSubmitButton().addActionListener(al);
+    public void addEditButtonListener(ActionListener al) {
+        getFoodViewPanel().getEditButton().addActionListener(al);
     }
     
-    public void addUpdateButtonListener(ActionListener al){
-        getEditFoodPanel().getUpdateButton().addActionListener(al);
+    /**
+     * @return the foodViewPanel
+     */
+    public FoodViewPanel getFoodViewPanel() {
+        return foodViewPanel;
+    }
+
+    /**
+     * @param foodViewPanel the foodViewPanel to set
+     */
+    public void setFoodViewPanel(FoodViewPanel foodViewPanel) {
+        this.foodViewPanel = foodViewPanel;
     }
 }

@@ -8,9 +8,6 @@ package drink;
 import app.EntryCntl;
 import database.Drink_Table;
 import models.Drink;
-import app.NavCntl;
-import app.NavView;
-import database.Food_Table;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -23,9 +20,6 @@ public class DrinkCntl extends EntryCntl {
     private final Drink_Table db;
     private final DrinkView drinkView;
     
-    private final NavCntl navCntl;
-    private final NavView navView;
-    
     /**
      * Default constructor for DrinkCntl.
      * @param db Drink model for MVC architecture.
@@ -36,9 +30,6 @@ public class DrinkCntl extends EntryCntl {
         this.drinkView = drinkView;
         
         drink = new Drink();
-        
-        navView = new NavView();
-        navCntl = new NavCntl(getNavView());
         
         drinkView.setVisible(true);
         
@@ -53,12 +44,12 @@ public class DrinkCntl extends EntryCntl {
         @Override
         public void actionPerformed(ActionEvent e) {
             
-            System.out.println("Drink added");
-            //Switch to add panel
-            drinkView.getDrinkViewPanel().setVisible(false);
-            drinkView.add(drinkView.getAddDrinkPanel());
-            drinkView.getAddDrinkPanel().setVisible(true);
-            drinkView.remove(drinkView.getDrinkViewPanel());
+//            System.out.println("Drink added");
+//            //Switch to add panel
+//            drinkView.getDrinkViewPanel().setVisible(false);
+//            drinkView.add(drinkView.getAddDrinkPanel());
+//            drinkView.getAddDrinkPanel().setVisible(true);
+//            drinkView.remove(drinkView.getDrinkViewPanel());
         }
     }
     
@@ -66,13 +57,13 @@ public class DrinkCntl extends EntryCntl {
         @Override
         public  void actionPerformed(ActionEvent e) {
             
-            System.out.println("Drink edited");
-            //switch to edit panel with old info on left side and new food form 
-            //on right with update on bottom
-            drinkView.getDrinkViewPanel().setVisible(false);
-            drinkView.add(drinkView.getEditDrinkPanel());
-            drinkView.getEditDrinkPanel().setVisible(true);
-            drinkView.remove(drinkView.getDrinkViewPanel());
+//            System.out.println("Drink edited");
+//            //switch to edit panel with old info on left side and new food form 
+//            //on right with update on bottom
+//            drinkView.getDrinkViewPanel().setVisible(false);
+//            drinkView.add(drinkView.getEditDrinkPanel());
+//            drinkView.getEditDrinkPanel().setVisible(true);
+//            drinkView.remove(drinkView.getDrinkViewPanel());
         }
     }
     
@@ -80,13 +71,13 @@ public class DrinkCntl extends EntryCntl {
         @Override
         public void actionPerformed(ActionEvent e) {
             
-            String selection;
-            System.out.println("Food deleted");
-            //Get food object from list on FoodPanel
-            selection = drinkView.getDrinkViewPanel().getDrinkListView().getSelectedValue().toString();
-            drink.setName(selection);
-            //Need to construct rest of food object in order to delete it
-            db.deleteEntry(drink, navCntl.getAccountID());
+//            String selection;
+//            System.out.println("Food deleted");
+//            //Get food object from list on FoodPanel
+//            selection = drinkView.getDrinkViewPanel().getDrinkListView().getSelectedValue().toString();
+//            drink.setName(selection);
+//            //Need to construct rest of food object in order to delete it
+////            db.deleteEntry(drink, navCntl.getAccountID());
             
         }
     }
@@ -95,12 +86,12 @@ public class DrinkCntl extends EntryCntl {
         @Override
         public void actionPerformed(ActionEvent e) {
             
-            System.out.println("Food added");
-            //db.addEntry(food);
-            drinkView.getAddDrinkPanel().setVisible(false);
-            drinkView.add(drinkView.getDrinkViewPanel());
-            drinkView.getDrinkViewPanel().setVisible(true);
-            drinkView.remove(drinkView.getAddDrinkPanel());
+//            System.out.println("Food added");
+//            //db.addEntry(food);
+//            drinkView.getAddDrinkPanel().setVisible(false);
+//            drinkView.add(drinkView.getDrinkViewPanel());
+//            drinkView.getDrinkViewPanel().setVisible(true);
+//            drinkView.remove(drinkView.getAddDrinkPanel());
         }
     }
     
@@ -108,12 +99,12 @@ public class DrinkCntl extends EntryCntl {
         @Override
         public void actionPerformed(ActionEvent e) {
             
-            System.out.println("Food updated");
-            //db.updateEntry(oldFood, newFood, navCntl.getAccountID());
-            drinkView.getEditDrinkPanel().setVisible(false);
-            drinkView.add(drinkView.getDrinkViewPanel());
-            drinkView.getDrinkViewPanel().setVisible(true);
-            drinkView.remove(drinkView.getEditDrinkPanel());
+//            System.out.println("Food updated");
+//            //db.updateEntry(oldFood, newFood, navCntl.getAccountID());
+//            drinkView.getEditDrinkPanel().setVisible(false);
+//            drinkView.add(drinkView.getDrinkViewPanel());
+//            drinkView.getDrinkViewPanel().setVisible(true);
+//            drinkView.remove(drinkView.getEditDrinkPanel());
         }
     }
     
@@ -130,9 +121,5 @@ public class DrinkCntl extends EntryCntl {
      */
     public DrinkView getDrinkView() {
         return drinkView;
-    }
-    
-    public NavView getNavView() {
-        return navView;
     }
 }

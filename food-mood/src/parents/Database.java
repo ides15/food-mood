@@ -1,3 +1,5 @@
+// John Ide - parents class for databases
+
 package parents;
 
 import java.sql.Connection;

@@ -27,7 +27,7 @@ public class MoodView extends JFrame {
         super("Mood");
         this.db = db;
 
-        setSize(400, 400);
+        setSize(450, 400);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         moodViewPanel = new MoodViewPanel();

@@ -1,3 +1,5 @@
+// John Ide - controller for the new user page
+
 package login;
 
 import database.User_Table;

@@ -1,8 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+// John Ide - factory class for controller classes for entries
+
 package app;
 
 import database.Drink_Table;
@@ -25,7 +22,7 @@ public class EntryCntlFactory {
             case "food": {
                 Food_Table food_db = new Food_Table("foodmood.db");
                 FoodView foodView = new FoodView(food_db);
-                FoodCntl foodCntl = new FoodCntl(food_db, foodView, 0);
+                FoodCntl foodCntl = new FoodCntl(food_db, foodView);
                 return foodCntl;
             } case "drink": {
                 Drink_Table drink_db = new Drink_Table("foodmood.db");

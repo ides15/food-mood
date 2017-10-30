@@ -1,3 +1,5 @@
+// John Ide - main page
+
 package app;
 
 /**

@@ -1,3 +1,5 @@
+// John Ide - user class
+
 package models;
 
 /**

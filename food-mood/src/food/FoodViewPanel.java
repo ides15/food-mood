@@ -11,14 +11,14 @@ import java.util.ArrayList;
  *
  * @author Kyle
  */
-public class FoodPanel extends javax.swing.JPanel {
+public class FoodViewPanel extends javax.swing.JPanel {
     
     private String food;
     private ArrayList<String> list;
     /**
      * Creates new form FoodPanel
      */
-    public FoodPanel() {
+    public FoodViewPanel() {
         initComponents();
     }
 
@@ -38,6 +38,8 @@ public class FoodPanel extends javax.swing.JPanel {
         editButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
 
+        setPreferredSize(new java.awt.Dimension(420, 420));
+
         foodListView.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -48,11 +50,6 @@ public class FoodPanel extends javax.swing.JPanel {
         entryLabel.setText("Entries");
 
         addButton.setText("Add");
-        addButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addButtonActionPerformed(evt);
-            }
-        });
 
         editButton.setText("Edit");
 
@@ -95,10 +92,6 @@ public class FoodPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
@@ -113,39 +106,15 @@ public class FoodPanel extends javax.swing.JPanel {
         return this.addButton;
     }
     
-    public void setAddButton(javax.swing.JButton addButton){
-        this.addButton = addButton;
-    }
-    
     public javax.swing.JButton getDeleteButton(){
         return this.deleteButton;
-    }
-    
-    public void setDeleteButton(javax.swing.JButton deleteButton){
-        this.deleteButton = deleteButton;
     }
     
     public javax.swing.JButton getEditButton(){
         return this.editButton;
     }
     
-    public void setEditButton(javax.swing.JButton editButton){
-        this.editButton = editButton;
-    }
-    
-    public javax.swing.JLabel getEntryLabel(){
-        return this.entryLabel;
-    }
-    
-    public void  setEntryLabel(javax.swing.JLabel entryLabel){
-        this.entryLabel = entryLabel;
-    }
-    
     public javax.swing.JList getFoodListView(){
         return this.foodListView;
-    }
-    
-    public void setFoodListView(javax.swing.JList foodListView){
-        this.foodListView = foodListView;
     }
 }

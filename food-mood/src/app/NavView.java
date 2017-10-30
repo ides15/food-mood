@@ -1,8 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+// John Ide - the main navigation frame, containing the main page and the new entries page
+
 package app;
 
 import java.awt.event.ActionListener;
