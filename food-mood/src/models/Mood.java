@@ -13,8 +13,12 @@ import java.util.Date;
  * @author John
  */
 public class Mood extends Entry {
+
     private Date date;
-    
+    private String name;
+    private int accountID;
+    private int quantity;
+
     /**
      * Default constructor for Mood class.
      */
@@ -24,8 +28,17 @@ public class Mood extends Entry {
         System.out.println(date.toString());
     }
 
+    public Mood(String name, int quantity, int accountID) {
+        super();
+        this.date = new Date();
+        this.name = name;
+        this.quantity = quantity;
+        this.accountID = accountID;
+        System.out.println(date.toString());
+    }
     /**
      * Function to accept scaled amount of emotions after consumption
+     *
      * @param amount accepts amount as integer
      */
     @Override
@@ -43,6 +56,7 @@ public class Mood extends Entry {
 
     /**
      * Function to accept quality of emotions after consumption
+     *
      * @param unit accepts quality as String
      */
     @Override
@@ -52,7 +66,7 @@ public class Mood extends Entry {
 
     /**
      * Function to return quality of emotions after consumption
-     */    
+     */
     @Override
     public String getUnit() {
         return super.getUnit();
@@ -60,6 +74,7 @@ public class Mood extends Entry {
 
     /**
      * Function to accept name of emotion after consumption
+     *
      * @param name accepts name as String
      */
     @Override
