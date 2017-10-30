@@ -10,7 +10,7 @@ import models.Mood;
 /*
  * @author BasicPanda
  */
-public class AddMoodCntl extends EntryCntl {
+public class AddMoodCntl {
 
     private Mood mood;
     private final Mood_Table db;

@@ -18,19 +18,22 @@ public class FoodView extends JFrame {
     private Food food;
     private final Food_Table db;
     private FoodViewPanel foodViewPanel;
+    private int accountID;
     
     /**
      * Default constructor for FoodView.
      * @param db FoodView for MVC architecture.
+     * @param accountID
      */
-    public FoodView(Food_Table db) {
+    public FoodView(int accountID, Food_Table db) {
         super("Food");
         this.db = db;
+        this.accountID = accountID;
         
         setSize(450, 400);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
-        foodViewPanel = new FoodViewPanel();
+        foodViewPanel = new FoodViewPanel(accountID);
         add(foodViewPanel);
     }
     
@@ -58,5 +61,19 @@ public class FoodView extends JFrame {
      */
     public void setFoodViewPanel(FoodViewPanel foodViewPanel) {
         this.foodViewPanel = foodViewPanel;
+    }
+
+    /**
+     * @return the accountID
+     */
+    public int getAccountID() {
+        return accountID;
+    }
+
+    /**
+     * @param accountID the accountID to set
+     */
+    public void setAccountID(int accountID) {
+        this.accountID = accountID;
     }
 }

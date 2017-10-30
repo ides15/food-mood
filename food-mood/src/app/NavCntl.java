@@ -148,8 +148,8 @@ public class NavCntl {
     public class NewEntryCntlListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            EntryCntlFactory factory = new EntryCntlFactory();
-            factory.getEntry(e.getActionCommand().toLowerCase().substring(4));
+            EntryCntlFactory factory = new EntryCntlFactory(getAccountID());
+            EntryCntl cntlr = factory.getEntry(e.getActionCommand().toLowerCase().substring(4));
         }
     }
     

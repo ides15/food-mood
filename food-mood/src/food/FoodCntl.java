@@ -19,6 +19,7 @@ public class FoodCntl extends EntryCntl {
     private Food food;
     private final Food_Table db;
     private final FoodView foodView;
+    private int accountID;
     
     private AddFoodPanel addFoodPanel;
     
@@ -26,16 +27,29 @@ public class FoodCntl extends EntryCntl {
      * Default constructor for FoodCntl.
      * @param db Food model for MVC architecture.
      * @param foodView FoodView for MVC architecture.
+     * @param accountID
      */
-    public FoodCntl(Food_Table db, FoodView foodView) {        
+    public FoodCntl(int accountID, Food_Table db, FoodView foodView) {        
         this.db = db;
+        this.accountID = accountID;
         this.foodView = foodView;
+        getFoodView().getFoodViewPanel().setAccountID(getAccountID());
         
         foodView.setVisible(true);
         
         foodView.addAddButtonListener(new AddButtonListener());
         foodView.addDeleteButtonListener(new DeleteButtonListener());
         foodView.addEditButtonListener(new EditButtonListener());
+    }
+
+    @Override
+    public void setAccountID(int accountID) {
+        this.accountID = accountID;
+    }
+
+    @Override
+    public int getAccountID() {
+        return this.accountID;
     }
     
     class AddButtonListener implements ActionListener {

@@ -5,41 +5,33 @@
  */
 package mood;
 import app.EntryCntl;
-import app.NavCntl;
-import app.NavView;
 import database.Mood_Table;
-import database.User_Table;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import models.Mood;
-import models.User;
 /**
  *
  * @author John
  */
 public class MoodCntl extends EntryCntl {
-
     private Mood mood;
     private final Mood_Table db;
     private final MoodView moodView;
-    
-    private final NavCntl navCntl;
-    private final NavView navView;
+    private int accountID;
 
     /**
      * Default constructor for MoodCntl.
      *
      * @param db Mood model for MVC architecture.
      * @param moodView MoodView for MVC architecture.
+     * @param accountID
      */
-    public MoodCntl(Mood_Table db, MoodView moodView) {
+    public MoodCntl(int accountID, Mood_Table db, MoodView moodView) {
         this.db = db;
+        this.accountID = accountID;
         this.moodView = moodView;
 
         mood = new Mood();
-        
-        navView = new NavView();
-        navCntl = new NavCntl(getNavView());
 
         moodView.setVisible(true);
 
@@ -60,6 +52,16 @@ public class MoodCntl extends EntryCntl {
     }
 
     private MoodCntl moodCntl;
+
+    @Override
+    public void setAccountID(int accountID) {
+        this.accountID = accountID;
+    }
+
+    @Override
+    public int getAccountID() {
+        return this.accountID;
+    }
 
     public class addBtnListener implements ActionListener {
 
@@ -99,7 +101,7 @@ public class MoodCntl extends EntryCntl {
             selection = moodView.getMoodViewPanel().getMoodListView().getSelectedValue().toString();
             mood.setName(selection);
             
-            db.deleteEntry(mood, navCntl.getAccountID());
+            db.deleteEntry(mood, getAccountID());
         }
     }
     
@@ -152,10 +154,6 @@ public class MoodCntl extends EntryCntl {
 
     public Mood_Table getDb() {
         return db;
-    }
-    
-    public NavView getNavView() {
-        return navView;
     }
     
     public Mood getMood() {

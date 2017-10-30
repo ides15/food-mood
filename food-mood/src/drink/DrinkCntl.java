@@ -19,14 +19,17 @@ public class DrinkCntl extends EntryCntl {
     private Drink drink;
     private final Drink_Table db;
     private final DrinkView drinkView;
+    private int accountID;
     
     /**
      * Default constructor for DrinkCntl.
      * @param db Drink model for MVC architecture.
      * @param drinkView DrinkView for MVC architecture.
+     * @param accountID
      */
-    public DrinkCntl(Drink_Table db, DrinkView drinkView) {       
+    public DrinkCntl(int accountID, Drink_Table db, DrinkView drinkView) {       
         this.db = db;
+        this.accountID = accountID;
         this.drinkView = drinkView;
         
         drink = new Drink();
@@ -38,6 +41,16 @@ public class DrinkCntl extends EntryCntl {
         drinkView.addEditButtonListener(new EditButtonListener());
         drinkView.addSubmitButtonListener(new SubmitButtonListener());
         drinkView.addUpdateButtonListener(new UpdateButtonListener());
+    }
+
+    @Override
+    public void setAccountID(int accountID) {
+        this.accountID = accountID;
+    }
+
+    @Override
+    public int getAccountID() {
+        return this.accountID;
     }
     
     class AddButtonListener implements ActionListener {

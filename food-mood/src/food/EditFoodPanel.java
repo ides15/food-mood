@@ -57,9 +57,4 @@ public class EditFoodPanel extends javax.swing.JPanel {
     public javax.swing.JButton getUpdateButton(){
         return this.updateButton;
     }
-    
-    public void setUpdateButton(){
-        this.updateButton = updateButton;
-    }
-
 }

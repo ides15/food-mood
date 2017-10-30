@@ -5,6 +5,7 @@
  */
 package food;
 
+import database.Food_Table;
 import java.util.ArrayList;
 
 /**
@@ -12,14 +13,32 @@ import java.util.ArrayList;
  * @author Kyle
  */
 public class FoodViewPanel extends javax.swing.JPanel {
-    
+    private final Food_Table db;
     private String food;
-    private ArrayList<String> list;
+    private String[] foodsData;
+    private int accountID;
+    
     /**
      * Creates new form FoodPanel
+     * @param accountID
      */
-    public FoodViewPanel() {
+    public FoodViewPanel(int accountID) {
         initComponents();
+        this.accountID = accountID;
+        db = new Food_Table("foodmood.db");
+        
+        initFoodsData();
+        getFoodListView().setListData(foodsData);
+    }
+    
+    public void initFoodsData() {
+        ArrayList<String> data = db.getFoodList(getAccountID());
+        int size = data.size();
+        foodsData = new String[size];
+        
+        for(int i = 0; i < size; i++) {
+            foodsData[i] = data.get(i);
+        }
     }
 
     /**
@@ -40,11 +59,6 @@ public class FoodViewPanel extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(420, 420));
 
-        foodListView.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(foodListView);
 
         entryLabel.setText("Entries");
@@ -116,5 +130,33 @@ public class FoodViewPanel extends javax.swing.JPanel {
     
     public javax.swing.JList getFoodListView(){
         return this.foodListView;
+    }
+
+    /**
+     * @param accountID the accountID to set
+     */
+    public void setAccountID(int accountID) {
+        this.accountID = accountID;
+    }
+
+    /**
+     * @return the accountID
+     */
+    public int getAccountID() {
+        return accountID;
+    }
+
+    /**
+     * @return the foodsData
+     */
+    public String[] getFoodsData() {
+        return foodsData;
+    }
+
+    /**
+     * @param foodsData the foodsData to set
+     */
+    public void setFoodsData(String[] foodsData) {
+        this.foodsData = foodsData;
     }
 }

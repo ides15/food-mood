@@ -6,6 +6,7 @@ package app;
  *
  * @author John
  */
-public class EntryCntl {
-    
+public abstract class EntryCntl {
+    public abstract void setAccountID(int accountID);
+    public abstract int getAccountID();
 }
