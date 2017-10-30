@@ -28,9 +28,10 @@ public class FoodCntl extends EntryCntl {
     private final NavCntl navCntl;
     private final NavView navView;
     
-    String name;
-    String amount;
-    String date;
+    private String name;
+    private String amount;
+    private String date;
+    private int accountID;
     
     
     /**
@@ -105,8 +106,10 @@ public class FoodCntl extends EntryCntl {
             amount = (String)foodView.getAddFoodPanel().getComboBox().getSelectedItem();
             date = now();
             
+            food = new Food(name, amount, date);
+            
             //Need actual accountID
-            db.addEntry(new Food(name,amount,date),1);
+            db.addEntry(food ,navCntl.getAccountID());
             
             //db.addEntry(food);
             foodView.getAddFoodPanel().setVisible(false);
