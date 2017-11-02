@@ -42,6 +42,8 @@ IMPLEMENTATION
 - Main app navigation : John Ide
 - User Profile CRUD : John Ide
 - New entries page : John Ide
+- Food deletion : John Ide
+- Food addition : John Ide
 - Food Package : Kyle Ryan
 - Food_Table : Kyle Ryan
 - Food Model : Kyle Ryan
