@@ -67,13 +67,12 @@ public class MoodCntl extends EntryCntl {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-//            moodView.getMoodViewPanel().setVisible(false);
-//            moodView.add(moodView.getAddMoodPanel());
-//            moodView.getAddMoodPanel().setVisible(true);
-//            moodView.remove(moodView.getMoodViewPanel());
+            moodView.getMoodViewPanel().setVisible(false);
+            moodView.add(moodView.getAddMoodPanel());
+            moodView.getAddMoodPanel().setVisible(true);
+            moodView.remove(moodView.getMoodViewPanel());
             Mood_Table mood_db = new Mood_Table("foodmood.db");
-            AddMoodView addMoodView = new AddMoodView(mood_db);
-            AddMoodCntl addMoodCntl = new AddMoodCntl(db, addMoodView);
+            
         }
     }
 
@@ -81,13 +80,11 @@ public class MoodCntl extends EntryCntl {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-//            moodView.getMoodViewPanel().setVisible(false);
-//            moodView.add(moodView.getEditMoodPanel());
-//            moodView.getEditMoodPanel().setVisible(true);
-//            moodView.remove(moodView.getMoodViewPanel());
+            moodView.getMoodViewPanel().setVisible(false);
+            moodView.add(moodView.getEditMoodPanel());
+            moodView.getEditMoodPanel().setVisible(true);
+            moodView.remove(moodView.getMoodViewPanel());
             Mood_Table mood_db = new Mood_Table("foodmood.db");
-            EditMoodView editMoodView = new EditMoodView(mood_db);
-            EditMoodCntl editMoodCntl = new EditMoodCntl(db, editMoodView);
         }
     }
 
