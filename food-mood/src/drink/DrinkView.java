@@ -20,21 +20,23 @@ public class DrinkView extends JFrame {
     private DrinkViewPanel drinkViewPanel;
     private AddDrinkPanel addDrinkPanel;
     private EditDrinkPanel editDrinkPanel;
+    private int accountID;
     
     /**
      * Default constructor for DrinkView.
      * @param db Drink model for MVC architecture.
      */
-    public DrinkView(Drink_Table db) {    
+    public DrinkView(int accountID, Drink_Table db) {    
         super("Drink");
+        this.accountID = accountID;
         this.db = db;
         
         setSize(450, 400);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
-        drinkViewPanel = new DrinkViewPanel();
-        addDrinkPanel = new AddDrinkPanel();
-        editDrinkPanel = new EditDrinkPanel();
+        drinkViewPanel = new DrinkViewPanel(accountID);
+        addDrinkPanel = new AddDrinkPanel(accountID);
+        editDrinkPanel = new EditDrinkPanel(accountID);
         add(drinkViewPanel);
     }
 

@@ -32,7 +32,7 @@ public class EntryCntlFactory {
                 return foodCntl;
             } case "drink": {
                 Drink_Table drink_db = new Drink_Table("foodmood.db");
-                DrinkView drinkView = new DrinkView(drink_db);
+                DrinkView drinkView = new DrinkView(accountID, drink_db);
                 DrinkCntl drinkCntl = new DrinkCntl(accountID, drink_db, drinkView);
                 return drinkCntl;
             } case "mood": {

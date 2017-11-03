@@ -10,12 +10,15 @@ package drink;
  * @author Dylan
  */
 public class AddDrinkPanel extends javax.swing.JPanel {
+    
+    private int accountID;
 
     /**
      * Creates new form AddDrinkPanel
      */
-    public AddDrinkPanel() {
+    public AddDrinkPanel(int accountID) {
         initComponents();
+        this.accountID = accountID;
     }
 
     /**

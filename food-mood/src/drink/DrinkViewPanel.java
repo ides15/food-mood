@@ -2,21 +2,41 @@ package drink;
 
 
 import java.util.ArrayList;
+import database.Drink_Table;
+
 /**
  *
  * @author john
  */
 public class DrinkViewPanel extends javax.swing.JPanel {
     
-    
+    private final Drink_Table db;
     private String drink;
-    private ArrayList<String> list;
+    //private ArrayList<String> list;
+    private String[] drinksData;
+    private int accountID;
 
     /**
      * Creates new form DrinkViewPanel
      */
-    public DrinkViewPanel() {
+    public DrinkViewPanel(int accountID) {
         initComponents();
+        this.accountID = accountID;
+        db = new Drink_Table("foodmood.db");
+        
+        initDrinksData();
+    }
+    
+    public void initDrinksData() {
+        ArrayList<String> data = db.getDrinkList(getAccountID());
+        int size = data.size();
+        drinksData = new String[size];
+        
+        for(int i = 0; i < size; i++) {
+            drinksData[i] = data.get(i);
+        }
+        
+        getDrinkListView().setListData(drinksData);
     }
 
     /**
@@ -28,19 +48,12 @@ public class DrinkViewPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        drinkListView = new javax.swing.JList<>();
         entryLabel = new javax.swing.JLabel();
         editButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
         addButton = new javax.swing.JButton();
-
-        drinkListView.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(drinkListView);
+        jScrollPane1 = new javax.swing.JScrollPane();
+        drinkListView = new javax.swing.JList<>();
 
         entryLabel.setText("Entries");
 
@@ -59,6 +72,8 @@ public class DrinkViewPanel extends javax.swing.JPanel {
                 addButtonActionPerformed(evt);
             }
         });
+
+        jScrollPane1.setViewportView(drinkListView);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -91,9 +106,9 @@ public class DrinkViewPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addComponent(entryLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -162,5 +177,16 @@ public class DrinkViewPanel extends javax.swing.JPanel {
     public void setDrinkListView(javax.swing.JList foodListView){
         this.drinkListView = foodListView;
     }
-
+    
+    public int getAccountID() {
+        return accountID;
+    }
+    
+    public String[] getDrinksData() {
+        return drinksData;
+    }
+    
+    public void setDrinksData(String[] drinksData) {
+        this.drinksData = drinksData;
+    }
 }

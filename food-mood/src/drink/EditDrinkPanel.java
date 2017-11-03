@@ -10,13 +10,15 @@ package drink;
  * @author Dylan
  */
 public class EditDrinkPanel extends javax.swing.JPanel {
+    
+    private int accountID;
 
     /**
      * Creates new form EditDrinkPanel
      */
-    public EditDrinkPanel() {
+    public EditDrinkPanel(int accountID) {
         initComponents();
-        
+        this.accountID = accountID;
         updateButton = new javax.swing.JButton();
 
         updateButton.setText("Update");

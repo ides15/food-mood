@@ -45,8 +45,27 @@ public class Drink_Table extends Database {
 
         return new Drink(name);
     }
+    
+    public ArrayList<String> getDrinkList(int accountID){
+        String sql = "SELECT * FROM Drinks WHERE accountID = \"" + accountID + "\";";
+        String col = "name";
+        
+        try (Connection conn = this.connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+            
+            drinkList = new ArrayList<>();
+            while(rs.next()) {
+                drinkList.add(rs.getString(col));
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return drinkList;
+    }
 
-    public void addNewDrink(Drink newDrink, int accountID) {
+    public void addNewDrink(Drink d, int accountID) {
         /*String sql = "INSERT INTO Drinks (name,amount, date, accountID) "
                 + "VALUES (?, ?,?, ?)";
 
@@ -62,14 +81,14 @@ public class Drink_Table extends Database {
             System.out.println(ex.getMessage());
         }*/
         
-        /*String sql = "INSERT INTO Drinks (accountID, name, portion, date) VALUES (\"" + accountID + "\", \"" + drink.getDrink() + "\", \"" + drink.getPortion()+ "\", \"" + drink.getDate() + "\");";
+        String sql = "INSERT INTO Drinks (accountID, name, portion, date) VALUES (\"" + accountID + "\", \"" + d.getDrink() + "\", \"" + d.getPortion()+ "\", \"" + d.getDate() + "\");";
         
         try (Connection conn = this.connect();
             Statement stmt = conn.createStatement()) {
                 stmt.executeUpdate(sql);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }*/
+        }
     }
 
     @Override

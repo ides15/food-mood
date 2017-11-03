@@ -113,6 +113,7 @@ public class DrinkCntl extends EntryCntl {
             Drink newDrink = new Drink(name, amount, new Date().toString());
             
             db.addNewDrink(newDrink, accountID);
+            drinkView.getDrinkViewPanel().initDrinksData();
 
             drinkView.getAddDrinkPanel().setVisible(false);
             drinkView.add(drinkView.getDrinkViewPanel());
