@@ -90,6 +90,11 @@ public class FoodCntl extends EntryCntl {
     class SubmitButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            
+            foodView.remove(foodView.getAddFoodPanel());
+            //foodView.getAddFoodPanel().setVisible(false);
+            foodView.add(foodView.getFoodViewPanel());
+            
             String name = getFoodView().getAddFoodPanel().getFoodField().getText();
             ListModel amountModel = getFoodView().getAddFoodPanel().getComboBox().getModel();
             String amount = amountModel.getElementAt(getFoodView().getAddFoodPanel().getComboBox().getSelectedIndex()).toString();
@@ -100,10 +105,10 @@ public class FoodCntl extends EntryCntl {
             Food newFood = new Food(name, amount, new Date().toString());
             
             db.addEntry(newFood, accountID);
-//           foodView.getAddFoodPanel().setVisible(false);
-//            foodView.add(foodView.getFoodPanel());
-//            foodView.getFoodPanel().setVisible(true);
-//           foodView.remove(foodView.getAddFoodPanel());
+            foodView.repaint();
+            foodView.getFoodViewPanel().setVisible(true);
+            foodView.remove(foodView.getAddFoodPanel());
+            //foodView.repaint();
         }
     }
     
