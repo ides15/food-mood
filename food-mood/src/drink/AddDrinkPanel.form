@@ -20,13 +20,11 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="largeRadio" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="mediumRadio" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="smallRadio" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="portionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="foodLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="foodField" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
+                          <Component id="drinkLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="drinkField" alignment="0" pref="112" max="32767" attributes="0"/>
+                          <Component id="comboBox" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -42,18 +40,14 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-              <Component id="foodLabel" min="-2" max="-2" attributes="0"/>
+              <Component id="drinkLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="foodField" min="-2" max="-2" attributes="0"/>
+              <Component id="drinkField" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Component id="portionLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="smallRadio" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="mediumRadio" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="largeRadio" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="comboBox" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
               <Component id="submitButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="39" max="32767" attributes="0"/>
           </Group>
@@ -61,17 +55,17 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="foodLabel">
+    <Component class="javax.swing.JLabel" name="drinkLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Drink"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="foodField">
+    <Component class="javax.swing.JTextField" name="drinkField">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ex. Water"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="foodFieldActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="drinkFieldActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="portionLabel">
@@ -79,25 +73,20 @@
         <Property name="text" type="java.lang.String" value="Portion"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="smallRadio">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Small"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JRadioButton" name="mediumRadio">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Medium"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JRadioButton" name="largeRadio">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Large"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="submitButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Submit"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="comboBox">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Small&quot;, &quot;Medium&quot;, &quot;Large&quot;})" type="code"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

@@ -15,6 +15,9 @@ import java.util.ArrayList;
  * @author john
  */
 public class Drink_Table extends Database {
+    
+    private Drink drink;
+    private ArrayList<String> drinkList;
 
     public Drink_Table(String DB_NAME) {
         super();
@@ -43,8 +46,8 @@ public class Drink_Table extends Database {
         return new Drink(name);
     }
 
-    public void addNewDrink(Drink newDrink) {
-        String sql = "INSERT INTO Drinks (name,amount, date, accountID) "
+    public void addNewDrink(Drink newDrink, int accountID) {
+        /*String sql = "INSERT INTO Drinks (name,amount, date, accountID) "
                 + "VALUES (?, ?,?, ?)";
 
         try (Connection conn = this.connect();
@@ -57,7 +60,16 @@ public class Drink_Table extends Database {
             pstmt.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }
+        }*/
+        
+        /*String sql = "INSERT INTO Drinks (accountID, name, portion, date) VALUES (\"" + accountID + "\", \"" + drink.getDrink() + "\", \"" + drink.getPortion()+ "\", \"" + drink.getDate() + "\");";
+        
+        try (Connection conn = this.connect();
+            Statement stmt = conn.createStatement()) {
+                stmt.executeUpdate(sql);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }*/
     }
 
     @Override

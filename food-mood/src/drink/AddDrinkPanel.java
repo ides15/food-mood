@@ -27,32 +27,26 @@ public class AddDrinkPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        foodLabel = new javax.swing.JLabel();
-        foodField = new javax.swing.JTextField();
+        drinkLabel = new javax.swing.JLabel();
+        drinkField = new javax.swing.JTextField();
         portionLabel = new javax.swing.JLabel();
-        smallRadio = new javax.swing.JRadioButton();
-        mediumRadio = new javax.swing.JRadioButton();
-        largeRadio = new javax.swing.JRadioButton();
         submitButton = new javax.swing.JButton();
+        comboBox = new javax.swing.JComboBox<>();
 
-        foodLabel.setText("Drink");
+        drinkLabel.setText("Drink");
 
-        foodField.setText("Ex. Water");
-        foodField.addActionListener(new java.awt.event.ActionListener() {
+        drinkField.setText("Ex. Water");
+        drinkField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                foodFieldActionPerformed(evt);
+                drinkFieldActionPerformed(evt);
             }
         });
 
         portionLabel.setText("Portion");
 
-        smallRadio.setText("Small");
-
-        mediumRadio.setText("Medium");
-
-        largeRadio.setText("Large");
-
         submitButton.setText("Submit");
+
+        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Small", "Medium", "Large"}));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -62,13 +56,11 @@ public class AddDrinkPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(143, 143, 143)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(largeRadio)
-                            .addComponent(mediumRadio)
-                            .addComponent(smallRadio)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(portionLabel)
-                            .addComponent(foodLabel)
-                            .addComponent(foodField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(drinkLabel)
+                            .addComponent(drinkField, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                            .addComponent(comboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(162, 162, 162)
                         .addComponent(submitButton)))
@@ -78,72 +70,48 @@ public class AddDrinkPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addComponent(foodLabel)
+                .addComponent(drinkLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(foodField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(drinkField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(portionLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(smallRadio)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(mediumRadio)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(largeRadio)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(83, 83, 83)
                 .addComponent(submitButton)
                 .addContainerGap(39, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void foodFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foodFieldActionPerformed
+    private void drinkFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drinkFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_foodFieldActionPerformed
+    }//GEN-LAST:event_drinkFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField foodField;
-    private javax.swing.JLabel foodLabel;
-    private javax.swing.JRadioButton largeRadio;
-    private javax.swing.JRadioButton mediumRadio;
+    private javax.swing.JComboBox<String> comboBox;
+    private javax.swing.JTextField drinkField;
+    private javax.swing.JLabel drinkLabel;
     private javax.swing.JLabel portionLabel;
-    private javax.swing.JRadioButton smallRadio;
     private javax.swing.JButton submitButton;
     // End of variables declaration//GEN-END:variables
-public javax.swing.JTextField getFoodField(){
-        return this.foodField;
+    
+    public javax.swing.JTextField getDrinkField(){
+        return this.drinkField;
     }
     
-    public void setFoodField(javax.swing.JTextField foodField){
-        this.foodField = foodField;
+    public void setDrinkField(javax.swing.JTextField drinkField){
+        this.drinkField = drinkField;
     }
     
-    public javax.swing.JLabel getFoodLabel(){
-        return this.foodLabel;
+    public javax.swing.JLabel getDrinkLabel(){
+        return this.drinkLabel;
     }
     
-    public javax.swing.JRadioButton getLargeRadio(){
-        return this.largeRadio;
+    public javax.swing.JComboBox getComboBox(){
+        return this.comboBox;
     }
-    
-    public void setLargeRadio(javax.swing.JRadioButton largeRadio){
-        this.largeRadio = largeRadio;
-    }
-    
-    public javax.swing.JRadioButton getSmallRadio(){
-        return this.smallRadio;
-    }
-    
-    public void setSmallRadio(javax.swing.JRadioButton smallRadio){
-        this.smallRadio = smallRadio;
-    }
-    
-    public javax.swing.JRadioButton getMediumRadio(){
-        return this.mediumRadio;
-    }
-    
-    public void setMediumRadio(javax.swing.JRadioButton mediumRadio){
-        this.mediumRadio = mediumRadio;
-    }
+
     
     public javax.swing.JButton getSubmitButton(){
         return this.submitButton;

@@ -3,22 +3,25 @@
 package models;
 
 import parents.Entry;
-import java.util.Date;
 
 /**
  *
  * @author John
  */
 public class Drink extends Entry {
-    private Date date;
+    private final String date;
+    private final String drink;
+    private final String portion;
     
     /**
      * Default constructor for Drink class.
      */
-    public Drink(){
+    public Drink(String drink, String portion, String date){
         super();
-        this.date = new Date();
-        System.out.println(date.toString());
+        this.drink = drink;
+        this.portion = portion;
+        this.date = date;
+        //System.out.println(date.toString());
     }
 
     public Drink(String name) {
@@ -73,7 +76,15 @@ public class Drink extends Entry {
     /**
      * @return the date
      */
-    public Date getDate() {
+    public String getDate() {
         return date;
+    }
+    
+    public String getDrink() {
+        return drink;
+    }
+    
+    public String getPortion() {
+        return portion;
     }
 }
