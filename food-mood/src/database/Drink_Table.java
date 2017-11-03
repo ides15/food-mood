@@ -102,13 +102,15 @@ public class Drink_Table extends Database {
         return "Drink";
     }
 
-    public void deleteEntry(Drink drink, int accountID) {
+    public void deleteEntry(String name, int accountID) {
         //update food entry in sql database
-        String sql = "DELETE FROM Foods WHERE accountID= \"" + accountID + "\" AND name= \"" + drink.getName() + "\" AND portion=\"" + drink.getAmount() + "\" AND date=\"" + drink.getDate() + "\";";
-
+        //String sql = "DELETE FROM Foods WHERE accountID= \"" + accountID + "\" AND name= \"" + drink.getDrink() + "\" AND portion=\"" + drink.getPortion() + "\" AND date=\"" + drink.getDate() + "\";";
+        String sql = "DELETE FROM drinks WHERE accountID = \"" + accountID + "\" AND name = \"" + name + "\"";
+        
         try (Connection conn = this.connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
+                Statement stmt = conn.createStatement()) {
+            
+            stmt.executeUpdate(sql);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
