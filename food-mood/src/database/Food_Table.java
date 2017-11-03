@@ -44,7 +44,7 @@ public class Food_Table extends Database {
      */
     public void updateEntry(Food oldFood, Food newFood, int accountID){
         //update food entry in sql database
-        String sql = "UPDATE Foods SET name = \"" + newFood + "\", portion = \"" + newFood.getAmount() + "\", date = \"" + newFood.getDate() + "\" WHERE accountID= \"" + accountID + "\" AND name= \"" + oldFood.getName() + "\" AND portion=\"" + oldFood.getAmount() + "\" AND date=\"" + oldFood.getDate() + "\";";
+        String sql = "UPDATE Foods SET name = \"" + newFood + "\", portion = \"" + newFood.getPortion() + "\", date = \"" + newFood.getDate() + "\" WHERE accountID= \"" + accountID + "\" AND name= \"" + oldFood.getName() + "\" AND portion=\"" + oldFood.getPortion() + "\" AND date=\"" + oldFood.getDate() + "\";";
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
@@ -54,12 +54,11 @@ public class Food_Table extends Database {
     }
     
     public void addEntry(Food food, int accountID){
-        String sql = "INSERT INTO Foods (accountID, name, portion, date) VALUES (\"" + accountID + "\", \"" + food.getName() + "\", \"" + food.getAmount()+ "\", \"" + food.getDate() + "\");";
+        String sql = "INSERT INTO Foods (accountID, name, portion, date) VALUES (\"" + accountID + "\", \"" + food.getName() + "\", \"" + food.getPortion()+ "\", \"" + food.getDate() + "\");";
         
         try (Connection conn = this.connect();
-                Statement stmt = conn.createStatement()) {
-            
-            stmt.executeUpdate(sql);
+            Statement stmt = conn.createStatement()) {
+                stmt.executeUpdate(sql);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -75,7 +74,7 @@ public class Food_Table extends Database {
     }
     
     public Food getFood(Food f, int accountID){
-        String sql = "SELECT * FROM Foods WHERE accountID= \"" + accountID + "\" AND name= \"" + f.getName() + "\" AND portion=\"" + f.getAmount() + "\" AND date=\"" + f.getDate() + "\";";
+        String sql = "SELECT * FROM Foods WHERE accountID= \"" + accountID + "\" AND name= \"" + f.getName() + "\" AND portion=\"" + f.getPortion() + "\" AND date=\"" + f.getDate() + "\";";
         String name = "name";
         String portion = "portion";
         String date = "date";

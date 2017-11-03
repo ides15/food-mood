@@ -10,7 +10,7 @@ import parents.Entry;
  */
 public class Food extends Entry {
     private final String food;
-    private final String amount;
+    private final String portion;
     private final String date;
     
     /**
@@ -18,11 +18,11 @@ public class Food extends Entry {
      * @param food name of the food
      * @param amount amount of food in ?units
      */
-    public Food(String food, String amount, String date) {
+    public Food(String food, String portion, String date) {
         super();
         
         this.food = food;
-        this.amount = amount;
+        this.portion = portion;
         this.date = date;
     }
 
@@ -42,6 +42,10 @@ public class Food extends Entry {
     @Override
     public int getAmount() {
         return super.getAmount();
+    }
+    
+    public String getPortion(){
+        return this.portion;
     }
     
     public String getDate(){
@@ -72,7 +76,7 @@ public class Food extends Entry {
      */
     @Override
     public String getName() {
-        return super.getName();
+        return this.food;
     }
     
     public String foodToString(Food f){
