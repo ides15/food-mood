@@ -54,10 +54,10 @@ public class FoodCntl extends EntryCntl {
     class AddButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            getFoodView().add(getFoodView().getAddFoodView().getAddFoodPanel());
+            getFoodView().add(getFoodView().getAddFoodPanel());
             getFoodView().getFoodViewPanel().setVisible(false);
-            getFoodView().getAddFoodView().getAddFoodPanel().setVisible(true);
-            getFoodView().getAddFoodView().addSubmitButtonListener(new SubmitButtonListener());
+            getFoodView().getAddFoodPanel().setVisible(true);
+            getFoodView().addSubmitButtonListener(new SubmitButtonListener());
         }
     }
     
@@ -90,9 +90,9 @@ public class FoodCntl extends EntryCntl {
     class SubmitButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            String name = getFoodView().getAddFoodView().getAddFoodPanel().getFoodField().getText();
-            ListModel amountModel = getFoodView().getAddFoodView().getAddFoodPanel().getComboBox().getModel();
-            String amount = amountModel.getElementAt(getFoodView().getAddFoodView().getAddFoodPanel().getComboBox().getSelectedIndex()).toString();
+            String name = getFoodView().getAddFoodPanel().getFoodField().getText();
+            ListModel amountModel = getFoodView().getAddFoodPanel().getComboBox().getModel();
+            String amount = amountModel.getElementAt(getFoodView().getAddFoodPanel().getComboBox().getSelectedIndex()).toString();
             
             System.out.println("name: " + name);
             System.out.println("amount: " + amount);
@@ -100,10 +100,10 @@ public class FoodCntl extends EntryCntl {
             Food newFood = new Food(name, amount, new Date().toString());
             
             db.addEntry(newFood, accountID);
-//            foodView.getAddFoodPanel().setVisible(false);
+//           foodView.getAddFoodPanel().setVisible(false);
 //            foodView.add(foodView.getFoodPanel());
 //            foodView.getFoodPanel().setVisible(true);
-//            foodView.remove(foodView.getAddFoodPanel());
+//           foodView.remove(foodView.getAddFoodPanel());
         }
     }
     

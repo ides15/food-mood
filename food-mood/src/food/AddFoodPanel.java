@@ -110,6 +110,7 @@ public class AddFoodPanel extends javax.swing.JPanel {
     public void setSubmitButton(javax.swing.JButton submitButton){
         this.submitButton = submitButton;
     }
+    
 
     /**
      * @return the accountID

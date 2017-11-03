@@ -10,12 +10,13 @@ package food;
  * @author Kyle
  */
 public class EditFoodPanel extends javax.swing.JPanel {
-
+    private int accountID;
     /**
      * Creates new form EditFoodPanel
      */
-    public EditFoodPanel() {
+    public EditFoodPanel(int accountID) {
         initComponents();
+        this.accountID = accountID;
     }
 
     /**

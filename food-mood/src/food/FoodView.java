@@ -18,9 +18,10 @@ public class FoodView extends JFrame {
     private Food food;
     private final Food_Table db;
     private FoodViewPanel foodViewPanel;
+    private EditFoodPanel editFoodPanel;
+    private AddFoodPanel addFoodPanel;
     private int accountID;
     
-    private final AddFoodView addFoodView;
     
     /**
      * Default constructor for FoodView.
@@ -35,8 +36,8 @@ public class FoodView extends JFrame {
         setSize(450, 400);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
-        addFoodView = new AddFoodView(accountID);
-        
+        addFoodPanel = new AddFoodPanel(accountID);
+        editFoodPanel = new EditFoodPanel(accountID);
         foodViewPanel = new FoodViewPanel(accountID);
         add(foodViewPanel);
     }
@@ -53,6 +54,10 @@ public class FoodView extends JFrame {
         getFoodViewPanel().getEditButton().addActionListener(al);
     }
     
+    public void addSubmitButtonListener(ActionListener al) {
+        getAddFoodPanel().getSubmitButton().addActionListener(al);
+    }
+    
     /**
      * @return the foodViewPanel
      */
@@ -65,6 +70,10 @@ public class FoodView extends JFrame {
      */
     public void setFoodViewPanel(FoodViewPanel foodViewPanel) {
         this.foodViewPanel = foodViewPanel;
+    }
+    
+    public AddFoodPanel getAddFoodPanel() {
+        return addFoodPanel; 
     }
 
     /**
@@ -81,10 +90,4 @@ public class FoodView extends JFrame {
         this.accountID = accountID;
     }
 
-    /**
-     * @return the addFoodView
-     */
-    public AddFoodView getAddFoodView() {
-        return addFoodView;
-    }
 }
