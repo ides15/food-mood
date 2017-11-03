@@ -93,7 +93,6 @@ public class FoodCntl extends EntryCntl {
             
             foodView.remove(foodView.getAddFoodPanel());
             //foodView.getAddFoodPanel().setVisible(false);
-            foodView.add(foodView.getFoodViewPanel());
             
             String name = getFoodView().getAddFoodPanel().getFoodField().getText();
             ListModel amountModel = getFoodView().getAddFoodPanel().getComboBox().getModel();
@@ -105,9 +104,13 @@ public class FoodCntl extends EntryCntl {
             Food newFood = new Food(name, amount, new Date().toString());
             
             db.addEntry(newFood, accountID);
+            
+            foodView.getFoodViewPanel().initFoodsData();
+            
+            foodView.revalidate();
             foodView.repaint();
+            foodView.add(foodView.getFoodViewPanel());
             foodView.getFoodViewPanel().setVisible(true);
-            foodView.remove(foodView.getAddFoodPanel());
             //foodView.repaint();
         }
     }
