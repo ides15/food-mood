@@ -12,18 +12,21 @@ public class Food extends Entry {
     private final String food;
     private final String portion;
     private final String date;
+    private final int foodID;
     
     /**
      * Default constructor for Food class.
      * @param food name of the food
      * @param amount amount of food in ?units
      */
-    public Food(String food, String portion, String date) {
+    public Food(String food, String portion, String date, int foodID) {
         super();
         
         this.food = food;
         this.portion = portion;
         this.date = date;
+        this.foodID = foodID;
+        
     }
 
     /**
