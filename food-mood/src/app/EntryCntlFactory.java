@@ -37,7 +37,7 @@ public class EntryCntlFactory {
                 return drinkCntl;
             } case "mood": {
                 Mood_Table mood_db = new Mood_Table("foodmood.db");
-                MoodView moodView = new MoodView(mood_db);
+                MoodView moodView = new MoodView(accountID, mood_db);
                 MoodCntl moodCntl = new MoodCntl(accountID, mood_db, moodView);
                 return moodCntl;
             } default:

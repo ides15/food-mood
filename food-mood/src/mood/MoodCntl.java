@@ -8,6 +8,8 @@ import app.EntryCntl;
 import database.Mood_Table;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
+import javax.swing.ListModel;
 import models.Mood;
 /**
  *
@@ -18,6 +20,8 @@ public class MoodCntl extends EntryCntl {
     private final Mood_Table db;
     private final MoodView moodView;
     private int accountID;
+    
+    private AddMoodPanel addMoodPanel;
 
     /**
      * Default constructor for MoodCntl.
@@ -31,7 +35,6 @@ public class MoodCntl extends EntryCntl {
         this.accountID = accountID;
         this.moodView = moodView;
 
-        mood = new Mood();
 
         moodView.setVisible(true);
 
@@ -92,13 +95,10 @@ public class MoodCntl extends EntryCntl {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            String selection;
-            System.out.println("Food deleted");
-            
-            selection = moodView.getMoodViewPanel().getMoodListView().getSelectedValue().toString();
-            mood.setName(selection);
-            
-            db.deleteEntry(mood, getAccountID());
+            if(!moodView.getMoodViewPanel().getMoodListView().isSelectionEmpty()) {
+                db.deleteEntry(moodView.getMoodViewPanel().getMoodListView().getSelectedValue().toString(), getAccountID());
+                moodView.getMoodViewPanel().initMoodsData();
+            }
         }
     }
     
@@ -120,6 +120,20 @@ public class MoodCntl extends EntryCntl {
         @Override
         public void actionPerformed(ActionEvent e) {
             moodView.getAddMoodPanel().setVisible(false);
+            
+            String name = getMoodView().getAddMoodPanel().getMoodField().getText();
+            ListModel amountModel = getMoodView().getAddMoodPanel().getComboBox().getModel();
+            String amount = amountModel.getElementAt(getMoodView().getAddMoodPanel().getComboBox().getSelectedIndex()).toString();
+            
+            System.out.println("name: " + name);
+            System.out.println("amount: " + amount);
+            
+            Mood newMood = new Mood(name, amount, new Date().toString());
+            
+            db.addNewMood(newMood, accountID);
+            
+            moodView.getMoodViewPanel().initMoodsData();
+            
             moodView.add(moodView.getMoodViewPanel());
             moodView.getMoodViewPanel().setVisible(true);
             moodView.remove(moodView.getAddMoodPanel());

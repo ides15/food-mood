@@ -5,7 +5,7 @@
  */
 package mood;
 
-import food.*;
+import mood.*;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JSlider;
@@ -16,12 +16,14 @@ import javax.swing.JTextField;
  * @author Kyle
  */
 public class AddMoodPanel extends javax.swing.JPanel {
-
+    
+    private int accountID;
     /**
      * Creates new form FoodCreatePanel
      */
-    public AddMoodPanel() {
+    public AddMoodPanel(int accountID) {
         initComponents();
+        this.accountID = accountID;
     }
 
     /**
@@ -33,129 +35,91 @@ public class AddMoodPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        aMField = new javax.swing.JTextField();
-        aMLabel = new javax.swing.JLabel();
-        cancelButton = new javax.swing.JButton();
-        aMSliderMinLabel = new javax.swing.JLabel();
-        aMSliderMaxLabel = new javax.swing.JLabel();
+        moodLabel = new javax.swing.JLabel();
+        moodField = new javax.swing.JTextField();
+        portionLabel = new javax.swing.JLabel();
+        comboBox = new javax.swing.JComboBox<>();
         submitButton = new javax.swing.JButton();
-        aMSlider = new javax.swing.JSlider();
 
-        aMField.setText("Ex. Satisfied");
+        moodLabel.setText("Mood");
 
-        aMLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        aMLabel.setText("Add Mood");
-        aMLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-
-        cancelButton.setText("Cancel");
-        cancelButton.addActionListener(new java.awt.event.ActionListener() {
+        moodField.setText("Ex. Satisfied");
+        moodField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelButtonActionPerformed(evt);
+                moodFieldActionPerformed(evt);
             }
         });
 
-        aMSliderMinLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        aMSliderMinLabel.setText("0");
+        portionLabel.setText("Rating");
 
-        aMSliderMaxLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        aMSliderMaxLabel.setText("10");
+        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 
         submitButton.setText("Submit");
-        submitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(176, 176, 176)
+                .addComponent(submitButton)
+                .addContainerGap(180, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                        .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(aMSliderMinLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(aMLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(aMField)
-                                    .addComponent(aMSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(aMSliderMaxLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
+                    .addComponent(portionLabel)
+                    .addComponent(moodLabel)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(moodField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(157, 157, 157))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addComponent(aMLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(moodLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(aMField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(aMSliderMinLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(aMSliderMaxLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(aMSlider, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(75, 75, 75)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addComponent(moodField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(portionLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(submitButton)
+                .addGap(86, 86, 86))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-        //Return
-    }//GEN-LAST:event_cancelButtonActionPerformed
-
-    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-        //Update
-    }//GEN-LAST:event_submitButtonActionPerformed
+    private void moodFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moodFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_moodFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField aMField;
-    private javax.swing.JLabel aMLabel;
-    private javax.swing.JSlider aMSlider;
-    private javax.swing.JLabel aMSliderMaxLabel;
-    private javax.swing.JLabel aMSliderMinLabel;
-    private javax.swing.JButton cancelButton;
+    private javax.swing.JComboBox<String> comboBox;
+    private javax.swing.JTextField moodField;
+    private javax.swing.JLabel moodLabel;
+    private javax.swing.JLabel portionLabel;
     private javax.swing.JButton submitButton;
     // End of variables declaration//GEN-END:variables
     
     
     
-    public javax.swing.JTextField getMField(){
-        return this.aMField;
+    public javax.swing.JTextField getMoodField(){
+        return this.moodField;
     }
     
-    public void setMField(javax.swing.JTextField eMField){
-        this.aMField = eMField;
+    public void setFoodField(javax.swing.JTextField moodField){
+        this.moodField = moodField;
     }
     
-    public javax.swing.JSlider getMSlider(){
-        return this.aMSlider;
+    public javax.swing.JLabel getMoodLabel(){
+        return this.moodLabel;
     }
     
-    public void setMSlider(javax.swing.JSlider eMSlider){
-        this.aMSlider = eMSlider;
-    }
-
-   public JButton getCancelButton() {
-        return cancelButton;
-    }
-
-    public void setCancel(JButton cancelButton) {
-        this.cancelButton = cancelButton;
+    public javax.swing.JComboBox getComboBox(){
+        return this.comboBox;
     }
 
     public JButton getSubmitButton() {
@@ -164,6 +128,20 @@ public class AddMoodPanel extends javax.swing.JPanel {
 
     public void setSubmitButton(JButton submitButton) {
         this.submitButton = submitButton;
+    }
+    
+    /**
+     * @return the accountID
+     */
+    public int getAccountID() {
+        return accountID;
+    }
+
+    /**
+     * @param accountID the accountID to set
+     */
+    public void setAccountID(int accountID) {
+        this.accountID = accountID;
     }
     
 }

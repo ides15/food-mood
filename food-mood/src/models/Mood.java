@@ -11,24 +11,20 @@ import java.util.Date;
  */
 public class Mood extends Entry {
 
-    private Date date;
-    private String name;
+    private final String mood;
+    private final String portion;
+    private final String date;
 
     /**
      * Default constructor for Mood class.
      */
-    public Mood() {
+    public Mood(String mood, String portion, String date) {
         super();
-        this.date = new Date();
-        System.out.println(date.toString());
+        this.mood = mood;
+        this.portion = portion;
+        this.date = date;
     }
 
-    public Mood(String name) {
-        super();
-        this.date = new Date();
-        this.name = name;
-        System.out.println(date.toString());
-    }
     /**
      * Function to accept scaled amount of emotions after consumption
      *
@@ -80,13 +76,18 @@ public class Mood extends Entry {
      */
     @Override
     public String getName() {
-        return super.getName();
+        return this.mood;
     }
 
     /**
      * @return the date
      */
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
+    
+        public String getPortion(){
+        return this.portion;
+    }
+    
 }

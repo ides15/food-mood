@@ -5,6 +5,7 @@
  */
 package mood;
 
+import database.Mood_Table;
 import java.util.ArrayList;
 
 /**
@@ -13,13 +14,30 @@ import java.util.ArrayList;
  */
 public class MoodViewPanel extends javax.swing.JPanel {
     
-    private String food;
-    private ArrayList<String> list;
+    private final Mood_Table db;
+    private String mood;
+    private String[] moodsData;
+    private int accountID;
+    
     /**
-     * Creates new form FoodPanel
+     * Creates new form MoodPanel
      */
-    public MoodViewPanel() {
+    public MoodViewPanel(int accountID) {
         initComponents();
+        this.accountID = accountID;
+        db = new Mood_Table("foodmood.db");
+    }
+    
+    public void initMoodsData() {
+        ArrayList<String> data = db.getMoodList(getAccountID());
+        int size = data.size();
+        moodsData = new String[size];
+        
+        for(int i = 0; i < size; i++) {
+            moodsData[i] = data.get(i);
+        }
+        
+        getMoodListView().setListData(moodsData);
     }
 
     /**
@@ -31,20 +49,13 @@ public class MoodViewPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        moodListView = new javax.swing.JList<>();
         entryLabel = new javax.swing.JLabel();
         addButton = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
-
-        moodListView.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(moodListView);
+        jScrollPane1 = new javax.swing.JScrollPane();
+        moodListView = new javax.swing.JList<>();
 
         entryLabel.setText("Entries");
 
@@ -58,6 +69,11 @@ public class MoodViewPanel extends javax.swing.JPanel {
         editButton.setText("Edit");
 
         deleteButton.setText("Delete");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -65,6 +81,8 @@ public class MoodViewPanel extends javax.swing.JPanel {
                 backButtonActionPerformed(evt);
             }
         });
+
+        jScrollPane1.setViewportView(moodListView);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -87,20 +105,19 @@ public class MoodViewPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(entryLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
+                        .addGap(27, 27, 27)
+                        .addComponent(addButton)
+                        .addGap(30, 30, 30)
                         .addComponent(editButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(deleteButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(addButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(entryLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(32, 32, 32)
+                        .addComponent(deleteButton))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
                 .addComponent(backButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -113,6 +130,10 @@ public class MoodViewPanel extends javax.swing.JPanel {
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -161,7 +182,32 @@ public class MoodViewPanel extends javax.swing.JPanel {
         return this.moodListView;
     }
     
-    public void setFoodListView(javax.swing.JList foodListView){
-        this.moodListView = foodListView;
+    public void setMoodListView(javax.swing.JList moodListView){
+        this.moodListView = moodListView;
+    }
+    
+        public void setAccountID(int accountID) {
+        this.accountID = accountID;
+    }
+
+    /**
+     * @return the accountID
+     */
+    public int getAccountID() {
+        return accountID;
+    }
+
+    /**
+     * @return the moodsData
+     */
+    public String[] getMoodsData() {
+        return moodsData;
+    }
+
+    /**
+     * @param moodsData the moodsData to set
+     */
+    public void setMoodsData(String[] moodsData) {
+        this.moodsData = moodsData;
     }
 }

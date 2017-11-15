@@ -19,12 +19,16 @@ import parents.Entry;
  * @author john
  */
 public class Mood_Table extends Database {
+    
+    private ArrayList<String> moodList;
+    private Mood mood;
 
-    public Mood_Table(String DB_NAME) {
+
+    public Mood_Table(String TABLE) {
         super();
     }
 
-    public Mood getUserMood(int accountID) {
+    /*public Mood getUserMood(int accountID) {
         String name = null,
                 date = null;
         int amount = 0;
@@ -45,20 +49,14 @@ public class Mood_Table extends Database {
         }
 
         return new Mood(name);
-    }
+    }*/
 
-    public void addNewMood(Mood newMood) {
-        String sql = "INSERT INTO Moods (name,amount, date, accountID) "
-                + "VALUES (?, ?,?, ?)";
-
+    public void addNewMood(Mood m, int accountID) {
+        String sql = "INSERT INTO Moods (accountID, name, portion, date) VALUES (\"" + accountID + "\", \"" + m.getName() + "\", \"" + m.getPortion()+ "\", \"" + m.getDate() + "\");";
+        
         try (Connection conn = this.connect();
-                PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-            pstmt.setString(1, newMood.getName());
-            pstmt.setInt(2, newMood.getAmount());
-            pstmt.setString(3, "March 3rd, 2013");
-            pstmt.setInt(4, 103);
-            pstmt.executeUpdate();
+            Statement stmt = conn.createStatement()) {
+                stmt.executeUpdate(sql);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
@@ -71,19 +69,39 @@ public class Mood_Table extends Database {
 
     @Override
     public String getEntry(String entry) {
-        System.out.println("getEntry called in Food_DB.");
+        System.out.println("getEntry called in Mood_DB.");
         return "Mood";
     }
 
-    public void deleteEntry(Mood mood, int accountID) {
-        //update food entry in sql database
-        String sql = "DELETE FROM Foods WHERE accountID= \"" + accountID + "\" AND name= \"" + mood.getName() + "\" AND portion=\"" + mood.getAmount() + "\" AND date=\"" + mood.getDate() + "\";";
-
+    public void deleteEntry(String name, int accountID) {
+        //update mood entry in sql database
+        String sql = "DELETE FROM Moods WHERE accountID = \"" + accountID + "\" AND name = \"" + name + "\"";
+    
         try (Connection conn = this.connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
+                Statement stmt = conn.createStatement()) {
+            
+            stmt.executeUpdate(sql);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+    
+    public ArrayList<String> getMoodList(int accountID){
+        String sql = "SELECT * FROM Moods WHERE accountID = \"" + accountID + "\";";
+        String col = "name";
+        
+        try (Connection conn = this.connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+            
+            moodList = new ArrayList<>();
+            while(rs.next()) {
+                moodList.add(rs.getString(col));
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return moodList;
     }
 }

@@ -38,15 +38,6 @@ public class Drink extends Entry {
     }
 
     /**
-     * Function to return amount of drink
-     * @return Amount of drinks as integer
-     */
-    @Override
-    public int getAmount() {
-        return super.getAmount();
-    }
-
-    /**
      * Function to set type of drink
      * @param unit Type of drink, accepts type as string
      */

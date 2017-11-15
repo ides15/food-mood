@@ -22,17 +22,19 @@ public class MoodView extends JFrame {
     private MoodViewPanel moodViewPanel;
     private AddMoodPanel addMoodPanel;
     private EditMoodPanel editMoodPanel;
+    private int accountID;
 
-    public MoodView(Mood_Table db) {
+    public MoodView(int accountID, Mood_Table db) {
         super("Mood");
+        this.accountID = accountID; 
         this.db = db;
 
         setSize(450, 400);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
-        moodViewPanel = new MoodViewPanel();
-        editMoodPanel = new EditMoodPanel();
-        addMoodPanel = new AddMoodPanel();
+        moodViewPanel = new MoodViewPanel(accountID);
+        editMoodPanel = new EditMoodPanel(accountID);
+        addMoodPanel = new AddMoodPanel(accountID);
         add(moodViewPanel);
     }
 
@@ -59,7 +61,7 @@ public class MoodView extends JFrame {
         return this.editMoodPanel;
     }
 
-    public void setEditFoodPanel(EditMoodPanel editMoodPanel) {
+    public void setEditMoodPanel(EditMoodPanel editMoodPanel) {
         this.editMoodPanel = editMoodPanel;
     }
 
@@ -91,7 +93,7 @@ public class MoodView extends JFrame {
 
     //Back
     public void addCancelButtonListener(ActionListener al) {
-        getAddMoodPanel().getCancelButton().addActionListener(al);
-        getEditMoodPanel().getCancelButton().addActionListener(al);
+        //getAddMoodPanel().getCancelButton().addActionListener(al);
+        //getEditMoodPanel().getCancelButton().addActionListener(al);
     }
 }
