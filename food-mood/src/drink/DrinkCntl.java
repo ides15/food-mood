@@ -84,8 +84,13 @@ public class DrinkCntl extends EntryCntl {
     class DeleteButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            //Grab drink name and ID
-            //Then send delete query to database matching those properties
+            if(drinkView.getDrinkViewPanel().getDrinkTable().getSelectedRow() != -1) {
+                int selectedRow = getDrinkView().getDrinkViewPanel().getDrinkTable().getSelectedRow();
+                int selectedFoodID = Integer.parseInt(getDrinkView().getDrinkViewPanel().getDrinkTable().getValueAt(selectedRow, 1).toString());
+                
+                db.deleteEntry(selectedFoodID, getAccountID());
+                drinkView.getDrinkViewPanel().initDrinksData();
+            }
         }
     }
     

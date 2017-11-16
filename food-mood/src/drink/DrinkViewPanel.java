@@ -28,8 +28,7 @@ public class DrinkViewPanel extends javax.swing.JPanel {
     }
     
     public void initDrinksData() {
-        //getDrinkTable().setModel(db.getDrinksList(getAccountID()));
-        //still need getDrinksList to grab drink list in Drink_Tables
+        getDrinkTable().setModel(db.getDrinkList(getAccountID()));
     }
 
     /**

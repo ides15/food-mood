@@ -66,7 +66,7 @@ public class Drink_Table extends Database {
     }
     
     public DefaultTableModel getDrinkList(int accountID){
-        String sql = "SELECT name, foodID FROM Foods WHERE accountID = \"" + accountID + "\"";
+        String sql = "SELECT name, foodID FROM Drinks WHERE accountID = \"" + accountID + "\"";
         
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement();
@@ -145,10 +145,10 @@ public class Drink_Table extends Database {
         return portion;
     }
 
-    public void deleteEntry(String name, int accountID) {
+    public void deleteEntry(int drinkID, int accountID) {
         //update food entry in sql database
         //String sql = "DELETE FROM Foods WHERE accountID= \"" + accountID + "\" AND name= \"" + drink.getDrink() + "\" AND portion=\"" + drink.getPortion() + "\" AND date=\"" + drink.getDate() + "\";";
-        String sql = "DELETE FROM drinks WHERE accountID = \"" + accountID + "\" AND name = \"" + name + "\"";
+        String sql = "DELETE FROM drinks WHERE accountID = \"" + accountID + "\" AND drinkID = \"" + drinkID + "\"";
         
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement()) {
