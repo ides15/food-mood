@@ -136,13 +136,18 @@ public class DrinkCntl extends EntryCntl {
     class UpdateButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+           int selectedRow = getDrinkView().getDrinkViewPanel().getDrinkTable().getSelectedRow();
+           int selectedDrinkID = Integer.parseInt(getDrinkView().getDrinkViewPanel().getDrinkTable().getValueAt(selectedRow, 1).toString());
             
-//            System.out.println("Food updated");
-//            //db.updateEntry(oldFood, newFood, navCntl.getAccountID());
-            drinkView.getEditDrinkPanel().setVisible(false);
-            drinkView.add(drinkView.getDrinkViewPanel());
-            drinkView.getDrinkViewPanel().setVisible(true);
-            drinkView.remove(drinkView.getEditDrinkPanel());
+           String updatedName = getDrinkView().getEditDrinkPanel().getUpdateNameTextField().getText();
+           String updatedPortion = getDrinkView().getEditDrinkPanel().getUpdateComboBox().getSelectedItem().toString();
+            
+           db.updateEntry(updatedName, updatedPortion, selectedDrinkID, getAccountID());
+            
+           getDrinkView().getDrinkViewPanel().initDrinksData();
+           getDrinkView().getDrinkViewPanel().setVisible(true);
+           getDrinkView().getEditDrinkPanel().setVisible(false);
+           getDrinkView().remove(getDrinkView().getEditDrinkPanel());
         }
     }
     
