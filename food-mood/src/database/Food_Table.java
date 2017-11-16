@@ -8,13 +8,14 @@ import java.sql.Statement;
 import parents.Entry;
 import models.Food;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author john
  */
 public class Food_Table extends Database {
-    private ArrayList<String> foodList;
+    private DefaultTableModel foodData;
     private Food food;
     
     /**
@@ -94,23 +95,51 @@ public class Food_Table extends Database {
         return f;
     }
     
-    public ArrayList<String> getFoodList(int accountID){
-        String sql = "SELECT * FROM Foods WHERE accountID = \"" + accountID + "\";";
-        String col = "name";
+    public int getNumberOfFood(int accountID) {
+        String sql = "SELECT name FROM Foods WHERE accountID = \"" + accountID + "\"";
+        int number = 0;
         
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
             
-            foodList = new ArrayList<>();
-            while(rs.next()) {
-                foodList.add(rs.getString(col));
-            }
+            while (rs.next()) {
+                number++;
+            }            
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         
-        return foodList;
+        return number;
+    }
+    
+    public DefaultTableModel getFoodList(int accountID){
+        String sql = "SELECT name, foodID FROM Foods WHERE accountID = \"" + accountID + "\"";
+        
+        try (Connection conn = this.connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+            
+            Object[] columnNames = {
+                "Food Name", "Food ID"
+            };
+            
+            int numberOfFoods = this.getNumberOfFood(accountID);
+            
+            System.out.println(numberOfFoods);
+            Object[][] data = new Object[numberOfFoods][1];
+            
+            for (int i = 0; i < numberOfFoods; i++) {
+                rs.next();
+                data[i][0] = rs.getString("name");
+            }
+            
+            foodData = new DefaultTableModel(data, columnNames);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return foodData;
     }
     
     public void deleteEntry(String name, int accountID){

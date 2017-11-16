@@ -3,7 +3,6 @@
 package food;
 
 import database.Food_Table;
-import java.util.ArrayList;
 
 /**
  *
@@ -27,16 +26,8 @@ public class FoodViewPanel extends javax.swing.JPanel {
         initFoodsData();
     }
     
-    public void initFoodsData() {
-        ArrayList<String> data = db.getFoodList(getAccountID());
-        int size = data.size();
-        foodsData = new String[size];
-        
-        for(int i = 0; i < size; i++) {
-            foodsData[i] = data.get(i);
-        }
-        
-        getFoodListView().setListData(foodsData);
+    public void initFoodsData() {        
+        getFoodTable().setModel(db.getFoodList(getAccountID()));
     }
 
     /**
@@ -48,16 +39,14 @@ public class FoodViewPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        foodListView = new javax.swing.JList<>();
         entryLabel = new javax.swing.JLabel();
         addButton = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        foodTable = new javax.swing.JTable();
 
         setPreferredSize(new java.awt.Dimension(420, 420));
-
-        jScrollPane1.setViewportView(foodListView);
 
         entryLabel.setText("Entries");
 
@@ -71,6 +60,19 @@ public class FoodViewPanel extends javax.swing.JPanel {
         editButton.setText("Edit");
 
         deleteButton.setText("Delete");
+
+        foodTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(foodTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -87,7 +89,7 @@ public class FoodViewPanel extends javax.swing.JPanel {
                             .addComponent(deleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(editButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,9 +105,9 @@ public class FoodViewPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addComponent(entryLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(153, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(300, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -119,7 +121,7 @@ public class FoodViewPanel extends javax.swing.JPanel {
     private javax.swing.JButton deleteButton;
     private javax.swing.JButton editButton;
     private javax.swing.JLabel entryLabel;
-    private javax.swing.JList<String> foodListView;
+    private javax.swing.JTable foodTable;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
     
@@ -133,10 +135,6 @@ public class FoodViewPanel extends javax.swing.JPanel {
     
     public javax.swing.JButton getEditButton(){
         return this.editButton;
-    }
-    
-    public javax.swing.JList getFoodListView(){
-        return this.foodListView;
     }
 
     /**
@@ -165,5 +163,12 @@ public class FoodViewPanel extends javax.swing.JPanel {
      */
     public void setFoodsData(String[] foodsData) {
         this.foodsData = foodsData;
+    }
+
+    /**
+     * @return the FoodTable
+     */
+    public javax.swing.JTable getFoodTable() {
+        return foodTable;
     }
 }

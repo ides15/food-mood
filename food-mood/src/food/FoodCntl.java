@@ -64,8 +64,8 @@ public class FoodCntl extends EntryCntl {
     class DeleteButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(!foodView.getFoodViewPanel().getFoodListView().isSelectionEmpty()) {
-                db.deleteEntry(foodView.getFoodViewPanel().getFoodListView().getSelectedValue().toString(), getAccountID());
+            if(foodView.getFoodViewPanel().getFoodTable().getSelectedRow() != -1) {
+//                db.deleteEntry(, getAccountID());
                 foodView.getFoodViewPanel().initFoodsData();
             }
         }
@@ -74,16 +74,7 @@ public class FoodCntl extends EntryCntl {
     class EditButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("edit");
-//            name = foodView.getAddFoodPanel().getFoodField().getText().toString();
-//            amount = foodView.getAddFoodPanel().getComboBox().getSelectedItem().toString();
-            
-//            date = now();
-            
-//            food = new Food(name, amount, date);
-            
-            //Need actual accountID
-//            db.addEntry(food , accountID);
+            db.getFoodList(getAccountID());
         }
     }
     
@@ -101,7 +92,7 @@ public class FoodCntl extends EntryCntl {
             System.out.println("name: " + name);
             System.out.println("amount: " + amount);
             
-            Food newFood = new Food(name, amount, new Date().toString());
+            Food newFood = new Food(name, amount, new Date().toString(), 1);
             
             db.addEntry(newFood, accountID);
             
