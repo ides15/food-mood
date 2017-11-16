@@ -99,16 +99,12 @@ public class DrinkCntl extends EntryCntl {
             String name = getDrinkView().getAddDrinkPanel().getDrinkField().getText();
             ListModel amountModel = getDrinkView().getAddDrinkPanel().getComboBox().getModel();
             String amount = amountModel.getElementAt(getDrinkView().getAddDrinkPanel().getComboBox().getSelectedIndex()).toString();
-            int drinkID = 0;
             
-            System.out.println("name: " + name);
-            System.out.println("amount: " + amount);
-            
-            Drink newDrink = new Drink(name, amount, new Date().toString(), drinkID);
+            Drink newDrink = new Drink(name, amount, new Date().toString(), 1);
             
             db.addNewDrink(newDrink, accountID);
+            
             drinkView.getDrinkViewPanel().initDrinksData();
-
             drinkView.getAddDrinkPanel().setVisible(false);
             drinkView.add(drinkView.getDrinkViewPanel());
             drinkView.getDrinkViewPanel().setVisible(true);

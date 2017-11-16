@@ -34,22 +34,47 @@ public class EditDrinkPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         updateButton = new javax.swing.JButton();
+        updateNameLabel = new javax.swing.JLabel();
+        updatePortionLabel = new javax.swing.JLabel();
+        updateDrinkNameText = new javax.swing.JTextField();
+        updatePortionCombo = new javax.swing.JComboBox<>();
 
         updateButton.setText("Update");
+
+        updateNameLabel.setText("Name:");
+
+        updatePortionLabel.setText("Portion:");
+
+        updatePortionCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Small", "Medium", "Large"}));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(163, 163, 163)
-                .addComponent(updateButton)
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addGap(114, 114, 114)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(updateNameLabel)
+                    .addComponent(updatePortionLabel))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(updateDrinkNameText)
+                    .addComponent(updateButton)
+                    .addComponent(updatePortionCombo, 0, 111, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(220, Short.MAX_VALUE)
+                .addGap(80, 80, 80)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateDrinkNameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateNameLabel))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updatePortionCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updatePortionLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addComponent(updateButton)
                 .addGap(55, 55, 55))
         );
@@ -57,6 +82,10 @@ public class EditDrinkPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton updateButton;
+    private javax.swing.JTextField updateDrinkNameText;
+    private javax.swing.JLabel updateNameLabel;
+    private javax.swing.JComboBox<String> updatePortionCombo;
+    private javax.swing.JLabel updatePortionLabel;
     // End of variables declaration//GEN-END:variables
 
     
@@ -66,6 +95,27 @@ public class EditDrinkPanel extends javax.swing.JPanel {
     
     public void setUpdateButton(){
         this.updateButton = updateButton;
+    }
+    
+    /**
+     * @return the updateComboBox
+     */
+    public javax.swing.JComboBox<String> getUpdateComboBox() {
+        return updatePortionCombo;
+    }
+
+    /**
+     * @return the updateNameTextField
+     */
+    public javax.swing.JTextField getUpdateNameTextField() {
+        return updateDrinkNameText;
+    }
+
+    /**
+     * @param updateNameTextField the updateNameTextField to set
+     */
+    public void setUpdateNameTextField(javax.swing.JTextField updateNameTextField) {
+        this.updateDrinkNameText = updateNameTextField;
     }
 
 
