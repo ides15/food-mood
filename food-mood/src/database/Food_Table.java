@@ -125,13 +125,12 @@ public class Food_Table extends Database {
             };
             
             int numberOfFoods = this.getNumberOfFood(accountID);
-            
-            System.out.println(numberOfFoods);
-            Object[][] data = new Object[numberOfFoods][1];
+            Object[][] data = new Object[numberOfFoods][2];
             
             for (int i = 0; i < numberOfFoods; i++) {
                 rs.next();
                 data[i][0] = rs.getString("name");
+                data[i][1] = rs.getInt("foodID");
             }
             
             foodData = new DefaultTableModel(data, columnNames);
