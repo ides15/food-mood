@@ -79,6 +79,10 @@ public class FoodView extends JFrame {
     public AddFoodPanel getAddFoodPanel() {
         return addFoodPanel; 
     }
+    
+    public EditFoodPanel getEditFoodPanel() {
+        return editFoodPanel;
+    }
 
     /**
      * @return the accountID

@@ -12,15 +12,17 @@ public class Drink extends Entry {
     private final String date;
     private final String drink;
     private final String portion;
+    private final int drinkID;
     
     /**
      * Default constructor for Drink class.
      */
-    public Drink(String drink, String portion, String date){
+    public Drink(String drink, String portion, String date, int drinkID){
         super();
         this.drink = drink;
         this.portion = portion;
         this.date = date;
+        this.drinkID = drinkID;
         //System.out.println(date.toString());
     }
 
