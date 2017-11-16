@@ -55,7 +55,7 @@ public class Food_Table extends Database {
     }
     
     public void addEntry(Food food, int accountID){
-        String sql = "INSERT INTO Foods (accountID, name, portion, date) VALUES (\"" + accountID + "\", \"" + food.getName() + "\", \"" + food.getPortion()+ "\", \"" + food.getDate() + "\");";
+        String sql = "INSERT INTO Foods (accountID, name, portion, date) VALUES (\"" + accountID + "\", \"" + food.getName() + "\", \"" + food.getPortion()+ "\", \"" + food.getDate() + "\")";
         
         try (Connection conn = this.connect();
             Statement stmt = conn.createStatement()) {
@@ -63,6 +63,24 @@ public class Food_Table extends Database {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+    
+    public String getPortionSize(int foodID, int accountID) {
+        String sql = "SELECT portion FROM Foods WHERE foodID = \"" + foodID + "\"";
+        String portion = "";
+        
+        try (Connection conn = this.connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+            
+            while (rs.next()) {
+                portion = rs.getString("portion");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return portion;
     }
 
     /**

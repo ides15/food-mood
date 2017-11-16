@@ -58,6 +58,10 @@ public class FoodView extends JFrame {
         getAddFoodPanel().getSubmitButton().addActionListener(al);
     }
     
+    public void addUpdateButtonListener(ActionListener al) {
+        getEditFoodPanel().getUpdateButton().addActionListener(al);
+    }
+    
     /**
      * @return the foodViewPanel
      */
@@ -88,6 +92,13 @@ public class FoodView extends JFrame {
      */
     public void setAccountID(int accountID) {
         this.accountID = accountID;
+    }
+
+    /**
+     * @return the editFoodPanel
+     */
+    public EditFoodPanel getEditFoodPanel() {
+        return editFoodPanel;
     }
 
 }

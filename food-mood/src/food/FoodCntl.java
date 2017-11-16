@@ -21,6 +21,7 @@ public class FoodCntl extends EntryCntl {
     private int accountID;
     
     private AddFoodPanel addFoodPanel;
+    private EditFoodPanel editFoodPanel;
     
     /**
      * Default constructor for FoodCntl.
@@ -74,51 +75,56 @@ public class FoodCntl extends EntryCntl {
     class EditButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            db.getFoodList(getAccountID());
+            if (getFoodView().getFoodViewPanel().getFoodTable().getSelectedRow() != -1) {
+                getFoodView().add(getFoodView().getEditFoodPanel());
+                getFoodView().getFoodViewPanel().setVisible(false);
+                getFoodView().getEditFoodPanel().setVisible(true);
+                getFoodView().addUpdateButtonListener(new UpdateButtonListener());
+                
+                int selectedRow = getFoodView().getFoodViewPanel().getFoodTable().getSelectedRow();
+                String selectedFoodName = getFoodView().getFoodViewPanel().getFoodTable().getValueAt(selectedRow, 0).toString();
+                getFoodView().getEditFoodPanel().getUpdateNameTextField().setText(selectedFoodName);
+                
+                int selectedFoodID = Integer.parseInt(getFoodView().getFoodViewPanel().getFoodTable().getValueAt(selectedRow, 1).toString());
+                String portion = db.getPortionSize(selectedFoodID, getAccountID());
+                
+                int index = 2;
+                if (portion.equals("Small")) {
+                    index = 0;
+                } else if (portion.equals("Medium")) {
+                    index = 1;
+                }
+                
+                getFoodView().getEditFoodPanel().getUpdateComboBox().setSelectedIndex(index);
+            }
         }
     }
     
     class SubmitButtonListener implements ActionListener {
         @Override
-        public void actionPerformed(ActionEvent e) {
-            
-            foodView.remove(foodView.getAddFoodPanel());
-            //foodView.getAddFoodPanel().setVisible(false);
-            
+        public void actionPerformed(ActionEvent e) {            
             String name = getFoodView().getAddFoodPanel().getFoodField().getText();
-            ListModel amountModel = getFoodView().getAddFoodPanel().getComboBox().getModel();
-            String amount = amountModel.getElementAt(getFoodView().getAddFoodPanel().getComboBox().getSelectedIndex()).toString();
-            
-            System.out.println("name: " + name);
-            System.out.println("amount: " + amount);
-            
-            Food newFood = new Food(name, amount, new Date().toString(), 1);
+            String portion = getFoodView().getAddFoodPanel().getComboBox().getSelectedItem().toString();
+                        
+            Food newFood = new Food(name, portion, new Date().toString(), 1);
             
             db.addEntry(newFood, accountID);
             
-            foodView.getFoodViewPanel().initFoodsData();
-            
-            foodView.revalidate();
-            foodView.repaint();
-            foodView.add(foodView.getFoodViewPanel());
-            foodView.getFoodViewPanel().setVisible(true);
-            //foodView.repaint();
+            getFoodView().getFoodViewPanel().initFoodsData();
+            getFoodView().getFoodViewPanel().setVisible(true);
+            getFoodView().getAddFoodPanel().setVisible(false);
+            getFoodView().remove(getFoodView().getAddFoodPanel());
         }
     }
     
-//    class UpdateButtonListener implements ActionListener {
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            System.out.println("update button listener");
-//            
-////            System.out.println("Food updated");
-////            //db.updateEntry(oldFood, newFood, navCntl.getAccountID());
-////            foodView.getEditFoodPanel().setVisible(false);
-////            foodView.add(foodView.getFoodPanel());
-////            foodView.getFoodPanel().setVisible(true);
-////            foodView.remove(foodView.getEditFoodPanel());
-//        }
-//    }
+    class UpdateButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int selectedRow = getFoodView().getFoodViewPanel().getFoodTable().getSelectedRow();
+            int selectedFood = Integer.parseInt(getFoodView().getFoodViewPanel().getFoodTable().getValueAt(selectedRow, 1).toString());
+            System.out.println("selectedFood: " + selectedFood);
+        }
+    }
     
 //    public static String now() {
 //        Calendar cal = Calendar.getInstance();
