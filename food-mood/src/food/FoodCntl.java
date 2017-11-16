@@ -35,11 +35,13 @@ public class FoodCntl extends EntryCntl {
         this.foodView = foodView;
         getFoodView().getFoodViewPanel().setAccountID(getAccountID());
         
-        foodView.setVisible(true);
+        getFoodView().setVisible(true);
         
-        foodView.addAddButtonListener(new AddButtonListener());
-        foodView.addDeleteButtonListener(new DeleteButtonListener());
-        foodView.addEditButtonListener(new EditButtonListener());
+        getFoodView().addAddButtonListener(new AddButtonListener());
+        getFoodView().addDeleteButtonListener(new DeleteButtonListener());
+        getFoodView().addEditButtonListener(new EditButtonListener());
+        
+        getFoodView().addSubmitButtonListener(new SubmitButtonListener());
     }
 
     @Override
@@ -58,7 +60,6 @@ public class FoodCntl extends EntryCntl {
             getFoodView().add(getFoodView().getAddFoodPanel());
             getFoodView().getFoodViewPanel().setVisible(false);
             getFoodView().getAddFoodPanel().setVisible(true);
-            getFoodView().addSubmitButtonListener(new SubmitButtonListener());
         }
     }
     

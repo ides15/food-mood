@@ -97,12 +97,4 @@ public class FoodView extends JFrame {
     public void setAccountID(int accountID) {
         this.accountID = accountID;
     }
-
-    /**
-     * @return the editFoodPanel
-     */
-    public EditFoodPanel getEditFoodPanel() {
-        return editFoodPanel;
-    }
-
 }

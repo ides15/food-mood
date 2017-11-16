@@ -13,7 +13,7 @@ public class AddFoodPanel extends javax.swing.JPanel {
      * Creates new form FoodCreatePanel
      * @param accountID
      */
-    public AddFoodPanel(int accountID) {
+    protected AddFoodPanel(int accountID) {
         initComponents();
         this.accountID = accountID;
     }
