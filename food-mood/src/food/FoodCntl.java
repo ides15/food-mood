@@ -122,16 +122,19 @@ public class FoodCntl extends EntryCntl {
         @Override
         public void actionPerformed(ActionEvent e) {
             int selectedRow = getFoodView().getFoodViewPanel().getFoodTable().getSelectedRow();
-            int selectedFood = Integer.parseInt(getFoodView().getFoodViewPanel().getFoodTable().getValueAt(selectedRow, 1).toString());
-            System.out.println("selectedFood: " + selectedFood);
+            int selectedFoodID = Integer.parseInt(getFoodView().getFoodViewPanel().getFoodTable().getValueAt(selectedRow, 1).toString());
+            
+            String updatedName = getFoodView().getEditFoodPanel().getUpdateNameTextField().getText();
+            String updatedPortion = getFoodView().getEditFoodPanel().getUpdateComboBox().getSelectedItem().toString();
+            
+            db.updateEntry(updatedName, updatedPortion, selectedFoodID, getAccountID());
+            
+            getFoodView().getFoodViewPanel().initFoodsData();
+            getFoodView().getFoodViewPanel().setVisible(true);
+            getFoodView().getEditFoodPanel().setVisible(false);
+            getFoodView().remove(getFoodView().getEditFoodPanel());
         }
     }
-    
-//    public static String now() {
-//        Calendar cal = Calendar.getInstance();
-//        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-//        return sdf.format(cal.getTime());
-//    }
 
     /**
      * @return the food

@@ -39,16 +39,18 @@ public class Food_Table extends Database {
     
     /**
      * Updates a food object to a new one in the sqlite database
-     * @param oldFood
-     * @param newFood
+     * @param name
+     * @param portion
+     * @param foodID
      * @param accountID
      */
-    public void updateEntry(Food oldFood, Food newFood, int accountID){
+    public void updateEntry(String name, String portion, int foodID, int accountID){
         //update food entry in sql database
-        String sql = "UPDATE Foods SET name = \"" + newFood + "\", portion = \"" + newFood.getPortion() + "\", date = \"" + newFood.getDate() + "\" WHERE accountID= \"" + accountID + "\" AND name= \"" + oldFood.getName() + "\" AND portion=\"" + oldFood.getPortion() + "\" AND date=\"" + oldFood.getDate() + "\";";
+        String sql = "UPDATE Foods SET name = \"" + name + "\", portion = \"" + portion + "\" WHERE foodID = \"" + foodID + "\"";
+        
         try (Connection conn = this.connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
+                Statement stmt = conn.createStatement()) {
+            stmt.executeUpdate(sql);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
