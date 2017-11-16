@@ -25,8 +25,9 @@ public class Drink_Table extends Database {
     }
 
     public Drink getUserDrink(int accountID) {
+        
         String name = null,
-                date = null;
+        date = null;
         int amount = 0;
 
         String sql = "SELECT name, amount, date FROM Users WHERE accountID = \"" + accountID + "\"";
@@ -117,18 +118,18 @@ public class Drink_Table extends Database {
 
     @Override
     public String getEntry(String entry) {
-        System.out.println("getEntry called in Food_DB.");
+        System.out.println("getEntry called in Drink_DB.");
         return "Drink";
     }
     
     /**
      * 
-     * @param foodID
+     * @param drinkID
      * @param accountID
      * @return portion
      */
     public String getPortionSize(int drinkID, int accountID) {
-        String sql = "SELECT portion FROM Drinks WHERE foodID = \"" + drinkID + "\"";
+        String sql = "SELECT portion FROM Drinks WHERE drinkID = \"" + drinkID + "\"";
         String portion = "";
         
         try (Connection conn = this.connect();
@@ -146,13 +147,24 @@ public class Drink_Table extends Database {
     }
 
     public void deleteEntry(int drinkID, int accountID) {
-        //update food entry in sql database
+        //update drink entry in sql database
         //String sql = "DELETE FROM Foods WHERE accountID= \"" + accountID + "\" AND name= \"" + drink.getDrink() + "\" AND portion=\"" + drink.getPortion() + "\" AND date=\"" + drink.getDate() + "\";";
         String sql = "DELETE FROM drinks WHERE accountID = \"" + accountID + "\" AND drinkID = \"" + drinkID + "\"";
         
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement()) {
             
+            stmt.executeUpdate(sql);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public void updateEntry(String name, String portion, int drinkID, int accountID){
+        String sql = "UPDATE Drinks SET name = \"" + name + "\", portion = \"" + portion + "\" WHERE drinkID = \"" + drinkID + "\"";
+        
+        try (Connection conn = this.connect();
+                Statement stmt = conn.createStatement()) {
             stmt.executeUpdate(sql);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

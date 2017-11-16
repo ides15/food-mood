@@ -78,6 +78,22 @@ public class DrinkCntl extends EntryCntl {
             drinkView.add(drinkView.getEditDrinkPanel());
             drinkView.getEditDrinkPanel().setVisible(true);
             drinkView.remove(drinkView.getDrinkViewPanel());
+            
+            int selectedRow = getDrinkView().getDrinkViewPanel().getDrinkTable().getSelectedRow();
+            String selectedFoodName = getDrinkView().getDrinkViewPanel().getDrinkTable().getValueAt(selectedRow, 0).toString();
+            getDrinkView().getEditDrinkPanel().getUpdateNameTextField().setText(selectedFoodName);
+                
+            int selectedDrinkID = Integer.parseInt(getDrinkView().getDrinkViewPanel().getDrinkTable().getValueAt(selectedRow, 1).toString());
+            String portion = db.getPortionSize(selectedDrinkID, getAccountID());
+                
+            int index = 2;
+            if (portion.equals("Small")) {
+                index = 0;
+            } else if (portion.equals("Medium")) {
+                index = 1;
+            }
+            
+            getDrinkView().getEditDrinkPanel().getUpdateComboBox().setSelectedIndex(index);
         }
     }
     
