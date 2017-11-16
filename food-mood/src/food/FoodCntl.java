@@ -67,7 +67,10 @@ public class FoodCntl extends EntryCntl {
         @Override
         public void actionPerformed(ActionEvent e) {
             if(foodView.getFoodViewPanel().getFoodTable().getSelectedRow() != -1) {
-//                db.deleteEntry(, getAccountID());
+                int selectedRow = getFoodView().getFoodViewPanel().getFoodTable().getSelectedRow();
+                int selectedFoodID = Integer.parseInt(getFoodView().getFoodViewPanel().getFoodTable().getValueAt(selectedRow, 1).toString());
+                
+                db.deleteEntry(selectedFoodID, getAccountID());
                 foodView.getFoodViewPanel().initFoodsData();
             }
         }

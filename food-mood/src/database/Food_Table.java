@@ -161,13 +161,12 @@ public class Food_Table extends Database {
         return foodData;
     }
     
-    public void deleteEntry(String name, int accountID){
+    public void deleteEntry(int foodID, int accountID){
         //update food entry in sql database
-        String sql = "DELETE FROM Foods WHERE accountID = \"" + accountID + "\" AND name = \"" + name + "\"";
+        String sql = "DELETE FROM Foods WHERE accountID = \"" + accountID + "\" AND foodID = \"" + foodID + "\"";
     
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement()) {
-            
             stmt.executeUpdate(sql);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
