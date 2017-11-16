@@ -12,7 +12,6 @@ public class DrinkViewPanel extends javax.swing.JPanel {
     
     private final Drink_Table db;
     private String drink;
-    //private ArrayList<String> list;
     private String[] drinksData;
     private int accountID;
 
@@ -206,5 +205,12 @@ public class DrinkViewPanel extends javax.swing.JPanel {
      */
     public javax.swing.JTable getDrinkTable() {
         return drinksTable;
+    }
+
+    /**
+     * @param accountID the accountID to set
+     */
+    public void setAccountID(int accountID) {
+        this.accountID = accountID;
     }
 }

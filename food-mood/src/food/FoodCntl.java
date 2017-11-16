@@ -34,7 +34,6 @@ public class FoodCntl extends EntryCntl {
         this.accountID = accountID;
         this.foodView = foodView;
         getFoodView().getFoodViewPanel().setAccountID(getAccountID());
-        
         getFoodView().setVisible(true);
         
         getFoodView().addAddButtonListener(new AddButtonListener());
