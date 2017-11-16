@@ -28,15 +28,8 @@ public class DrinkViewPanel extends javax.swing.JPanel {
     }
     
     public void initDrinksData() {
-        ArrayList<String> data = db.getDrinkList(getAccountID());
-        int size = data.size();
-        drinksData = new String[size];
-        
-        for(int i = 0; i < size; i++) {
-            drinksData[i] = data.get(i);
-        }
-        
-        getDrinkListView().setListData(drinksData);
+        //getDrinkTable().setModel(db.getDrinksList(getAccountID()));
+        //still need getDrinksList to grab drink list in Drink_Tables
     }
 
     /**
@@ -52,8 +45,8 @@ public class DrinkViewPanel extends javax.swing.JPanel {
         editButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
         addButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        drinkListView = new javax.swing.JList<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        drinksTable = new javax.swing.JTable();
 
         entryLabel.setText("Entries");
 
@@ -73,24 +66,37 @@ public class DrinkViewPanel extends javax.swing.JPanel {
             }
         });
 
-        jScrollPane1.setViewportView(drinkListView);
+        drinksTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(drinksTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(entryLabel)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(29, 29, 29)
+                        .addComponent(entryLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(deleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(editButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,8 +113,8 @@ public class DrinkViewPanel extends javax.swing.JPanel {
                         .addGap(33, 33, 33)
                         .addComponent(entryLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(44, Short.MAX_VALUE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -132,10 +138,10 @@ public class DrinkViewPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
     private javax.swing.JButton deleteButton;
-    private javax.swing.JList<String> drinkListView;
+    private javax.swing.JTable drinksTable;
     private javax.swing.JButton editButton;
     private javax.swing.JLabel entryLabel;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 
     public javax.swing.JButton getAddButton(){
@@ -170,14 +176,6 @@ public class DrinkViewPanel extends javax.swing.JPanel {
         this.entryLabel = entryLabel;
     }
     
-    public javax.swing.JList getDrinkListView(){
-        return this.drinkListView;
-    }
-    
-    public void setDrinkListView(javax.swing.JList foodListView){
-        this.drinkListView = foodListView;
-    }
-    
     public int getAccountID() {
         return accountID;
     }
@@ -188,5 +186,26 @@ public class DrinkViewPanel extends javax.swing.JPanel {
     
     public void setDrinksData(String[] drinksData) {
         this.drinksData = drinksData;
+    }
+    
+    /**
+     * @return the foodsData
+     */
+    public String[] getDrinkData() {
+        return drinksData;
+    }
+
+    /**
+     * @param foodsData the foodsData to set
+     */
+    public void setDrinkData(String[] foodsData) {
+        this.drinksData = foodsData;
+    }
+
+    /**
+     * @return the DrinkTable
+     */
+    public javax.swing.JTable getDrinkTable() {
+        return drinksTable;
     }
 }

@@ -84,10 +84,8 @@ public class DrinkCntl extends EntryCntl {
     class DeleteButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(!drinkView.getDrinkViewPanel().getDrinkListView().isSelectionEmpty()) {
-                db.deleteEntry(drinkView.getDrinkViewPanel().getDrinkListView().getSelectedValue().toString(), getAccountID());
-                drinkView.getDrinkViewPanel().initDrinksData();
-            }
+            //Grab drink name and ID
+            //Then send delete query to database matching those properties
         }
     }
     
@@ -101,11 +99,12 @@ public class DrinkCntl extends EntryCntl {
             String name = getDrinkView().getAddDrinkPanel().getDrinkField().getText();
             ListModel amountModel = getDrinkView().getAddDrinkPanel().getComboBox().getModel();
             String amount = amountModel.getElementAt(getDrinkView().getAddDrinkPanel().getComboBox().getSelectedIndex()).toString();
+            int drinkID = 0;
             
             System.out.println("name: " + name);
             System.out.println("amount: " + amount);
             
-            Drink newDrink = new Drink(name, amount, new Date().toString());
+            Drink newDrink = new Drink(name, amount, new Date().toString(), drinkID);
             
             db.addNewDrink(newDrink, accountID);
             drinkView.getDrinkViewPanel().initDrinksData();
