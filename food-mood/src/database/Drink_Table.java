@@ -66,7 +66,7 @@ public class Drink_Table extends Database {
     }
     
     public DefaultTableModel getDrinkList(int accountID){
-        String sql = "SELECT name, foodID FROM Drinks WHERE accountID = \"" + accountID + "\"";
+        String sql = "SELECT name, drinkID FROM Drinks WHERE accountID = \"" + accountID + "\"";
         
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement();
@@ -82,7 +82,7 @@ public class Drink_Table extends Database {
             for (int i = 0; i < numberOfDrinks; i++) {
                 rs.next();
                 data[i][0] = rs.getString("name");
-                data[i][1] = rs.getInt("foodID");
+                data[i][1] = rs.getInt("drinkID");
             }
             
             drinkData = new DefaultTableModel(data, columnNames);
