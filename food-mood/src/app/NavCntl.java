@@ -140,7 +140,7 @@ public class NavCntl {
         @Override
         public void actionPerformed(ActionEvent e) {
             EntryCntlFactory factory = new EntryCntlFactory(getAccountID());
-            EntryCntl cntlr = factory.getEntry(e.getActionCommand().toLowerCase().substring(4));
+            EntryCntl cntlr = factory.getEntry(e.getActionCommand().toLowerCase());
         }
     }
     
