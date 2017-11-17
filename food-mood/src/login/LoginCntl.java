@@ -5,6 +5,9 @@ package login;
 import app.NavCntl;
 import app.NavView;
 import app.NotificationView;
+import database.Drink_Table;
+import database.Food_Table;
+import database.Mood_Table;
 import database.User_Table;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -45,6 +48,18 @@ public class LoginCntl {
     private void initNotification(int accountID) {
         User user = db.getUserInfo(accountID);
         getNotificationView().getNotificationViewPanel().getHelloLabel().setText("Hello " + user.getFirstName() + "!");
+        
+        Food_Table foodDB = new Food_Table("Foods");
+        String name = foodDB.getLatestFood(accountID);
+        getNotificationView().getNotificationViewPanel().getFoodLabel().setText("Your latest food was " + name);
+        
+        Drink_Table drinkDB = new Drink_Table("Drinks");
+        String drink = drinkDB.getLatestDrink(accountID);
+        getNotificationView().getNotificationViewPanel().getDrinkLabel().setText("Your latest drink was " + drink);
+        
+        Mood_Table moodDB = new Mood_Table("Moods");
+        String mood = moodDB.getLatestMood(accountID);
+        getNotificationView().getNotificationViewPanel().getMoodLabel().setText("Your latest mood was " + mood);
         
     }
     

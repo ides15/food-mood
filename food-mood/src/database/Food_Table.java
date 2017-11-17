@@ -114,6 +114,21 @@ public class Food_Table extends Database {
         return f;
     }
     
+    public String getLatestFood(int accountID) {
+        String sql = "SELECT MAX(foodID), name FROM Foods WHERE accountID = \"" + accountID + "\"";
+        String name = "";
+        
+        try (Connection conn = this.connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+            name = rs.getString("name");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return name;
+    }
+    
     public int getNumberOfFood(int accountID) {
         String sql = "SELECT name FROM Foods WHERE accountID = \"" + accountID + "\"";
         int number = 0;

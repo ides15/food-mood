@@ -62,6 +62,21 @@ public class Mood_Table extends Database {
             System.out.println(ex.getMessage());
         }
     }
+    
+    public String getLatestMood(int accountID) {
+        String sql = "SELECT MAX(moodID), name FROM Moods WHERE accountID = \"" + accountID + "\"";
+        String mood = "";
+        
+        try (Connection conn = this.connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+            mood = rs.getString("name");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return mood;
+    }
 
     @Override
     public ArrayList<Entry> getAllEntries() {

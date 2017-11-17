@@ -47,6 +47,21 @@ public class Drink_Table extends Database {
 
         return new Drink(name);
     }
+    
+    public String getLatestDrink(int accountID) {
+        String sql = "SELECT MAX(drinkID), name FROM Drinks WHERE accountID = \"" + accountID + "\"";
+        String drink = "";
+        
+        try (Connection conn = this.connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+            drink = rs.getString("name");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return drink;
+    }
 
     public int getNumberOfDrink(int accountID) {
         String sql = "SELECT name FROM Drinks WHERE accountID = \"" + accountID + "\"";

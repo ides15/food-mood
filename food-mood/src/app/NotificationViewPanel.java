@@ -46,13 +46,13 @@ public class NotificationViewPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(174, 174, 174)
+                .addGap(98, 98, 98)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(moodLabel)
-                    .addComponent(drinkLabel)
                     .addComponent(foodLabel)
-                    .addComponent(helloLabel))
-                .addContainerGap(187, Short.MAX_VALUE))
+                    .addComponent(helloLabel)
+                    .addComponent(drinkLabel))
+                .addContainerGap(263, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
