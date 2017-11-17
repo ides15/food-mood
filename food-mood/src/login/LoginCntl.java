@@ -4,6 +4,7 @@ package login;
 
 import app.NavCntl;
 import app.NavView;
+import app.NotificationView;
 import database.User_Table;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,6 +26,8 @@ public class LoginCntl {
     private NewUserCntl newUserCntl;
     private NewUserView newUserView;
     
+    private NotificationView notificationView;
+    
     private String username;
     private String password;
     
@@ -39,6 +42,12 @@ public class LoginCntl {
         loginView.addNewUserButtonListener(new NewUserButtonListener());
     }
     
+    private void initNotification(int accountID) {
+        User user = db.getUserInfo(accountID);
+        getNotificationView().getNotificationViewPanel().getHelloLabel().setText("Hello " + user.getFirstName() + "!");
+        
+    }
+    
     public void authenticationProcess() {
         username = getLoginView().getLoginViewPanel().getUsernameTextField().getText();
         password = getLoginView().getLoginViewPanel().getPasswordTextField().getText();
@@ -47,11 +56,15 @@ public class LoginCntl {
 
         if(accountID != -1) {
             navView = new NavView();
+            notificationView = new NotificationView();
+            getNotificationView().setAccountID(accountID);
             navCntl = new NavCntl(getNavView());
             getNavCntl().setAccountID(accountID);
             getNavCntl().setUser(db.getUserInfo(accountID));
             getLoginView().setVisible(false);
             getNavView().setVisible(true);
+            getNotificationView().setVisible(true);
+            initNotification(accountID);
         } else {
             getLoginView().getLoginViewPanel().getTryAgainBooBooLabel().setVisible(true);
         }
@@ -145,5 +158,12 @@ public class LoginCntl {
      */
     public NewUserView getNewUserView() {
         return newUserView;
+    }
+
+    /**
+     * @return the notificationView
+     */
+    public NotificationView getNotificationView() {
+        return notificationView;
     }
 }
