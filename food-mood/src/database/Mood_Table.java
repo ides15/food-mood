@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 import models.Mood;
 import parents.Entry;
 
@@ -20,7 +21,7 @@ import parents.Entry;
  */
 public class Mood_Table extends Database {
     
-    private ArrayList<String> moodList;
+    private DefaultTableModel moodData;
     private Mood mood;
 
 
@@ -73,35 +74,61 @@ public class Mood_Table extends Database {
         return "Mood";
     }
 
-    public void deleteEntry(String name, int accountID) {
+    public void deleteEntry(int moodID, int accountID) {
         //update mood entry in sql database
-        String sql = "DELETE FROM Moods WHERE accountID = \"" + accountID + "\" AND name = \"" + name + "\"";
+        String sql = "DELETE FROM Moods WHERE accountID = \"" + accountID + "\" AND moodID = \"" + moodID + "\"";
     
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement()) {
-            
             stmt.executeUpdate(sql);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
     
-    public ArrayList<String> getMoodList(int accountID){
-        String sql = "SELECT * FROM Moods WHERE accountID = \"" + accountID + "\";";
-        String col = "name";
+    public int getNumberOfMood(int accountID) {
+        String sql = "SELECT name FROM Moods WHERE accountID = \"" + accountID + "\"";
+        int number = 0;
         
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
             
-            moodList = new ArrayList<>();
-            while(rs.next()) {
-                moodList.add(rs.getString(col));
-            }
+            while (rs.next()) {
+                number++;
+            }            
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         
-        return moodList;
+        return number;
+    }
+    
+    public DefaultTableModel getMoodList(int accountID){
+        String sql = "SELECT name, moodID FROM Moods WHERE accountID = \"" + accountID + "\"";
+        
+        try (Connection conn = this.connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+            
+            Object[] columnNames = {
+                "Mood Name", "Mood ID"
+            };
+            
+            int numberOfMoods = this.getNumberOfMood(accountID);
+            Object[][] data = new Object[numberOfMoods][2];
+            
+            for (int i = 0; i < numberOfMoods; i++) {
+                rs.next();
+                data[i][0] = rs.getString("name");
+                data[i][1] = rs.getInt("moodID");
+            }
+            
+            moodData = new DefaultTableModel(data, columnNames);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return moodData;
     }
 }

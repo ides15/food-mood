@@ -14,15 +14,17 @@ public class Mood extends Entry {
     private final String mood;
     private final String portion;
     private final String date;
+    private final int moodID;
 
     /**
      * Default constructor for Mood class.
      */
-    public Mood(String mood, String portion, String date) {
+    public Mood(String mood, String portion, String date, int moodID) {
         super();
         this.mood = mood;
         this.portion = portion;
         this.date = date;
+        this.moodID = moodID;
     }
 
     /**
@@ -88,6 +90,11 @@ public class Mood extends Entry {
     
         public String getPortion(){
         return this.portion;
+    }
+        
+    public String moodToString(Mood m){
+       String s = ""+m.getName()+", "+m.getAmount()+", "+m.getDate();
+       return s;
     }
     
 }

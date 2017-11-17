@@ -95,8 +95,11 @@ public class MoodCntl extends EntryCntl {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(!moodView.getMoodViewPanel().getMoodListView().isSelectionEmpty()) {
-                db.deleteEntry(moodView.getMoodViewPanel().getMoodListView().getSelectedValue().toString(), getAccountID());
+            if(moodView.getMoodViewPanel().getMoodTable().getSelectedRow() != -1) {
+                int selectedRow = getMoodView().getMoodViewPanel().getMoodTable().getSelectedRow();
+                int selectedMoodID = Integer.parseInt(getMoodView().getMoodViewPanel().getMoodTable().getValueAt(selectedRow, 1).toString());
+                
+                db.deleteEntry(selectedMoodID, getAccountID());
                 moodView.getMoodViewPanel().initMoodsData();
             }
         }
@@ -125,10 +128,7 @@ public class MoodCntl extends EntryCntl {
             ListModel amountModel = getMoodView().getAddMoodPanel().getComboBox().getModel();
             String amount = amountModel.getElementAt(getMoodView().getAddMoodPanel().getComboBox().getSelectedIndex()).toString();
             
-            System.out.println("name: " + name);
-            System.out.println("amount: " + amount);
-            
-            Mood newMood = new Mood(name, amount, new Date().toString());
+            Mood newMood = new Mood(name, amount, new Date().toString(), 1);
             
             db.addNewMood(newMood, accountID);
             
