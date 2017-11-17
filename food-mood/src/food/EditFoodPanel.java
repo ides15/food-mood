@@ -11,6 +11,7 @@ package food;
  */
 public class EditFoodPanel extends javax.swing.JPanel {
     private int accountID;
+    
     /**
      * Creates new form EditFoodPanel
      */

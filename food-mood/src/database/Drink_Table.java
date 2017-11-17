@@ -125,10 +125,9 @@ public class Drink_Table extends Database {
     /**
      * 
      * @param drinkID
-     * @param accountID
      * @return portion
      */
-    public String getPortionSize(int drinkID, int accountID) {
+    public String getPortionSize(int drinkID) {
         String sql = "SELECT portion FROM Drinks WHERE drinkID = \"" + drinkID + "\"";
         String portion = "";
         
@@ -146,14 +145,11 @@ public class Drink_Table extends Database {
         return portion;
     }
 
-    public void deleteEntry(int drinkID, int accountID) {
-        String sql = "DELETE FROM drinks"
-                + "WHERE accountID = \"" + accountID + "\" "
-                + "AND drinkID = \"" + drinkID + "\"";
+    public void deleteEntry(int drinkID) {
+        String sql = "DELETE FROM Drinks WHERE drinkID = \"" + drinkID + "\"";
         
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement()) {
-            
             stmt.executeUpdate(sql);
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -161,9 +157,7 @@ public class Drink_Table extends Database {
     }
     
     public void updateEntry(String name, String portion, int drinkID){
-        String sql = "UPDATE Drinks"
-                + "SET name = \"" + name + "\", portion = \"" + portion + "\""
-                + " WHERE drinkID = \"" + drinkID + "\"";
+        String sql = "UPDATE Drinks SET name = \"" + name + "\", portion = \"" + portion + "\" WHERE drinkID = \"" + drinkID + "\"";
         
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement()) {

@@ -10,7 +10,6 @@ package drink;
  * @author Dylan
  */
 public class EditDrinkPanel extends javax.swing.JPanel {
-    
     private int accountID;
 
     /**
@@ -19,9 +18,6 @@ public class EditDrinkPanel extends javax.swing.JPanel {
     public EditDrinkPanel(int accountID) {
         initComponents();
         this.accountID = accountID;
-        updateButton = new javax.swing.JButton();
-
-        updateButton.setText("Update");
     }
 
     /**
@@ -93,10 +89,6 @@ public class EditDrinkPanel extends javax.swing.JPanel {
         return this.updateButton;
     }
     
-    public void setUpdateButton(){
-        this.updateButton = updateButton;
-    }
-    
     /**
      * @return the updateComboBox
      */
@@ -118,6 +110,17 @@ public class EditDrinkPanel extends javax.swing.JPanel {
         this.updateDrinkNameText = updateNameTextField;
     }
 
+    /**
+     * @return the accountID
+     */
+    public int getAccountID() {
+        return accountID;
+    }
 
-
+    /**
+     * @param accountID the accountID to set
+     */
+    public void setAccountID(int accountID) {
+        this.accountID = accountID;
+    }
 }

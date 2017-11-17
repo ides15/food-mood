@@ -11,7 +11,6 @@ import models.Drink;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
-import javax.swing.ListModel;
 
 /**
  *
@@ -76,7 +75,7 @@ public class DrinkCntl extends EntryCntl {
                 getDrinkView().getEditDrinkPanel().getUpdateNameTextField().setText(selectedDrinkName);
 
                 int selectedDrinkID = Integer.parseInt(getDrinkView().getDrinkViewPanel().getDrinkTable().getValueAt(selectedRow, 1).toString());
-                String portion = db.getPortionSize(selectedDrinkID, getAccountID());
+                String portion = db.getPortionSize(selectedDrinkID);
 
                 int index = 2;
                 if (portion.equals("Small")) {
@@ -97,7 +96,7 @@ public class DrinkCntl extends EntryCntl {
                 int selectedRow = getDrinkView().getDrinkViewPanel().getDrinkTable().getSelectedRow();
                 int selectedDrinkID = Integer.parseInt(getDrinkView().getDrinkViewPanel().getDrinkTable().getValueAt(selectedRow, 1).toString());
                 
-                db.deleteEntry(selectedDrinkID, getAccountID());
+                db.deleteEntry(selectedDrinkID);
                 drinkView.getDrinkViewPanel().initDrinksData();
             }
         }
@@ -135,7 +134,6 @@ public class DrinkCntl extends EntryCntl {
            getDrinkView().getDrinkViewPanel().setVisible(true);
            getDrinkView().getEditDrinkPanel().setVisible(false);
            getDrinkView().remove(getDrinkView().getEditDrinkPanel());
-            System.out.println("some shit");
         }
     }
     

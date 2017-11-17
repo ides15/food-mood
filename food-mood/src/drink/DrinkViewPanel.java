@@ -1,7 +1,5 @@
 package drink;
 
-
-import java.util.ArrayList;
 import database.Drink_Table;
 
 /**
@@ -9,7 +7,6 @@ import database.Drink_Table;
  * @author john
  */
 public class DrinkViewPanel extends javax.swing.JPanel {
-    
     private final Drink_Table db;
     private String drink;
     private String[] drinksData;
@@ -17,6 +14,7 @@ public class DrinkViewPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form DrinkViewPanel
+     * @param accountID
      */
     public DrinkViewPanel(int accountID) {
         initComponents();
@@ -49,20 +47,10 @@ public class DrinkViewPanel extends javax.swing.JPanel {
         entryLabel.setText("Entries");
 
         editButton.setText("Edit");
-        editButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editButtonActionPerformed(evt);
-            }
-        });
 
         deleteButton.setText("Delete");
 
         addButton.setText("Add");
-        addButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addButtonActionPerformed(evt);
-            }
-        });
 
         drinksTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -115,14 +103,6 @@ public class DrinkViewPanel extends javax.swing.JPanel {
                 .addContainerGap(57, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editButtonActionPerformed
-
-    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addButtonActionPerformed
 
     
     /*private javax.swing.JButton addButton;
