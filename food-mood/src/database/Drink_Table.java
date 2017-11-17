@@ -147,9 +147,9 @@ public class Drink_Table extends Database {
     }
 
     public void deleteEntry(int drinkID, int accountID) {
-        //update drink entry in sql database
-        //String sql = "DELETE FROM Foods WHERE accountID= \"" + accountID + "\" AND name= \"" + drink.getDrink() + "\" AND portion=\"" + drink.getPortion() + "\" AND date=\"" + drink.getDate() + "\";";
-        String sql = "DELETE FROM drinks WHERE accountID = \"" + accountID + "\" AND drinkID = \"" + drinkID + "\"";
+        String sql = "DELETE FROM drinks"
+                + "WHERE accountID = \"" + accountID + "\" "
+                + "AND drinkID = \"" + drinkID + "\"";
         
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement()) {
@@ -160,8 +160,10 @@ public class Drink_Table extends Database {
         }
     }
     
-    public void updateEntry(String name, String portion, int drinkID, int accountID){
-        String sql = "UPDATE Drinks SET name = \"" + name + "\", portion = \"" + portion + "\" WHERE drinkID = \"" + drinkID + "\"";
+    public void updateEntry(String name, String portion, int drinkID){
+        String sql = "UPDATE Drinks"
+                + "SET name = \"" + name + "\", portion = \"" + portion + "\""
+                + " WHERE drinkID = \"" + drinkID + "\"";
         
         try (Connection conn = this.connect();
                 Statement stmt = conn.createStatement()) {

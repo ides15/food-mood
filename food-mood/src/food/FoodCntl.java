@@ -129,7 +129,7 @@ public class FoodCntl extends EntryCntl {
             String updatedName = getFoodView().getEditFoodPanel().getUpdateNameTextField().getText();
             String updatedPortion = getFoodView().getEditFoodPanel().getUpdateComboBox().getSelectedItem().toString();
             
-            db.updateEntry(updatedName, updatedPortion, selectedFoodID, getAccountID());
+            db.updateEntry(updatedName, updatedPortion, selectedFoodID);
             
             getFoodView().getFoodViewPanel().initFoodsData();
             getFoodView().getFoodViewPanel().setVisible(true);

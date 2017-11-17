@@ -36,11 +36,11 @@ public class DrinkCntl extends EntryCntl {
         getDrinkView().getDrinkViewPanel().setAccountID(getAccountID());
         getDrinkView().setVisible(true);
         
-        drinkView.addAddButtonListener(new AddButtonListener());
-        drinkView.addDeleteButtonListener(new DeleteButtonListener());
-        drinkView.addEditButtonListener(new EditButtonListener());
+        getDrinkView().addAddButtonListener(new AddButtonListener());
+        getDrinkView().addDeleteButtonListener(new DeleteButtonListener());
+        getDrinkView().addEditButtonListener(new EditButtonListener());
         
-        drinkView.addSubmitButtonListener(new SubmitButtonListener());
+        getDrinkView().addSubmitButtonListener(new SubmitButtonListener());
     }
 
     @Override
@@ -129,12 +129,13 @@ public class DrinkCntl extends EntryCntl {
            String updatedName = getDrinkView().getEditDrinkPanel().getUpdateNameTextField().getText();
            String updatedPortion = getDrinkView().getEditDrinkPanel().getUpdateComboBox().getSelectedItem().toString();
            
-           db.updateEntry(updatedName, updatedPortion, selectedDrinkID, getAccountID());
+           db.updateEntry(updatedName, updatedPortion, selectedDrinkID);
             
            getDrinkView().getDrinkViewPanel().initDrinksData();
            getDrinkView().getDrinkViewPanel().setVisible(true);
            getDrinkView().getEditDrinkPanel().setVisible(false);
            getDrinkView().remove(getDrinkView().getEditDrinkPanel());
+            System.out.println("some shit");
         }
     }
     

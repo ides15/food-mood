@@ -42,9 +42,8 @@ public class Food_Table extends Database {
      * @param name
      * @param portion
      * @param foodID
-     * @param accountID
      */
-    public void updateEntry(String name, String portion, int foodID, int accountID){
+    public void updateEntry(String name, String portion, int foodID){
         //update food entry in sql database
         String sql = "UPDATE Foods SET name = \"" + name + "\", portion = \"" + portion + "\" WHERE foodID = \"" + foodID + "\"";
         
