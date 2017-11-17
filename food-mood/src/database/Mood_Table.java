@@ -73,6 +73,24 @@ public class Mood_Table extends Database {
         System.out.println("getEntry called in Mood_DB.");
         return "Mood";
     }
+    
+    /**
+     * Updates a food object to a new one in the sqlite database
+     * @param name
+     * @param portion
+     * @param moodID
+     */
+    public void updateEntry(String name, String portion, int moodID){
+        //update food entry in sql database
+        String sql = "UPDATE Moods SET name = \"" + name + "\", portion = \"" + portion + "\" WHERE moodID = \"" + moodID + "\"";
+        
+        try (Connection conn = this.connect();
+                Statement stmt = conn.createStatement()) {
+            stmt.executeUpdate(sql);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 
     public void deleteEntry(int moodID, int accountID) {
         //update mood entry in sql database
@@ -130,5 +148,23 @@ public class Mood_Table extends Database {
         }
         
         return moodData;
+    }
+    
+    public String getPortionSize(int moodID, int accountID) {
+        String sql = "SELECT portion FROM Moods WHERE moodID = \"" + moodID + "\"";
+        String portion = "";
+        
+        try (Connection conn = this.connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+            
+            while (rs.next()) {
+                portion = rs.getString("portion");
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return portion;
     }
 }

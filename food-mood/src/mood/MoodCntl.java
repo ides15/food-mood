@@ -38,13 +38,13 @@ public class MoodCntl extends EntryCntl {
 
         moodView.setVisible(true);
 
-        moodView.addBtnListener(new MoodCntl.addBtnListener());
-        moodView.editBtnListener(new MoodCntl.editBtnListener());
-        moodView.deleteBtnListener(new MoodCntl.deleteBtnListener());
-        moodView.backBtnListener(new MoodCntl.backBtnListener());
-        moodView.addSubmitButtonListener(new MoodCntl.submitButtonListener());
-        moodView.addUpdateButtonListener(new MoodCntl.updateButtonListener());
-        moodView.addCancelButtonListener(new MoodCntl.cancelButtonListener());
+        moodView.addBtnListener(new MoodCntl.AddBtnListener());
+        moodView.editBtnListener(new MoodCntl.EditBtnListener());
+        moodView.deleteBtnListener(new MoodCntl.DeleteBtnListener());
+        moodView.backBtnListener(new MoodCntl.BackBtnListener());
+        moodView.addSubmitButtonListener(new MoodCntl.SubmitButtonListener());
+        moodView.addUpdateButtonListener(new MoodCntl.UpdateButtonListener());
+        moodView.addCancelButtonListener(new MoodCntl.CancelButtonListener());
     }
 
     /**
@@ -66,7 +66,7 @@ public class MoodCntl extends EntryCntl {
         return this.accountID;
     }
 
-    public class addBtnListener implements ActionListener {
+    public class AddBtnListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -79,19 +79,50 @@ public class MoodCntl extends EntryCntl {
         }
     }
 
-    public class editBtnListener implements ActionListener {
+    public class EditBtnListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            moodView.getMoodViewPanel().setVisible(false);
-            moodView.add(moodView.getEditMoodPanel());
-            moodView.getEditMoodPanel().setVisible(true);
-            moodView.remove(moodView.getMoodViewPanel());
-            Mood_Table mood_db = new Mood_Table("foodmood.db");
+            if (getMoodView().getMoodViewPanel().getMoodTable().getSelectedRow() != -1) {
+                getMoodView().add(getMoodView().getEditMoodPanel());
+                getMoodView().getMoodViewPanel().setVisible(false);
+                getMoodView().getEditMoodPanel().setVisible(true);
+                getMoodView().addUpdateButtonListener(new UpdateButtonListener());
+                
+                int selectedRow = getMoodView().getMoodViewPanel().getMoodTable().getSelectedRow();
+                String selectedMoodName = getMoodView().getMoodViewPanel().getMoodTable().getValueAt(selectedRow, 0).toString();
+                getMoodView().getEditMoodPanel().getUpdateNameTextField().setText(selectedMoodName);
+                
+                int selectedMoodID = Integer.parseInt(getMoodView().getMoodViewPanel().getMoodTable().getValueAt(selectedRow, 1).toString());
+                String portion = db.getPortionSize(selectedMoodID, getAccountID());
+                
+                int index = 9;
+                if (portion.equals("1")) {
+                    index = 0;
+                } else if (portion.equals("2")) {
+                    index = 1;
+                } else if (portion.equals("3")) {
+                    index = 2;
+                } else if (portion.equals("4")) {
+                    index = 3;
+                } else if (portion.equals("5")) {
+                    index = 4;
+                } else if (portion.equals("6")) {
+                    index = 5;
+                } else if (portion.equals("7")) {
+                    index = 6;
+                } else if (portion.equals("8")) {
+                    index = 7;
+                } else if (portion.equals("9")) {
+                    index = 8; 
+                }
+                
+                getMoodView().getEditMoodPanel().getUpdateComboBox().setSelectedIndex(index);
+            }
         }
     }
 
-    public class deleteBtnListener implements ActionListener {
+    public class DeleteBtnListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -105,7 +136,7 @@ public class MoodCntl extends EntryCntl {
         }
     }
     
-     public class cancelButtonListener implements ActionListener {
+     public class CancelButtonListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -118,7 +149,7 @@ public class MoodCntl extends EntryCntl {
         }
     }
     
-    public class submitButtonListener implements ActionListener {
+    public class SubmitButtonListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -140,18 +171,28 @@ public class MoodCntl extends EntryCntl {
         }
     }
     
-    public class updateButtonListener implements ActionListener {
+    public class UpdateButtonListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            int selectedRow = getMoodView().getMoodViewPanel().getMoodTable().getSelectedRow();
+            int selectedMoodID = Integer.parseInt(getMoodView().getMoodViewPanel().getMoodTable().getValueAt(selectedRow, 1).toString());
+            
+            String updatedName = getMoodView().getEditMoodPanel().getUpdateNameTextField().getText();
+            String updatedPortion = getMoodView().getEditMoodPanel().getUpdateComboBox().getSelectedItem().toString();
+            
+            db.updateEntry(updatedName, updatedPortion, selectedMoodID);
+            
             moodView.getEditMoodPanel().setVisible(false);
             moodView.add(moodView.getMoodViewPanel());
             moodView.getMoodViewPanel().setVisible(true);
             moodView.remove(moodView.getEditMoodPanel());
+            
+            moodView.getMoodViewPanel().initMoodsData();
         }
     }
 
-    public class backBtnListener implements ActionListener {
+    public class BackBtnListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
