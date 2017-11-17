@@ -71,7 +71,6 @@ public class NavCntl {
         
         navView.addAddEntriesListener(new AddEntriesListener());
         navView.addViewRecsListener(new ViewRecsListener());
-        navView.addViewEntriesListener(new ViewEntriesListener());
         navView.addViewProfileListener(new ViewProfileListener());
         navView.addLogoutListener(new LogoutButtonListener());
         
@@ -96,14 +95,6 @@ public class NavCntl {
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("view recs clicked");
-        }
-    }
-    
-    // TODO
-    public class ViewEntriesListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            System.out.println("view etnries clicked");
         }
     }
     

@@ -36,10 +36,6 @@ public class NavView extends JFrame {
         getNavViewPanel().getViewRecsButton().addActionListener(al);
     }
     
-    public void addViewEntriesListener(ActionListener al) {
-        getNavViewPanel().getViewEntriesButton().addActionListener(al);
-    }
-    
     public void addViewProfileListener(ActionListener al) {
         getNavViewPanel().getViewProfileButton().addActionListener(al);
     }
