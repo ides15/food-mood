@@ -38,7 +38,8 @@ public class DrinkCntl extends EntryCntl {
         getDrinkView().addAddButtonListener(new AddButtonListener());
         getDrinkView().addDeleteButtonListener(new DeleteButtonListener());
         getDrinkView().addEditButtonListener(new EditButtonListener());
-        
+        getDrinkView().addBackBtnListener(new DrinkCntl.BackBtnListener());
+
         getDrinkView().addSubmitButtonListener(new SubmitButtonListener());
     }
 
@@ -134,6 +135,14 @@ public class DrinkCntl extends EntryCntl {
            getDrinkView().getDrinkViewPanel().setVisible(true);
            getDrinkView().getEditDrinkPanel().setVisible(false);
            getDrinkView().remove(getDrinkView().getEditDrinkPanel());
+        }
+    }
+    
+    public class BackBtnListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            drinkView.dispose();
         }
     }
     

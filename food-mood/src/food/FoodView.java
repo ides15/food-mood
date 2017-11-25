@@ -62,6 +62,9 @@ public class FoodView extends JFrame {
         getEditFoodPanel().getUpdateButton().addActionListener(al);
     }
     
+    public void addBackBtnListener(ActionListener al){
+        getFoodViewPanel().getBackButton().addActionListener(al);
+    }
     /**
      * @return the foodViewPanel
      */

@@ -38,6 +38,8 @@ public class FoodCntl extends EntryCntl {
         getFoodView().addAddButtonListener(new AddButtonListener());
         getFoodView().addDeleteButtonListener(new DeleteButtonListener());
         getFoodView().addEditButtonListener(new EditButtonListener());
+        getFoodView().addBackBtnListener(new FoodCntl.BackBtnListener());
+
         
         getFoodView().addSubmitButtonListener(new SubmitButtonListener());
     }
@@ -134,6 +136,14 @@ public class FoodCntl extends EntryCntl {
             getFoodView().getFoodViewPanel().setVisible(true);
             getFoodView().getEditFoodPanel().setVisible(false);
             getFoodView().remove(getFoodView().getEditFoodPanel());
+        }
+    }
+    
+    public class BackBtnListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            foodView.dispose();
         }
     }
 

@@ -90,4 +90,7 @@ public class DrinkView extends JFrame {
     public void addUpdateButtonListener(ActionListener al){
         getEditDrinkPanel().getUpdateButton().addActionListener(al);
     }
+    public void addBackBtnListener(ActionListener al){
+        getDrinkViewPanel().getBackButton().addActionListener(al);
+    }
 }
