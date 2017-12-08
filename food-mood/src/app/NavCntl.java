@@ -94,7 +94,10 @@ public class NavCntl {
     public class ViewRecsListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("view recs clicked");
+            Food_Table food_db = new Food_Table("foodmood.db");
+            Mood_Table mood_db = new Mood_Table("foodmood.db");
+            RecView recView = new RecView(accountID);
+            RecCntl recCntl = new RecCntl(recView, food_db, mood_db, accountID);
         }
     }
     
