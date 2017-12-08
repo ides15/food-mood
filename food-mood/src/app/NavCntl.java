@@ -114,26 +114,6 @@ public class NavCntl {
         }
     }
 
-    public class GetFoodListener implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            DefaultCategoryDataset data = new DefaultCategoryDataset();
-            data.setValue(75, "A", "1");
-            data.setValue(60, "B", "2");
-            data.setValue(24, "C", "3");
-            data.setValue(80, "D", "4");
-            data.setValue(90, "E", "5");
-
-            JFreeChart jchart = ChartFactory.createBarChart("STUDENT RECORD", "STUDENT NAME", "STUDENT MARK", data, PlotOrientation.VERTICAL, true, true, false);
-            CategoryPlot plot = jchart.getCategoryPlot();
-            plot.setRangeGridlinePaint(Color.BLACK);
-            ChartFrame chartFrm = new ChartFrame("STUDENT RECORD", jchart, true);
-            chartFrm.setVisible(true);
-            chartFrm.setSize(500, 400);
-        }
-    }
-
     public class ViewProfileListener implements ActionListener {
 
         @Override
