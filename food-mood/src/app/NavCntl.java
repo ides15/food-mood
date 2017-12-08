@@ -1,5 +1,4 @@
 // John Ide - the main navigation controller
-
 package app;
 
 import database.Drink_Table;
@@ -10,6 +9,7 @@ import drink.DrinkCntl;
 import drink.DrinkView;
 import food.FoodCntl;
 import food.FoodView;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import login.LoginCntl;
@@ -17,6 +17,12 @@ import login.LoginView;
 import models.User;
 import mood.MoodCntl;
 import mood.MoodView;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 import profile.ProfileCntl;
 import profile.ProfileView;
 import stats.*;
@@ -27,12 +33,13 @@ import recommendations.*;
  * @author John
  */
 public class NavCntl {
+
     private User_Table db;
     private LoginView loginView;
     private LoginCntl loginCntl;
     private User user;
     private int accountID;
-    
+
     private final NavView navView;
 
     private Food_Table food_db;
@@ -47,16 +54,16 @@ public class NavCntl {
     private MoodView moodView;
     private MoodCntl moodCntl;
 
-    private RecModel rec;
     private RecView recView;
     private RecCntl recCntl;
-    
+
     private ProfileView profileView;
     private ProfileCntl profileCntl;
-    
+
     private StatsModel stats;
     private StatsView statsView;
     private StatsCntl statsCntl;
+
     /**
      * Default constructor for MainCntl.
      *
@@ -64,16 +71,16 @@ public class NavCntl {
      */
     public NavCntl(NavView navView) {
         this.navView = navView;
-        
+
         this.user = null;
-        
+
         db = new User_Table("foodmood.db");
-        
+
         navView.addAddEntriesListener(new AddEntriesListener());
         navView.addViewRecsListener(new ViewRecsListener());
         navView.addViewProfileListener(new ViewProfileListener());
         navView.addLogoutListener(new LogoutButtonListener());
-        
+
         navView.addNewFoodListener(new NewEntryCntlListener());
         navView.addNewDrinkListener(new NewEntryCntlListener());
         navView.addNewMoodListener(new NewEntryCntlListener());
@@ -81,6 +88,7 @@ public class NavCntl {
     }
 
     public class AddEntriesListener implements ActionListener {
+
         @Override
         public void actionPerformed(ActionEvent e) {
             navView.getNavViewPanel().setVisible(false);
@@ -89,16 +97,45 @@ public class NavCntl {
             navView.remove(navView.getNavViewPanel());
         }
     }
-    
+
     // TODO
     public class ViewRecsListener implements ActionListener {
+
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("view recs clicked");
+            Food_Table db_food = new Food_Table("foodmood.db");
+            Drink_Table db_drink = new Drink_Table("foodmood.db");
+            Mood_Table db_mood = new Mood_Table("foodmood.db");
+            RecView recView = new RecView(accountID, db_food, db_drink, db_mood);
+            RecCntl recCntl = new RecCntl(accountID, db_food, db_drink, db_mood, recView);
+
+            recCntl.getRecView().setVisible(true);
         }
     }
-    
+
+    public class GetFoodListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            DefaultCategoryDataset data = new DefaultCategoryDataset();
+            data.setValue(75, "A", "1");
+            data.setValue(60, "B", "2");
+            data.setValue(24, "C", "3");
+            data.setValue(80, "D", "4");
+            data.setValue(90, "E", "5");
+
+            JFreeChart jchart = ChartFactory.createBarChart("STUDENT RECORD", "STUDENT NAME", "STUDENT MARK", data, PlotOrientation.VERTICAL, true, true, false);
+            CategoryPlot plot = jchart.getCategoryPlot();
+            plot.setRangeGridlinePaint(Color.BLACK);
+            ChartFrame chartFrm = new ChartFrame("STUDENT RECORD", jchart, true);
+            chartFrm.setVisible(true);
+            chartFrm.setSize(500, 400);
+        }
+    }
+
     public class ViewProfileListener implements ActionListener {
+
         @Override
         public void actionPerformed(ActionEvent e) {
             setProfileView(new ProfileView(getDb()));
@@ -114,20 +151,22 @@ public class NavCntl {
             getProfileCntl().getProfileView().getProfileViewPanel().getChangeableNameLabel().setText(user.getFirstName() + " " + user.getLastName());
         }
     }
-    
+
     public class LogoutButtonListener implements ActionListener {
+
         @Override
         public void actionPerformed(ActionEvent e) {
             setDb(new User_Table("foodmood.db"));
             loginView = new LoginView(getDb());
             loginCntl = new LoginCntl(getDb(), loginView);
-            
+
             navView.setVisible(false);
             loginCntl.getLoginView().setVisible(true);
         }
     }
 
     public class BackListener implements ActionListener {
+
         @Override
         public void actionPerformed(ActionEvent e) {
             navView.add(navView.getNavViewPanel());
@@ -135,41 +174,43 @@ public class NavCntl {
             navView.getNavViewPanel().setVisible(true);
         }
     }
-    
+
     public class NewEntryCntlListener implements ActionListener {
+
         @Override
         public void actionPerformed(ActionEvent e) {
             EntryCntlFactory factory = new EntryCntlFactory(getAccountID());
             EntryCntl cntlr = factory.getEntry(e.getActionCommand().toLowerCase());
         }
     }
-    
+
     // This has to be here because a profile change or save must be implemented at a higher level than just the profile controller
     public class SaveButtonListener implements ActionListener {
+
         @Override
         public void actionPerformed(ActionEvent e) {
             String newPassword = "";
             char[] charPassword = getProfileCntl().getProfileView().getProfileViewPanel().getChangeablePasswordTextField().getPassword();
-            
+
             // password label text is stored in a char array, all I'm doing here is putting those chars into a string
-            for(char c : charPassword) {
-                newPassword+=c;
+            for (char c : charPassword) {
+                newPassword += c;
             }
-            
+
             String newEmail = getProfileCntl().getProfileView().getProfileViewPanel().getChangeableEmailTextField().getText();
             getDb().setUserEmail(getAccountID(), newEmail);
-            
+
             getDb().setUserPassword(getAccountID(), newPassword);
             getProfileView().getProfileViewPanel().getPasswordSavedLabel().setVisible(true);
-            
+
             getUser().setEmail(newEmail);
             getUser().setPassword(newPassword);
-            
+
             getProfileView().getProfileViewPanel().getChangeableEmailTextField().setText(user.getEmail());
             getProfileView().getProfileViewPanel().getChangeablePasswordTextField().setText(user.getPassword());
         }
     }
-    
+
     /**
      * @return the mainView
      */
@@ -218,7 +259,7 @@ public class NavCntl {
     public MoodCntl getMoodCntl() {
         return moodCntl;
     }
-    
+
     /**
      * @return the stats
      */
@@ -239,13 +280,6 @@ public class NavCntl {
     public StatsCntl getStatsCntl() {
         return statsCntl;
     }
-    
-    /**
-     * @return the rec
-     */
-    public RecModel getRec() {
-        return rec;
-    }
 
     /**
      * @return the recView
@@ -259,6 +293,14 @@ public class NavCntl {
      */
     public RecCntl getRecCntl() {
         return recCntl;
+    }
+
+    public void setRecView(RecView recView) {
+        this.recView = recView;
+    }
+
+    public void setRecCntl(RecCntl recCntl) {
+        this.recCntl = recCntl;
     }
 
     /**
@@ -330,4 +372,5 @@ public class NavCntl {
     public void setDb(User_Table db) {
         this.db = db;
     }
+
 }
