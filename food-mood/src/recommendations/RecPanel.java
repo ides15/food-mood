@@ -37,7 +37,6 @@ public class RecPanel extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         graph = new javax.swing.JPanel();
-        bkBtn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         foodBtn = new javax.swing.JButton();
         drinkBtn = new javax.swing.JButton();
@@ -61,29 +60,22 @@ public class RecPanel extends javax.swing.JPanel {
         moodLabel = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         timeBtn = new javax.swing.JButton();
+        bkBtn = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 153));
 
         graph.setBackground(new java.awt.Color(255, 255, 255));
         graph.setName("Chart"); // NOI18N
 
-        bkBtn.setBackground(new java.awt.Color(255, 255, 0));
-        bkBtn.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
-        bkBtn.setText("Back");
-
         javax.swing.GroupLayout graphLayout = new javax.swing.GroupLayout(graph);
         graph.setLayout(graphLayout);
         graphLayout.setHorizontalGroup(
             graphLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(graphLayout.createSequentialGroup()
-                .addComponent(bkBtn)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         graphLayout.setVerticalGroup(
             graphLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(graphLayout.createSequentialGroup()
-                .addComponent(bkBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 142, Short.MAX_VALUE))
+            .addGap(0, 226, Short.MAX_VALUE)
         );
 
         foodBtn.setBackground(new java.awt.Color(0, 204, 102));
@@ -286,6 +278,10 @@ public class RecPanel extends javax.swing.JPanel {
             .addComponent(jSeparator4)
         );
 
+        bkBtn.setBackground(new java.awt.Color(255, 255, 0));
+        bkBtn.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        bkBtn.setText("Back");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -294,17 +290,20 @@ public class RecPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(graph, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(bkBtn)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(graph, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(12, 12, 12)
+                .addComponent(bkBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(graph, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -378,7 +377,6 @@ public class RecPanel extends javax.swing.JPanel {
     public JPanel getjPanel2() {
         return jPanel2;
     }
-    
 
     public void setChartPanel(JPanel chartPanel) {
         this.graph = chartPanel;
@@ -408,8 +406,8 @@ public class RecPanel extends javax.swing.JPanel {
         this.foodLabel = foodLabel;
     }
 
-    public JTextField getFromDateField() {
-        return fromDateField;
+    public String getFromDateField() {
+        return fromDateField.getText();
     }
 
     public void setFromDateField(JTextField fromDateField) {
@@ -448,8 +446,8 @@ public class RecPanel extends javax.swing.JPanel {
         this.moodOnBtn = moodOnBtn;
     }
 
-    public JTextField getToDateField() {
-        return toDateField;
+    public String getToDateField() {
+        return toDateField.getText();
     }
 
     public void setToDateField(JTextField toDateField) {

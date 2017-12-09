@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import models.*;
 import org.jfree.chart.ChartFactory;
@@ -254,7 +255,6 @@ public class RecCntl {
                 moodAvg.add(moodSum.get(moodIndexIn) / moodCount.get(moodIndexIn));
             }
 
-            //Food
             int foodIndex = 0;
             ArrayList<Double> foodMood = new ArrayList<>();
             ArrayList<Double> uniqueFoodMood = new ArrayList<>();
@@ -272,9 +272,7 @@ public class RecCntl {
                     }
                 }
             }
-            //Size = 13; 0-12; 6 choc; 2 taco; 2 bur; 2 sand; 1 cig
-            //Choc 0, Taco 1, bur 2
-            //LIST OF NAME COUPLED WITH LIST OF VAL BASED ON DATE
+
             int foodOut = 0;
             for (String a : foodName) {
                 foodOut = foodName.indexOf(a);
@@ -322,7 +320,9 @@ public class RecCntl {
             recView.getRecPanel().getGraph().add(chartPanel, BorderLayout.CENTER);
             recView.getRecPanel().updateUI();
             recView.getRecPanel().getGraph().setVisible(true);
+            recommendation(uniqueFood, FoodMoodAvg);
         }
+
     }
 
     class MoodOnBtnListener implements ActionListener {
@@ -405,7 +405,60 @@ public class RecCntl {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            DefaultCategoryDataset data = new DefaultCategoryDataset();
+            ArrayList<Food> foodArr = db_food.getAllEntries(accountID);
+            ArrayList<String> foodName = new ArrayList<>();
+            ArrayList<String> foodPortion = new ArrayList<>();
+            ArrayList<String> foodDate = new ArrayList<>();
+            ArrayList<Integer> foodCount = new ArrayList<>();
+            ArrayList<String> uniqueFood = new ArrayList<>();
+
+            int foodIndex = 0;
+            System.out.println("FOOD BUTTON PRESSED");
+            System.out.println("FoodArrSize= " + foodArr.size());
+            for (Food a : foodArr) {
+                foodName.add(a.getName());
+                foodPortion.add(a.getPortion());
+                foodDate.add(a.getDate());
+                System.out.println("Food : " + foodName.size() + " - " + foodName.get(foodName.size() - 1) + " " + foodPortion.get(foodName.size() - 1) + " " + foodDate.get(foodName.size() - 1));
+            }
+            //Size = 13; 0-12; 6 choc; 2 taco; 2 bur; 2 sand; 1 cig
+            //Choc 0, Taco 1, bur 2
+
+            for (String a : foodName) {
+                foodIndex = checkArr(a, uniqueFood);
+                System.out.println("INDEX OF " + a + " = " + foodIndex);
+                if (foodIndex < 0) {
+                    uniqueFood.add(a);
+                    foodCount.add(1);
+                    System.out.println("Food to add: " + a);
+                    System.out.println("Indexed at : " + uniqueFood.indexOf(a) + " with value " + foodCount.get(uniqueFood.indexOf(a)));
+                } else {
+                    System.out.println("Already Exists");
+                    int tmpCount = foodCount.get(foodIndex) + 1;
+                    System.out.println(foodIndex + " - " + tmpCount);
+                    foodCount.set(foodIndex, tmpCount);
+                }
+            }
+
+            for (String a : uniqueFood) {
+                data.setValue(foodCount.get(uniqueFood.indexOf(a)), "Food", a);
+            }
+
+            JFreeChart jchart = ChartFactory.createBarChart("Food History", "Food Name", "Food Quantity", data, PlotOrientation.VERTICAL, true, true, false);
+            CategoryPlot plot = jchart.getCategoryPlot();
+            plot.setRangeGridlinePaint(Color.BLACK);
+
+            ChartPanel chartPanel = new ChartPanel(jchart);
+            Dimension panelSize = new Dimension(recView.getRecPanel().getGraph().getPreferredSize());
+            chartPanel.setPreferredSize(panelSize);
+
             recView.getRecPanel().getGraph().removeAll();
+            recView.getRecPanel().getGraph().setLayout(new java.awt.BorderLayout());
+            recView.getRecPanel().getGraph().validate();
+            recView.getRecPanel().getGraph().add(chartPanel, BorderLayout.CENTER);
+            recView.getRecPanel().updateUI();
+            recView.getRecPanel().getGraph().setVisible(true);
         }
     }
 
@@ -413,8 +466,148 @@ public class RecCntl {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("Time");
+            DefaultCategoryDataset data = new DefaultCategoryDataset();
+            ArrayList<Mood> moodArr = db_mood.getAllEntries(accountID);
+            ArrayList<String> moodName = new ArrayList<>();
+            ArrayList<String> moodPortion = new ArrayList<>();
+            ArrayList<String> moodDate = new ArrayList<>();
+            ArrayList<Double> moodCount = new ArrayList<>();
+            ArrayList<Double> moodSum = new ArrayList<>();
+            ArrayList<Double> moodAvg = new ArrayList<>();
+            ArrayList<Food> foodArr = db_food.getAllEntries(accountID);
+            ArrayList<String> foodName = new ArrayList<>();
+            ArrayList<String> foodPortion = new ArrayList<>();
+            ArrayList<String> foodDate = new ArrayList<>();
+            ArrayList<Integer> foodCount = new ArrayList<>();
+            ArrayList<String> uniqueFood = new ArrayList<>();
+            ArrayList<String> uniqueDate = new ArrayList<>();
+
+            String defTimeTo = "";
+            String defTimeFrom = "";
+            defTimeTo = recView.getRecPanel().getToDateField();
+            defTimeFrom = recView.getRecPanel().getFromDateField();
+            String[] defTimeToArr = defTimeTo.split("/");
+            String[] defTimeFromArr = defTimeFrom.split("/");
+            System.out.println(defTimeToArr[0]);
+            System.out.println(defTimeFromArr[0]);
+
+            if (!defTimeTo.isEmpty() && !defTimeFrom.isEmpty()) {
+
+                defTimeTo = recView.getRecPanel().getToDateField().toString();
+                defTimeFrom = recView.getRecPanel().getFromDateField().toString();
+//                String[] defTimeToArr = defTimeTo.split("-");
+//                String[] defTimeFromArr = defTimeFrom.split("-");
+                System.out.println(defTimeToArr[0] + " " + defTimeToArr[1] + " " + defTimeToArr[2]);
+                System.out.println(defTimeFromArr[0] + " " + defTimeFromArr[1] + " " + defTimeFromArr[2]);
+
+                if (false) {
+                    int moodIndex = 0;
+                    for (Mood a : moodArr) {
+                        moodName.add(a.getName());
+                        moodPortion.add(a.getPortion());
+                        moodDate.add(a.getDate());
+                    }
+
+                    int moodIndexIn = 0;
+                    int counter = -1;
+                    for (String a : moodDate) {
+                        counter++;
+                        moodIndex = checkArr(a, uniqueDate);
+                        System.out.println("MOOD INDEX: " + moodIndex);
+
+                        if (moodIndex > -1) {
+                            //Exists
+                            moodCount.set(moodIndex, (moodCount.get(moodIndex) + 1));
+                            moodSum.set(moodIndex, moodSum.get(moodIndex) + Double.parseDouble(moodPortion.get(counter)));
+                        } else {
+                            //Not Exist
+                            uniqueDate.add(a);
+                            moodSum.add(Double.parseDouble(moodPortion.get(moodDate.indexOf(a))));
+                            System.out.println(moodIndex + " VALUE = " + Double.parseDouble(moodPortion.get(counter)));
+                            moodCount.add(1.0);
+                        }
+                        System.out.println("UNIQUE DATE SIZE = " + uniqueDate.size());
+                    }
+
+                    for (String a : uniqueDate) {
+                        moodIndexIn = uniqueDate.indexOf(a);
+                        moodAvg.add(moodSum.get(moodIndexIn) / moodCount.get(moodIndexIn));
+                    }
+
+                    int foodIndex = 0;
+                    ArrayList<Double> foodMood = new ArrayList<>();
+                    ArrayList<Double> uniqueFoodMood = new ArrayList<>();
+                    for (Food a : foodArr) {
+                        foodIndex = foodArr.indexOf(a);
+                        foodName.add(a.getName());
+                        foodPortion.add(a.getPortion());
+                        foodDate.add(a.getDate());
+                        for (String b : uniqueDate) {
+                            moodIndexIn = uniqueDate.indexOf(b);
+                            if (b.equals(foodDate.get(foodIndex))) {
+                                foodMood.add(moodAvg.get(moodIndexIn));
+                            } else {
+                                System.out.println("PROBLEM WITH DATA");
+                            }
+                        }
+                    }
+
+                    int foodOut = 0;
+                    for (String a : foodName) {
+                        foodOut = foodName.indexOf(a);
+                        foodIndex = checkArr(a, uniqueFood);
+                        if (foodIndex < 0) {
+                            uniqueFood.add(a);
+                            foodCount.add(1);
+
+                            //CHECK THIS INDEX
+                            uniqueFoodMood.add(foodMood.get(foodOut));
+                        } else {
+                            int tmpCount = foodCount.get(foodIndex) + 1;
+                            foodCount.set(foodIndex, tmpCount);
+
+                            uniqueFoodMood.set(foodIndex, uniqueFoodMood.get(foodIndex) + foodMood.get(foodOut));
+                        }
+                    }
+
+                    ArrayList<Double> FoodMoodAvg = new ArrayList<>();
+                    for (Double b : uniqueFoodMood) {
+                        foodIndex = uniqueFoodMood.indexOf(b);
+
+                        FoodMoodAvg.add(b / foodCount.get(foodIndex));
+                    }
+                    //FoodMoodAvg should have a unique list of sum for uniqe list of food
+
+                    for (String a : uniqueFood) {
+                        foodIndex = uniqueFood.indexOf(a);
+
+                        data.setValue(foodCount.get(foodIndex), "Food", a);
+                        data.setValue(FoodMoodAvg.get(foodIndex), "Mood", a);
+                    }
+
+                    JFreeChart jchart = ChartFactory.createBarChart("FoodMood History", "Food", "Level", data, PlotOrientation.VERTICAL, true, true, false);
+                    CategoryPlot plot = jchart.getCategoryPlot();
+                    plot.setRangeGridlinePaint(Color.BLACK);
+
+                    ChartPanel chartPanel = new ChartPanel(jchart);
+                    Dimension panelSize = new Dimension(recView.getRecPanel().getGraph().getPreferredSize());
+                    chartPanel.setPreferredSize(panelSize);
+
+                    recView.getRecPanel().getGraph().removeAll();
+                    recView.getRecPanel().getGraph().setLayout(new java.awt.BorderLayout());
+                    recView.getRecPanel().getGraph().validate();
+                    recView.getRecPanel().getGraph().add(chartPanel, BorderLayout.CENTER);
+                    recView.getRecPanel().updateUI();
+                    recView.getRecPanel().getGraph().setVisible(true);
+                    recommendation(uniqueFood, FoodMoodAvg);
+                } else {
+                    System.out.println("TO IS BEFORE FROM");
+                }
+            } else {
+                System.out.println("DATE FIELDS NOT FULL");
+            }
         }
+
     }
 
     public int checkArr(String foodName, ArrayList<String> foodNameList) {
@@ -427,5 +620,23 @@ public class RecCntl {
             }
         }
         return b;
+    }
+
+    public void recommendation(ArrayList<String> tmpList, ArrayList<Double> avgList) {
+        double highestVal = 0;
+        String highestStr = "";
+        int counter = -1;
+        for (double a : avgList) {
+            counter++;
+            if (a > highestVal) {
+                highestVal = a;
+                highestStr = tmpList.get(counter);
+            } else if (a == highestVal) {
+                highestStr += " " + tmpList.get(counter);
+            }
+        }
+
+        JLabel tmpLabel = new JLabel(highestStr);
+        recView.getRecPanel().setFoodLabel(tmpLabel);
     }
 }
