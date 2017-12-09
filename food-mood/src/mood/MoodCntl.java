@@ -4,23 +4,27 @@
  * and open the template in the editor.
  */
 package mood;
+
 import app.EntryCntl;
 import database.Mood_Table;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.ListModel;
 import models.Mood;
+
 /**
  *
  * @author John
  */
 public class MoodCntl extends EntryCntl {
+
     private Mood mood;
     private final Mood_Table db;
     private final MoodView moodView;
     private int accountID;
-    
+
     private AddMoodPanel addMoodPanel;
 
     /**
@@ -34,7 +38,6 @@ public class MoodCntl extends EntryCntl {
         this.db = db;
         this.accountID = accountID;
         this.moodView = moodView;
-
 
         moodView.setVisible(true);
 
@@ -75,7 +78,7 @@ public class MoodCntl extends EntryCntl {
             moodView.getAddMoodPanel().setVisible(true);
             moodView.remove(moodView.getMoodViewPanel());
             Mood_Table mood_db = new Mood_Table("foodmood.db");
-            
+
         }
     }
 
@@ -88,14 +91,14 @@ public class MoodCntl extends EntryCntl {
                 getMoodView().getMoodViewPanel().setVisible(false);
                 getMoodView().getEditMoodPanel().setVisible(true);
                 getMoodView().addUpdateButtonListener(new UpdateButtonListener());
-                
+
                 int selectedRow = getMoodView().getMoodViewPanel().getMoodTable().getSelectedRow();
                 String selectedMoodName = getMoodView().getMoodViewPanel().getMoodTable().getValueAt(selectedRow, 0).toString();
                 getMoodView().getEditMoodPanel().getUpdateNameTextField().setText(selectedMoodName);
-                
+
                 int selectedMoodID = Integer.parseInt(getMoodView().getMoodViewPanel().getMoodTable().getValueAt(selectedRow, 1).toString());
                 String portion = db.getPortionSize(selectedMoodID, getAccountID());
-                
+
                 int index = 9;
                 if (portion.equals("1")) {
                     index = 0;
@@ -114,9 +117,9 @@ public class MoodCntl extends EntryCntl {
                 } else if (portion.equals("8")) {
                     index = 7;
                 } else if (portion.equals("9")) {
-                    index = 8; 
+                    index = 8;
                 }
-                
+
                 getMoodView().getEditMoodPanel().getUpdateComboBox().setSelectedIndex(index);
             }
         }
@@ -126,17 +129,17 @@ public class MoodCntl extends EntryCntl {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(moodView.getMoodViewPanel().getMoodTable().getSelectedRow() != -1) {
+            if (moodView.getMoodViewPanel().getMoodTable().getSelectedRow() != -1) {
                 int selectedRow = getMoodView().getMoodViewPanel().getMoodTable().getSelectedRow();
                 int selectedMoodID = Integer.parseInt(getMoodView().getMoodViewPanel().getMoodTable().getValueAt(selectedRow, 1).toString());
-                
+
                 db.deleteEntry(selectedMoodID, getAccountID());
                 moodView.getMoodViewPanel().initMoodsData();
             }
         }
     }
-    
-     public class CancelButtonListener implements ActionListener {
+
+    public class CancelButtonListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -148,46 +151,47 @@ public class MoodCntl extends EntryCntl {
             moodView.remove(moodView.getEditMoodPanel());
         }
     }
-    
+
     public class SubmitButtonListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             moodView.getAddMoodPanel().setVisible(false);
-            
+
             String name = getMoodView().getAddMoodPanel().getMoodField().getText();
             ListModel amountModel = getMoodView().getAddMoodPanel().getComboBox().getModel();
             String amount = amountModel.getElementAt(getMoodView().getAddMoodPanel().getComboBox().getSelectedIndex()).toString();
-            
-            Mood newMood = new Mood(name, amount, new Date().toString(), 1);
-            
+
+            SimpleDateFormat dt = new SimpleDateFormat("MM-dd-yy");
+            Mood newMood = new Mood(name, amount, dt.format(new Date()), 1);
+
             db.addNewMood(newMood, accountID);
-            
+
             moodView.getMoodViewPanel().initMoodsData();
-            
+
             moodView.add(moodView.getMoodViewPanel());
             moodView.getMoodViewPanel().setVisible(true);
             moodView.remove(moodView.getAddMoodPanel());
         }
     }
-    
+
     public class UpdateButtonListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             int selectedRow = getMoodView().getMoodViewPanel().getMoodTable().getSelectedRow();
             int selectedMoodID = Integer.parseInt(getMoodView().getMoodViewPanel().getMoodTable().getValueAt(selectedRow, 1).toString());
-            
+
             String updatedName = getMoodView().getEditMoodPanel().getUpdateNameTextField().getText();
             String updatedPortion = getMoodView().getEditMoodPanel().getUpdateComboBox().getSelectedItem().toString();
-            
+
             db.updateEntry(updatedName, updatedPortion, selectedMoodID);
-            
+
             moodView.getEditMoodPanel().setVisible(false);
             moodView.add(moodView.getMoodViewPanel());
             moodView.getMoodViewPanel().setVisible(true);
             moodView.remove(moodView.getEditMoodPanel());
-            
+
             moodView.getMoodViewPanel().initMoodsData();
         }
     }
@@ -207,12 +211,12 @@ public class MoodCntl extends EntryCntl {
     public Mood_Table getDb() {
         return db;
     }
-    
+
     public Mood getMood() {
         return mood;
     }
-    
+
     public void setMood(Mood mood) {
-        this.mood = mood; 
+        this.mood = mood;
     }
 }

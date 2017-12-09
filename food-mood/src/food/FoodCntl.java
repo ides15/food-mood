@@ -6,6 +6,7 @@ import models.Food;
 import database.Food_Table;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -114,7 +115,8 @@ public class FoodCntl extends EntryCntl {
             String name = getFoodView().getAddFoodPanel().getFoodField().getText();
             String portion = getFoodView().getAddFoodPanel().getComboBox().getSelectedItem().toString();
 
-            Food newFood = new Food(name, portion, new Date().toString(), 1);
+            SimpleDateFormat dt = new SimpleDateFormat("MM-dd-yy");
+            Food newFood = new Food(name, portion, dt.format(new Date()), 1);
 
             db.addEntry(newFood, accountID);
 

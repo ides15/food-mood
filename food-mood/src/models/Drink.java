@@ -1,5 +1,4 @@
 // John Ide - date class
-
 package models;
 
 import parents.Entry;
@@ -9,29 +8,34 @@ import parents.Entry;
  * @author John
  */
 public class Drink extends Entry {
+
     private final String date;
     private final String drink;
     private final String portion;
     private final int drinkID;
-    
+
     /**
      * Default constructor for Drink class.
      */
-    public Drink(String drink, String portion, String date, int drinkID){
+    public Drink(String drink, String portion, String date, int drinkID) {
         super();
+
         this.drink = drink;
         this.portion = portion;
         this.date = date;
         this.drinkID = drinkID;
-        //System.out.println(date.toString());
     }
 
-    public Drink(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Drink(String a, String b, String c, int d, String f) {
+        drink = a;
+        portion = b;
+        date = c;
+        drinkID = d;
     }
 
     /**
      * Function to set amount of drink
+     *
      * @param amount Amount of drink, accepts amount of ounces as integer
      */
     @Override
@@ -41,6 +45,7 @@ public class Drink extends Entry {
 
     /**
      * Function to set type of drink
+     *
      * @param unit Type of drink, accepts type as string
      */
     @Override
@@ -50,6 +55,7 @@ public class Drink extends Entry {
 
     /**
      * Function to get type of drink
+     *
      * @return Type of drink as string
      */
     @Override
@@ -58,26 +64,22 @@ public class Drink extends Entry {
     }
 
     /**
-     * Function to set name of drink
-     * @param name Name of drink set as String
-     */
-    @Override
-    public void setName(String name) {
-        super.setName(name);
-    }
-
-    /**
      * @return the date
      */
     public String getDate() {
-        return date;
+        return this.date;
     }
-    
-    public String getDrink() {
-        return drink;
-    }
-    
+
     public String getPortion() {
-        return portion;
+        return this.portion;
     }
+
+    public int getDrinkID() {
+        return drinkID;
+    }
+
+    public String getDrink() {
+        return this.drink;
+    }
+
 }

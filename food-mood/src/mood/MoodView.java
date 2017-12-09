@@ -26,7 +26,7 @@ public class MoodView extends JFrame {
 
     public MoodView(int accountID, Mood_Table db) {
         super("Mood");
-        this.accountID = accountID; 
+        this.accountID = accountID;
         this.db = db;
 
         setSize(450, 400);
@@ -76,8 +76,8 @@ public class MoodView extends JFrame {
     public void deleteBtnListener(ActionListener al) {
         getMoodViewPanel().getDeleteButton().addActionListener(al);
     }
-    
-    public void backBtnListener(ActionListener al){
+
+    public void backBtnListener(ActionListener al) {
         getMoodViewPanel().getBackButton().addActionListener(al);
     }
 

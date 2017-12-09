@@ -100,7 +100,7 @@ public class Food_Table extends Database {
         String portion = "portion";
         String date = "date";
         String foodID = "foodID";
-        ArrayList<Food> foodList = new ArrayList<Food>();
+        ArrayList<Food> foodList = new ArrayList<>();
         Food food;
 
         try (Connection conn = this.connect();
