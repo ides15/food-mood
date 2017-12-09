@@ -122,7 +122,6 @@ public class RecPanel extends javax.swing.JPanel {
 
         toDateField.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         toDateField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        toDateField.setText("mm/dd/yy");
         toDateField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 toDateFieldActionPerformed(evt);
@@ -131,7 +130,6 @@ public class RecPanel extends javax.swing.JPanel {
 
         fromDateField.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         fromDateField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fromDateField.setText("mm/dd/yy");
         fromDateField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fromDateFieldActionPerformed(evt);
