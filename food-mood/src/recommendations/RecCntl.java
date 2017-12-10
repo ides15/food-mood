@@ -353,7 +353,6 @@ public class RecCntl {
         public void actionPerformed(ActionEvent e) {
             DefaultCategoryDataset data = new DefaultCategoryDataset();
             ArrayList<Mood> moodArr = db_mood.getAllEntries(accountID);
-            ArrayList<String> moodName = new ArrayList<>();
             ArrayList<String> moodPortion = new ArrayList<>();
             ArrayList<String> moodDate = new ArrayList<>();
             ArrayList<Double> moodCount = new ArrayList<>();
@@ -361,7 +360,6 @@ public class RecCntl {
             ArrayList<Double> moodAvg = new ArrayList<>();
             ArrayList<Food> foodArr = db_food.getAllEntries(accountID);
             ArrayList<String> foodName = new ArrayList<>();
-            ArrayList<String> foodPortion = new ArrayList<>();
             ArrayList<String> foodDate = new ArrayList<>();
             ArrayList<Integer> foodCount = new ArrayList<>();
             ArrayList<String> uniqueFood = new ArrayList<>();
@@ -377,7 +375,6 @@ public class RecCntl {
             int moodIndex = 0;
             for (Mood a : moodArr) {
                 if (withinTime(defTimeTo, defTimeFrom, a.getDate())) {
-                    moodName.add(a.getName());
                     moodPortion.add(a.getPortion());
                     moodDate.add(a.getDate());
                 }
@@ -416,7 +413,6 @@ public class RecCntl {
                 if (withinTime(defTimeTo, defTimeFrom, a.getDate())) {
                     foodIndex = foodArr.indexOf(a);
                     foodName.add(a.getName());
-                    foodPortion.add(a.getPortion());
                     foodDate.add(a.getDate());
                     for (String b : uniqueDate) {
                         moodIndexIn = uniqueDate.indexOf(b);
@@ -517,7 +513,12 @@ public class RecCntl {
                 highestStr = tmpList.get(counter);
             }
         }
-        JLabel tmpLabel = new JLabel(highestStr);
-        recView.getRecPanel().setFoodLabel(tmpLabel);
+        System.out.println("Highest Value = " + highestVal);
+        System.out.println("Highest Food = " + highestStr);
+
+//COMPONENT 0 = FOOD ITEM; 1 = DRINK ITEM; 2 = DRINK TITLE; 4 = FOOD TITLE
+        JLabel tmp = (JLabel) recView.getRecPanel().getRecFoodPane().getComponent(0);
+        tmp.setText(highestStr);
+        recView.getRecPanel().updateUI();
     }
 }
