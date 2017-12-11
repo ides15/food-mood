@@ -25,7 +25,6 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 import profile.ProfileCntl;
 import profile.ProfileView;
-import stats.*;
 import recommendations.*;
 
 /**
@@ -59,10 +58,6 @@ public class NavCntl {
 
     private ProfileView profileView;
     private ProfileCntl profileCntl;
-
-    private StatsModel stats;
-    private StatsView statsView;
-    private StatsCntl statsCntl;
 
     /**
      * Default constructor for MainCntl.
@@ -238,27 +233,6 @@ public class NavCntl {
      */
     public MoodCntl getMoodCntl() {
         return moodCntl;
-    }
-
-    /**
-     * @return the stats
-     */
-    public StatsModel getStats() {
-        return stats;
-    }
-
-    /**
-     * @return the statsView
-     */
-    public StatsView getStatsView() {
-        return statsView;
-    }
-
-    /**
-     * @return the statsCntl
-     */
-    public StatsCntl getStatsCntl() {
-        return statsCntl;
     }
 
     /**
