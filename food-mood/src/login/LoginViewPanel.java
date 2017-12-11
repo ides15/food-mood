@@ -1,5 +1,4 @@
 // John Ide - normal login page
-
 package login;
 
 import database.User_Table;
@@ -9,8 +8,9 @@ import database.User_Table;
  * @author John
  */
 public class LoginViewPanel extends javax.swing.JPanel {
+
     private User_Table db;
-    
+
     private String username;
     private String password;
 
@@ -145,7 +145,7 @@ public class LoginViewPanel extends javax.swing.JPanel {
     public void setUsernameTextField(javax.swing.JTextField usernameTextField) {
         this.usernameTextField = usernameTextField;
     }
-    
+
     /**
      * @return the tryAgainBooBooLabel
      */

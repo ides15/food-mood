@@ -10,8 +10,9 @@ package app;
  * @author john
  */
 public class NotificationViewPanel extends javax.swing.JPanel {
+
     private int accountID;
-    
+
     /**
      * Creates new form NotificationViewPanel
      */

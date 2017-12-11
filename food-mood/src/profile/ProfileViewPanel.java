@@ -1,5 +1,4 @@
 // John Ide - user profile page
-
 package profile;
 
 /**
@@ -7,6 +6,7 @@ package profile;
  * @author John
  */
 public class ProfileViewPanel extends javax.swing.JPanel {
+
     /**
      * Creates new form ProfileViewPanel
      */

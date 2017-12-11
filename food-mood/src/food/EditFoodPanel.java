@@ -10,8 +10,9 @@ package food;
  * @author Kyle
  */
 public class EditFoodPanel extends javax.swing.JPanel {
+
     private int accountID;
-    
+
     /**
      * Creates new form EditFoodPanel
      */
@@ -91,7 +92,7 @@ public class EditFoodPanel extends javax.swing.JPanel {
     private javax.swing.JLabel updatePortionLabel;
     // End of variables declaration//GEN-END:variables
 
-    public javax.swing.JButton getUpdateButton(){
+    public javax.swing.JButton getUpdateButton() {
         return this.updateButton;
     }
 

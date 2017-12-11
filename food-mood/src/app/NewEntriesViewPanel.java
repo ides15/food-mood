@@ -1,5 +1,4 @@
 // John Ide - entries page
-
 package app;
 
 /**
@@ -7,6 +6,7 @@ package app;
  * @author john
  */
 public class NewEntriesViewPanel extends javax.swing.JPanel {
+
     /**
      * Creates new form NewEntriesViewPanel
      */
@@ -110,7 +110,7 @@ public class NewEntriesViewPanel extends javax.swing.JPanel {
     public javax.swing.JButton getNewMoodButton() {
         return newMoodButton;
     }
-    
+
     /**
      * @return the backButton
      */

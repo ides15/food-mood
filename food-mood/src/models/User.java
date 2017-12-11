@@ -1,5 +1,4 @@
 // John Ide - user class
-
 package models;
 
 /**
@@ -7,11 +6,12 @@ package models;
  * @author john
  */
 public class User {
+
     private int userID;
     private String firstName, lastName;
     private String email;
     private String username, password;
-    
+
     /**
      * Default constructor for the User class
      */
@@ -19,7 +19,7 @@ public class User {
         super();
         System.out.println("Drink constructor");
     }
-    
+
     public User(int userID, String firstName, String lastName, String email, String username, String password) {
         super();
         this.userID = userID;

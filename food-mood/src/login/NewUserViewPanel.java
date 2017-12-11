@@ -1,5 +1,4 @@
 // John Ide - new user page
-
 package login;
 
 /**

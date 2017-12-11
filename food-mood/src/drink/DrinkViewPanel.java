@@ -1,8 +1,6 @@
 // John Ide - main drink page (I did the initDrinksData() which initalizes the list with data from the db)
-
 package drink;
 
-import drink.*;
 import database.Drink_Table;
 
 /**
@@ -10,24 +8,26 @@ import database.Drink_Table;
  * @author Kyle
  */
 public class DrinkViewPanel extends javax.swing.JPanel {
+
     private final Drink_Table db;
     private String drink;
     private String[] drinksData;
     private int accountID;
-    
+
     /**
      * Creates new form DrinkPanel
+     *
      * @param accountID
      */
     public DrinkViewPanel(int accountID) {
         initComponents();
         this.accountID = accountID;
         db = new Drink_Table("foodmood.db");
-        
+
         initDrinksData();
     }
-    
-    public void initDrinksData() {        
+
+    public void initDrinksData() {
         getDrinkTable().setModel(db.getDrinkList(getAccountID()));
     }
 
@@ -130,16 +130,16 @@ public class DrinkViewPanel extends javax.swing.JPanel {
     private javax.swing.JLabel entryLabel;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
-    
-    public javax.swing.JButton getAddButton(){
+
+    public javax.swing.JButton getAddButton() {
         return this.addButton;
     }
-    
-    public javax.swing.JButton getDeleteButton(){
+
+    public javax.swing.JButton getDeleteButton() {
         return this.deleteButton;
     }
-    
-    public javax.swing.JButton getEditButton(){
+
+    public javax.swing.JButton getEditButton() {
         return this.editButton;
     }
 
@@ -163,8 +163,8 @@ public class DrinkViewPanel extends javax.swing.JPanel {
     public String[] getDrinksData() {
         return drinksData;
     }
-    
-    public javax.swing.JButton getBackButton(){
+
+    public javax.swing.JButton getBackButton() {
         return this.backButton;
     }
 

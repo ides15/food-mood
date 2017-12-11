@@ -5,7 +5,6 @@
  */
 package mood;
 
-import app.NavViewPanel;
 import database.Mood_Table;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;

@@ -1,5 +1,4 @@
 // John Ide - main food page (I did the initFoodsData() which initalizes the list with data from the db)
-
 package food;
 
 import database.Food_Table;
@@ -9,24 +8,26 @@ import database.Food_Table;
  * @author Kyle
  */
 public class FoodViewPanel extends javax.swing.JPanel {
+
     private final Food_Table db;
     private String food;
     private String[] foodsData;
     private int accountID;
-    
+
     /**
      * Creates new form FoodPanel
+     *
      * @param accountID
      */
     public FoodViewPanel(int accountID) {
         initComponents();
         this.accountID = accountID;
         db = new Food_Table("foodmood.db");
-        
+
         initFoodsData();
     }
-    
-    public void initFoodsData() {        
+
+    public void initFoodsData() {
         getFoodTable().setModel(db.getFoodList(getAccountID()));
     }
 
@@ -129,16 +130,16 @@ public class FoodViewPanel extends javax.swing.JPanel {
     private javax.swing.JTable foodTable;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
-    
-    public javax.swing.JButton getAddButton(){
+
+    public javax.swing.JButton getAddButton() {
         return this.addButton;
     }
-    
-    public javax.swing.JButton getDeleteButton(){
+
+    public javax.swing.JButton getDeleteButton() {
         return this.deleteButton;
     }
-    
-    public javax.swing.JButton getEditButton(){
+
+    public javax.swing.JButton getEditButton() {
         return this.editButton;
     }
 
@@ -162,8 +163,8 @@ public class FoodViewPanel extends javax.swing.JPanel {
     public String[] getFoodsData() {
         return foodsData;
     }
-    
-    public javax.swing.JButton getBackButton(){
+
+    public javax.swing.JButton getBackButton() {
         return this.backButton;
     }
 

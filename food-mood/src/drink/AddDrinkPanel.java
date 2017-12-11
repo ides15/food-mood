@@ -1,5 +1,4 @@
 // John Ide - page for adding a new drink
-
 package drink;
 
 /**
@@ -7,10 +6,12 @@ package drink;
  * @author Kyle
  */
 public class AddDrinkPanel extends javax.swing.JPanel {
+
     private int accountID;
-    
+
     /**
      * Creates new form DrinkCreatePanel
+     *
      * @param accountID
      */
     protected AddDrinkPanel(int accountID) {
@@ -95,27 +96,26 @@ public class AddDrinkPanel extends javax.swing.JPanel {
     private javax.swing.JLabel portionLabel;
     private javax.swing.JButton submitButton;
     // End of variables declaration//GEN-END:variables
-    
-    public javax.swing.JTextField getDrinkField(){
+
+    public javax.swing.JTextField getDrinkField() {
         return this.drinkField;
     }
-    
-    public void setDrinkField(javax.swing.JTextField drinkField){
+
+    public void setDrinkField(javax.swing.JTextField drinkField) {
         this.drinkField = drinkField;
     }
-    
-    public javax.swing.JComboBox getComboBox(){
+
+    public javax.swing.JComboBox getComboBox() {
         return this.comboBox;
     }
-    
-    public javax.swing.JButton getSubmitButton(){
+
+    public javax.swing.JButton getSubmitButton() {
         return this.submitButton;
     }
-    
-    public void setSubmitButton(javax.swing.JButton submitButton){
+
+    public void setSubmitButton(javax.swing.JButton submitButton) {
         this.submitButton = submitButton;
     }
-    
 
     /**
      * @return the accountID

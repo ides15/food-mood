@@ -1,9 +1,7 @@
 // John Ide - mood class
-
 package models;
 
 import parents.Entry;
-import java.util.Date;
 
 /**
  *
@@ -87,14 +85,14 @@ public class Mood extends Entry {
     public String getDate() {
         return date;
     }
-    
-        public String getPortion(){
+
+    public String getPortion() {
         return this.portion;
     }
-        
-    public String moodToString(Mood m){
-       String s = ""+m.getName()+", "+m.getAmount()+", "+m.getDate();
-       return s;
+
+    public String moodToString(Mood m) {
+        String s = "" + m.getName() + ", " + m.getAmount() + ", " + m.getDate();
+        return s;
     }
-    
+
 }

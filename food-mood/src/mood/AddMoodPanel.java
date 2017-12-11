@@ -5,19 +5,16 @@
  */
 package mood;
 
-import mood.*;
 import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JSlider;
-import javax.swing.JTextField;
 
 /**
  *
  * @author Kyle
  */
 public class AddMoodPanel extends javax.swing.JPanel {
-    
+
     private int accountID;
+
     /**
      * Creates new form FoodCreatePanel
      */
@@ -103,22 +100,20 @@ public class AddMoodPanel extends javax.swing.JPanel {
     private javax.swing.JLabel portionLabel;
     private javax.swing.JButton submitButton;
     // End of variables declaration//GEN-END:variables
-    
-    
-    
-    public javax.swing.JTextField getMoodField(){
+
+    public javax.swing.JTextField getMoodField() {
         return this.moodField;
     }
-    
-    public void setFoodField(javax.swing.JTextField moodField){
+
+    public void setFoodField(javax.swing.JTextField moodField) {
         this.moodField = moodField;
     }
-    
-    public javax.swing.JLabel getMoodLabel(){
+
+    public javax.swing.JLabel getMoodLabel() {
         return this.moodLabel;
     }
-    
-    public javax.swing.JComboBox getComboBox(){
+
+    public javax.swing.JComboBox getComboBox() {
         return this.comboBox;
     }
 
@@ -129,7 +124,7 @@ public class AddMoodPanel extends javax.swing.JPanel {
     public void setSubmitButton(JButton submitButton) {
         this.submitButton = submitButton;
     }
-    
+
     /**
      * @return the accountID
      */
@@ -143,5 +138,5 @@ public class AddMoodPanel extends javax.swing.JPanel {
     public void setAccountID(int accountID) {
         this.accountID = accountID;
     }
-    
+
 }

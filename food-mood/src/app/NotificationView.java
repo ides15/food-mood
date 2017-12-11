@@ -12,16 +12,17 @@ import javax.swing.JFrame;
  * @author john
  */
 public class NotificationView extends JFrame {
+
     private int accountID;
-    
+
     private NotificationViewPanel notificationViewPanel;
-    
+
     public NotificationView() {
         super("Notification");
-        
+
         setSize(400, 400);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        
+
         notificationViewPanel = new NotificationViewPanel(getAccountID());
         add(notificationViewPanel);
     }

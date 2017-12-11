@@ -12,21 +12,22 @@ import recommendations.*;
  * @author john
  */
 public class TestHarness {
+
     public static void main(String[] args) {
         System.out.println("Testing started.");
         testApp();
-        testFood();      
-        testDrink();        
+        testFood();
+        testDrink();
         testMood();
         testRecommendations();
     }
-    
+
     public static void testApp() {
         NavView mainView = new NavView();
         System.out.println("MainView instantiated.");
         NavCntl mainCntl = new NavCntl(mainView);
     }
-    
+
     public static void testFood() {
 //        Food test = new Food();
 //        test.setName("TestTaco");
@@ -35,13 +36,12 @@ public class TestHarness {
 //        if(test.getName().equals("TestTaco") && test.getAmount()==2 && test.getUnit().equals("TestSavory")){
 //            System.out.println("Food is working");
 //        }
-        
+
 //        FoodView foodView = new FoodView(test);      
 //        foodView.setFood(test);
 //        if (foodView.getFood().getName().equals("TestTaco")) {
 //            System.out.println("FoodView is working");
 //        } 
-        
 //        FoodCntl foodCntl = new FoodCntl(test, foodView);
 //        foodCntl.setFood(test);
 //        foodCntl.setFoodView(foodView); 
@@ -49,8 +49,8 @@ public class TestHarness {
 //            System.out.println("FoodCntl is working");
 //        } 
     }
-    
-    public static void testDrink () {
+
+    public static void testDrink() {
 //        Drink test = new Drink();
 //        test.setName("TestCola");
 //        test.setUnit("TestSweet");
@@ -72,7 +72,7 @@ public class TestHarness {
 //            System.out.println("DrinkCntl is working");
 //        }
     }
-    
+
     public static void testMood() {
 //        Mood test = new Mood();
 //        test.setName("TestHappy");
@@ -95,8 +95,8 @@ public class TestHarness {
 //            System.out.println("MoodCntl is working");
 //        }
     }
-    
-    public static void testRecommendations() { 
+
+    public static void testRecommendations() {
 //        String drinkURL = "https://database/drinks.json";
 //        String foodURL = "https://database/food.json";
 //        String moodURL = "https://database/mood.json";

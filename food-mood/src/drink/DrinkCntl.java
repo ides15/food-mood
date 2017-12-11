@@ -1,7 +1,6 @@
 // John Ide - drink controller (I did the delete and add functions)
 package drink;
 
-import drink.*;
 import app.EntryCntl;
 import models.Drink;
 import database.Drink_Table;

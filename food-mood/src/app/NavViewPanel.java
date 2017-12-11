@@ -1,5 +1,4 @@
 // John Ide - main page
-
 package app;
 
 /**
@@ -7,6 +6,7 @@ package app;
  * @author john
  */
 public class NavViewPanel extends javax.swing.JPanel {
+
     /**
      * Creates new form NavViewPanel
      */

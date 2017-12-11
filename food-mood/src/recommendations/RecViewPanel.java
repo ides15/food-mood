@@ -12,7 +12,7 @@ import database.*;
  * @author Kyle
  */
 public class RecViewPanel extends javax.swing.JPanel {
-    
+
     private final Mood_Table mood_DB;
     private final Food_Table food_DB;
     private String[] recData;
@@ -25,16 +25,16 @@ public class RecViewPanel extends javax.swing.JPanel {
         this.accountID = accountID;
         mood_DB = new Mood_Table("foodmood.db");
         food_DB = new Food_Table("foodmood.db");
-        
+
         initComponents();
         initRecData();
     }
-    
+
     public void initRecData() {
         //getRecTable().setModel();
         //Function for creating rec model for jtable goes here
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -89,16 +89,17 @@ public class RecViewPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-     /**
+    /**
      * @return the FoodTable
      */
     public javax.swing.JTable getRecTable() {
         return recTable;
     }
-    
+
     /**
      * Sets accoundID
-     * @param accountID 
+     *
+     * @param accountID
      */
     public void setAccountID(int accountID) {
         this.accountID = accountID;
