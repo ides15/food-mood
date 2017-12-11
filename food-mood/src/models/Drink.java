@@ -1,4 +1,5 @@
-// John Ide - date class
+// John Ide - drink class (besides anything for date)
+
 package models;
 
 import parents.Entry;
@@ -8,35 +9,29 @@ import parents.Entry;
  * @author John
  */
 public class Drink extends Entry {
-
-    private final String date;
     private final String drink;
     private final String portion;
+    private final String date;
     private final int drinkID;
-
+    
     /**
      * Default constructor for Drink class.
+     * @param drink name of the drink
+     * @param amount amount of drink in ?units
      */
     public Drink(String drink, String portion, String date, int drinkID) {
         super();
-
+        
         this.drink = drink;
         this.portion = portion;
         this.date = date;
         this.drinkID = drinkID;
-    }
-
-    public Drink(String a, String b, String c, int d, String f) {
-        drink = a;
-        portion = b;
-        date = c;
-        drinkID = d;
+        
     }
 
     /**
-     * Function to set amount of drink
-     *
-     * @param amount Amount of drink, accepts amount of ounces as integer
+     * Function to set amount of drink consumed
+     * @param amount accepts amount as integer
      */
     @Override
     public void setAmount(int amount) {
@@ -44,9 +39,25 @@ public class Drink extends Entry {
     }
 
     /**
-     * Function to set type of drink
-     *
-     * @param unit Type of drink, accepts type as string
+     * Function to return amount of drink consumed
+     * @return amount of the drink in ?units
+     */
+    @Override
+    public int getAmount() {
+        return super.getAmount();
+    }
+    
+    public String getPortion(){
+        return this.portion;
+    }
+    
+    public String getDate(){
+        return this.date;
+    }
+
+    /**
+     * Function to set units of drink consumed
+     * @param unit accepts amount as integer
      */
     @Override
     public void setUnit(String unit) {
@@ -54,32 +65,25 @@ public class Drink extends Entry {
     }
 
     /**
-     * Function to get type of drink
-     *
-     * @return Type of drink as string
+     * Function to return units of drink consumed
+     * @return units of the drink
      */
     @Override
     public String getUnit() {
         return super.getUnit();
     }
-
+    
     /**
-     * @return the date
+     * Function to return name of drink consumed
+     * @return name of the drink
      */
-    public String getDate() {
-        return this.date;
-    }
-
-    public String getPortion() {
-        return this.portion;
-    }
-
-    public int getDrinkID() {
-        return drinkID;
-    }
-
-    public String getDrink() {
+    @Override
+    public String getName() {
         return this.drink;
     }
-
+    
+    public String drinkToString(Drink f){
+       String s = ""+f.getName()+", "+f.getAmount()+", "+f.getDate();
+       return s;
+    }
 }

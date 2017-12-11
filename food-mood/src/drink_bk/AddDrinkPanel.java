@@ -1,19 +1,22 @@
-// John Ide - page for adding a new food
-
-package food;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package drink_bk;
 
 /**
  *
- * @author Kyle
+ * @author Dylan
  */
-public class AddFoodPanel extends javax.swing.JPanel {
-    private int accountID;
+public class AddDrinkPanel extends javax.swing.JPanel {
     
+    private int accountID;
+
     /**
-     * Creates new form FoodCreatePanel
-     * @param accountID
+     * Creates new form AddDrinkPanel
      */
-    protected AddFoodPanel(int accountID) {
+    public AddDrinkPanel(int accountID) {
         initComponents();
         this.accountID = accountID;
     }
@@ -27,15 +30,20 @@ public class AddFoodPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        foodField = new javax.swing.JTextField();
-        foodLabel = new javax.swing.JLabel();
+        drinkLabel = new javax.swing.JLabel();
+        drinkField = new javax.swing.JTextField();
         portionLabel = new javax.swing.JLabel();
         submitButton = new javax.swing.JButton();
         comboBox = new javax.swing.JComboBox<>();
 
-        foodField.setText("Ex. Tomato Soup");
+        drinkLabel.setText("Drink");
 
-        foodLabel.setText("Food");
+        drinkField.setText("Ex. Water");
+        drinkField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                drinkFieldActionPerformed(evt);
+            }
+        });
 
         portionLabel.setText("Portion");
 
@@ -51,10 +59,10 @@ public class AddFoodPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(143, 143, 143)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(foodLabel)
-                            .addComponent(foodField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(portionLabel)
+                            .addComponent(drinkLabel)
+                            .addComponent(drinkField, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
                             .addComponent(comboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(162, 162, 162)
@@ -65,43 +73,48 @@ public class AddFoodPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addComponent(foodLabel)
+                .addComponent(drinkLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(foodField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addComponent(drinkField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(portionLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
+                .addGap(83, 83, 83)
                 .addComponent(submitButton)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void drinkFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drinkFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_drinkFieldActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> comboBox;
-    private javax.swing.JTextField foodField;
-    private javax.swing.JLabel foodLabel;
+    private javax.swing.JTextField drinkField;
+    private javax.swing.JLabel drinkLabel;
     private javax.swing.JLabel portionLabel;
     private javax.swing.JButton submitButton;
     // End of variables declaration//GEN-END:variables
     
-    public javax.swing.JTextField getFoodField(){
-        return this.foodField;
+    public javax.swing.JTextField getDrinkField(){
+        return this.drinkField;
     }
     
-    public void setFoodField(javax.swing.JTextField foodField){
-        this.foodField = foodField;
+    public void setDrinkField(javax.swing.JTextField drinkField){
+        this.drinkField = drinkField;
     }
     
-    public javax.swing.JLabel getFoodLabel(){
-        return this.foodLabel;
+    public javax.swing.JLabel getDrinkLabel(){
+        return this.drinkLabel;
     }
     
     public javax.swing.JComboBox getComboBox(){
         return this.comboBox;
     }
+
     
     public javax.swing.JButton getSubmitButton(){
         return this.submitButton;
@@ -109,20 +122,5 @@ public class AddFoodPanel extends javax.swing.JPanel {
     
     public void setSubmitButton(javax.swing.JButton submitButton){
         this.submitButton = submitButton;
-    }
-    
-
-    /**
-     * @return the accountID
-     */
-    public int getAccountID() {
-        return accountID;
-    }
-
-    /**
-     * @param accountID the accountID to set
-     */
-    public void setAccountID(int accountID) {
-        this.accountID = accountID;
     }
 }

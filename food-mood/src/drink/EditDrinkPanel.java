@@ -5,13 +5,15 @@
  */
 package drink;
 
+import drink.*;
+
 /**
  *
- * @author Dylan
+ * @author Kyle
  */
 public class EditDrinkPanel extends javax.swing.JPanel {
     private int accountID;
-
+    
     /**
      * Creates new form EditDrinkPanel
      */
@@ -32,8 +34,8 @@ public class EditDrinkPanel extends javax.swing.JPanel {
         updateButton = new javax.swing.JButton();
         updateNameLabel = new javax.swing.JLabel();
         updatePortionLabel = new javax.swing.JLabel();
-        updateDrinkNameText = new javax.swing.JTextField();
-        updatePortionCombo = new javax.swing.JComboBox<>();
+        updateNameTextField = new javax.swing.JTextField();
+        updateComboBox = new javax.swing.JComboBox<>();
 
         updateButton.setText("Update");
 
@@ -41,73 +43,58 @@ public class EditDrinkPanel extends javax.swing.JPanel {
 
         updatePortionLabel.setText("Portion:");
 
-        updatePortionCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Small", "Medium", "Large"}));
+        updateComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Small", "Medium", "Large"}));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(114, 114, 114)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(updateNameLabel)
-                    .addComponent(updatePortionLabel))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(updateDrinkNameText)
-                    .addComponent(updateButton)
-                    .addComponent(updatePortionCombo, 0, 111, Short.MAX_VALUE))
-                .addContainerGap(113, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(161, 161, 161)
+                        .addComponent(updateButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(updatePortionLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(updateComboBox, 0, 106, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(updateNameLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(updateNameTextField)))))
+                .addGap(138, 138, 138))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(80, 80, 80)
+                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(updateDrinkNameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(updateNameLabel))
+                    .addComponent(updateNameLabel)
+                    .addComponent(updateNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(updatePortionCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(updatePortionLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                    .addComponent(updatePortionLabel)
+                    .addComponent(updateComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
                 .addComponent(updateButton)
                 .addGap(55, 55, 55))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton updateButton;
-    private javax.swing.JTextField updateDrinkNameText;
+    private javax.swing.JComboBox<String> updateComboBox;
     private javax.swing.JLabel updateNameLabel;
-    private javax.swing.JComboBox<String> updatePortionCombo;
+    private javax.swing.JTextField updateNameTextField;
     private javax.swing.JLabel updatePortionLabel;
     // End of variables declaration//GEN-END:variables
 
-    
     public javax.swing.JButton getUpdateButton(){
         return this.updateButton;
-    }
-    
-    /**
-     * @return the updateComboBox
-     */
-    public javax.swing.JComboBox<String> getUpdateComboBox() {
-        return updatePortionCombo;
-    }
-
-    /**
-     * @return the updateNameTextField
-     */
-    public javax.swing.JTextField getUpdateNameTextField() {
-        return updateDrinkNameText;
-    }
-
-    /**
-     * @param updateNameTextField the updateNameTextField to set
-     */
-    public void setUpdateNameTextField(javax.swing.JTextField updateNameTextField) {
-        this.updateDrinkNameText = updateNameTextField;
     }
 
     /**
@@ -122,5 +109,26 @@ public class EditDrinkPanel extends javax.swing.JPanel {
      */
     public void setAccountID(int accountID) {
         this.accountID = accountID;
+    }
+
+    /**
+     * @return the updateComboBox
+     */
+    public javax.swing.JComboBox<String> getUpdateComboBox() {
+        return updateComboBox;
+    }
+
+    /**
+     * @return the updateNameTextField
+     */
+    public javax.swing.JTextField getUpdateNameTextField() {
+        return updateNameTextField;
+    }
+
+    /**
+     * @param updateNameTextField the updateNameTextField to set
+     */
+    public void setUpdateNameTextField(javax.swing.JTextField updateNameTextField) {
+        this.updateNameTextField = updateNameTextField;
     }
 }

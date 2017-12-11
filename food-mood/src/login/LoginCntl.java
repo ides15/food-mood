@@ -5,7 +5,7 @@ package login;
 import app.NavCntl;
 import app.NavView;
 import app.NotificationView;
-import database.Drink_Table;
+import database.Drink_Table_bk;
 import database.Food_Table;
 import database.Mood_Table;
 import database.User_Table;
@@ -53,7 +53,7 @@ public class LoginCntl {
         String name = foodDB.getLatestFood(accountID);
         getNotificationView().getNotificationViewPanel().getFoodLabel().setText("Your latest food was " + name);
         
-        Drink_Table drinkDB = new Drink_Table("Drinks");
+        Drink_Table_bk drinkDB = new Drink_Table_bk("Drinks");
         String drink = drinkDB.getLatestDrink(accountID);
         getNotificationView().getNotificationViewPanel().getDrinkLabel().setText("Your latest drink was " + drink);
         

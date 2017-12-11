@@ -20,7 +20,7 @@ public class FoodCntl extends EntryCntl {
     private final FoodView foodView;
     private int accountID;
 
-    private AddFoodPanel addFoodPanel;
+    private AddDrinkPanel addFoodPanel;
     private EditFoodPanel editFoodPanel;
 
     /**

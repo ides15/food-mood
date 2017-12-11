@@ -45,7 +45,7 @@ public class RecCntl {
         recView.setVisible(true);
 
         getRecView().addFoodBtnActionListener(new FoodBtnListener());
-//        getRecView().addDrinkBtnActionListener(new DrinkBtnListener());
+        getRecView().addDrinkBtnActionListener(new DrinkBtnListener());
         getRecView().addBothBtnActionListener(new BothBtnListener());
         getRecView().addMoodOnBtnActionListener(new MoodOnBtnListener());
         getRecView().addMoodOffBtnActionListener(new MoodOffBtnListener());
@@ -126,7 +126,50 @@ public class RecCntl {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            DefaultCategoryDataset data = new DefaultCategoryDataset();
+            ArrayList<Drink> drinkArr = db_drink.getAllEntries(accountID);
+            ArrayList<String> drinkName = new ArrayList<>();
+            ArrayList<String> drinkPortion = new ArrayList<>();
+            ArrayList<String> drinkDate = new ArrayList<>();
+            ArrayList<Integer> drinkCount = new ArrayList<>();
+            ArrayList<String> uniqueDrink = new ArrayList<>();
 
+            int drinkIndex = 0;
+            for (Drink a : drinkArr) {
+                drinkName.add(a.getName());
+                drinkPortion.add(a.getPortion());
+                drinkDate.add(a.getDate());
+            }
+
+            for (String a : drinkName) {
+                drinkIndex = checkArr(a, uniqueDrink);
+                if (drinkIndex < 0) {
+                    uniqueDrink.add(a);
+                    drinkCount.add(1);
+                } else {
+                    int tmpCount = drinkCount.get(drinkIndex) + 1;
+                    drinkCount.set(drinkIndex, tmpCount);
+                }
+            }
+
+            for (String a : uniqueDrink) {
+                data.setValue(drinkCount.get(uniqueDrink.indexOf(a)), "Drink", a);
+            }
+
+            JFreeChart jchart = ChartFactory.createBarChart("Drink History", "Drink Name", "Drink Quantity", data, PlotOrientation.VERTICAL, true, true, false);
+            CategoryPlot plot = jchart.getCategoryPlot();
+            plot.setRangeGridlinePaint(Color.BLACK);
+
+            ChartPanel chartPanel = new ChartPanel(jchart);
+            Dimension panelSize = new Dimension(recView.getRecPanel().getGraph().getPreferredSize());
+            chartPanel.setPreferredSize(panelSize);
+
+            recView.getRecPanel().getGraph().removeAll();
+            recView.getRecPanel().getGraph().setLayout(new java.awt.BorderLayout());
+            recView.getRecPanel().getGraph().validate();
+            recView.getRecPanel().getGraph().add(chartPanel, BorderLayout.CENTER);
+            recView.getRecPanel().updateUI();
+            recView.getRecPanel().getGraph().setVisible(true);
         }
     }
 
@@ -370,14 +413,23 @@ public class RecCntl {
             if (defTimeTo.isEmpty() && defTimeFrom.isEmpty()) {
                 defTimeTo = "01-01-20";
                 defTimeFrom = "01-01-10";
+            } else if (defTimeTo.isEmpty()) {
+                defTimeTo = "01-01-20";
+            } else if (defTimeFrom.isEmpty()) {
+                defTimeFrom = "01-01-10";
             }
 
             int moodIndex = 0;
+            int testCounter = -1;
             for (Mood a : moodArr) {
                 if (withinTime(defTimeTo, defTimeFrom, a.getDate())) {
                     moodPortion.add(a.getPortion());
                     moodDate.add(a.getDate());
+//                    testCounter++;
+//                    System.out.println(moodPortion.get(testCounter));
+//                    System.out.println(moodDate.get(testCounter));
                 }
+
             }
 
             int moodIndexIn = 0;
@@ -407,6 +459,7 @@ public class RecCntl {
             }
 
             int foodIndex = 0;
+            testCounter = -1;
             ArrayList<Double> foodMood = new ArrayList<>();
             ArrayList<Double> uniqueFoodMood = new ArrayList<>();
             for (Food a : foodArr) {
@@ -421,6 +474,7 @@ public class RecCntl {
                         }
                     }
                 }
+
             }
 
             int foodOut = 0;

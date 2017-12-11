@@ -19,7 +19,7 @@ public class FoodView extends JFrame {
     private final Food_Table db;
     private FoodViewPanel foodViewPanel;
     private EditFoodPanel editFoodPanel;
-    private AddFoodPanel addFoodPanel;
+    private AddDrinkPanel addFoodPanel;
     private int accountID;
     
     
@@ -36,7 +36,7 @@ public class FoodView extends JFrame {
         setSize(450, 400);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
-        addFoodPanel = new AddFoodPanel(accountID);
+        addFoodPanel = new AddDrinkPanel(accountID);
         editFoodPanel = new EditFoodPanel(accountID);
         foodViewPanel = new FoodViewPanel(accountID);
         add(foodViewPanel);
@@ -79,7 +79,7 @@ public class FoodView extends JFrame {
         this.foodViewPanel = foodViewPanel;
     }
     
-    public AddFoodPanel getAddFoodPanel() {
+    public AddDrinkPanel getAddFoodPanel() {
         return addFoodPanel; 
     }
     
