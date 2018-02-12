@@ -1,17 +1,7 @@
 README
 
 USAGE
-- In order to run the application, open the project in NetBeans IDE.
-
-- When opening the project for the first time, the IDE will ask you to 'Resolve Project Problems' and will have selected the sqlite driver. That driver is located here:
-
-https://bitbucket.org/xerial/sqlite-jdbc/downloads/sqlite-jdbc-3.20.0.jar (download link).
-
-Save it to your local machine.
-
-- Upon saving the sqlite driver to your local machine, resolve the project problems by clicking 'Browse', browsing to where you saved the driver, and then selecting it.
-
-- When the driver problem is solved, all you need to do to run the project is to click the 'Run' button at the top of the IDE (green button).
+- As long as the database file is present the application can be run by clicking the green run icon in Netbeans
 
 AUTHENTICATION
 - There are currently four user accounts in the database. Usernames and passwords are all lowercase:

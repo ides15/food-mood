@@ -1,19 +1,20 @@
 // John Ide - page for adding a new food
-
 package food;
 
 /**
  *
  * @author Kyle
  */
-public class AddFoodPanel extends javax.swing.JPanel {
+public class AddDrinkPanel extends javax.swing.JPanel {
+
     private int accountID;
-    
+
     /**
      * Creates new form FoodCreatePanel
+     *
      * @param accountID
      */
-    public AddFoodPanel(int accountID) {
+    protected AddDrinkPanel(int accountID) {
         initComponents();
         this.accountID = accountID;
     }
@@ -86,28 +87,28 @@ public class AddFoodPanel extends javax.swing.JPanel {
     private javax.swing.JLabel portionLabel;
     private javax.swing.JButton submitButton;
     // End of variables declaration//GEN-END:variables
-    
-    public javax.swing.JTextField getFoodField(){
+
+    public javax.swing.JTextField getFoodField() {
         return this.foodField;
     }
-    
-    public void setFoodField(javax.swing.JTextField foodField){
+
+    public void setFoodField(javax.swing.JTextField foodField) {
         this.foodField = foodField;
     }
-    
-    public javax.swing.JLabel getFoodLabel(){
+
+    public javax.swing.JLabel getFoodLabel() {
         return this.foodLabel;
     }
-    
-    public javax.swing.JComboBox getComboBox(){
+
+    public javax.swing.JComboBox getComboBox() {
         return this.comboBox;
     }
-    
-    public javax.swing.JButton getSubmitButton(){
+
+    public javax.swing.JButton getSubmitButton() {
         return this.submitButton;
     }
-    
-    public void setSubmitButton(javax.swing.JButton submitButton){
+
+    public void setSubmitButton(javax.swing.JButton submitButton) {
         this.submitButton = submitButton;
     }
 

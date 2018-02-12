@@ -1,46 +1,48 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+// John Ide - drink controller (I did the delete and add functions)
 package drink;
 
 import app.EntryCntl;
-import database.Drink_Table;
 import models.Drink;
+import database.Drink_Table;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
  * @author John
  */
 public class DrinkCntl extends EntryCntl {
+
     private Drink drink;
     private final Drink_Table db;
     private final DrinkView drinkView;
     private int accountID;
-    
+
+    private AddDrinkPanel addDrinkPanel;
+    private EditDrinkPanel editDrinkPanel;
+
     /**
      * Default constructor for DrinkCntl.
+     *
      * @param db Drink model for MVC architecture.
      * @param drinkView DrinkView for MVC architecture.
      * @param accountID
      */
-    public DrinkCntl(int accountID, Drink_Table db, DrinkView drinkView) {       
+    public DrinkCntl(int accountID, Drink_Table db, DrinkView drinkView) {
         this.db = db;
         this.accountID = accountID;
         this.drinkView = drinkView;
-        
-        drink = new Drink();
-        
-        drinkView.setVisible(true);
-        
-        drinkView.addAddButtonListener(new AddButtonListener());
-        drinkView.addDeleteButtonListener(new DeleteButtonListener());
-        drinkView.addEditButtonListener(new EditButtonListener());
-        drinkView.addSubmitButtonListener(new SubmitButtonListener());
-        drinkView.addUpdateButtonListener(new UpdateButtonListener());
+        getDrinkView().getDrinkViewPanel().setAccountID(getAccountID());
+        getDrinkView().setVisible(true);
+
+        getDrinkView().addAddButtonListener(new AddButtonListener());
+        getDrinkView().addDeleteButtonListener(new DeleteButtonListener());
+        getDrinkView().addEditButtonListener(new EditButtonListener());
+        getDrinkView().addBackBtnListener(new BackBtnListener());
+
+        getDrinkView().addSubmitButtonListener(new SubmitButtonListener());
     }
 
     @Override
@@ -52,83 +54,120 @@ public class DrinkCntl extends EntryCntl {
     public int getAccountID() {
         return this.accountID;
     }
-    
+
     class AddButtonListener implements ActionListener {
+
         @Override
         public void actionPerformed(ActionEvent e) {
-            
-//            System.out.println("Drink added");
-//            //Switch to add panel
-//            drinkView.getDrinkViewPanel().setVisible(false);
-//            drinkView.add(drinkView.getAddDrinkPanel());
-//            drinkView.getAddDrinkPanel().setVisible(true);
-//            drinkView.remove(drinkView.getDrinkViewPanel());
+            getDrinkView().add(getDrinkView().getAddDrinkPanel());
+            getDrinkView().getDrinkViewPanel().setVisible(false);
+            getDrinkView().getAddDrinkPanel().setVisible(true);
         }
     }
-    
-    class EditButtonListener implements ActionListener {
-        @Override
-        public  void actionPerformed(ActionEvent e) {
-            
-//            System.out.println("Drink edited");
-//            //switch to edit panel with old info on left side and new food form 
-//            //on right with update on bottom
-//            drinkView.getDrinkViewPanel().setVisible(false);
-//            drinkView.add(drinkView.getEditDrinkPanel());
-//            drinkView.getEditDrinkPanel().setVisible(true);
-//            drinkView.remove(drinkView.getDrinkViewPanel());
-        }
-    }
-    
+
     class DeleteButtonListener implements ActionListener {
+
         @Override
         public void actionPerformed(ActionEvent e) {
-            
-//            String selection;
-//            System.out.println("Food deleted");
-//            //Get food object from list on FoodPanel
-//            selection = drinkView.getDrinkViewPanel().getDrinkListView().getSelectedValue().toString();
-//            drink.setName(selection);
-//            //Need to construct rest of food object in order to delete it
-////            db.deleteEntry(drink, navCntl.getAccountID());
-            
+            if (drinkView.getDrinkViewPanel().getDrinkTable().getSelectedRow() != -1) {
+                int selectedRow = getDrinkView().getDrinkViewPanel().getDrinkTable().getSelectedRow();
+                int selectedDrinkID = Integer.parseInt(getDrinkView().getDrinkViewPanel().getDrinkTable().getValueAt(selectedRow, 1).toString());
+
+                db.deleteEntry(selectedDrinkID, getAccountID());
+                drinkView.getDrinkViewPanel().initDrinksData();
+            }
         }
     }
-    
+
+    class EditButtonListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (getDrinkView().getDrinkViewPanel().getDrinkTable().getSelectedRow() != -1) {
+                getDrinkView().add(getDrinkView().getEditDrinkPanel());
+                getDrinkView().getDrinkViewPanel().setVisible(false);
+                getDrinkView().getEditDrinkPanel().setVisible(true);
+                getDrinkView().addUpdateButtonListener(new UpdateButtonListener());
+
+                int selectedRow = getDrinkView().getDrinkViewPanel().getDrinkTable().getSelectedRow();
+                String selectedDrinkName = getDrinkView().getDrinkViewPanel().getDrinkTable().getValueAt(selectedRow, 0).toString();
+                getDrinkView().getEditDrinkPanel().getUpdateNameTextField().setText(selectedDrinkName);
+
+                int selectedDrinkID = Integer.parseInt(getDrinkView().getDrinkViewPanel().getDrinkTable().getValueAt(selectedRow, 1).toString());
+                String portion = db.getPortionSize(selectedDrinkID, getAccountID());
+
+                int index = 2;
+                if (portion.equals("Small")) {
+                    index = 0;
+                } else if (portion.equals("Medium")) {
+                    index = 1;
+                }
+
+                getDrinkView().getEditDrinkPanel().getUpdateComboBox().setSelectedIndex(index);
+            }
+        }
+    }
+
     class SubmitButtonListener implements ActionListener {
+
         @Override
         public void actionPerformed(ActionEvent e) {
-            
-//            System.out.println("Food added");
-//            //db.addEntry(food);
-//            drinkView.getAddDrinkPanel().setVisible(false);
-//            drinkView.add(drinkView.getDrinkViewPanel());
-//            drinkView.getDrinkViewPanel().setVisible(true);
-//            drinkView.remove(drinkView.getAddDrinkPanel());
+            String name = getDrinkView().getAddDrinkPanel().getDrinkField().getText();
+            String portion = getDrinkView().getAddDrinkPanel().getComboBox().getSelectedItem().toString();
+
+            SimpleDateFormat dt = new SimpleDateFormat("MM-dd-yy");
+            Drink newDrink = new Drink(name, portion, dt.format(new Date()), 1);
+
+            db.addEntry(newDrink, accountID);
+
+            getDrinkView().getDrinkViewPanel().initDrinksData();
+            getDrinkView().getDrinkViewPanel().setVisible(true);
+            getDrinkView().getAddDrinkPanel().setVisible(false);
+            getDrinkView().remove(getDrinkView().getAddDrinkPanel());
         }
     }
-    
+
     class UpdateButtonListener implements ActionListener {
+
         @Override
         public void actionPerformed(ActionEvent e) {
-            
-//            System.out.println("Food updated");
-//            //db.updateEntry(oldFood, newFood, navCntl.getAccountID());
-//            drinkView.getEditDrinkPanel().setVisible(false);
-//            drinkView.add(drinkView.getDrinkViewPanel());
-//            drinkView.getDrinkViewPanel().setVisible(true);
-//            drinkView.remove(drinkView.getEditDrinkPanel());
+            int selectedRow = getDrinkView().getDrinkViewPanel().getDrinkTable().getSelectedRow();
+            int selectedDrinkID = Integer.parseInt(getDrinkView().getDrinkViewPanel().getDrinkTable().getValueAt(selectedRow, 1).toString());
+
+            String updatedName = getDrinkView().getEditDrinkPanel().getUpdateNameTextField().getText();
+            String updatedPortion = getDrinkView().getEditDrinkPanel().getUpdateComboBox().getSelectedItem().toString();
+
+            db.updateEntry(updatedName, updatedPortion, selectedDrinkID);
+
+            getDrinkView().getDrinkViewPanel().initDrinksData();
+            getDrinkView().getDrinkViewPanel().setVisible(true);
+            getDrinkView().getEditDrinkPanel().setVisible(false);
+            getDrinkView().remove(getDrinkView().getEditDrinkPanel());
         }
     }
-    
+
+    public class BackBtnListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            drinkView.dispose();
+        }
+    }
+
+    /**
+     * @return the drink
+     */
     public Drink getDrink() {
         return drink;
     }
-    
+
+    /**
+     * @param drink the drink to set
+     */
     public void setDrink(Drink drink) {
         this.drink = drink;
     }
-    
+
     /**
      * @return the drinkView
      */

@@ -1,22 +1,34 @@
+// John Ide - main drink page (I did the initDrinksData() which initalizes the list with data from the db)
 package drink;
 
+import database.Drink_Table;
 
-import java.util.ArrayList;
 /**
  *
- * @author john
+ * @author Kyle
  */
 public class DrinkViewPanel extends javax.swing.JPanel {
-    
-    
+
+    private final Drink_Table db;
     private String drink;
-    private ArrayList<String> list;
+    private String[] drinksData;
+    private int accountID;
 
     /**
-     * Creates new form DrinkViewPanel
+     * Creates new form DrinkPanel
+     *
+     * @param accountID
      */
-    public DrinkViewPanel() {
+    public DrinkViewPanel(int accountID) {
         initComponents();
+        this.accountID = accountID;
+        db = new Drink_Table("foodmood.db");
+
+        initDrinksData();
+    }
+
+    public void initDrinksData() {
+        getDrinkTable().setModel(db.getDrinkList(getAccountID()));
     }
 
     /**
@@ -28,35 +40,41 @@ public class DrinkViewPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        drinkListView = new javax.swing.JList<>();
         entryLabel = new javax.swing.JLabel();
+        addButton = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
-        addButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        drinkTable = new javax.swing.JTable();
+        backButton = new javax.swing.JButton();
 
-        drinkListView.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(drinkListView);
+        setPreferredSize(new java.awt.Dimension(420, 420));
 
         entryLabel.setText("Entries");
 
+        addButton.setText("Add");
+
         editButton.setText("Edit");
-        editButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editButtonActionPerformed(evt);
-            }
-        });
 
         deleteButton.setText("Delete");
 
-        addButton.setText("Add");
-        addButton.addActionListener(new java.awt.event.ActionListener() {
+        drinkTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(drinkTable);
+
+        backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addButtonActionPerformed(evt);
+                backButtonActionPerformed(evt);
             }
         });
 
@@ -65,102 +83,102 @@ public class DrinkViewPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(entryLabel)
+                    .addComponent(backButton)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(deleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(editButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(21, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(entryLabel))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(entryLabel)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
+                        .addComponent(addButton)
+                        .addGap(18, 18, 18)
                         .addComponent(editButton)
-                        .addGap(27, 27, 27)
-                        .addComponent(deleteButton)
-                        .addGap(26, 26, 26)
-                        .addComponent(addButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(entryLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(49, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(deleteButton))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(backButton)
+                .addContainerGap(46, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_editButtonActionPerformed
-
-    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addButtonActionPerformed
-
-    
-    /*private javax.swing.JButton addButton;
-    private javax.swing.JButton deleteButton;
-    private javax.swing.JButton editButton;
-    private javax.swing.JLabel entryLabel;
-    private javax.swing.JList<String> foodListView;
-    private javax.swing.JScrollPane jScrollPane1; */
+    }//GEN-LAST:event_backButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
+    private javax.swing.JButton backButton;
     private javax.swing.JButton deleteButton;
-    private javax.swing.JList<String> drinkListView;
+    private javax.swing.JTable drinkTable;
     private javax.swing.JButton editButton;
     private javax.swing.JLabel entryLabel;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-    public javax.swing.JButton getAddButton(){
+    public javax.swing.JButton getAddButton() {
         return this.addButton;
     }
-    
-    public void setAddButton(javax.swing.JButton addButton){
-        this.addButton = addButton;
-    }
-    
-    public javax.swing.JButton getDeleteButton(){
+
+    public javax.swing.JButton getDeleteButton() {
         return this.deleteButton;
     }
-    
-    public void setDeleteButton(javax.swing.JButton deleteButton){
-        this.deleteButton = deleteButton;
-    }
-    
-    public javax.swing.JButton getEditButton(){
+
+    public javax.swing.JButton getEditButton() {
         return this.editButton;
     }
-    
-    public void setEditButton(javax.swing.JButton editButton){
-        this.editButton = editButton;
-    }
-    
-    public javax.swing.JLabel getEntryLabel(){
-        return this.entryLabel;
-    }
-    
-    public void  setEntryLabel(javax.swing.JLabel entryLabel){
-        this.entryLabel = entryLabel;
-    }
-    
-    public javax.swing.JList getDrinkListView(){
-        return this.drinkListView;
-    }
-    
-    public void setDrinkListView(javax.swing.JList foodListView){
-        this.drinkListView = foodListView;
+
+    /**
+     * @param accountID the accountID to set
+     */
+    public void setAccountID(int accountID) {
+        this.accountID = accountID;
     }
 
+    /**
+     * @return the accountID
+     */
+    public int getAccountID() {
+        return accountID;
+    }
+
+    /**
+     * @return the drinksData
+     */
+    public String[] getDrinksData() {
+        return drinksData;
+    }
+
+    public javax.swing.JButton getBackButton() {
+        return this.backButton;
+    }
+
+    /**
+     * @param drinksData the drinksData to set
+     */
+    public void setDrinksData(String[] drinksData) {
+        this.drinksData = drinksData;
+    }
+
+    /**
+     * @return the DrinkTable
+     */
+    public javax.swing.JTable getDrinkTable() {
+        return drinkTable;
+    }
 }

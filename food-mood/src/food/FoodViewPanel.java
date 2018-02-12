@@ -1,42 +1,34 @@
 // John Ide - main food page (I did the initFoodsData() which initalizes the list with data from the db)
-
 package food;
 
 import database.Food_Table;
-import java.util.ArrayList;
 
 /**
  *
  * @author Kyle
  */
 public class FoodViewPanel extends javax.swing.JPanel {
+
     private final Food_Table db;
     private String food;
     private String[] foodsData;
     private int accountID;
-    
+
     /**
      * Creates new form FoodPanel
+     *
      * @param accountID
      */
     public FoodViewPanel(int accountID) {
         initComponents();
         this.accountID = accountID;
         db = new Food_Table("foodmood.db");
-        
+
         initFoodsData();
     }
-    
+
     public void initFoodsData() {
-        ArrayList<String> data = db.getFoodList(getAccountID());
-        int size = data.size();
-        foodsData = new String[size];
-        
-        for(int i = 0; i < size; i++) {
-            foodsData[i] = data.get(i);
-        }
-        
-        getFoodListView().setListData(foodsData);
+        getFoodTable().setModel(db.getFoodList(getAccountID()));
     }
 
     /**
@@ -48,16 +40,15 @@ public class FoodViewPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        foodListView = new javax.swing.JList<>();
         entryLabel = new javax.swing.JLabel();
         addButton = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        foodTable = new javax.swing.JTable();
+        backButton = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(420, 420));
-
-        jScrollPane1.setViewportView(foodListView);
 
         entryLabel.setText("Entries");
 
@@ -67,67 +58,89 @@ public class FoodViewPanel extends javax.swing.JPanel {
 
         deleteButton.setText("Delete");
 
+        foodTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(foodTable);
+
+        backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(entryLabel)
+                    .addComponent(backButton)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(deleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(editButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(22, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(entryLabel))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(entryLabel)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
+                        .addComponent(addButton)
+                        .addGap(18, 18, 18)
                         .addComponent(editButton)
                         .addGap(18, 18, 18)
-                        .addComponent(deleteButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(addButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(entryLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(45, Short.MAX_VALUE))
+                        .addComponent(deleteButton))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(backButton)
+                .addContainerGap(46, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_backButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
+    private javax.swing.JButton backButton;
     private javax.swing.JButton deleteButton;
     private javax.swing.JButton editButton;
     private javax.swing.JLabel entryLabel;
-    private javax.swing.JList<String> foodListView;
+    private javax.swing.JTable foodTable;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
-    
-    public javax.swing.JButton getAddButton(){
+
+    public javax.swing.JButton getAddButton() {
         return this.addButton;
     }
-    
-    public javax.swing.JButton getDeleteButton(){
+
+    public javax.swing.JButton getDeleteButton() {
         return this.deleteButton;
     }
-    
-    public javax.swing.JButton getEditButton(){
+
+    public javax.swing.JButton getEditButton() {
         return this.editButton;
-    }
-    
-    public javax.swing.JList getFoodListView(){
-        return this.foodListView;
     }
 
     /**
@@ -151,10 +164,21 @@ public class FoodViewPanel extends javax.swing.JPanel {
         return foodsData;
     }
 
+    public javax.swing.JButton getBackButton() {
+        return this.backButton;
+    }
+
     /**
      * @param foodsData the foodsData to set
      */
     public void setFoodsData(String[] foodsData) {
         this.foodsData = foodsData;
+    }
+
+    /**
+     * @return the FoodTable
+     */
+    public javax.swing.JTable getFoodTable() {
+        return foodTable;
     }
 }

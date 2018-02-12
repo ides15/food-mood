@@ -1,5 +1,4 @@
 // John Ide - entries page
-
 package app;
 
 /**
@@ -7,6 +6,7 @@ package app;
  * @author john
  */
 public class NewEntriesViewPanel extends javax.swing.JPanel {
+
     /**
      * Creates new form NewEntriesViewPanel
      */
@@ -33,19 +33,19 @@ public class NewEntriesViewPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(600, 600));
 
         newFoodButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        newFoodButton.setText("New Food");
+        newFoodButton.setText("Food");
 
         newMoodButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        newMoodButton.setText("New Mood");
+        newMoodButton.setText("Mood");
 
         pickANewEntryLabel.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        pickANewEntryLabel.setText("Pick an new entry:");
+        pickANewEntryLabel.setText("Pick an entry:");
         pickANewEntryLabel.setToolTipText("");
         pickANewEntryLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         pickANewEntryLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         newDrinkButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        newDrinkButton.setText("New Drink");
+        newDrinkButton.setText("Drink");
 
         backButton.setText("< Back");
 
@@ -54,7 +54,7 @@ public class NewEntriesViewPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(106, Short.MAX_VALUE)
+                .addContainerGap(164, Short.MAX_VALUE)
                 .addComponent(backButton)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -110,7 +110,7 @@ public class NewEntriesViewPanel extends javax.swing.JPanel {
     public javax.swing.JButton getNewMoodButton() {
         return newMoodButton;
     }
-    
+
     /**
      * @return the backButton
      */

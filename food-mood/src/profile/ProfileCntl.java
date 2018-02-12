@@ -1,5 +1,4 @@
 // John Ide - controller for user profile
-
 package profile;
 
 import database.User_Table;
@@ -10,14 +9,15 @@ import models.User;
  * @author John
  */
 public class ProfileCntl {
+
     private User user;
     private final User_Table db;
     private final ProfileView profileView;
-    
+
     public ProfileCntl(User_Table db, ProfileView profileView) {
         this.db = db;
         this.profileView = profileView;
-        
+
         profileView.setVisible(true);
     }
 

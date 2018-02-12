@@ -1,5 +1,4 @@
 // John Ide - parent class for foods, moods, and drinks
-
 package parents;
 
 /**
@@ -7,10 +6,11 @@ package parents;
  * @author John
  */
 public class Entry {
+
     private String name;
     private String unit;
     private int amount;
-    
+
     /**
      * Default constructor for Entry class.
      */
@@ -22,7 +22,7 @@ public class Entry {
      * @return the name
      */
     public String getName() {
-        return name;
+        return this.name;
     }
 
     /**
@@ -36,7 +36,7 @@ public class Entry {
      * @return the unit
      */
     public String getUnit() {
-        return unit;
+        return this.unit;
     }
 
     /**
@@ -50,7 +50,7 @@ public class Entry {
      * @return the amount
      */
     public int getAmount() {
-        return amount;
+        return this.amount;
     }
 
     /**

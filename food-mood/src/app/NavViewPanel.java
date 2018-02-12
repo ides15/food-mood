@@ -1,5 +1,4 @@
 // John Ide - main page
-
 package app;
 
 /**
@@ -7,6 +6,7 @@ package app;
  * @author john
  */
 public class NavViewPanel extends javax.swing.JPanel {
+
     /**
      * Creates new form NavViewPanel
      */
@@ -28,7 +28,6 @@ public class NavViewPanel extends javax.swing.JPanel {
         foodMoodHomeLabel = new javax.swing.JLabel();
         viewRecsButton = new javax.swing.JButton();
         addEntriesButton = new javax.swing.JButton();
-        viewEntriesButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
         viewProfileButton = new javax.swing.JButton();
 
@@ -48,10 +47,12 @@ public class NavViewPanel extends javax.swing.JPanel {
         viewRecsButton.setText("View Recommendations");
 
         addEntriesButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        addEntriesButton.setText("Add Entries");
-
-        viewEntriesButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        viewEntriesButton.setText("View Entries");
+        addEntriesButton.setText("Entries");
+        addEntriesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addEntriesButtonActionPerformed(evt);
+            }
+        });
 
         logoutButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         logoutButton.setText("Logout");
@@ -71,7 +72,6 @@ public class NavViewPanel extends javax.swing.JPanel {
                         .addComponent(viewRecsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(foodMoodHomeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(addEntriesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(viewEntriesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(viewProfileButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(197, 197, 197))
         );
@@ -85,14 +85,16 @@ public class NavViewPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(viewRecsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(viewEntriesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(viewProfileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(199, Short.MAX_VALUE))
+                .addContainerGap(264, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addEntriesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEntriesButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addEntriesButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -101,7 +103,6 @@ public class NavViewPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton logoutButton;
-    private javax.swing.JButton viewEntriesButton;
     private javax.swing.JButton viewProfileButton;
     private javax.swing.JButton viewRecsButton;
     // End of variables declaration//GEN-END:variables
@@ -118,13 +119,6 @@ public class NavViewPanel extends javax.swing.JPanel {
      */
     public javax.swing.JButton getLogoutButton() {
         return logoutButton;
-    }
-    
-    /**
-     * @return the viewEntriesButton
-     */
-    public javax.swing.JButton getViewEntriesButton() {
-        return viewEntriesButton;
     }
 
     /**

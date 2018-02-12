@@ -1,9 +1,7 @@
 // John Ide - mood class
-
 package models;
 
 import parents.Entry;
-import java.util.Date;
 
 /**
  *
@@ -11,24 +9,22 @@ import java.util.Date;
  */
 public class Mood extends Entry {
 
-    private Date date;
-    private String name;
+    private final String mood;
+    private final String portion;
+    private final String date;
+    private final int moodID;
 
     /**
      * Default constructor for Mood class.
      */
-    public Mood() {
+    public Mood(String mood, String portion, String date, int moodID) {
         super();
-        this.date = new Date();
-        System.out.println(date.toString());
+        this.mood = mood;
+        this.portion = portion;
+        this.date = date;
+        this.moodID = moodID;
     }
 
-    public Mood(String name) {
-        super();
-        this.date = new Date();
-        this.name = name;
-        System.out.println(date.toString());
-    }
     /**
      * Function to accept scaled amount of emotions after consumption
      *
@@ -80,13 +76,23 @@ public class Mood extends Entry {
      */
     @Override
     public String getName() {
-        return super.getName();
+        return this.mood;
     }
 
     /**
      * @return the date
      */
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
+
+    public String getPortion() {
+        return this.portion;
+    }
+
+    public String moodToString(Mood m) {
+        String s = "" + m.getName() + ", " + m.getAmount() + ", " + m.getDate();
+        return s;
+    }
+
 }

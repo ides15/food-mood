@@ -5,6 +5,7 @@
  */
 package mood;
 
+import database.Mood_Table;
 import java.util.ArrayList;
 
 /**
@@ -13,13 +14,24 @@ import java.util.ArrayList;
  */
 public class MoodViewPanel extends javax.swing.JPanel {
     
-    private String food;
-    private ArrayList<String> list;
+    private final Mood_Table db;
+    private String mood;
+    private String[] moodsData;
+    private int accountID;
+    
     /**
-     * Creates new form FoodPanel
+     * Creates new form MoodPanel
      */
-    public MoodViewPanel() {
+    public MoodViewPanel(int accountID) {
         initComponents();
+        this.accountID = accountID;
+        db = new Mood_Table("foodmood.db");
+        
+        initMoodsData();
+    }
+    
+    public void initMoodsData() {
+        getMoodTable().setModel(db.getMoodList(getAccountID()));
     }
 
     /**
@@ -31,20 +43,13 @@ public class MoodViewPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        moodListView = new javax.swing.JList<>();
         entryLabel = new javax.swing.JLabel();
         addButton = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
-
-        moodListView.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(moodListView);
+        jScrollPane1 = new javax.swing.JScrollPane();
+        moodTable = new javax.swing.JTable();
 
         entryLabel.setText("Entries");
 
@@ -58,6 +63,11 @@ public class MoodViewPanel extends javax.swing.JPanel {
         editButton.setText("Edit");
 
         deleteButton.setText("Delete");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -66,43 +76,54 @@ public class MoodViewPanel extends javax.swing.JPanel {
             }
         });
 
+        moodTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(moodTable);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(backButton)
-                    .addComponent(entryLabel)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(deleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(editButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(22, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(entryLabel))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(entryLabel)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
+                        .addComponent(addButton)
+                        .addGap(18, 18, 18)
                         .addComponent(editButton)
                         .addGap(18, 18, 18)
-                        .addComponent(deleteButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(addButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(entryLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(deleteButton))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(backButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -114,6 +135,10 @@ public class MoodViewPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_backButtonActionPerformed
 
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
@@ -122,7 +147,7 @@ public class MoodViewPanel extends javax.swing.JPanel {
     private javax.swing.JButton editButton;
     private javax.swing.JLabel entryLabel;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> moodListView;
+    private javax.swing.JTable moodTable;
     // End of variables declaration//GEN-END:variables
     
     public javax.swing.JButton getAddButton(){
@@ -157,11 +182,35 @@ public class MoodViewPanel extends javax.swing.JPanel {
         this.editButton = backButton;
     }
     
-    public javax.swing.JList getMoodListView(){
-        return this.moodListView;
+    /**
+     * @return the FoodTable
+     */
+    public javax.swing.JTable getMoodTable() {
+        return moodTable;
     }
     
-    public void setFoodListView(javax.swing.JList foodListView){
-        this.moodListView = foodListView;
+        public void setAccountID(int accountID) {
+        this.accountID = accountID;
+    }
+
+    /**
+     * @return the accountID
+     */
+    public int getAccountID() {
+        return accountID;
+    }
+
+    /**
+     * @return the moodsData
+     */
+    public String[] getMoodsData() {
+        return moodsData;
+    }
+
+    /**
+     * @param moodsData the moodsData to set
+     */
+    public void setMoodsData(String[] moodsData) {
+        this.moodsData = moodsData;
     }
 }

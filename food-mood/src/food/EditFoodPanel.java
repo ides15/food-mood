@@ -11,11 +11,14 @@ package food;
  */
 public class EditFoodPanel extends javax.swing.JPanel {
 
+    private int accountID;
+
     /**
      * Creates new form EditFoodPanel
      */
-    public EditFoodPanel() {
+    public EditFoodPanel(int accountID) {
         initComponents();
+        this.accountID = accountID;
     }
 
     /**
@@ -28,22 +31,53 @@ public class EditFoodPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         updateButton = new javax.swing.JButton();
+        updateNameLabel = new javax.swing.JLabel();
+        updatePortionLabel = new javax.swing.JLabel();
+        updateNameTextField = new javax.swing.JTextField();
+        updateComboBox = new javax.swing.JComboBox<>();
 
         updateButton.setText("Update");
+
+        updateNameLabel.setText("Name:");
+
+        updatePortionLabel.setText("Portion:");
+
+        updateComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Small", "Medium", "Large"}));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(161, 161, 161)
-                .addComponent(updateButton)
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(161, 161, 161)
+                        .addComponent(updateButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(updatePortionLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(updateComboBox, 0, 106, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(updateNameLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(updateNameTextField)))))
+                .addGap(138, 138, 138))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(222, Short.MAX_VALUE)
+                .addGap(51, 51, 51)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateNameLabel)
+                    .addComponent(updateNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updatePortionLabel)
+                    .addComponent(updateComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
                 .addComponent(updateButton)
                 .addGap(55, 55, 55))
         );
@@ -52,9 +86,48 @@ public class EditFoodPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton updateButton;
+    private javax.swing.JComboBox<String> updateComboBox;
+    private javax.swing.JLabel updateNameLabel;
+    private javax.swing.JTextField updateNameTextField;
+    private javax.swing.JLabel updatePortionLabel;
     // End of variables declaration//GEN-END:variables
 
-    public javax.swing.JButton getUpdateButton(){
+    public javax.swing.JButton getUpdateButton() {
         return this.updateButton;
+    }
+
+    /**
+     * @return the accountID
+     */
+    public int getAccountID() {
+        return accountID;
+    }
+
+    /**
+     * @param accountID the accountID to set
+     */
+    public void setAccountID(int accountID) {
+        this.accountID = accountID;
+    }
+
+    /**
+     * @return the updateComboBox
+     */
+    public javax.swing.JComboBox<String> getUpdateComboBox() {
+        return updateComboBox;
+    }
+
+    /**
+     * @return the updateNameTextField
+     */
+    public javax.swing.JTextField getUpdateNameTextField() {
+        return updateNameTextField;
+    }
+
+    /**
+     * @param updateNameTextField the updateNameTextField to set
+     */
+    public void setUpdateNameTextField(javax.swing.JTextField updateNameTextField) {
+        this.updateNameTextField = updateNameTextField;
     }
 }

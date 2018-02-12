@@ -15,15 +15,17 @@ import models.Food;
  * @author John
  */
 public class FoodView extends JFrame {
+
     private Food food;
     private final Food_Table db;
     private FoodViewPanel foodViewPanel;
+    private EditFoodPanel editFoodPanel;
+    private AddDrinkPanel addFoodPanel;
     private int accountID;
-    
-    private final AddFoodView addFoodView;
-    
+
     /**
      * Default constructor for FoodView.
+     *
      * @param db FoodView for MVC architecture.
      * @param accountID
      */
@@ -31,28 +33,40 @@ public class FoodView extends JFrame {
         super("Food");
         this.db = db;
         this.accountID = accountID;
-        
+
         setSize(450, 400);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        
-        addFoodView = new AddFoodView(accountID);
-        
+
+        addFoodPanel = new AddDrinkPanel(accountID);
+        editFoodPanel = new EditFoodPanel(accountID);
         foodViewPanel = new FoodViewPanel(accountID);
         add(foodViewPanel);
     }
-    
+
     public void addAddButtonListener(ActionListener al) {
         getFoodViewPanel().getAddButton().addActionListener(al);
     }
-    
+
     public void addDeleteButtonListener(ActionListener al) {
         getFoodViewPanel().getDeleteButton().addActionListener(al);
     }
-    
+
     public void addEditButtonListener(ActionListener al) {
         getFoodViewPanel().getEditButton().addActionListener(al);
     }
-    
+
+    public void addSubmitButtonListener(ActionListener al) {
+        getAddFoodPanel().getSubmitButton().addActionListener(al);
+    }
+
+    public void addUpdateButtonListener(ActionListener al) {
+        getEditFoodPanel().getUpdateButton().addActionListener(al);
+    }
+
+    public void addBackBtnListener(ActionListener al) {
+        getFoodViewPanel().getBackButton().addActionListener(al);
+    }
+
     /**
      * @return the foodViewPanel
      */
@@ -67,6 +81,14 @@ public class FoodView extends JFrame {
         this.foodViewPanel = foodViewPanel;
     }
 
+    public AddDrinkPanel getAddFoodPanel() {
+        return addFoodPanel;
+    }
+
+    public EditFoodPanel getEditFoodPanel() {
+        return editFoodPanel;
+    }
+
     /**
      * @return the accountID
      */
@@ -79,12 +101,5 @@ public class FoodView extends JFrame {
      */
     public void setAccountID(int accountID) {
         this.accountID = accountID;
-    }
-
-    /**
-     * @return the addFoodView
-     */
-    public AddFoodView getAddFoodView() {
-        return addFoodView;
     }
 }

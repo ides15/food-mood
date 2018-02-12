@@ -1,5 +1,4 @@
 // John Ide - food controller (I did the delete and add functions)
-
 package food;
 
 import app.EntryCntl;
@@ -7,38 +6,43 @@ import models.Food;
 import database.Food_Table;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.swing.ListModel;
 
 /**
  *
  * @author John
  */
 public class FoodCntl extends EntryCntl {
+
     private Food food;
     private final Food_Table db;
     private final FoodView foodView;
     private int accountID;
-    
-    private AddFoodPanel addFoodPanel;
-    
+
+    private AddDrinkPanel addFoodPanel;
+    private EditFoodPanel editFoodPanel;
+
     /**
      * Default constructor for FoodCntl.
+     *
      * @param db Food model for MVC architecture.
      * @param foodView FoodView for MVC architecture.
      * @param accountID
      */
-    public FoodCntl(int accountID, Food_Table db, FoodView foodView) {        
+    public FoodCntl(int accountID, Food_Table db, FoodView foodView) {
         this.db = db;
         this.accountID = accountID;
         this.foodView = foodView;
         getFoodView().getFoodViewPanel().setAccountID(getAccountID());
-        
-        foodView.setVisible(true);
-        
-        foodView.addAddButtonListener(new AddButtonListener());
-        foodView.addDeleteButtonListener(new DeleteButtonListener());
-        foodView.addEditButtonListener(new EditButtonListener());
+        getFoodView().setVisible(true);
+
+        getFoodView().addAddButtonListener(new AddButtonListener());
+        getFoodView().addDeleteButtonListener(new DeleteButtonListener());
+        getFoodView().addEditButtonListener(new EditButtonListener());
+        getFoodView().addBackBtnListener(new BackBtnListener());
+
+        getFoodView().addSubmitButtonListener(new SubmitButtonListener());
     }
 
     @Override
@@ -50,82 +54,105 @@ public class FoodCntl extends EntryCntl {
     public int getAccountID() {
         return this.accountID;
     }
-    
+
     class AddButtonListener implements ActionListener {
+
         @Override
         public void actionPerformed(ActionEvent e) {
-            getFoodView().add(getFoodView().getAddFoodView().getAddFoodPanel());
+            getFoodView().add(getFoodView().getAddFoodPanel());
             getFoodView().getFoodViewPanel().setVisible(false);
-            getFoodView().getAddFoodView().getAddFoodPanel().setVisible(true);
-            getFoodView().getAddFoodView().addSubmitButtonListener(new SubmitButtonListener());
+            getFoodView().getAddFoodPanel().setVisible(true);
         }
     }
-    
+
     class DeleteButtonListener implements ActionListener {
+
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(!foodView.getFoodViewPanel().getFoodListView().isSelectionEmpty()) {
-                db.deleteEntry(foodView.getFoodViewPanel().getFoodListView().getSelectedValue().toString(), getAccountID());
+            if (foodView.getFoodViewPanel().getFoodTable().getSelectedRow() != -1) {
+                int selectedRow = getFoodView().getFoodViewPanel().getFoodTable().getSelectedRow();
+                int selectedFoodID = Integer.parseInt(getFoodView().getFoodViewPanel().getFoodTable().getValueAt(selectedRow, 1).toString());
+
+                db.deleteEntry(selectedFoodID, getAccountID());
                 foodView.getFoodViewPanel().initFoodsData();
             }
         }
     }
-    
+
     class EditButtonListener implements ActionListener {
+
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("edit");
-//            name = foodView.getAddFoodPanel().getFoodField().getText().toString();
-//            amount = foodView.getAddFoodPanel().getComboBox().getSelectedItem().toString();
-            
-//            date = now();
-            
-//            food = new Food(name, amount, date);
-            
-            //Need actual accountID
-//            db.addEntry(food , accountID);
+            if (getFoodView().getFoodViewPanel().getFoodTable().getSelectedRow() != -1) {
+                getFoodView().add(getFoodView().getEditFoodPanel());
+                getFoodView().getFoodViewPanel().setVisible(false);
+                getFoodView().getEditFoodPanel().setVisible(true);
+                getFoodView().addUpdateButtonListener(new UpdateButtonListener());
+
+                int selectedRow = getFoodView().getFoodViewPanel().getFoodTable().getSelectedRow();
+                String selectedFoodName = getFoodView().getFoodViewPanel().getFoodTable().getValueAt(selectedRow, 0).toString();
+                getFoodView().getEditFoodPanel().getUpdateNameTextField().setText(selectedFoodName);
+
+                int selectedFoodID = Integer.parseInt(getFoodView().getFoodViewPanel().getFoodTable().getValueAt(selectedRow, 1).toString());
+                String portion = db.getPortionSize(selectedFoodID, getAccountID());
+
+                int index = 2;
+                if (portion.equals("Small")) {
+                    index = 0;
+                } else if (portion.equals("Medium")) {
+                    index = 1;
+                }
+
+                getFoodView().getEditFoodPanel().getUpdateComboBox().setSelectedIndex(index);
+            }
         }
     }
-    
+
     class SubmitButtonListener implements ActionListener {
+
         @Override
         public void actionPerformed(ActionEvent e) {
-            String name = getFoodView().getAddFoodView().getAddFoodPanel().getFoodField().getText();
-            ListModel amountModel = getFoodView().getAddFoodView().getAddFoodPanel().getComboBox().getModel();
-            String amount = amountModel.getElementAt(getFoodView().getAddFoodView().getAddFoodPanel().getComboBox().getSelectedIndex()).toString();
-            
-            System.out.println("name: " + name);
-            System.out.println("amount: " + amount);
-            
-            Food newFood = new Food(name, amount, new Date().toString());
-            
+            String name = getFoodView().getAddFoodPanel().getFoodField().getText();
+            String portion = getFoodView().getAddFoodPanel().getComboBox().getSelectedItem().toString();
+
+            SimpleDateFormat dt = new SimpleDateFormat("MM-dd-yy");
+            Food newFood = new Food(name, portion, dt.format(new Date()), 1);
+
             db.addEntry(newFood, accountID);
-//            foodView.getAddFoodPanel().setVisible(false);
-//            foodView.add(foodView.getFoodPanel());
-//            foodView.getFoodPanel().setVisible(true);
-//            foodView.remove(foodView.getAddFoodPanel());
+
+            getFoodView().getFoodViewPanel().initFoodsData();
+            getFoodView().getFoodViewPanel().setVisible(true);
+            getFoodView().getAddFoodPanel().setVisible(false);
+            getFoodView().remove(getFoodView().getAddFoodPanel());
         }
     }
-    
-//    class UpdateButtonListener implements ActionListener {
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            System.out.println("update button listener");
-//            
-////            System.out.println("Food updated");
-////            //db.updateEntry(oldFood, newFood, navCntl.getAccountID());
-////            foodView.getEditFoodPanel().setVisible(false);
-////            foodView.add(foodView.getFoodPanel());
-////            foodView.getFoodPanel().setVisible(true);
-////            foodView.remove(foodView.getEditFoodPanel());
-//        }
-//    }
-    
-//    public static String now() {
-//        Calendar cal = Calendar.getInstance();
-//        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-//        return sdf.format(cal.getTime());
-//    }
+
+    class UpdateButtonListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int selectedRow = getFoodView().getFoodViewPanel().getFoodTable().getSelectedRow();
+            int selectedFoodID = Integer.parseInt(getFoodView().getFoodViewPanel().getFoodTable().getValueAt(selectedRow, 1).toString());
+
+            String updatedName = getFoodView().getEditFoodPanel().getUpdateNameTextField().getText();
+            String updatedPortion = getFoodView().getEditFoodPanel().getUpdateComboBox().getSelectedItem().toString();
+
+            db.updateEntry(updatedName, updatedPortion, selectedFoodID);
+
+            getFoodView().getFoodViewPanel().initFoodsData();
+            getFoodView().getFoodViewPanel().setVisible(true);
+            getFoodView().getEditFoodPanel().setVisible(false);
+            getFoodView().remove(getFoodView().getEditFoodPanel());
+        }
+    }
+
+    public class BackBtnListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            foodView.dispose();
+        }
+    }
 
     /**
      * @return the food
